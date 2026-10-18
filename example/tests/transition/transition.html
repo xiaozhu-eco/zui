@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ZUI Motion</title>
+    <link rel="stylesheet" href="transition.css">
+</head>
+<body>
+    <div class="shell">
+        <header class="topbar">
+            <span class="brand">ZUI Motion</span>
+            <span class="muted">stagger · overlay · drawer · toast · color</span>
+        </header>
+        <div id="stage" class="stage">
+            <div id="hero" class="hero">
+                <span class="hero-kicker">HERO</span>
+                <span class="hero-title">Color + lift</span>
+            </div>
+            <div id="tiles" class="tiles">
+                <button class="tile t0" onclick="on_cascade">Inbox</button>
+                <button class="tile t1" onclick="on_cascade">Builds</button>
+                <button class="tile t2" onclick="on_cascade">Alerts</button>
+                <button class="tile t3" onclick="on_cascade">Quota</button>
+            </div>
+            <div class="split">
+                <div id="eq" class="eq">
+                    <div class="band b0"></div>
+                    <div class="band b1"></div>
+                    <div class="band b2"></div>
+                    <div class="band b3"></div>
+                    <div class="band b4"></div>
+                    <div class="band b5"></div>
+                </div>
+                <div id="feed" class="feed">
+                    <div class="item i0">Deployed edge cluster · 12s</div>
+                    <div class="item i1">Token rotation complete</div>
+                    <div class="item i2">Queue depth dropped to 4</div>
+                    <div class="item i3">Warm cache hit 98.2%</div>
+                    <div class="item i4">Nightly snapshot finished</div>
+                </div>
+            </div>
+        </div>
+        <div class="bar">
+            <button class="action" onclick="on_cascade">Cascade</button>
+            <button class="action" onclick="on_hero">Hero</button>
+            <button class="action" onclick="on_toast">Toast</button>
+            <button class="action" onclick="on_drawer">Drawer</button>
+            <button class="action" onclick="on_sheet">Sheet</button>
+            <button class="action ghost" onclick="on_stage">Stage</button>
+            <button class="action primary" onclick="on_play">Play</button>
+            <span id="status" class="status">Cascade the tiles, then open toast / drawer / sheet.</span>
+        </div>
+    </div>
+    <div id="toast" class="toast">Snapshot saved · 4 regions</div>
+    <div id="drawer" class="drawer">
+        <span class="drawer-title">Inspector</span>
+        <span class="drawer-body">Slides in from the right. Color and transform run together.</span>
+        <button class="action" onclick="on_drawer">Close</button>
+    </div>
+    <div id="mask" class="mask">
+        <div class="sheet">
+            <span class="sheet-title">Confirm export</span>
+            <span class="sheet-body">Mask fades in. The card overshoots on the way up.</span>
+            <button class="action primary" onclick="on_sheet">Done</button>
+        </div>
+    </div>
+    <script>
+        function has(id, cls) {
+            return document.getElementById(id).classList.contains(cls);
+        }
+        function setcls(id, cls, on) {
+            document.getElementById(id).classList.toggle(cls, on);
+        }
+        var cascade = false, hero = false, toast = false, drawer = false, sheet = false, day = false;
+        function status() {
+            document.getElementById("status").textContent =
+                (cascade ? "in" : "out") +
+                " · hero " + (hero ? "cyan" : "red") +
+                " · toast " + (toast ? "on" : "off") +
+                " · drawer " + (drawer ? "open" : "shut") +
+                " · sheet " + (sheet ? "up" : "down") +
+                " · " + (day ? "day" : "night");
+        }
+        function on_cascade() {
+            cascade = !cascade;
+            setcls("tiles", "in", cascade);
+            setcls("feed", "in", cascade);
+            setcls("eq", "on", cascade);
+            status();
+        }
+        function on_hero() { hero = !hero; setcls("hero", "alt", hero); status(); }
+        function on_toast() { toast = !toast; setcls("toast", "show", toast); status(); }
+        function on_drawer() { drawer = !drawer; setcls("drawer", "open", drawer); status(); }
+        function on_sheet() { sheet = !sheet; setcls("mask", "show", sheet); status(); }
+        function on_stage() { day = !day; setcls("stage", "day", day); status(); }
+        function on_play() {
+            on_cascade();
+            on_hero();
+            on_toast();
+            on_drawer();
+            on_sheet();
+            on_stage();
+        }
+        document.addEventListener("click", function (e) {
+            var el = e.target.closest("[onclick]");
+            if (!el) {
+                return;
+            }
+            var fn = window[el.getAttribute("onclick")];
+            if (typeof fn === "function") {
+                fn(e);
+            }
+        });
+    </script>
+</body>
+</html>

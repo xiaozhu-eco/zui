@@ -1,0 +1,28 @@
+/* Two auto columns in a 200px grid: normal (= stretch) shares the leftover space with them, so
+   each column ends up 100px wide. The 60px row plus one auto row in a 100px box leaves 40px for
+   the auto row. */
+.fill {
+    display: grid;
+    width: 200px;
+    height: 100px;
+    grid-template-columns: auto auto;
+    grid-template-rows: 60px auto;
+    align-content: normal;
+    justify-content: normal;
+}
+
+/* 150px of tracks in a 300px grid: 150px free, 25px on the outer edges and 50px between. */
+.around {
+    display: grid;
+    width: 300px;
+    grid-template-columns: 50px 50px 50px;
+    justify-content: space-around;
+}
+
+/* 150px free shared as four gaps: 37.5px everywhere. */
+.evenly {
+    display: grid;
+    width: 300px;
+    grid-template-columns: 50px 50px 50px;
+    justify-content: space-evenly;
+}

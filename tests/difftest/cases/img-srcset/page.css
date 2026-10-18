@@ -1,0 +1,24 @@
+/* Responsive images at the pinned 1x, 800px viewport.
+   density: 1x wins over 2x. widths: 800w / 100vw is 1x. sizes: the 700px
+   condition selects 200px, so 200w is 1x. picture: min-width 700px source.
+   type: unknown MIME falls through to src. fallback: src is the 1x candidate. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #101418;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  align-items: flex-start;
+}
+
+img {
+  width: 64px;
+  height: 40px;
+  display: block;
+  background: #c4554a;
+}

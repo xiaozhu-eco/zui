@@ -1,0 +1,38 @@
+{
+  "name": "scrollbar-reflow",
+  "page": "page.html",
+  "viewport": [
+    800,
+    600
+  ],
+  "_comment": "A vertical bar shrinks clientWidth. The readback is client_box, not scroll size.",
+  "matrix": [
+    "scroll.overflow"
+  ],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 800,
+      "h": 600
+    },
+    {
+      "op": "scroll",
+      "target": "#pane",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "op": "trace"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": {
+    "breaks": false,
+    "advances": false
+  }
+}

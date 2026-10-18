@@ -1,0 +1,371 @@
+{
+  "schema": "zui.difftest.trace/2",
+  "engine": "chromium",
+  "engine_version": "Edg/153.0.4234.48",
+  "viewport": [
+    800,
+    600
+  ],
+  "scroll": [
+    0,
+    0
+  ],
+  "elements": [
+    {
+      "path": "0",
+      "tag": "html",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        200
+      ],
+      "scroll_size": [
+        800,
+        600
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          200
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0",
+      "tag": "head",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0/0",
+      "tag": "link",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1",
+      "tag": "body",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        200
+      ],
+      "scroll_size": [
+        800,
+        200
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        200
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          200
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0",
+      "tag": "div",
+      "id": "grid",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        400,
+        200
+      ],
+      "scroll_size": [
+        400,
+        200
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        400,
+        200
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          400,
+          200
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/0",
+      "tag": "div",
+      "id": "a",
+      "classes": "cell",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        100,
+        88
+      ],
+      "scroll_size": [
+        100,
+        88
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        100,
+        88
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          100,
+          88
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1",
+      "tag": "div",
+      "id": "b",
+      "classes": "cell",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        108,
+        0,
+        142,
+        40
+      ],
+      "scroll_size": [
+        142,
+        40
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        108,
+        0,
+        142,
+        40
+      ],
+      "client_rects": [
+        [
+          108,
+          0,
+          142,
+          40
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/2",
+      "tag": "div",
+      "id": "c",
+      "classes": "cell",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        258,
+        0,
+        142,
+        40
+      ],
+      "scroll_size": [
+        142,
+        40
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        258,
+        0,
+        142,
+        40
+      ],
+      "client_rects": [
+        [
+          258,
+          0,
+          142,
+          40
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/3",
+      "tag": "div",
+      "id": "d",
+      "classes": "cell boxed",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        210,
+        58,
+        40,
+        20
+      ],
+      "scroll_size": [
+        40,
+        20
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        210,
+        58,
+        40,
+        20
+      ],
+      "client_rects": [
+        [
+          210,
+          58,
+          40,
+          20
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    }
+  ],
+  "extras": null
+}

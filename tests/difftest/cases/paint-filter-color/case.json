@@ -1,0 +1,17 @@
+{
+  "name": "paint-filter-color",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "filter grayscale, contrast, saturate, sepia, hue-rotate, and invert, including a chain and a filtered child.",
+  "matrix": ["paint.filter"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

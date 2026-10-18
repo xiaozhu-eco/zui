@@ -1,0 +1,17 @@
+{
+  "name": "paint-contain-ink",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "contain: paint（CSS Containment 第 2.4 节）：溢出子级、绝对定位子级、负偏移子级都必须被裁在 padding box 内；对照组没有 contain，同一个子级照常画到盒外。布局侧同时写 Overflow::ink 与 clipped_by_paint_contain（P1-5 B）。用例不含文字，像素对照按 strict 走。",
+  "matrix": ["contain.paint"],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

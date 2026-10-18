@@ -1,0 +1,10 @@
+html, body { margin: 0; padding: 8px; }
+#prewrap, #break {
+  width: 72px;
+  margin-bottom: 8px;
+  padding: 4px;
+  font: 400 16px/20px sans-serif;
+  white-space: pre-wrap;
+  background: #ddd;
+}
+#break { white-space: break-spaces; }

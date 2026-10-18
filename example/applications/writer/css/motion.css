@@ -1,0 +1,32 @@
+/* Calendar and history rise when that page opens. The desk stays still. */
+
+@keyframes z-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #calendar-view:not([hidden]),
+  #history-view:not([hidden]) {
+    animation: z-rise 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  button,
+  .theme-toggle,
+  .twig {
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+
+  .twig:hover { background: rgba(12, 122, 75, 0.08); }
+
+  .modes button:hover { color: var(--ink); }
+
+  #autosave:not([hidden]) {
+    animation: save-run 700ms linear;
+  }
+}
+
+@keyframes save-run {
+  from { opacity: 0.35; }
+  to { opacity: 1; }
+}

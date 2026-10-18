@@ -1,0 +1,84 @@
+﻿<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>zui scroll capture</title>
+  <style>
+    html, body { margin: 0; padding: 0; background: #000; overflow: hidden; }
+    iframe { display: block; border: 0; background: #fff; }
+    #meta { display: none; }
+  </style>
+</head>
+<body>
+  <!--
+    visual-diff.ps1 helper: load a page in a fixed iframe, set scrollTop on
+    #scrollId (or the document scroller), then let headless Edge --screenshot.
+    Query: ?target=<file-url>&w=1100&h=720&scrollId=content&top=0.5&mode=fraction
+           ?meta=1 writes meta|scroll|<scrollHeight>|<clientHeight>|<maxScroll> into #meta
+  -->
+  <iframe id="frame" width="1100" height="720"></iframe>
+  <pre id="meta">pending</pre>
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const target = params.get('target');
+      const width = Number(params.get('w') || 1100);
+      const height = Number(params.get('h') || 720);
+      const scrollId = params.get('scrollId') || '';
+      const mode = params.get('mode') || 'fraction';
+      const topParam = Number(params.get('top') || 0);
+      const wantMeta = params.get('meta') === '1';
+      const frame = document.getElementById('frame');
+      const meta = document.getElementById('meta');
+      frame.width = width;
+      frame.height = height;
+
+      function scroller(doc) {
+        if (scrollId) {
+          const el = doc.getElementById(scrollId);
+          if (el) return el;
+        }
+        return doc.scrollingElement || doc.documentElement;
+      }
+
+      function applyScroll(doc) {
+        const el = scroller(doc);
+        if (!el) return { el: null, applied: 0, max: 0 };
+        const max = Math.max(0, el.scrollHeight - el.clientHeight);
+        let top = topParam;
+        if (mode === 'fraction') top = max * topParam;
+        el.scrollTop = top;
+        return { el: el, applied: el.scrollTop, max: max };
+      }
+
+      frame.addEventListener('load', function () {
+        let doc = null;
+        try { doc = frame.contentDocument; } catch (e) {
+          meta.textContent = 'ERR|frame not readable: ' + e.message;
+          return;
+        }
+        if (!doc || !doc.documentElement) {
+          meta.textContent = 'ERR|empty frame';
+          return;
+        }
+        const result = applyScroll(doc);
+        if (wantMeta) {
+          const el = result.el;
+          meta.textContent = 'meta|scroll|' +
+            (el ? el.scrollHeight : 0) + '|' +
+            (el ? el.clientHeight : 0) + '|' +
+            result.max + '|' + result.applied;
+        } else {
+          meta.textContent = 'ok|' + result.applied;
+        }
+      });
+
+      if (!target) {
+        meta.textContent = 'ERR|no ?target=';
+      } else {
+        frame.src = target;
+      }
+    })();
+  </script>
+</body>
+</html>

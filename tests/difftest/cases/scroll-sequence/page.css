@@ -1,0 +1,52 @@
+/* scroll-sequence: element scroll over a discrete offset sequence (TESTPLAN 第 4 节).
+   The frame is exactly the viewport so the document itself never scrolls — that keeps this
+   case about the scroll container, and keeps the root element's own box identical on both
+   ends. Every length is a fixed px value, so nothing here depends on font metrics. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #ffffff;
+}
+
+#frame {
+  width: 800px;
+  height: 600px;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+}
+
+#band {
+  height: 40px;
+  background-color: #ccd6e0;
+}
+
+#scroll {
+  width: 800px;
+  height: 200px;
+  overflow: auto;
+  background-color: #eeeeee;
+}
+
+#inner {
+  width: 400px;
+  height: 800px;
+}
+
+.mark {
+  width: 400px;
+  height: 200px;
+  box-sizing: border-box;
+  border: 1px solid #808080;
+}
+
+#m0 { background-color: #d0e0d0; }
+#m1 { background-color: #e0d0d0; }
+#m2 { background-color: #d0d0e0; }
+#m3 { background-color: #e0e0c0; }
+
+#tail {
+  height: 60px;
+  background-color: #c0c0c0;
+}

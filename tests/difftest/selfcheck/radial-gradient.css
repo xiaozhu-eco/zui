@@ -1,0 +1,11 @@
+html, body { margin: 0; padding: 8px; background: #101418; }
+#radial, #repeat, #circle, #conic, #reprad {
+  width: 80px;
+  height: 60px;
+  margin-bottom: 8px;
+}
+#radial { background-image: radial-gradient(#ff0000, #0000ff); }
+#repeat { background-image: repeating-linear-gradient(90deg, #ff0000, #0000ff 16px); }
+#circle { background-image: radial-gradient(circle closest-side, #00ff00, #003300); }
+#conic { background-image: conic-gradient(from 20deg, #ff0000, #0000ff); }
+#reprad { background-image: repeating-radial-gradient(circle, #ff0000 0, #0000ff 12px); }

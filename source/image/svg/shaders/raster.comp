@@ -1,0 +1,213 @@
+#version 450
+layout(local_size_x = 8, local_size_y = 8) in;
+
+#ifdef ZUI_PUSH
+layout(push_constant) uniform ParamsBlock {
+#else
+layout(std140, binding = 0) uniform ParamsBlock {
+#endif
+    ivec4 viewport;
+    vec4 rect;
+    vec4 extra;
+} zui_params;
+
+struct Seg {
+    vec4 ab;
+    int shape;
+    int pad0;
+    int pad1;
+    int pad2;
+};
+
+struct Shape {
+    vec4 box;
+    vec4 fill;
+    vec4 stroke;
+    vec4 extra;
+    ivec4 range;
+};
+
+struct Grad {
+    vec4 line;
+    ivec4 meta;
+    vec4 off0;
+    vec4 off1;
+    vec4 cols[8];
+};
+
+layout(std430, binding = 2) readonly buffer SegBlock { Seg segs[]; };
+layout(std430, binding = 3) readonly buffer ShapeBlock { Shape shapes[]; };
+layout(std430, binding = 4) readonly buffer GradBlock { Grad grads[]; };
+layout(std430, binding = 5) buffer PixelBlock { uint pixels[]; };
+
+vec4 zui_unpack(uint packed) {
+    return vec4(float(packed & 255u), float((packed >> 8) & 255u), float((packed >> 16) & 255u),
+                float((packed >> 24) & 255u)) /
+           255.0;
+}
+
+uint zui_pack(vec4 color) {
+    ivec4 v = ivec4(round(clamp(color, 0.0, 1.0) * 255.0));
+    return uint(v.r) | (uint(v.g) << 8) | (uint(v.b) << 16) | (uint(v.a) << 24);
+}
+
+vec4 zui_over(vec4 src, vec4 dst) {
+    float a = src.a + dst.a * (1.0 - src.a);
+    vec3 rgb = a > 1e-5 ? (src.rgb * src.a + dst.rgb * dst.a * (1.0 - src.a)) / a : vec3(0.0);
+    return vec4(rgb, a);
+}
+
+float zui_stop(Grad g, int i) {
+    if (i < 4) {
+        if (i == 0) return g.off0.x;
+        if (i == 1) return g.off0.y;
+        if (i == 2) return g.off0.z;
+        return g.off0.w;
+    }
+    int k = i - 4;
+    if (k == 0) return g.off1.x;
+    if (k == 1) return g.off1.y;
+    if (k == 2) return g.off1.z;
+    return g.off1.w;
+}
+
+vec4 zui_grad(Grad g, float t) {
+    int n = g.meta.y;
+    if (n <= 0) {
+        return vec4(0.0);
+    }
+    if (n > 8) {
+        n = 8;
+    }
+    t = clamp(t, 0.0, 1.0);
+    if (t <= zui_stop(g, 0)) {
+        return g.cols[0];
+    }
+    for (int i = 1; i < 8; ++i) {
+        if (i >= n) {
+            break;
+        }
+        float hi = zui_stop(g, i);
+        if (t <= hi) {
+            float lo = zui_stop(g, i - 1);
+            float u = clamp((t - lo) / max(hi - lo, 1e-5), 0.0, 1.0);
+            return mix(g.cols[i - 1], g.cols[i], u);
+        }
+    }
+    return g.cols[n - 1];
+}
+
+float zui_grad_t(Grad g, vec2 p, vec4 box) {
+    if (g.meta.z != 0) {
+        if (g.meta.x == 0) {
+            vec2 scale = max(box.zw, vec2(1e-5));
+            vec2 q = (p - box.xy) / scale;
+            return length(q - g.line.xy) / max(g.line.z, 1e-5);
+        }
+        return length(p - g.line.xy) / max(g.line.z, 1e-5);
+    }
+    vec2 p0;
+    vec2 p1;
+    if (g.meta.x == 0) {
+        p0 = box.xy + g.line.xy * box.zw;
+        p1 = box.xy + g.line.zw * box.zw;
+    } else {
+        p0 = g.line.xy;
+        p1 = g.line.zw;
+    }
+    vec2 d = p1 - p0;
+    float len2 = dot(d, d);
+    if (len2 < 1e-8) {
+        return 0.0;
+    }
+    return dot(p - p0, d) / len2;
+}
+
+void zui_mask(vec2 p, Shape shape, out bool filled, out float dist) {
+    int wind = 0;
+    int cross = 0;
+    dist = 1e9;
+    int begin = shape.range.x;
+    int count = shape.range.y;
+    for (int i = 0; i < count; ++i) {
+        Seg seg = segs[uint(begin + i)];
+        vec2 a = seg.ab.xy;
+        vec2 b = seg.ab.zw;
+        vec2 d = b - a;
+        float len2 = dot(d, d);
+        if (len2 < 1e-12) {
+            continue;
+        }
+        float u = clamp(dot(p - a, d) / len2, 0.0, 1.0);
+        dist = min(dist, length(p - (a + u * d)));
+        bool straddle = (a.y <= p.y && b.y > p.y) || (b.y <= p.y && a.y > p.y);
+        if (straddle) {
+            float t = (p.y - a.y) / (b.y - a.y);
+            float hit = mix(a.x, b.x, t);
+            if (p.x < hit) {
+                cross += 1;
+                wind += b.y > a.y ? 1 : -1;
+            }
+        }
+    }
+    filled = shape.extra.z < 0.5 ? wind != 0 : (cross & 1) != 0;
+}
+
+void main() {
+    if (gl_GlobalInvocationID.x >= uint(zui_params.rect.z) || gl_GlobalInvocationID.y >= uint(zui_params.rect.w)) {
+        return;
+    }
+    int x = int(zui_params.rect.x) + int(gl_GlobalInvocationID.x);
+    int y = int(zui_params.rect.y) + int(gl_GlobalInvocationID.y);
+    if (x < 0 || y < 0 || x >= zui_params.viewport.x || y >= zui_params.viewport.y) {
+        return;
+    }
+    int shape_index = zui_params.viewport.z;
+    if (shape_index < 0) {
+        return;
+    }
+    Shape shape = shapes[uint(shape_index)];
+    vec2 center = vec2(x, y) + vec2(0.5);
+    vec4 fill = shape.fill;
+    int gi = int(shape.extra.w);
+    if (gi >= 0 && gi < zui_params.viewport.w) {
+        fill = zui_grad(grads[uint(gi)], zui_grad_t(grads[uint(gi)], center, shape.box));
+        fill.a *= shape.fill.a;
+    }
+    fill.a *= shape.extra.y;
+    vec4 stroke = shape.stroke;
+    stroke.a *= shape.extra.y;
+    // 4x4 box filter. Samples sit on exact eighths, so an edge at n+0.25 covers
+    // one column and an edge at n+0.5 covers two.
+    vec4 premul = vec4(0.0);
+    for (int sy = 0; sy < 4; ++sy) {
+        for (int sx = 0; sx < 4; ++sx) {
+            vec2 p = vec2(x, y) + (vec2(float(sx), float(sy)) + 0.5) / 4.0;
+            bool filled = false;
+            float dist = 0.0;
+            zui_mask(p, shape, filled, dist);
+            vec4 src = vec4(0.0);
+            bool any = false;
+            if (filled && fill.a > 0.0) {
+                src = fill;
+                any = true;
+            }
+            if (stroke.a > 0.0 && shape.extra.x > 0.0 && dist <= shape.extra.x * 0.5) {
+                src = any ? zui_over(stroke, src) : stroke;
+                any = true;
+            }
+            if (any) {
+                premul += vec4(src.rgb * src.a, src.a);
+            }
+        }
+    }
+    premul /= 16.0;
+    if (premul.a <= 0.0) {
+        return;
+    }
+    vec4 src = vec4(premul.rgb / premul.a, premul.a);
+    int layer = int(zui_params.extra.w + 0.5);
+    uint index = uint(layer) * uint(zui_params.viewport.x) * uint(zui_params.viewport.y) +
+                 uint(y) * uint(zui_params.viewport.x) + uint(x);
+    pixels[index] = zui_pack(zui_over(src, zui_unpack(pixels[index])));
+}

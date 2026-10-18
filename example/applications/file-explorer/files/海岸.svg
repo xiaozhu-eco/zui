@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="海岸">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6e4c8"/>
+      <stop offset="0.45" stop-color="#f3c99a"/>
+      <stop offset="1" stop-color="#e7a97a"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7eafbf"/>
+      <stop offset="1" stop-color="#2c5c6e"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <circle cx="492" cy="86" r="34" fill="#fff6df"/>
+  <circle cx="492" cy="86" r="20" fill="#ffe08a"/>
+  <path d="M0 214 C70 196 96 168 150 186 C214 208 236 236 300 220 C360 206 390 176 460 190 C520 202 560 230 640 210 L640 268 L0 268 Z" fill="#8fb59a"/>
+  <path d="M0 236 C80 214 120 228 190 246 C250 262 300 250 360 236 C430 220 500 214 570 232 C600 240 620 246 640 242 L640 278 L0 278 Z" fill="#3f6b52"/>
+  <path d="M0 248 C120 236 180 262 280 250 C390 236 450 228 540 246 C580 254 610 260 640 254 L640 400 L0 400 Z" fill="#9ec4ce"/>
+  <path d="M0 292 C90 274 160 314 250 296 C350 276 410 270 510 292 C560 302 600 310 640 300 L640 400 L0 400 Z" fill="url(#sea)"/>
+  <path d="M0 346 C140 332 220 360 340 344 C450 330 520 336 640 326 L640 400 L0 400 Z" fill="#234e5e"/>
+  <path d="M238 268 L252 158 H274 L288 268 Z" fill="#f7f1e6"/>
+  <rect x="248" y="140" width="30" height="22" rx="2" fill="#2c6b4e"/>
+  <path d="M263 118 L246 142 H280 Z" fill="#245743"/>
+  <rect x="258" y="176" width="10" height="14" fill="#ffe08a"/>
+  <path d="M268 182 L392 158 L398 214 Z" fill="#ffe08a" opacity="0.38"/>
+  <path d="M0 362 C150 348 230 376 360 360 C470 346 540 352 640 342 L640 400 L0 400 Z" fill="#ead6b4"/>
+</svg>

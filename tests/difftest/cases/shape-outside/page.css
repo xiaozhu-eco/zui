@@ -1,0 +1,40 @@
+/* B2: shape-outside circle/ellipse/inset shortens the float area for line boxes.
+   Fixed-size inline-block probes avoid FreeType vs Blink advance noise. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+body { font: 400 12px/20px "Zui Test", sans-serif; }
+
+.host {
+  width: 200px;
+  height: 120px;
+  margin: 0 0 16px 0;
+  background: #161c27;
+}
+
+.fl {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #7cb7ff;
+}
+
+.fl.circle { shape-outside: circle(50%); }
+.fl.ellipse { shape-outside: ellipse(40% 50%); }
+.fl.inset { shape-outside: inset(0 40px 0 0); }
+
+p { margin: 0; font: 400 12px/20px "Zui Test", sans-serif; }
+
+.probe {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: #f0a050;
+  vertical-align: top;
+}

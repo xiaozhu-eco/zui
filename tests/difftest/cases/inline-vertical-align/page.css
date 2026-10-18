@@ -1,0 +1,21 @@
+/* flow.inline: the alignments whose offset still has to be pinned down against Chrome.
+
+   `middle` is "the box's vertical midpoint against the parent's baseline plus half the parent's
+   x-height" and `sub` / `super` use the font's own offsets; Blink's numbers are not reproduced by
+   the guesses in `align_shift()` yet, so this case measures them separately from
+   `inline-metrics` - which is expected to stay green. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; font-family: "Zui Test", sans-serif; font-size: 16px; line-height: 20px; }
+
+div { width: 300px; }
+
+#s_middle { font-size: 32px; vertical-align: middle; }
+#s_sub { font-size: 24px; vertical-align: sub; }
+#s_super { font-size: 24px; vertical-align: super; }

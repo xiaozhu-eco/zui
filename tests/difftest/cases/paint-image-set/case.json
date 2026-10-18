@@ -1,0 +1,18 @@
+{
+  "name": "paint-image-set",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "At 800x600 and 1x, image-set selects green64.png except #only, which has a single 2x candidate and must paint blue64.png. The red background is what dropping image-set paints.",
+  "matrix": ["paint.bg-url"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 2,
+  "text": { "breaks": false, "advances": false }
+}

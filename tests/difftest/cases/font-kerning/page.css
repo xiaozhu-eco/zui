@@ -1,0 +1,22 @@
+/* The pinned case (TESTPLAN section 6): the family is the embedded face both ends load, so the
+   measurement is the engine's kerning rule and not this machine's font list. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; }
+
+.row {
+  display: block;
+  width: max-content;
+  font-family: "Zui Test";
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.off { font-kerning: none; }
+.normal { font-kerning: normal; }

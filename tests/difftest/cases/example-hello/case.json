@@ -1,0 +1,23 @@
+{
+  "name": "example-hello",
+  "page": "../../../../example/tests/hello/hello.html",
+  "viewport": [800, 600],
+  "_comment": "example/tests/hello 的 HTML+CSS 原样对照（最终验收集）。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "scroll", "target": ".content", "x": 0, "y": 280 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "scroll", "target": ".content", "x": 0, "y": 99999 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": true, "advances": false }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "table-border-collapse-conflict",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A4: collapse conflict — wider wins; equal width double>solid; hidden suppresses (CSS 2.1 17.6.2.1).",
+  "matrix": ["flow.table"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "_comment_pixels": "L2-only: collapse conflict is a used-border-width question; double-vs-solid paint is A5.",
+  "text": { "breaks": false, "advances": false }
+}

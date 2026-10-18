@@ -1,0 +1,120 @@
+.bench {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+#effects, #params {
+  flex: 0 0 auto;
+  overflow: auto;
+  background: var(--panel);
+  padding: 10px;
+}
+
+#effects h2, #params h2 { margin-bottom: 8px; font-size: 14px; }
+
+.effect, #shader-import, #shader-export {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 0 0 6px;
+}
+
+.row { display: flex; gap: 6px; margin-bottom: 8px; min-width: 0; }
+
+.row button { flex: 1 1 0; min-width: 0; text-align: center; }
+
+.split {
+  flex: 0 0 8px;
+  width: 8px;
+  background: #4a4338;
+  cursor: ew-resize;
+}
+
+#center {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#stage {
+  height: 420px;
+  flex: none;
+  position: relative;
+  background: #12141a;
+  overflow: hidden;
+}
+
+#field {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+}
+
+.dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  margin: 0;
+  padding: 0;
+  border-radius: 4px;
+  background: var(--dot);
+}
+
+#console {
+  height: 150px;
+  flex: none;
+  background: var(--log);
+  border-top: 1px solid var(--line);
+  overflow: auto;
+}
+
+.log-line {
+  margin: 0;
+  padding: 2px 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: #c8d2c0;
+}
+
+.field { display: block; margin: 8px 0 4px; color: var(--muted); }
+
+#params input, #shader-source {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #141820;
+  padding: 6px;
+  margin-bottom: 6px;
+}
+
+#shader-source {
+  height: 140px;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.bench.tree-0 #effects { width: 140px; }
+.bench.tree-1 #effects { width: 180px; }
+.bench.tree-2 #effects { width: 220px; }
+.bench.tree-3 #effects { width: 260px; }
+.bench.tree-4 #effects { width: 300px; }
+.bench.tree-5 #effects { width: 340px; }
+.bench.tree-6 #effects { width: 380px; }
+.bench.tree-7 #effects { width: 420px; }
+.bench.tree-8 #effects { width: 460px; }
+
+.bench.param-0 #params { width: 160px; }
+.bench.param-1 #params { width: 200px; }
+.bench.param-2 #params { width: 240px; }
+.bench.param-3 #params { width: 280px; }
+.bench.param-4 #params { width: 320px; }
+.bench.param-5 #params { width: 360px; }
+.bench.param-6 #params { width: 400px; }
+.bench.param-7 #params { width: 440px; }
+.bench.param-8 #params { width: 480px; }

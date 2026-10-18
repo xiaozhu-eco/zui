@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #000000;
+  font: 32px/40px "Zui Test", sans-serif;
+}
+p {
+  margin: 48px 16px;
+}
+ruby {
+  background: #e8eef8;
+}
+rt {
+  color: #c62828;
+}

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>样式对照</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">样式对照</div>
+      <div class="muted">同一份页面。zui 内容区是 1100×720。视口那一组请把浏览器调到同样大小。色条下面的白线是像素参照。</div>
+    </header>
+    <div class="page">
+
+      <section class="sec">
+        <h2>自定义属性</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">沿用与指定</div>
+            <div class="expect">左块 140 宽，颜色是蓝。白线也是 140。</div>
+            <div class="track">
+              <div class="bar from-var"></div>
+            </div>
+            <div class="ruler"><div class="tick w140"></div></div>
+          </div>
+          <div class="case">
+            <div class="k">后备值</div>
+            <div class="expect">没有 --missing，色块用后备的金。</div>
+            <div class="swatch fallback"></div>
+          </div>
+          <div class="case">
+            <div class="k">无效声明丢掉</div>
+            <div class="expect">第二条背景无效，整条丢掉，透出底下的绿。</div>
+            <div class="green">
+              <div class="hole"></div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">无效的自定义属性</div>
+            <div class="expect">左块沿用父级的蓝。右块自己写了无效的 --tone，退回绿。</div>
+            <div class="tone">
+              <div class="swatch tone-ok"></div>
+              <div class="swatch tone-bad"></div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">变量进边框</div>
+            <div class="expect">底边是 1px，颜色 #445566。</div>
+            <div class="linebox">边</div>
+          </div>
+          <div class="case">
+            <div class="k">一个变量撑起 padding</div>
+            <div class="expect">--space 是 0px 20px。上下 0，左右各 20，蓝条缩在里面。</div>
+            <div class="varpad"><div class="varpad-in"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>:has()</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">:root:has(#theme_ink:checked)</div>
+            <div class="expect">默认蓝。点「墨」后，色块和选中的标签一起变成砖红。</div>
+            <div class="picks">
+              <input id="theme_paper" class="pick" type="radio" name="theme" checked>
+              <label class="chip" for="theme_paper">纸</label>
+              <input id="theme_ink" class="pick" type="radio" name="theme">
+              <label class="chip" for="theme_ink">墨</label>
+            </div>
+            <div class="swatch accent"></div>
+          </div>
+          <div class="case">
+            <div class="k">后代和直接子</div>
+            <div class="expect">直接子有标记时左边是金。只在更深层有标记时左边是强调色。没有标记的卡片没有左边线。</div>
+            <div class="cards">
+              <div class="card">
+                <div class="mark">记</div>
+                <span>直接子</span>
+              </div>
+              <div class="card">
+                <div><div class="mark">记</div></div>
+                <span>深层</span>
+              </div>
+              <div class="card">
+                <span>没有</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>display: contents</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">包一层不占格子</div>
+            <div class="expect">三格横排，每格 64 宽，颜色来自 contents 上的变量。</div>
+            <div class="grid3">
+              <div class="ghost inked">
+                <div class="cell">1</div>
+                <div class="cell">2</div>
+                <div class="cell">3</div>
+              </div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">普通块占一格</div>
+            <div class="expect">三格叠在第一列，右边两列空着。</div>
+            <div class="grid3">
+              <div class="inked">
+                <div class="cell">1</div>
+                <div class="cell">2</div>
+                <div class="cell">3</div>
+              </div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">套两层</div>
+            <div class="expect">仍然三格横排。</div>
+            <div class="grid3">
+              <div class="ghost inked">
+                <div class="ghost">
+                  <div class="cell">1</div>
+                  <div class="cell">2</div>
+                  <div class="cell">3</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">绝对定位穿过 contents</div>
+            <div class="expect">金块左缘距舞台 16。灰线在 116，contents 上的 left 不生效。</div>
+            <div class="stage">
+              <div class="miss"></div>
+              <div class="ghost shift">
+                <div class="pin"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>calc、min、max、视口、env</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">calc(100% - 80px)</div>
+            <div class="expect">轨道 360，色条 280。</div>
+            <div class="track"><div class="bar calc-sub"></div></div>
+            <div class="ruler"><div class="tick w280"></div></div>
+          </div>
+          <div class="case">
+            <div class="k">min(120px, 50%)</div>
+            <div class="expect">50% 是 180，结果 120。</div>
+            <div class="track"><div class="bar use-min"></div></div>
+            <div class="ruler"><div class="tick w120"></div></div>
+          </div>
+          <div class="case">
+            <div class="k">max(120px, 50%)</div>
+            <div class="expect">结果 180。</div>
+            <div class="track"><div class="bar use-max"></div></div>
+            <div class="ruler"><div class="tick w180"></div></div>
+          </div>
+          <div class="case">
+            <div class="k">clamp(40px, 50%, 100px)</div>
+            <div class="expect">50% 被上限截住，结果 100。</div>
+            <div class="track"><div class="bar use-clamp"></div></div>
+            <div class="ruler"><div class="tick w100"></div></div>
+          </div>
+          <div class="case">
+            <div class="k">calc(2rem + 8px)</div>
+            <div class="expect">根字号 16，结果 40。</div>
+            <div class="track"><div class="bar use-rem"></div></div>
+            <div class="ruler"><div class="tick w40"></div></div>
+          </div>
+          <div class="case">
+            <div class="k">env 后备</div>
+            <div class="expect">不认识的名字用后备，色条 96。</div>
+            <div class="track"><div class="bar use-env"></div></div>
+            <div class="ruler"><div class="tick w96"></div></div>
+          </div>
+          <div class="case">
+            <div class="k">安全区内边距</div>
+            <div class="expect">桌面上 safe-area 是 0。蓝条左右各让出 24，顶上贴齐。</div>
+            <div class="inset"><div class="inset-in"></div></div>
+          </div>
+          <div class="case">
+            <div class="k">56px + env(safe-area-inset-top)</div>
+            <div class="expect">桌面上两根一样高，都是 56。</div>
+            <div class="vrow short">
+              <div class="vcol"><div class="vbar safe"></div><div class="vl">56+env</div></div>
+              <div class="vcol"><div class="vbar px56"></div><div class="vl">56px</div></div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">vh 与 dvh</div>
+            <div class="expect">视口高 720 时，20vh、20dvh 和 144px 一样高。18vh 是 129.6，min 还没碰到 160，最后两根一样高。</div>
+            <div class="vrow">
+              <div class="vcol"><div class="vbar vh20"></div><div class="vl">20vh</div></div>
+              <div class="vcol"><div class="vbar px144"></div><div class="vl">144px</div></div>
+              <div class="vcol"><div class="vbar dvh20"></div><div class="vl">20dvh</div></div>
+              <div class="vcol"><div class="vbar vh18"></div><div class="vl">18vh</div></div>
+              <div class="vcol"><div class="vbar vhmin"></div><div class="vl">min</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>@media</h2>
+        <div class="case wide-case">
+          <div class="k">视口与媒体类型</div>
+          <div class="expect">内容区宽 1100、高 720、指针能悬停、系统没开减少动画时：宽、屏幕、only、或 是蓝；区间、非窄、动画 是绿；悬停是红；窄和打印是灰。拉到 500 宽以下后，窄变红，非窄和宽、区间变灰，下面三块改成竖排。</div>
+          <div class="badges">
+            <div class="badge wide">宽</div>
+            <div class="badge narrow">窄</div>
+            <div class="badge band">区间</div>
+            <div class="badge hov">悬停</div>
+            <div class="badge motion">动画</div>
+            <div class="badge screen">屏幕</div>
+            <div class="badge print">打印</div>
+            <div class="badge only">only</div>
+            <div class="badge not-narrow">非窄</div>
+            <div class="badge either">或</div>
+          </div>
+          <div class="trio">
+            <div class="b b1"></div>
+            <div class="b b2"></div>
+            <div class="b b3"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</body>
+</html>

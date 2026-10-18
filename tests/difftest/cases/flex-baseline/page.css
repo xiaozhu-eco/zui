@@ -1,0 +1,15 @@
+/* Flex align-items: baseline — same shared first-baseline packing as grid-baseline. */
+
+html, body { margin: 0; padding: 0; }
+
+#row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 200px;
+  background: #f4f4f4;
+}
+
+.ghost { display: block; visibility: hidden; width: 100%; }
+#a { font-size: 30px; height: 60px; width: 100px; background: #cccccc; flex: 0 0 auto; }
+#b { font-size: 12px; height: 40px; width: 100px; background: #bbbbbb; flex: 0 0 auto; }

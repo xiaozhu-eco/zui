@@ -1,0 +1,32 @@
+/* appearance:none radio must match a plain author box (same pattern as
+   appearance-checkbox). Native radio circle / select chevron are covered by
+   FormAppearanceRadioSelect. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+}
+
+#none {
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  box-sizing: border-box;
+  appearance: none;
+  background-color: #7cb7ff;
+  border: 0;
+}
+
+#ref {
+  width: 28px;
+  height: 28px;
+  background-color: #7cb7ff;
+}

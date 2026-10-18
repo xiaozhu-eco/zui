@@ -1,0 +1,17 @@
+{
+  "name": "paint-bg-gradient-repeat",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A sized linear-gradient is one tile, then background-repeat. #repeat stripes every 40px. #space leaves 8px gaps. #round rescales 100px tiles to 80px. An omitted background-size still fills the box.",
+  "matrix": ["css.background", "paint.gradient"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

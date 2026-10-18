@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #10141c;
+  font-family: "Zui Test", sans-serif;
+}
+
+.stack {
+  width: 200px;
+  height: 60px;
+  margin: 10px;
+  background-color: #161c27;
+  position: relative;
+}
+
+.ctx { z-index: 0; }
+
+.fl { float: left; width: 60px; height: 40px; background-color: #7cb7ff; }
+.blk { height: 40px; background-color: #8fd18a; }
+
+.neg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 60px;
+  background-color: #e85d4c;
+  z-index: -1;
+}
+
+.ink {
+  margin: 10px;
+  width: 120px;
+  height: 40px;
+  background-color: #ffe08a;
+}
+
+.front-flow {
+  margin: 10px;
+  width: 120px;
+  height: 40px;
+  background-color: #8fd18a;
+}
+
+.auto-mid {
+  position: relative;
+  z-index: auto;
+  width: 200px;
+  height: 40px;
+}
+
+.neg-deep {
+  position: absolute;
+  left: 0;
+  top: -50px;
+  width: 200px;
+  height: 60px;
+  background-color: #e85d4c;
+  z-index: -1;
+}

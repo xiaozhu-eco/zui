@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>flex min-content</title>
+  <link rel="stylesheet" href="flex_min_content.css">
+</head>
+<body>
+  <div class="row" id="row">
+    <div class="item" id="item">supercalifragilisticexpialidocious short words</div>
+  </div>
+  <div class="row" id="row-clip">
+    <div class="item clip" id="clipped">supercalifragilisticexpialidocious short words</div>
+  </div>
+
+  <!-- Column flex: main = block. MinContent height (at min-content width) exceeds FlexBase. -->
+  <div class="col" id="col">
+    <div class="col-item" id="col-item">supercalifragilisticexpialidocious short words</div>
+  </div>
+
+  <!-- Outer flex asks MinContent of nested flex containers (nowrap sum vs wrap max). -->
+  <div class="probe" id="probe">
+    <div class="inner nowrap" id="inner-nowrap">
+      <div class="fixed a" id="na">x</div>
+      <div class="fixed b" id="nb">y</div>
+    </div>
+    <div class="inner wrap" id="inner-wrap">
+      <div class="fixed a" id="wa">x</div>
+      <div class="fixed b" id="wb">y</div>
+    </div>
+  </div>
+</body>
+</html>

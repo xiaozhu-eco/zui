@@ -1,0 +1,17 @@
+{
+  "name": "media-orientation",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "800x600 is landscape, so (orientation: landscape) widens and recolors #land. (orientation: portrait) must not match, so #port stays the narrow red box. A square viewport would be portrait (height >= width).",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

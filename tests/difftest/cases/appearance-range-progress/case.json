@@ -1,0 +1,16 @@
+{
+  "name": "appearance-range-progress",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "P1：range/progress 盒几何与 appearance:none 尺寸对齐 ref（L2）。Chrome 对 range/progress 的 appearance:none 仍留原生痕迹，不做 L4；原生轨道/滑块/填充与 none 抑制由自检 FormAppearanceRangeProgress 覆盖。",
+  "matrix": ["paint.form-control"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

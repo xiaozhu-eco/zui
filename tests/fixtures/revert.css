@@ -1,0 +1,46 @@
+@layer base, under, a, b;
+
+@layer base {
+  #lay { background-color: #2255cc; }
+  #ori { background-color: #2255cc; }
+}
+#lay { background-color: revert-layer; }
+#ori { background-color: revert; }
+
+@layer a {
+  #ch { background-color: #2255cc; }
+  #il { background-color: revert-layer !important; }
+}
+@layer b {
+  #ch { background-color: revert-layer; }
+  #il { background-color: #cc3344 !important; }
+}
+
+#at { background-color: #8855cc; }
+#sm { background-color: #2255cc; background-color: revert-layer; }
+#imp { background-color: #cc3344; background-color: revert !important; }
+#beat { background-color: revert; background-color: #33aa55 !important; }
+
+#v { --c: #112233; }
+@layer under {
+  #v { background-color: var(--c); }
+}
+#v { background-color: revert-layer; }
+
+mark#mk {
+  background-color: #113355;
+  background-color: revert;
+}
+
+button#btn { padding: 30px; padding: revert; }
+button#btn-imp { padding: 30px; padding: revert !important; }
+button#btn-imp-only { padding: revert !important; }
+button#allbtn {
+  display: block;
+  padding: 30px;
+  background-color: #ff2288;
+  all: revert;
+}
+
+body { margin: revert; }
+p#pm { margin: revert; }

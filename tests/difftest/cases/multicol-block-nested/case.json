@@ -1,0 +1,16 @@
+{
+  "name": "multicol-block-nested",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A4: nested block containers fragment across columns at a child boundary (deeper than one line-split level).",
+  "matrix": ["fragmentation", "multicol"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

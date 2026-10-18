@@ -1,0 +1,14 @@
+.g {
+    display: grid;
+    width: 200px;
+    grid-template-columns: 100px 100px;
+}
+
+#taken {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+#late2 {
+    order: -1;
+}

@@ -1,0 +1,35 @@
+/* `contain-intrinsic-size: auto? [none | <length>]{1,2}` (CSS Sizing section 5.3). The elements are
+   skipped unconditionally and shrink to fit, so the placeholder *is* the size the layout reports. */
+#auto_len,
+#auto_none,
+#plain,
+#pair,
+#longhand {
+    display: inline-block;
+    content-visibility: hidden;
+}
+
+/* M6: the `auto` keyword is not a number. Read with `strtof` this was a zero placeholder. */
+#auto_len {
+    contain-intrinsic-size: auto 38px;
+}
+
+/* `auto` with no fallback: nothing is remembered, so there is no intrinsic size at all. */
+#auto_none {
+    contain-intrinsic-size: auto none;
+}
+
+#plain {
+    contain-intrinsic-size: 24px;
+}
+
+/* One value sets both axes; two set inline then block. */
+#pair {
+    contain-intrinsic-size: 30px 46px;
+}
+
+/* The longhands take the same grammar. */
+#longhand {
+    contain-intrinsic-width: auto 20px;
+    contain-intrinsic-height: 12px;
+}

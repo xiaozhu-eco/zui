@@ -1,0 +1,41 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+
+.sw {
+  width: 140px;
+  height: 100px;
+}
+
+#tri {
+  background-color: #3d8bfd;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+#chev {
+  background-color: #e35d6a;
+  clip-path: polygon(0 0, 70% 0, 100% 50%, 70% 100%, 0 100%, 30% 50%);
+}
+
+#hole {
+  background-color: #f0c14a;
+  clip-path: polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, 22% 22%, 78% 22%, 78% 78%, 22% 78%, 22% 22%);
+}
+
+#solid {
+  background-color: #7dcea0;
+  clip-path: polygon(nonzero, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, 22% 22%, 78% 22%, 78% 78%, 22% 78%, 22% 22%);
+}
+
+#px {
+  background-color: #c39bd3;
+  clip-path: polygon(12px 0, 100% 36px, 0 100%, 40% 55%);
+}

@@ -1,0 +1,28 @@
+{
+  "name": "stacking-z-index",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "层叠顺序（LAYOUT.md 第 11 节 / CSS 2.1 附录 E）：负 z-index 画在同层内容的下面、正 z-index 翻 DOM 顺序、static 的 z-index 无效、positioned 的 z-index:auto 仍在流入内容之上、opacity 与 transform 建立的新上下文同样属于第 6 步。每个场景自己是 z-index:0 的上下文，所以场景之间不互相影响。用例不含文字，像素对照按 strict 走。",
+  "matrix": ["paint.z-index", "position.out-of-flow"],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    {
+      "op": "dispatch",
+      "_comment": "命中顺序与绘制顺序共用一份列表：每个点都落在两个盒子的重叠处，命中的必须是画在上面的那个。",
+      "hits": [
+        { "x": 60, "y": 50 },
+        { "x": 100, "y": 190 },
+        { "x": 100, "y": 300 },
+        { "x": 100, "y": 400 },
+        { "x": 100, "y": 500 }
+      ]
+    },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

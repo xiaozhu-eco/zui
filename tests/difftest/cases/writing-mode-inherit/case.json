@@ -1,0 +1,17 @@
+{
+  "name": "writing-mode-inherit",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "纵向书写：writing-mode 继承到子级，块轴（物理右/左）的外边距折叠。矩阵里纵向书写是行为断言，所以 required 为假。",
+  "matrix": ["text.complex-script"],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

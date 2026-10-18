@@ -1,0 +1,47 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #101418;
+}
+
+#parent {
+  font-style: italic;
+  font-variant: small-caps;
+  font-weight: 700;
+  font-stretch: condensed;
+  font-size: 24px;
+  line-height: 2;
+  font-family: serif;
+  font-kerning: none;
+  font-feature-settings: "smcp";
+  font-size-adjust: 0.5;
+}
+
+/* CSS Fonts: omitted longhands of `font` reset to initial. */
+#reset {
+  font: 16px sans-serif;
+  width: 40px;
+  height: 16px;
+  background: #7cb7ff;
+}
+
+#full {
+  font: italic small-caps condensed 700 14px/1.2 Georgia, serif;
+  width: 40px;
+  height: 14px;
+  background: #3d8f6e;
+}
+
+#sys {
+  font: menu;
+  width: 40px;
+  height: 16px;
+  background: #e0a050;
+}
+
+#box {
+  font: 20px/20px sans-serif;
+  width: 2em;
+  height: 1em;
+  background: #e85d4c;
+}

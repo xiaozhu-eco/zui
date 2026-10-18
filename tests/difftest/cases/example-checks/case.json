@@ -1,0 +1,27 @@
+{
+  "name": "example-checks",
+  "page": "../../../../example/tests/checks/checks.html",
+  "viewport": [800, 600],
+  "_comment": "example/tests/checks 的 HTML+CSS 原样对照。末两步打开 translateY 的 sheet，冻结到过渡结束。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "scroll", "target": ".content", "x": 0, "y": 280 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "scroll", "target": ".content", "x": 0, "y": 99999 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "eval", "actions": [{ "do": "add_class", "target": "#mask", "name": "show" }] },
+    { "op": "freeze", "t": 400 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": true, "advances": false }
+}

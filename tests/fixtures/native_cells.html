@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <table class="sheet">
+    <tr>
+      <td id="td-plain">a</td>
+      <td id="td-num" class="cell-number">1</td>
+      <td id="td-pick" class="is-picked">b</td>
+    </tr>
+  </table>
+  <!-- Same hosts the native grid and query card stamp into. Classes arrive from the model. -->
+  <div id="grid-body" class="zgroup">
+    <template>
+      <div class="zrow">
+        <template>
+          <div class="ztd"><button type="button" class="zcell {{class}}" data-cell="{{cell}}" value="{{text}}">{{text}}</button></div>
+        </template>
+      </div>
+    </template>
+  </div>
+  <div id="query-tables">
+    <template>
+      <article class="result {{class}}">
+        <div class="ztable">
+          <template>
+            <div class="zrow">
+              <template>
+                <div class="ztd"><button type="button" class="zcell {{class}}" data-cell="{{cell}}" value="{{text}}">{{text}}</button></div>
+              </template>
+            </div>
+          </template>
+        </div>
+      </article>
+    </template>
+  </div>
+  <div class="card-note" id="note-empty"></div>
+  <div class="card-note" id="note-full">hello</div>
+</body>
+</html>

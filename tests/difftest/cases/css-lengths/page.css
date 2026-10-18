@@ -1,0 +1,23 @@
+/* Relative units and the CSS math functions resolve at computed-value time: `em` against the
+   element's own font size, `rem` against the root element's, and `calc()`/`min()`/`max()`/
+   `clamp()` over either. Every element here sets its own font size, so the case does not depend on
+   font-size inheritance. */
+
+html, body { margin: 0; padding: 0; }
+html { font-size: 20px; }
+
+#em { font-size: 20px; width: 2em; height: 1em; }
+/* rem uses the root's 20px, not this element's inherited size. */
+#rem { width: 2rem; height: 10px; }
+#calc { font-size: 20px; width: calc(50px + 10px); height: calc(2em * 2); }
+#minmax { width: min(30px, 20px); height: clamp(5px, 20px, 15px); }
+
+/* The same units in a track list: 40 + 100 + 60 + the leftover 100. */
+#g {
+  display: grid;
+  width: 300px;
+  height: 10px;
+  font-size: 20px;
+  grid-template-columns: 2em 100px calc(50px + 10px) 1fr;
+}
+#e { grid-column: 3 / 5; }

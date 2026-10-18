@@ -1,0 +1,17 @@
+{
+  "name": "first-child-text",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A1: :first-child counts element siblings only; #after-text after leading text and #true-first both get width 120 (aligned with ShareKey kBitFirst).",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

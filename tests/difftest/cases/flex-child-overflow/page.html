@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="page.css">
+</head>
+
+<body>
+    <!-- The item's own content overflows its border box, and nothing clips it, so the row's
+         scroll extent has to include it. -->
+    <div class="row" id="row-open">
+        <div id="open">
+            <div class="spill"></div>
+        </div>
+    </div>
+
+    <!-- The same child inside an item that clips: the propagation stops at the item's border box. -->
+    <div class="row" id="row-clipped">
+        <div id="clipped">
+            <div id="wrapped">
+                <div class="spill"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "container-name-list",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "container: cards aside / size on #outer. @container cards and @container aside each match that 400px box and skip the nearer unnamed #inner. An unnamed max-width query still uses #inner. A single-string compare would leave #named and #aside at 24px gray.",
+  "matrix": ["container.query"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

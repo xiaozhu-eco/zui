@@ -1,0 +1,432 @@
+{
+  "schema": "zui.difftest.trace/2",
+  "engine": "chromium",
+  "engine_version": "Edg/154.0.4258.37",
+  "viewport": [
+    800,
+    600
+  ],
+  "scroll": [
+    0,
+    0
+  ],
+  "elements": [
+    {
+      "path": "0",
+      "tag": "html",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        40
+      ],
+      "scroll_size": [
+        800,
+        600
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          40
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "block",
+        "list-style-type": "disc",
+        "list-style-position": "outside",
+        "padding-left": "0"
+      },
+      "style_digest": "3cf8cc4eff3c4140"
+    },
+    {
+      "path": "0/0",
+      "tag": "head",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "none",
+        "list-style-type": "disc",
+        "list-style-position": "outside",
+        "padding-left": "0"
+      },
+      "style_digest": "61ac015782814339"
+    },
+    {
+      "path": "0/0/0",
+      "tag": "link",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "none",
+        "list-style-type": "disc",
+        "list-style-position": "outside",
+        "padding-left": "0"
+      },
+      "style_digest": "61ac015782814339"
+    },
+    {
+      "path": "0/1",
+      "tag": "body",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        40
+      ],
+      "scroll_size": [
+        800,
+        40
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        40
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          40
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "block",
+        "list-style-type": "disc",
+        "list-style-position": "outside",
+        "padding-left": "0"
+      },
+      "style_digest": "3cf8cc4eff3c4140"
+    },
+    {
+      "path": "0/1/0",
+      "tag": "ul",
+      "id": "u",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        20
+      ],
+      "scroll_size": [
+        800,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        20
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          800,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "block",
+        "list-style-type": "decimal",
+        "list-style-position": "outside",
+        "padding-left": "40px"
+      },
+      "style_digest": "f6c459e272c80b48"
+    },
+    {
+      "path": "0/1/0/0",
+      "tag": "li",
+      "id": "a",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        0,
+        760,
+        20
+      ],
+      "scroll_size": [
+        760,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        0,
+        760,
+        20
+      ],
+      "client_rects": [
+        [
+          40,
+          0,
+          760,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          760,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "list-item",
+        "list-style-type": "decimal",
+        "list-style-position": "outside",
+        "padding-left": "0"
+      },
+      "style_digest": "f9cf39d1024388fb",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          -1
+        ],
+        "heights": [
+          22
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [],
+        "advances": [],
+        "line_breaks": [],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/1",
+      "tag": "ul",
+      "id": "scroll",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        20,
+        240,
+        20
+      ],
+      "scroll_size": [
+        240,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        20,
+        240,
+        20
+      ],
+      "client_rects": [
+        [
+          0,
+          20,
+          240,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          240,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "block",
+        "list-style-type": "decimal",
+        "list-style-position": "outside",
+        "padding-left": "40px"
+      },
+      "style_digest": "f6c459e272c80b48"
+    },
+    {
+      "path": "0/1/1/0",
+      "tag": "li",
+      "id": "s",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        20,
+        200,
+        20
+      ],
+      "scroll_size": [
+        200,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        20,
+        200,
+        20
+      ],
+      "client_rects": [
+        [
+          40,
+          20,
+          200,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          200,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "list-item",
+        "list-style-type": "decimal",
+        "list-style-position": "outside",
+        "padding-left": "0"
+      },
+      "style_digest": "f9cf39d1024388fb",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          19
+        ],
+        "heights": [
+          22
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [],
+        "advances": [],
+        "line_breaks": [],
+        "cluster_advances": []
+      }
+    }
+  ],
+  "extras": null
+}

@@ -1,0 +1,36 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+}
+
+.sw {
+  width: 120px;
+  height: 90px;
+}
+
+#radial {
+  background-image: radial-gradient(#ff6060, #202060);
+}
+
+#circle {
+  background-image: radial-gradient(circle, #80ff80, #203020);
+}
+
+#repeat {
+  background-image: repeating-linear-gradient(90deg, #7cb7ff 0, #7cb7ff 12px, #2b5f9e 12px, #2b5f9e 24px);
+}
+
+#at {
+  background-image: radial-gradient(circle closest-side at 30px 30px, #ffffff, #404040);
+}
+
+#solid {
+  background-color: #3c516c;
+}

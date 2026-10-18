@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>button content centring</title>
+    <link rel="stylesheet" href="button_center.css">
+</head>
+
+<body>
+    <!-- A fixed-height button: Chromium centres the content in the content box (Blink's
+       LayoutNGButton::AlignButtonChildren), so the label sits 20px down a 60px box. -->
+    <button type="button" id="btn" class="tall">Label</button>
+    <!-- The same declarations on a div: block layout keeps the line at the content top. -->
+    <div id="div" class="tall">Label</div>
+    <!-- A stretched grid item: the size comes from the track, and Chromium centres into it too. -->
+    <div class="grid" id="grid">
+        <button type="button" id="grid-btn" class="cell">Label</button>
+    </div>
+    <!-- The grid's div cell keeps its line at the top, which is what `.cell-inner` reproduces. -->
+    <div class="grid" id="grid2">
+        <div id="grid-div" class="cell">Label</div>
+    </div>
+    <button type="button" id="btn-inner" class="tall"><span id="inner" class="inner">Label</span></button>
+</body>
+
+</html>

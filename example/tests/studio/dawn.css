@@ -1,0 +1,113 @@
+html, body {
+    background-color: #f4efe6;
+    color: #2c261e;
+}
+
+.topbar {
+    background-color: #e8dfd0;
+}
+
+.brand {
+    color: #8a4b1f;
+}
+
+.muted {
+    color: #7a6e60;
+}
+
+.sidebar {
+    background-color: #efe6d8;
+}
+
+.nav {
+    background-color: #e2d6c4;
+    color: #3a3228;
+}
+
+.nav:hover {
+    background-color: #d4c4ac;
+}
+
+.page-radio:checked + .nav {
+    background-color: #c45c26;
+    color: #fff7ee;
+}
+
+h1 {
+    color: #2c261e;
+}
+
+.lead {
+    color: #6f6456;
+}
+
+.panel {
+    background-color: #fff9f1;
+}
+
+.log-item {
+    color: #6f6456;
+}
+
+.check {
+    color: #3a3228;
+}
+
+.primary {
+    background-color: #c45c26;
+    color: #fff7ee;
+}
+
+.primary:hover {
+    background-color: #d46a32;
+}
+
+.ghost {
+    background-color: #e2d6c4;
+    color: #3a3228;
+}
+
+.status {
+    color: #6f6456;
+}
+
+.mask {
+    background-color: rgba(60, 40, 20, 0.45);
+}
+
+.dialog {
+    background-color: #fff9f1;
+    border: 1px solid #d4c4ac;
+}
+
+.dialog h2 {
+    color: #2c261e;
+}
+
+.dialog-body {
+    color: #6f6456;
+}
+
+input[type="checkbox"] {
+    border: 1px solid #b8a890;
+    background-color: #fff9f1;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #c45c26;
+    border: 1px solid #c45c26;
+}
+
+.data-th {
+    color: #3a3228;
+    background-color: #efe6d8;
+}
+
+.data-td {
+    color: #5c5146;
+    border-top: 1px solid #e2d6c4;
+}
+
+.log, .data-grid, .content {
+    scrollbar-color: #b8a890 #efe6d8;
+}

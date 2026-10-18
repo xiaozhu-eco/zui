@@ -1,0 +1,16 @@
+{
+  "name": "direction-rtl",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2 direction:rtl beyond inline BiDi: block margin:auto packs to inline-start; horizontal overflow scrollLeft 0 shows the start (right) edge.",
+  "matrix": ["flow.normal", "scroll.overflow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

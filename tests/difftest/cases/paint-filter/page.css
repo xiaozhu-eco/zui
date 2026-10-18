@@ -1,0 +1,33 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+
+.sw {
+  width: 100px;
+  height: 70px;
+  background-color: #7cb7ff;
+}
+
+#bright {
+  filter: brightness(1.4);
+}
+
+#dim {
+  filter: brightness(0.5);
+}
+
+#fade {
+  filter: opacity(0.4);
+}
+
+#plain {
+  background-color: #7cb7ff;
+}

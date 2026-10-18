@@ -1,0 +1,19 @@
+/* Container-query fixture for the frame-end re-entry self-check (TESTPLAN 第 12 节,
+   LAYOUT 第 10 节): the re-entry fuse is two rounds, and a frame either converges or names
+   the source. Fixed px, no font dependence. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+#cont {
+  width: 200px;
+  container-type: inline-size;
+}
+
+.card {
+  width: 50cqw;
+  height: 20px;
+  background-color: #dddddd;
+}

@@ -1,0 +1,16 @@
+html, body { margin: 0; padding: 0; background: #fff; }
+.box {
+  width: 420px;
+  height: 100px;
+  padding: 10px;
+  column-count: 2;
+  column-gap: 20px;
+  column-fill: auto;
+  background: #eee;
+}
+.cell {
+  height: 50px;
+  box-sizing: border-box;
+  background: #ccd;
+  border-bottom: 1px solid #99a;
+}

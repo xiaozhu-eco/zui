@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  font: 16px sans-serif;
+}
+#group {
+  margin: 40px;
+}
+#outside {
+  margin: 40px;
+  padding: 12px;
+  background: #eee;
+}
+#clip {
+  overflow: auto;
+  width: 160px;
+  height: 48px;
+  margin: 40px;
+}

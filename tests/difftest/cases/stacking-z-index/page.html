@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="page.css">
+</head>
+
+<body>
+    <!-- Negative z-index behind the in-flow content of its own context. -->
+    <div id="s-neg" class="scene">
+        <div class="neg"></div>
+        <div class="front"></div>
+    </div>
+
+    <!-- Two positive z-indexes that reverse the DOM order. -->
+    <div id="s-pos" class="scene">
+        <div class="pos2"></div>
+        <div class="pos1"></div>
+    </div>
+
+    <!-- `z-index: 5` on a static box is ignored; the positioned `z-index: auto` box still paints
+         above it (appendix E steps 3 and 6). -->
+    <div id="s-auto" class="scene">
+        <div class="auto-abs"></div>
+        <div class="late-static"></div>
+    </div>
+
+    <!-- `opacity` below 1 builds a stacking context, so it paints in step 6, above the static
+         sibling that follows it. -->
+    <div id="s-opacity" class="scene">
+        <div class="faded"></div>
+        <div class="solid"></div>
+    </div>
+
+    <!-- `transform` builds a stacking context the same way. -->
+    <div id="s-transform" class="scene">
+        <div class="moved"></div>
+        <div class="solid2"></div>
+    </div>
+</body>
+
+</html>

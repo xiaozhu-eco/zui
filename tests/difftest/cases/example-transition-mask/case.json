@@ -1,0 +1,20 @@
+{
+  "name": "example-transition-mask",
+  "page": "../../../../example/tests/transition/transition.html",
+  "viewport": [800, 600],
+  "_comment": "全屏遮罩的状态序列：初始（opacity 0）与 .show 稳定后各比一次，冻结时钟跨过过渡。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "eval", "actions": [{ "do": "add_class", "target": "#mask", "name": "show" }] },
+    { "op": "freeze", "t": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": true, "advances": false }
+}

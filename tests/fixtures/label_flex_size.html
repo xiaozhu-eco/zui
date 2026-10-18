@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+.menu-wrap { position: relative; display: block; }
+.plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #000;
+  border-radius: 999px;
+  box-sizing: border-box;
+}
+.plus-icon { width: 14px; height: 14px; position: relative; }
+.hid { position: absolute; width: 1px; height: 1px; overflow: hidden; pointer-events: none; }
+.menu { display: none; }
+#shelf_menu:checked ~ .menu { display: block; width: 100px; height: 40px; }
+</style></head><body>
+<div class="menu-wrap">
+  <input id="shelf_menu" class="hid" type="checkbox">
+  <label id="plus_btn" class="plus" for="shelf_menu"><span class="plus-icon"></span></label>
+  <div id="menu" class="menu">x</div>
+</div>
+</body></html>

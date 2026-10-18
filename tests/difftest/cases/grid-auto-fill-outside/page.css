@@ -1,0 +1,26 @@
+/* The repetition count of `repeat(auto-fill, ...)` has to leave room for the tracks outside the
+   repetition and for the gutters (CSS Grid section 7.2.3.1). A 340px container with a 10px gap
+   and a 60px track before the repetition fits `(340 - 60 + 10) / (60 + 10) = 4` repetitions, so
+   the grid is exactly full: 1 + 4 tracks of 60px and 4 gaps of 10px.
+
+   The `[mid]` / `[stop]` names sit inside the repetition, so they have to repeat with it and stay
+   on the lines they belong to after the expansion. */
+
+html, body { margin: 0; padding: 0; }
+
+#g {
+  display: grid;
+  width: 340px;
+  height: 20px;
+  gap: 10px;
+  grid-template-columns: [start] 60px repeat(auto-fill, [mid] 60px [stop]);
+  grid-template-rows: 20px;
+  background: #f4f4f4;
+}
+
+/* start -> the first `stop` line: 60 + 10 + 60. */
+#a { grid-column: start / stop; background: #cccccc; }
+/* mid spans two tracks: 60 + 10 + 60. */
+#b { grid-column: mid / span 2; background: #bbbbbb; }
+/* start -> the first `mid` line: one track. */
+#c { grid-column: start / span mid; background: #aaaaaa; }

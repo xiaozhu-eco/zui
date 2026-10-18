@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.ring {
+  animation: ring-pulse 2.2s ease-in-out infinite;
+}
+.ring-2 {
+  animation-delay: 0.35s;
+}
+.ring-3 {
+  animation-delay: 0.7s;
+}
+.pulse::before {
+  content: "";
+  position: absolute;
+  background: radial-gradient(circle, rgba(61, 204, 154, 0.20), rgba(61, 204, 154, 0) 68%);
+}
+@keyframes ring-pulse {
+  0%,
+  100% {
+    opacity: 0.42;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+#fade { opacity: 1; transition: opacity 1s linear; }
+#fade.on { opacity: 0; }
+</style>
+</head>
+<body>
+<span id="ring" class="ring ring-1"></span>
+<span id="ring2" class="ring ring-2"></span>
+<span id="ring3" class="ring ring-3"></span>
+<div id="pulse" class="pulse"></div>
+<div id="fade"></div>
+</body>
+</html>

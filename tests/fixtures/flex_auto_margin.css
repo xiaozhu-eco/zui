@@ -1,0 +1,61 @@
+/* CSS Flexbox section 8.1 "Aligning with auto margins": positive free space is distributed to
+   the auto margins before justify-content / align-self run, so an auto margin pushes its item
+   away and a pair of them centers it. */
+
+body {
+    margin: 0;
+    font: 15px sans-serif;
+}
+
+#bar {
+    display: flex;
+    width: 1000px;
+    height: 40px;
+    /* Auto margins must win: this packing would otherwise push every item to the right edge. */
+    justify-content: flex-end;
+}
+
+#lead {
+    width: 100px;
+    height: 20px;
+}
+
+#push {
+    width: 100px;
+    height: 20px;
+    margin-left: auto;
+}
+
+#push2 {
+    width: 200px;
+    height: 20px;
+    margin-left: auto;
+}
+
+#center-row {
+    display: flex;
+    width: 400px;
+    height: 100px;
+}
+
+/* Both axes: centers in the row's inline axis and, because an auto cross margin defeats
+   `align-items: stretch`, keeps the 50px height and centers it on the block axis too. */
+#cbox {
+    width: 50px;
+    height: 50px;
+    margin: auto;
+}
+
+#center-col {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+}
+
+#vbox {
+    width: 30px;
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+}

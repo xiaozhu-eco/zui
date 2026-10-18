@@ -1,0 +1,27 @@
+/* A grid container is a scroll container: `overflow: auto` plus row tracks whose total is taller
+   than the container must report `scrollHeight` from the content the rows occupy, not from the
+   container's own padding box. Before the fix `Grid::place` never wrote `Overflow::scrollable`, so
+   paint_map fell back to the padding box and the container could not scroll at all. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #fff; font-family: "Zui Test", sans-serif; font-size: 16px; }
+
+#grid {
+  display: grid;
+  width: 320px;
+  height: 180px;
+  overflow: auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: 120px 120px 120px;
+  background: #f4f4f4;
+}
+
+#a { background: #d0e0ff; }
+#b { background: #d0ffd0; }
+#c { background: #ffd0d0; }

@@ -1,0 +1,17 @@
+{
+  "name": "ruby-layout",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1 true ruby: rt stacks above base (CSS Ruby simple ruby / ruby-position:over). Selfcheck RubyAnnotationAboveBase. Edge recorded then engine-pinned for residual CSSOM (rt column stretch, 2-3px ruby box vs line-height strut).",
+  "matrix": ["flow.inline", "css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false },
+  "style_props": []
+}

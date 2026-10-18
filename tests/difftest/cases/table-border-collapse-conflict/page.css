@@ -1,0 +1,32 @@
+/* A4: border-collapse conflict (CSS 2.1 §17.6.2.1): wider wins; equal width ranks
+   double > solid; hidden suppresses. Geometry reads the halved winning edge. */
+
+html, body { margin: 0; padding: 0; background: #101418; }
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  border-spacing: 0;
+  margin: 8px;
+  background: #1a222c;
+}
+
+td {
+  box-sizing: border-box;
+  width: 40px;
+  height: 24px;
+  padding: 0;
+  background: #7cb7ff;
+}
+
+/* Wider 6px solid beats 2px solid on the shared vertical edge. */
+#w1 { border-right: 2px solid #e8eef4; }
+#w2 { border-left: 6px solid #e8eef4; background: #3d8f6e; }
+
+/* Equal 4px: double beats solid. */
+#s1 { border-right: 4px solid #e8eef4; }
+#s2 { border-left: 4px double #e8eef4; background: #3d8f6e; }
+
+/* hidden suppresses an 8px solid neighbor. */
+#h1 { border-right: 8px solid #e8eef4; }
+#h2 { border-left: 1px hidden #e8eef4; background: #3d8f6e; }

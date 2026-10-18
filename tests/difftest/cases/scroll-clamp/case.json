@@ -1,0 +1,44 @@
+{
+  "name": "scroll-clamp",
+  "page": "page.html",
+  "viewport": [
+    800,
+    600
+  ],
+  "_comment": "Read back a clamped scroll offset. The expected value is the browser recording.",
+  "matrix": [
+    "scroll.overflow"
+  ],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 800,
+      "h": 600
+    },
+    {
+      "op": "scroll",
+      "target": "#pane",
+      "x": 0,
+      "y": 100
+    },
+    {
+      "op": "scroll",
+      "target": "#pane",
+      "x": 0,
+      "y": 5000
+    },
+    {
+      "op": "trace"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": {
+    "breaks": false,
+    "advances": false
+  }
+}

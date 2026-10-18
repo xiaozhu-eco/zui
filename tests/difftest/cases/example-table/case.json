@@ -1,0 +1,23 @@
+{
+  "name": "example-table",
+  "page": "../../../../example/tests/table/table.html",
+  "viewport": [800, 600],
+  "_comment": "example/tests/table 的 HTML+CSS 原样照录，作为二期块4（表格）的验收页。",
+  "matrix": ["table"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "scroll", "target": ".content", "x": 0, "y": 280 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "scroll", "target": ".content", "x": 0, "y": 99999 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": true, "advances": false }
+}

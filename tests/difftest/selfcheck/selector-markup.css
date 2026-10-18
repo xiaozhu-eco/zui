@@ -1,0 +1,58 @@
+/* One author sheet. A bad rule must not discard the rest.
+   @keyframes sits before @media so prelude offsets stay valid after the strip. */
+
+html, body { margin: 0; padding: 0; }
+
+@keyframes pulse {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@zui-unknown foo {
+  #poison { width: 9px; height: 9px; }
+}
+
+div:future { width: 7px; height: 7px; padding-bottom: 7px; }
+p::first-line { color: red; padding-bottom: 8px; }
+
+#mixed {
+  width: 33px;
+  zui-not-a-property: 5px;
+  height: 11px;
+}
+
+@media screen {
+  #media { width: 55px; height: 22px; }
+}
+
+#later { width: 40px; height: 18px; }
+#mover { animation: pulse 1s linear; }
+
+.ph:placeholder-shown { padding-top: 23px; }
+
+.fw:focus-within { padding-top: 21px; }
+.fw:focus-within .fw-kid { margin-top: 21px; }
+
+.req:required { padding-top: 24px; }
+.opt:optional { padding-top: 25px; }
+
+.ro:read-only { padding-top: 27px; }
+.rw:read-write { padding-top: 26px; }
+
+.def:default { padding-top: 28px; }
+.ind:indeterminate { padding-top: 29px; }
+
+.link:link { padding-left: 30px; }
+.alink:any-link { margin-top: 31px; }
+.vonly:visited { padding-right: 40px; }
+.lboth:link, .lboth:visited { margin-bottom: 32px; }
+
+.lz:lang(zh) { padding-top: 33px; }
+.lzh:lang(zh-CN) { padding-right: 34px; }
+.len:lang(en) { padding-bottom: 35px; }
+.lze:lang(zh, en) { padding-left: 36px; }
+.lang-scope:lang(zh) .twin { margin-right: 37px; }
+
+#dis:disabled { margin-left: 41px; }
+#foc:focus { margin-left: 43px; }
+#nth span:nth-child(2) { margin-left: 44px; }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="page.css">
+</head>
+<body>
+  <!-- Legend geometry is Chrome-special (over border); style-only covered by selfcheck. -->
+  <fieldset id="fs">fieldset body</fieldset>
+  <p>
+    <meter id="m" value="0.5" min="0" max="1"></meter>
+    <output id="out">42</output>
+    <mark id="mk">mark</mark>
+    <abbr id="ab" title="Abbreviation">abbr</abbr>
+    <small id="sm">small</small>
+    <sub id="sub">sub</sub>
+    <sup id="sup">sup</sup>
+    <bdi id="bdi">bdi</bdi>
+  </p>
+  <marquee id="mq">scroll</marquee>
+  <iframe id="fr" src="about:blank"></iframe>
+  <video id="vid"></video>
+  <canvas id="cv"></canvas>
+  <audio id="aud" controls></audio>
+  <audio id="aud-hide"></audio>
+  <datalist id="dl"><option value="a"></option></datalist>
+  <area id="ar" shape="rect" coords="0,0,1,1">
+  <param id="pm" name="x" value="y">
+  <slot id="sl">slot</slot>
+  <table id="tbl"><caption id="cap">C</caption><tr><td>1</td></tr></table>
+</body>
+</html>

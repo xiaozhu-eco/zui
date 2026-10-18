@@ -1,0 +1,20 @@
+html, body { margin: 0; padding: 0; background-color: #101418; }
+
+/* Attribute selectors must not collapse across ShareKey siblings of the same tag. */
+div[data-kind="a"] {
+  width: 120px;
+  height: 28px;
+  background-color: #7cb7ff;
+}
+
+div[data-kind="b"] {
+  width: 28px;
+  height: 48px;
+  background-color: #3d8f6e;
+}
+
+div[data-kind="c"] {
+  width: 64px;
+  height: 28px;
+  background-color: #e85d4c;
+}

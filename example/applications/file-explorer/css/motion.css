@@ -1,0 +1,38 @@
+/* Folder and view changes slide in. The default grid does not animate. */
+
+@keyframes z-settle {
+  from { transform: translateY(14px); }
+  to { transform: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app:not(:has(#dir-root:checked)) .files,
+  .app:has(#view-list:checked) .files,
+  .app:has(#view-details:checked) .files {
+    animation: z-settle 340ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .entry,
+  .place,
+  .view-btn,
+  .crumb,
+  .chip {
+    transition:
+      transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .entry:hover {
+    transform: translateY(-8px);
+  }
+
+  .place:hover {
+    transform: translateX(6px);
+  }
+
+  .view-btn:hover {
+    transform: translateY(-1px);
+  }
+}

@@ -1,0 +1,20 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+  color: #eee;
+  font-family: "Zui Test", sans-serif;
+  font-size: 16px;
+}
+
+.row {
+  box-sizing: border-box;
+  min-height: 24px;
+  margin: 8px;
+  padding: 4px 8px;
+  background-color: #3a4450;
+}
+
+.row::before {
+  content: attr(data-label, "FALLBACK");
+}

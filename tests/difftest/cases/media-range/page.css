@@ -1,0 +1,39 @@
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+.box {
+  width: 40px;
+  height: 28px;
+  margin: 12px 0 0 20px;
+  background: #c4554a;
+}
+
+@media (width >= 700px) {
+  #ge {
+    width: 180px;
+    background: #2e6eee;
+  }
+}
+
+@media (width > 900px) {
+  #gt {
+    width: 180px;
+    background: #2e6eee;
+  }
+}
+
+@media (400px <= width <= 900px) {
+  #span {
+    width: 180px;
+    background: #3d9a6a;
+  }
+}
+
+@media (width < 400px) {
+  #lt {
+    width: 180px;
+    background: #2e6eee;
+  }
+}

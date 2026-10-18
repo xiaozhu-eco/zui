@@ -1,0 +1,16 @@
+{
+  "name": "font-vf-instance",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "可变字体的 wght 实例化：逐字形核对 FreeType 的 linearHoriAdvance 与浏览器的实例化前进量（LAYOUT 第 5 节 shape）。",
+  "matrix": [],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

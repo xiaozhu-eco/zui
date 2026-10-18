@@ -1,0 +1,16 @@
+{
+  "name": "font-sans-resolution",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "sans-serif 在本机解析到哪张脸：与显式族名、可变字重逐个对齐（LAYOUT 第 5 节字体回退）。",
+  "matrix": [],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

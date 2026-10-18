@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<body>
+  <div class="bar-main" id="bar-main">
+    <div class="bar-left">
+      <button type="button" id="account">账户</button>
+      <button type="button" id="settings" onclick="on_settings">设置</button>
+    </div>
+    <div class="bar-mid">
+      <span id="today-info">今天 0 字</span>
+      <span class="goal" id="goal"><span id="goal-fill" class="w0"></span></span>
+      <span id="goal-pct">0%</span>
+    </div>
+    <div class="bar-right">
+      <span id="autosave" hidden>保存中</span>
+      <button type="button" id="save" onclick="on_save">保存</button>
+    </div>
+  </div>
+  <div id="settings-slot"></div>
+</body>
+</html>

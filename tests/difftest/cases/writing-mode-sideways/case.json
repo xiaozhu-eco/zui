@@ -1,0 +1,18 @@
+{
+  "name": "writing-mode-sideways",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A6/B2: vertical-rl / sideways-rl / vertical-lr paint Latin glyphs sideways (advance on Y). Engine-pinned golden; paint assert WritingModeSidewaysGlyphs.",
+  "matrix": ["flow.inline", "text.complex-script"],
+  "required": true,
+  "pixel_tolerance": 2,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

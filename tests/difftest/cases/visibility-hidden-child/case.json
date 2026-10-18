@@ -1,0 +1,17 @@
+{
+  "name": "visibility-hidden-child",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Phase1: visibility:hidden skips painting self but still paints a visible descendant.",
+  "matrix": ["paint.visibility"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

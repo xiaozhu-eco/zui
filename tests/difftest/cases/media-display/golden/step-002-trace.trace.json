@@ -1,0 +1,740 @@
+{
+  "schema": "zui.difftest.trace/2",
+  "engine": "chromium",
+  "engine_version": "Edg/154.0.4258.62",
+  "viewport": [
+    800,
+    600
+  ],
+  "scroll": [
+    0,
+    0
+  ],
+  "elements": [
+    {
+      "path": "0",
+      "tag": "html",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        560
+      ],
+      "scroll_size": [
+        800,
+        600
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          560
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0",
+      "tag": "head",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0/0",
+      "tag": "link",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1",
+      "tag": "body",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        12,
+        800,
+        548
+      ],
+      "scroll_size": [
+        800,
+        548
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        12,
+        800,
+        548
+      ],
+      "client_rects": [
+        [
+          0,
+          12,
+          800,
+          548
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0",
+      "tag": "div",
+      "id": "dmode",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        12,
+        180,
+        28
+      ],
+      "scroll_size": [
+        180,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        12,
+        180,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          12,
+          180,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1",
+      "tag": "div",
+      "id": "dmodebool",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        52,
+        180,
+        28
+      ],
+      "scroll_size": [
+        180,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        52,
+        180,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          52,
+          180,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/2",
+      "tag": "div",
+      "id": "standalone",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        92,
+        40,
+        28
+      ],
+      "scroll_size": [
+        40,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        92,
+        40,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          92,
+          40,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/3",
+      "tag": "div",
+      "id": "update",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        132,
+        180,
+        28
+      ],
+      "scroll_size": [
+        180,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        132,
+        180,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          132,
+          180,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/4",
+      "tag": "div",
+      "id": "updatebool",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        172,
+        180,
+        28
+      ],
+      "scroll_size": [
+        180,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        172,
+        180,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          172,
+          180,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/5",
+      "tag": "div",
+      "id": "updnone",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        212,
+        40,
+        28
+      ],
+      "scroll_size": [
+        40,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        212,
+        40,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          212,
+          40,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/6",
+      "tag": "div",
+      "id": "oblock",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        252,
+        180,
+        28
+      ],
+      "scroll_size": [
+        180,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        252,
+        180,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          252,
+          180,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/7",
+      "tag": "div",
+      "id": "oblockbool",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        292,
+        180,
+        28
+      ],
+      "scroll_size": [
+        180,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        292,
+        180,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          292,
+          180,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/8",
+      "tag": "div",
+      "id": "paged",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        332,
+        40,
+        28
+      ],
+      "scroll_size": [
+        40,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        332,
+        40,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          332,
+          40,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/9",
+      "tag": "div",
+      "id": "oinline",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        372,
+        180,
+        28
+      ],
+      "scroll_size": [
+        180,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        372,
+        180,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          372,
+          180,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/10",
+      "tag": "div",
+      "id": "oinone",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        412,
+        40,
+        28
+      ],
+      "scroll_size": [
+        40,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        412,
+        40,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          412,
+          40,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/11",
+      "tag": "div",
+      "id": "grid0",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        452,
+        180,
+        28
+      ],
+      "scroll_size": [
+        180,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        452,
+        180,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          452,
+          180,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/12",
+      "tag": "div",
+      "id": "grid",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        492,
+        40,
+        28
+      ],
+      "scroll_size": [
+        40,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        492,
+        40,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          492,
+          40,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/13",
+      "tag": "div",
+      "id": "grid1",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        532,
+        40,
+        28
+      ],
+      "scroll_size": [
+        40,
+        28
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        532,
+        40,
+        28
+      ],
+      "client_rects": [
+        [
+          20,
+          532,
+          40,
+          28
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    }
+  ],
+  "extras": null
+}

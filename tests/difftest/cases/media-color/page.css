@@ -1,0 +1,54 @@
+/* A color screen is (color: 8) and (monochrome: 0). Edge reports
+   (scripting: enabled) even when the page has no script element. */
+
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+.box {
+  width: 40px;
+  height: 28px;
+  margin: 12px 0 0 20px;
+  background: #c4554a;
+}
+
+@media (color) {
+  #color { width: 180px; background: #3d9a6a; }
+}
+
+@media (color: 8) {
+  #c8 { width: 180px; background: #3d9a6a; }
+}
+
+@media (min-color: 4) {
+  #minc { width: 180px; background: #3d9a6a; }
+}
+
+@media (max-color: 4) {
+  #maxc { width: 180px; background: #2e6eee; }
+}
+
+@media (color >= 8) {
+  #range { width: 180px; background: #3d9a6a; }
+}
+
+@media (monochrome) {
+  #mono { width: 180px; background: #2e6eee; }
+}
+
+@media (monochrome: 0) {
+  #mono0 { width: 180px; background: #3d9a6a; }
+}
+
+@media (scripting: enabled) {
+  #script { width: 180px; background: #3d9a6a; }
+}
+
+@media (scripting: none) {
+  #scriptnone { width: 180px; background: #2e6eee; }
+}
+
+@media (scripting) {
+  #scriptbool { width: 180px; background: #3d9a6a; }
+}

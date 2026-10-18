@@ -1,0 +1,19 @@
+{
+  "name": "writing-mode-vertical-scroll",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2: vertical-rl overflow maps scrollLeft onto the block axis; after scroll x=60 the red block-start mark leaves the port. Engine-pinned; selfcheck WritingModeVerticalScroll.",
+  "matrix": ["scroll.overflow", "text.complex-script"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "eval", "actions": [{ "do": "scroll", "target": "#scroller", "x": 60, "y": 0 }] },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

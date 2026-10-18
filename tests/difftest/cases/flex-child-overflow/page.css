@@ -1,0 +1,30 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.spill {
+    width: 180px;
+    height: 120px;
+    background-color: #e85d4c;
+}
+
+#open,
+#clipped {
+    width: 120px;
+    height: 80px;
+    padding: 8px;
+    background-color: #22303c;
+}
+
+#clipped {
+    overflow: auto;
+}

@@ -1,0 +1,166 @@
+{
+  "name": "example-file-explorer",
+  "page": "page.html",
+  "source": "../../../../example/applications/file-explorer/index.html",
+  "viewport": [
+    1100,
+    720
+  ],
+  "scripts": false,
+  "_comment": "小竹文件去掉页面脚本后的静态壳。这一页没有 JS：目录、视图、选中文件全是 radio + label，靠 :checked / :has() 切换。交互：hover 一个条目、按「列表」标签（label 激活 radio）、切到文档目录、再切回图标视图、Tab/Escape。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 1100,
+      "h": 720
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_checked",
+          "target": "#dir-docs",
+          "value": true
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_checked",
+          "target": "#view-grid",
+          "value": true
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "dispatch",
+      "events": [
+        {
+          "type": "mouseMoved",
+          "x": 1067,
+          "y": 25
+        },
+        {
+          "type": "mousePressed",
+          "x": 1067,
+          "y": 25,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseReleased",
+          "x": 1067,
+          "y": 25,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "keyDown",
+          "key": "Tab"
+        },
+        {
+          "type": "keyUp",
+          "key": "Tab"
+        },
+        {
+          "type": "keyDown",
+          "key": "Escape"
+        },
+        {
+          "type": "keyUp",
+          "key": "Escape"
+        }
+      ],
+      "hits": [
+        {
+          "x": 1067,
+          "y": 25
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "style_props": [
+    "display",
+    "position",
+    "box-sizing",
+    "width",
+    "height",
+    "min-width",
+    "min-height",
+    "max-width",
+    "max-height",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+    "border-top-width",
+    "border-right-width",
+    "border-bottom-width",
+    "border-left-width",
+    "overflow-x",
+    "overflow-y",
+    "visibility",
+    "z-index",
+    "flex-direction",
+    "flex-wrap",
+    "flex-grow",
+    "flex-shrink",
+    "flex-basis",
+    "justify-content",
+    "align-items",
+    "align-content",
+    "align-self",
+    "order",
+    "row-gap",
+    "column-gap",
+    "font-family",
+    "font-size",
+    "font-weight",
+    "font-style",
+    "line-height",
+    "letter-spacing",
+    "word-spacing",
+    "text-align",
+    "text-indent",
+    "text-overflow",
+    "white-space",
+    "word-break",
+    "overflow-wrap",
+    "vertical-align"
+  ],
+  "text": {
+    "breaks": true,
+    "advances": false
+  }
+}

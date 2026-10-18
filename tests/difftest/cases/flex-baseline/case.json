@@ -1,0 +1,17 @@
+{
+  "name": "flex-baseline",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Phase1 A3: flex align-items:baseline — #a/#b share the line's first baseline; #b offsets down; row cross size includes the shift.",
+  "matrix": ["flow.flex"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

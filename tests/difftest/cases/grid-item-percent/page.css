@@ -1,0 +1,29 @@
+/* A grid item's containing block is its grid area: percentages on the item resolve against the
+   area, not against the container's padding box (CSS Grid, "Grid Item"). Fixed px tracks so the
+   areas are exactly 100x50.
+
+   #a: width 50% of a 100px area = 50, height 100% of a 50px row = 50.
+   #b: the same, plus a percentage padding that must also use the area's inline size (10% of 100
+   = 10), so its border box is 60 wide. */
+
+html, body { margin: 0; padding: 0; }
+
+#grid {
+  display: grid;
+  width: 400px;
+  height: 100px;
+  grid-template-columns: 100px 100px 200px;
+  grid-template-rows: 50px 50px;
+  background: #f4f4f4;
+}
+
+.pct {
+  width: 50%;
+  height: 100%;
+  background: #cccccc;
+}
+
+.padded {
+  padding-left: 10%;
+  background: #bbbbbb;
+}

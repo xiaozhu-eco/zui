@@ -1,0 +1,44 @@
+{
+  "name": "wheel-chain",
+  "page": "page.html",
+  "viewport": [
+    800,
+    600
+  ],
+  "_comment": "Inner scroller is already at its end, so the wheel moves the outer one.",
+  "matrix": [
+    "scroll.overflow"
+  ],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 800,
+      "h": 600
+    },
+    {
+      "op": "dispatch",
+      "events": [
+        {
+          "type": "mouseWheel",
+          "x": 30,
+          "y": 30,
+          "deltaX": 0,
+          "deltaY": 80
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": {
+    "breaks": false,
+    "advances": false
+  }
+}

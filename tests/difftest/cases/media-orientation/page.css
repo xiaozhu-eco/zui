@@ -1,0 +1,25 @@
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+.box {
+  width: 64px;
+  height: 40px;
+  margin: 16px 0 0 24px;
+  background: #c4554a;
+}
+
+@media (orientation: landscape) {
+  #land {
+    width: 240px;
+    background: #2e6eee;
+  }
+}
+
+@media (orientation: portrait) {
+  #port {
+    width: 240px;
+    background: #2e6eee;
+  }
+}

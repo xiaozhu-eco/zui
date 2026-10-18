@@ -1,0 +1,16 @@
+{
+  "name": "transform-origin",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "transform-origin 与 turn 单位：旋转/缩放绕指定的原点而不是盒子中心（CSS Transforms 1 第 4 节），元素矩形是变换后的边框盒（浏览器 getBoundingClientRect）。",
+  "matrix": ["transform"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

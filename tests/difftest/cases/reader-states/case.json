@@ -1,0 +1,224 @@
+{
+    "name": "reader-states",
+    "page": "page.html",
+    "source": "../../../../example/applications/reader/reader.html",
+    "viewport": [
+        1100,
+        720
+    ],
+    "scripts": false,
+    "_comment": "小竹阅读的运行期状态：空书架、书架有书、打开一章（chapter.html 的形状）、目录收起加设置抽屉。这些正是 C++ 版 main.cpp 会写的类与文本。",
+    "matrix": [],
+    "required": false,
+    "steps": [
+        {
+            "op": "load"
+        },
+        {
+            "op": "resize",
+            "w": 1100,
+            "h": 720
+        },
+        {
+            "op": "eval",
+            "actions": [
+                {
+                    "do": "remove_class",
+                    "target": "#shelf",
+                    "name": "is-booting"
+                },
+                {
+                    "do": "add_class",
+                    "target": "#shelf",
+                    "name": "is-empty"
+                },
+                {
+                    "do": "set_text",
+                    "target": "#empty_hint",
+                    "text": "把 txt 放进 books 目录，重新打开书架"
+                }
+            ]
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        },
+        {
+            "op": "eval",
+            "actions": [
+                {
+                    "do": "remove_class",
+                    "target": "#shelf",
+                    "name": "is-empty"
+                },
+                {
+                    "do": "insert",
+                    "target": "#books",
+                    "tag": "div",
+                    "id": "book0",
+                    "class": "card-wrap"
+                },
+                {
+                    "do": "insert",
+                    "target": "#book0",
+                    "tag": "button",
+                    "id": "open0",
+                    "class": "card",
+                    "text": "仙逆"
+                },
+                {
+                    "do": "insert",
+                    "target": "#book0",
+                    "tag": "button",
+                    "id": "remove0",
+                    "class": "card-remove",
+                    "text": "移出"
+                },
+                {
+                    "do": "insert",
+                    "target": "#books",
+                    "tag": "div",
+                    "id": "book1",
+                    "class": "card-wrap"
+                },
+                {
+                    "do": "insert",
+                    "target": "#book1",
+                    "tag": "button",
+                    "id": "open1",
+                    "class": "card",
+                    "text": "遮天"
+                },
+                {
+                    "do": "insert",
+                    "target": "#book1",
+                    "tag": "button",
+                    "id": "remove1",
+                    "class": "card-remove",
+                    "text": "移出"
+                }
+            ]
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        },
+        {
+            "op": "eval",
+            "actions": [
+                {
+                    "do": "add_class",
+                    "target": "#reader",
+                    "name": "open"
+                },
+                {
+                    "do": "set_text",
+                    "target": "#book_title",
+                    "text": "仙逆 · 第1章 楔子"
+                },
+                {
+                    "do": "set_text",
+                    "target": "#status_chapter",
+                    "text": "第1章 楔子"
+                },
+                {
+                    "do": "set_text",
+                    "target": "#status_progress",
+                    "text": "1 / 2063"
+                },
+                {
+                    "do": "insert",
+                    "target": "#flow",
+                    "tag": "div",
+                    "id": "chapter_page",
+                    "class": "chapter-page"
+                },
+                {
+                    "do": "insert",
+                    "target": "#chapter_page",
+                    "tag": "h2",
+                    "id": "chapter_title",
+                    "class": "chapter-title",
+                    "text": "第1章 楔子"
+                },
+                {
+                    "do": "insert",
+                    "target": "#chapter_page",
+                    "tag": "p",
+                    "class": "para",
+                    "text": "海风把盐粒吹到窗台上，刮得玻璃细细地响。老人划亮火柴，灯芯慢慢站直，光从玻璃罩里铺开，一直铺到看不见的水面上。"
+                },
+                {
+                    "do": "insert",
+                    "target": "#chapter_page",
+                    "tag": "p",
+                    "class": "para",
+                    "text": "小岛只有这一座塔。白天它是白的，晚上它才说话。老人把值夜的椅子拖到栏杆边，听得见自己的呼吸，也听得见潮水一下一下撞着礁石。"
+                },
+                {
+                    "do": "insert",
+                    "target": "#chapter_page",
+                    "tag": "p",
+                    "class": "para",
+                    "text": "女孩是黄昏时划船来的。船头捆着两桶煤油，桶沿磕出旧漆。她把绳子扔上来，喊了一声爷爷，声音被风撕得只剩半截。"
+                },
+                {
+                    "do": "insert",
+                    "target": "#chapter_page",
+                    "tag": "p",
+                    "class": "para",
+                    "text": "远处有一星渔火，忽明忽暗，像有人在试着对塔说话。老人数那明灭的次数，数到七，火就稳了。他在日志上写：西北风，能见度差，一船通过。"
+                },
+                {
+                    "do": "insert",
+                    "target": "#chapter_page",
+                    "tag": "button",
+                    "id": "chapter_next",
+                    "class": "chapter-next",
+                    "text": "下一章 · 第2章 灯灭的时候"
+                }
+            ]
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        },
+        {
+            "op": "eval",
+            "actions": [
+                {
+                    "do": "add_class",
+                    "target": "#reader",
+                    "name": "toc-hidden"
+                },
+                {
+                    "do": "set_checked",
+                    "target": "#settings_open",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "op": "freeze",
+            "t": 400
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        }
+    ],
+    "expect": "golden/",
+    "pixels": "strict",
+    "text": {
+        "breaks": true,
+        "advances": false
+    }
+}

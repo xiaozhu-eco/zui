@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="chat">
+  <title>小竹会话</title>
+  <link rel="stylesheet" href="../../../../example/applications/chat/css/tokens.css">
+  <link rel="stylesheet" href="../../../../example/applications/chat/css/shell.css">
+  <link rel="stylesheet" href="../../../../example/applications/chat/css/thread.css">
+</head>
+<body onkeydown="on_accel">
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">竹</span>
+        <h1 class="brand-name">小竹会话</h1>
+      </div>
+      <div class="top-actions">
+        <button type="button" class="btn" id="restore" onclick="on_restore">恢复示例</button>
+        <button type="button" class="btn btn-primary" id="create" onclick="on_create">新建会话</button>
+      </div>
+    </header>
+    <div class="workspace">
+      <aside class="list-pane">
+        <label class="search">
+          <span class="sr">搜索会话</span>
+          <input id="q" type="search" placeholder="搜索会话" autocomplete="off" oninput="on_query">
+        </label>
+        <p class="conv-empty" id="conv-empty" hidden></p>
+        <div class="conv-list" id="conv-list" aria-label="会话">
+          <template>
+            <button type="button" class="conv {{on}}" onclick="on_conv" data-id="{{id}}">
+              <span class="avatar">{{initial}}</span>
+              <span class="who">
+                <span class="conv-line">
+                  <span class="name">{{name}}</span>
+                  <span class="when">{{when}}</span>
+                </span>
+                <span class="preview">{{preview}}</span>
+              </span>
+            </button>
+          </template>
+        </div>
+      </aside>
+      <section class="thread">
+        <header class="thread-head" id="thread-head">
+          <h2 class="thread-name" id="thread-name"></h2>
+          <button type="button" class="btn btn-danger" id="remove" onclick="on_remove">删除会话</button>
+        </header>
+        <div class="log-wrap">
+          <div class="log" id="log" aria-live="polite" onscroll="on_log_scroll">
+            <template>
+              <div class="{{kind}}">
+                <span class="sep">{{sep}}</span>
+                <div class="bubble">{{text}}<span class="time">{{time}}</span></div>
+              </div>
+            </template>
+          </div>
+          <button type="button" class="jump" id="jump" hidden onclick="on_jump">回到底部</button>
+        </div>
+        <p class="thread-empty" id="thread-empty" hidden>还没有会话。新建一个就可以开始写。</p>
+        <form class="composer" id="composer">
+          <textarea id="draft" rows="1" placeholder="写一条消息，Enter 发送，Shift+Enter 换行" aria-label="消息" onkeydown="on_draft_key"></textarea>
+          <button type="submit" class="btn btn-primary" onclick="on_send">发送</button>
+        </form>
+        <p class="status" id="status" role="status"></p>
+      </section>
+    </div>
+  </div>
+
+  <div class="back" id="creator" hidden>
+    <form class="dialog" id="creator-form" role="dialog" aria-modal="true" aria-labelledby="creator-title">
+      <h2 id="creator-title">新建会话</h2>
+      <label class="field"><span>名字</span><input id="creator-name" autocomplete="off"></label>
+      <p class="form-error" id="creator-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="creator-cancel" onclick="on_creator_cancel">取消</button>
+        <button type="submit" class="btn btn-primary" onclick="on_creator_save">创建</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="back" id="confirm" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <h2 id="confirm-title">确认</h2>
+      <p id="confirm-body"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="confirm-cancel" onclick="on_confirm_cancel">取消</button>
+        <button type="button" class="btn btn-danger" id="confirm-ok" onclick="on_confirm_ok">确定</button>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+</html>

@@ -1,0 +1,24 @@
+html, body {
+  margin: 0;
+  padding: 16px;
+  background: #101418;
+}
+
+.host {
+  width: 80px;
+  height: 40px;
+  margin: 12px 0;
+  background: #1a2230;
+}
+
+#a::before {
+  content: url("green4.png");
+}
+
+#b::after {
+  content: url("red8.png");
+}
+
+#plain {
+  background: #7cb7ff;
+}

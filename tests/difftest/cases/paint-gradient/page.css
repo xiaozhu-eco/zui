@@ -1,0 +1,49 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+}
+
+.sw {
+    width: 120px;
+    height: 90px;
+}
+
+/* Angle, two stops. */
+#g-angle {
+    background-image: linear-gradient(165deg, #2f6d50, #173728);
+}
+
+/* Three stops with an explicit position. */
+#g-stops {
+    background-image: linear-gradient(#ff0000, #00ff00 50%, #0000ff);
+}
+
+/* Three stops, corner keyword direction. */
+#g-corner {
+    background-image: linear-gradient(to bottom right, #e0a050, #8c4030, #2c1a10);
+}
+
+/* Gradient must be clipped to the rounded border box. */
+#g-clip {
+    border-radius: 14px;
+    background-image: linear-gradient(90deg, #7cb7ff, #2b5f9e);
+}
+
+/* Keyword direction, rgb() stops. */
+#g-to-right {
+    background-image: linear-gradient(to right, rgb(20, 40, 80), rgb(200, 40, 60));
+}
+
+/* Control: same box, no gradient. */
+#solid {
+    background-color: #3c516c;
+}

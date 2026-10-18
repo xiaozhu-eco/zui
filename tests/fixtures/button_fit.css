@@ -1,0 +1,27 @@
+#host { width: 800px; }
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 0;
+}
+.where { white-space: nowrap; }
+.full { width: 100%; }
+#block_btn, #block_div {
+    display: block;
+    width: auto;
+    padding: 4px 8px;
+}
+#col {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}

@@ -1,0 +1,2107 @@
+/* Xiaozhu reader. Shelf is a book grid. Desktop reading is a hideable
+   contents column plus a settings toolbar. Narrow viewports keep the
+   chapter stream full-screen and park settings in a bottom sheet. */
+
+:root {
+    --desk: #c5ddd0;
+    --paper: #f4f8f6;
+    --raised: #ffffff;
+    --toc: #ffffff;
+    --ink: #101814;
+    --ink-soft: #31443b;
+    --muted: #5d7368;
+    --accent: #0c9a60;
+    --tint: rgba(12, 154, 96, 0.14);
+    --line: rgba(16, 24, 20, 0.1);
+    --shadow: 0 1px 2px rgba(12, 28, 20, 0.06), 0 22px 48px rgba(8, 32, 22, 0.16);
+    --shadow-sm: 0 8px 22px rgba(8, 32, 22, 0.1);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --danger: #8d3b32;
+    --scrollbar: rgba(92, 72, 44, 0.38);
+    /* Bars that float over the page while reading. Opaque enough to stay legible
+       without a backdrop filter, which the engine does not paint. */
+    --chrome: rgba(255, 255, 255, 0.92);
+    --serif: "Noto Serif SC", "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", serif;
+    --sans: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+    color-scheme: light;
+}
+
+:root:has(#theme_eye:checked) {
+    --desk: #d5e0d2;
+    --paper: #e7f0e4;
+    --raised: #f4f8f2;
+    --toc: #dde8da;
+    --ink: #1c2b22;
+    --ink-soft: #3d5146;
+    --muted: #6d7f74;
+    --accent: #1f6a45;
+    --tint: rgba(31, 106, 69, 0.12);
+    --line: rgba(28, 48, 34, 0.12);
+    --shadow: 0 14px 36px rgba(24, 48, 32, 0.12);
+    --danger: #8d3b32;
+    --scrollbar: rgba(40, 72, 52, 0.35);
+    --chrome: rgba(231, 240, 228, 0.965);
+    color-scheme: light;
+}
+
+:root:has(#theme_dusk:checked) {
+    --desk: #2a221c;
+    --paper: #342a23;
+    --raised: #3e332b;
+    --toc: #2e261f;
+    --ink: #f0e2d0;
+    --ink-soft: #ddcbb6;
+    --muted: #b39b86;
+    --accent: #e0a36a;
+    --tint: rgba(224, 163, 106, 0.16);
+    --line: rgba(240, 226, 208, 0.1);
+    --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    --danger: #f0b2a8;
+    --scrollbar: rgba(224, 196, 168, 0.35);
+    --chrome: rgba(52, 42, 35, 0.965);
+    color-scheme: dark;
+}
+
+:root:has(#theme_ink:checked) {
+    --desk: #070c0a;
+    --paper: #121a16;
+    --raised: #1b2621;
+    --toc: #101816;
+    --ink: #e8f4ee;
+    --ink-soft: #c5d8ce;
+    --muted: #93aa9f;
+    --accent: #3ee08f;
+    --tint: rgba(62, 224, 143, 0.16);
+    --line: rgba(232, 244, 238, 0.12);
+    --shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+    --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.36);
+    --danger: #ff8b84;
+    --scrollbar: rgba(232, 244, 238, 0.28);
+    --chrome: rgba(18, 26, 22, 0.94);
+    color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background: var(--desk);
+    color: var(--ink);
+    text-size-adjust: 100%;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+button,
+input,
+label {
+    font-family: inherit;
+}
+
+button {
+    font-size: inherit;
+}
+
+template {
+    display: none;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+::selection {
+    background: rgba(44, 107, 78, 0.22);
+}
+
+.app {
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+.hid {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.hid:focus {
+    outline: none;
+}
+
+.hid:focus-visible+.plus,
+.hid:focus-visible+.chip {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Shelf */
+
+.shelf {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    min-height: calc(56px + env(safe-area-inset-top));
+    padding: calc(8px + env(safe-area-inset-top)) 16px 8px;
+    background: var(--desk);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    z-index: 2;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+/* The shelf logo badge. The bookmark list inside the reader titles its own rows
+   .mark too, so that component's rules stay scoped to .mark-row. */
+.mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #f4f7f2;
+    font-family: var(--serif);
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.brand-name {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.menu-wrap {
+    position: relative;
+}
+
+.plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+.plus-icon {
+    position: relative;
+    width: 14px;
+    height: 14px;
+}
+
+.plus-icon::before,
+.plus-icon::after {
+    content: "";
+    position: absolute;
+    background: currentColor;
+    border-radius: 1px;
+}
+
+.plus-icon::before {
+    left: 6px;
+    top: 0;
+    width: 2px;
+    height: 14px;
+}
+
+.plus-icon::after {
+    left: 0;
+    top: 6px;
+    width: 14px;
+    height: 2px;
+}
+
+#shelf_menu:checked+.plus {
+    background: var(--accent);
+    border-color: transparent;
+    color: #f4f7f2;
+}
+
+.menu-scrim {
+    display: none;
+}
+
+#shelf_menu:checked~.menu-scrim {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    cursor: default;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 2;
+    min-width: 168px;
+    margin: 0;
+    padding: 6px;
+    background: var(--raised);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+#shelf_menu:checked~.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu button {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.menu .danger {
+    color: var(--danger);
+    box-shadow: inset 0 1px 0 var(--line);
+}
+
+.menu .danger.armed {
+    background: rgba(141, 59, 50, 0.1);
+}
+
+.shelf-body {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+
+.shelf.is-empty .shelf-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty {
+    display: none;
+    max-width: 22em;
+    margin: 0;
+    padding: 0 12px;
+    text-align: center;
+}
+
+.shelf.is-empty .empty {
+    display: block;
+}
+
+.shelf.is-empty .books {
+    display: none;
+}
+
+.empty-title {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.empty-hint {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+    gap: 22px 14px;
+    padding: 20px 16px 48px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.cover {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    aspect-ratio: 3 / 4;
+    padding: 16px 14px 14px 18px;
+    border-radius: 2px 10px 10px 2px;
+    overflow: hidden;
+    color: #f6f1e8;
+    box-shadow: 0 10px 24px rgba(48, 32, 16, 0.16);
+    transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cover::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.tone-0 .cover {
+    background: linear-gradient(165deg, #2f6d50, #173728);
+}
+
+.tone-1 .cover {
+    background: linear-gradient(165deg, #8c4030, #4a241c);
+}
+
+.tone-2 .cover {
+    background: linear-gradient(165deg, #3c516c, #222a3a);
+}
+
+.tone-3 .cover {
+    background: linear-gradient(165deg, #6e5634, #3a2e1a);
+}
+
+.cover-title,
+.cover-author {
+    z-index: 1;
+}
+
+.cover-title {
+    position: relative;
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+    max-height: 5.4em;
+    overflow: hidden;
+}
+
+.cover-author {
+    position: relative;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    opacity: 0.86;
+}
+
+.card-meta {
+    padding: 0 2px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Reader */
+
+#reader {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    background: var(--paper);
+    color: var(--ink);
+}
+
+#reader.open {
+    display: block;
+}
+
+.scrim {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    margin: 0;
+    background: rgba(24, 18, 12, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.24s ease;
+}
+
+#settings_open:checked~.scrim {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* The wrapper is only a grouping element now: the reading view lays its pieces out
+   itself, so a phone and a desktop share one structure. */
+.sheet {
+    display: contents;
+}
+
+/* The bar floats over the text on both widths and is away until the reader asks for
+   it, so the same tap works everywhere. */
+.toolbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 6;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    height: 52px;
+    padding: 0 16px;
+    background: var(--chrome);
+    border-bottom: 1px solid var(--line);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.24s ease, opacity 0.2s ease, padding-left 0.24s ease;
+}
+
+.toolbar.ui-on {
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Navigation on the left, display on the right: Aa is the bar's last control, so the
+   panel it opens can hang directly under it. */
+.toolbar .toc-toggle {
+    order: 0;
+    flex-shrink: 0;
+}
+
+.back-btn {
+    order: 1;
+    flex-shrink: 0;
+}
+
+.book-title {
+    order: 2;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.toolbar .settings-btn {
+    order: 3;
+    flex-shrink: 0;
+}
+
+.text-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 6px 10px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink-soft);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.setting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.setting-label {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.seg {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 999px;
+    background: var(--tint);
+}
+
+.chip {
+    border-radius: 999px;
+    padding: 4px 10px;
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.3;
+    cursor: pointer;
+}
+
+.hid:checked+.chip {
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(40, 28, 16, 0.14);
+}
+
+/* The tray is a drawer on both widths: same slide, same scrim, same `toc-hidden`
+   state, so the page script and the C++ example only ever talk about one thing. */
+.toc {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    width: min(304px, 86vw);
+    background: var(--toc);
+    border-right: 1px solid var(--line);
+    box-shadow: 18px 0 48px rgba(28, 18, 10, 0.14);
+    transform: translateX(-101%);
+    transition: transform 0.28s ease;
+}
+
+.toc:not(.toc-hidden) {
+    transform: none;
+}
+
+.tray-scrim:not(.toc-hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.toc-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    padding: 4px 12px 4px 18px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.chapters {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding: 4px 8px 12px;
+}
+
+.ch {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 9px 10px 9px 12px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink-soft);
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: left;
+    cursor: pointer;
+}
+
+.ch.current {
+    background: var(--tint);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.flow-wrap {
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    background: var(--paper);
+}
+
+/* Dims the page behind the drawer and doubles as a dismiss target. */
+.tray-scrim {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    background: rgba(24, 18, 12, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease;
+}
+
+.read-hint {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: calc(48px + env(safe-area-inset-bottom));
+    z-index: 2;
+    width: max-content;
+    max-width: calc(100% - 32px);
+    margin: 0;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--raised);
+    box-shadow: var(--shadow);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.flow {
+    /* The measure tracks the text size: one knob, and a line stays about 32 characters
+       whatever it is set to. `字号` is therefore the only place a reader goes to make
+       the page more comfortable - there is no separate column-width control to fight
+       with it. */
+    width: min(41rem, 100%);
+    margin: 0 auto;
+    padding: calc(40px + env(safe-area-inset-top)) max(28px, env(safe-area-inset-right)) calc(72px + env(safe-area-inset-bottom)) max(28px, env(safe-area-inset-left));
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.88;
+}
+
+:root:has(#size_s:checked) .flow {
+    width: min(35rem, 100%);
+    font-size: 16px;
+}
+
+:root:has(#size_l:checked) .flow {
+    width: min(50rem, 100%);
+    font-size: 23px;
+}
+
+:root:has(#lead_s:checked) .flow {
+    line-height: 1.62;
+}
+
+:root:has(#lead_l:checked) .flow {
+    line-height: 2.15;
+}
+
+.chapter-title {
+    margin: 0 0 1.5em;
+    font-family: var(--serif);
+    font-size: 1.28em;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.14em;
+    text-align: center;
+}
+
+/* A hairline under the heading: short enough to read as an ornament, not a rule. */
+.chapter-title::after {
+    content: "";
+    display: block;
+    width: 2.6em;
+    height: 1px;
+    margin: 0.85em auto 0;
+    background: currentColor;
+    opacity: 0.22;
+}
+
+/* Chapters after the first get air instead of a divider; the heading's own
+   ornament already marks the break. */
+.chapter.is-follow .chapter-title {
+    margin-top: 3.6em;
+}
+
+.para {
+    margin: 0;
+    text-indent: 2em;
+    text-align: justify;
+}
+
+.shelf-body,
+.chapters,
+.flow-wrap {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar) transparent;
+}
+
+/* The reading pane keeps no scrollbar: the progress hairline along the bottom
+   edge already says where you are. */
+.flow-wrap {
+    scrollbar-width: none;
+}
+
+@media (max-width: 819px) {
+    #reader.open:not(.hint-seen) .read-hint {
+        display: block;
+    }
+}
+
+@media (min-width: 820px) {
+    .topbar {
+        min-height: calc(60px + env(safe-area-inset-top));
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+    }
+
+    .books {
+        grid-template-columns: repeat(auto-fill, 176px);
+        gap: 36px 28px;
+        padding: 32px 36px 72px;
+    }
+
+    .cover {
+        padding: 20px 16px 16px 22px;
+    }
+
+    .cover-title {
+        font-size: 22px;
+    }
+
+    /* Reading surface: the text owns the window. Only what cannot be shared with the
+       narrow layout lives here - the bar's offset for the open tray, and the
+       preferences as a card under Aa instead of a bottom sheet. */
+    .scrim {
+        display: none;
+    }
+
+    /* Keep the bar's controls clear of the open tray. */
+    .toolbar:not(.toc-hidden) {
+        padding-left: 322px;
+    }
+
+    .toc-toggle:not(.toc-hidden) {
+        background: var(--tint);
+        color: var(--accent);
+    }
+
+    .setting {
+        gap: 8px;
+    }
+
+    .toc-head {
+        padding-top: 18px;
+    }
+
+    .flow {
+        padding-top: 88px;
+        padding-bottom: 30vh;
+    }
+}
+
+
+
+@media (hover: hover) {
+    .plus:hover {
+        background: var(--tint);
+    }
+
+    #shelf_menu:checked+.plus:hover {
+        background: var(--accent);
+    }
+
+    .menu button:hover,
+    .text-btn:hover,
+    .ch:hover {
+        background: var(--tint);
+        color: var(--ink);
+    }
+
+    .ch.current:hover {
+        color: var(--accent);
+    }
+
+    .card:hover .cover {
+        transform: translateY(-4px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .sheet,
+    .scrim,
+    .cover,
+    .toast,
+    .toolbar,
+    .toc,
+    .tray-scrim,
+    .settings,
+    .page.from-left,
+    .page.from-right {
+        transition: none;
+        animation: none;
+    }
+}
+
+.finder {
+    flex: 1;
+    min-width: 0;
+    max-width: 360px;
+}
+
+.finder input,
+.toc-finder input,
+.find-form input {
+    width: 100%;
+    height: 36px;
+    margin: 0;
+    padding: 0 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--ink);
+    font: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 36px;
+}
+
+.finder input::placeholder,
+.toc-finder input::placeholder,
+.find-form input::placeholder {
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 36px;
+    opacity: 1;
+}
+
+.sort-btn {
+    flex-shrink: 0;
+    color: var(--ink-soft);
+}
+
+.shelf.is-booting .empty {
+    display: none !important;
+}
+
+.shelf.is-drag .shelf-body {
+    box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.resume {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    width: calc(100% - 32px);
+    margin: 16px 16px 0;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--raised);
+    color: inherit;
+    font: inherit;
+    font-weight: 400;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+
+.resume-kicker {
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.resume-main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+}
+
+.resume-title {
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.resume-where {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.35;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.card-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.card-track {
+    height: 3px;
+    margin: 0 2px;
+    border-radius: 999px;
+    background: var(--line);
+    overflow: hidden;
+}
+
+.card-fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--accent);
+}
+
+/* Discrete fill widths: App cannot set style.width, so the shelf model
+   binds a pct-N class instead of an inline percentage. */
+.card-fill.pct-0 {
+    width: 0%;
+}
+
+.card-fill.pct-5 {
+    width: 5%;
+}
+
+.card-fill.pct-10 {
+    width: 10%;
+}
+
+.card-fill.pct-15 {
+    width: 15%;
+}
+
+.card-fill.pct-20 {
+    width: 20%;
+}
+
+.card-fill.pct-25 {
+    width: 25%;
+}
+
+.card-fill.pct-30 {
+    width: 30%;
+}
+
+.card-fill.pct-35 {
+    width: 35%;
+}
+
+.card-fill.pct-40 {
+    width: 40%;
+}
+
+.card-fill.pct-45 {
+    width: 45%;
+}
+
+.card-fill.pct-50 {
+    width: 50%;
+}
+
+.card-fill.pct-55 {
+    width: 55%;
+}
+
+.card-fill.pct-60 {
+    width: 60%;
+}
+
+.card-fill.pct-65 {
+    width: 65%;
+}
+
+.card-fill.pct-70 {
+    width: 70%;
+}
+
+.card-fill.pct-75 {
+    width: 75%;
+}
+
+.card-fill.pct-80 {
+    width: 80%;
+}
+
+.card-fill.pct-85 {
+    width: 85%;
+}
+
+.card-fill.pct-90 {
+    width: 90%;
+}
+
+.card-fill.pct-95 {
+    width: 95%;
+}
+
+.card-fill.pct-100 {
+    width: 100%;
+}
+
+.status-fill.pct-0 {
+    width: 0;
+}
+
+.status-fill.pct-5 {
+    width: 5%;
+}
+
+.status-fill.pct-10 {
+    width: 10%;
+}
+
+.status-fill.pct-15 {
+    width: 15%;
+}
+
+.status-fill.pct-20 {
+    width: 20%;
+}
+
+.status-fill.pct-25 {
+    width: 25%;
+}
+
+.status-fill.pct-30 {
+    width: 30%;
+}
+
+.status-fill.pct-35 {
+    width: 35%;
+}
+
+.status-fill.pct-40 {
+    width: 40%;
+}
+
+.status-fill.pct-45 {
+    width: 45%;
+}
+
+.status-fill.pct-50 {
+    width: 50%;
+}
+
+.status-fill.pct-55 {
+    width: 55%;
+}
+
+.status-fill.pct-60 {
+    width: 60%;
+}
+
+.status-fill.pct-65 {
+    width: 65%;
+}
+
+.status-fill.pct-70 {
+    width: 70%;
+}
+
+.status-fill.pct-75 {
+    width: 75%;
+}
+
+.status-fill.pct-80 {
+    width: 80%;
+}
+
+.status-fill.pct-85 {
+    width: 85%;
+}
+
+.status-fill.pct-90 {
+    width: 90%;
+}
+
+.status-fill.pct-95 {
+    width: 95%;
+}
+
+.status-fill.pct-100 {
+    width: 100%;
+}
+
+.card-where {
+    min-height: 1.2em;
+    padding: 0 36px 0 2px;
+    color: var(--muted);
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-remove {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0 2px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Reading preferences. On the narrow layout this is a bottom sheet with its own entry
+   in the bar, so the contents drawer stays a plain table of contents; the wide layout
+   floats the same block as a card under Aa. */
+.settings {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 21;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 84vh;
+    overflow: auto;
+    padding: 0 16px calc(16px + env(safe-area-inset-bottom));
+    background: var(--raised);
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -10px 40px rgba(28, 18, 10, 0.18);
+    transform: translateY(110%);
+    transition: transform 0.28s ease;
+}
+
+#settings_open:checked~.sheet .settings {
+    transform: none;
+}
+
+.settings .grabber {
+    width: 36px;
+    height: 4px;
+    margin: 8px auto 4px;
+    border-radius: 999px;
+    background: var(--muted);
+    opacity: 0.45;
+    flex-shrink: 0;
+}
+
+.settings-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    padding: 8px 0 6px;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+}
+
+.settings .setting {
+    gap: 8px;
+}
+
+.settings .seg {
+    margin-left: auto;
+}
+
+/* Turning pages is a mode, not a type setting: it gets its own group. */
+.settings .setting-mode {
+    margin-top: 2px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+}
+
+.mark-btn {
+    justify-content: center;
+    margin: 0 12px 10px;
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+}
+
+.side-tabs {
+    display: flex;
+    gap: 2px;
+    flex-shrink: 0;
+    margin: 0 12px 8px;
+    padding: 3px;
+    border-radius: 999px;
+    background: var(--tint);
+}
+
+.side-tabs .chip {
+    flex: 1;
+    text-align: center;
+}
+
+#side_toc:checked~.side-tabs label[for="side_toc"],
+#side_find:checked~.side-tabs label[for="side_find"],
+#side_marks:checked~.side-tabs label[for="side_marks"] {
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(40, 28, 16, 0.14);
+}
+
+.toc-finder {
+    display: block;
+    flex-shrink: 0;
+    margin: 0 12px 8px;
+}
+
+#side_find:checked~.toc-finder,
+#side_marks:checked~.toc-finder {
+    display: none;
+}
+
+.chapters,
+.side-panel {
+    display: none;
+}
+
+#side_toc:checked~.chapters {
+    display: block;
+}
+
+#side_find:checked~#find_panel,
+#side_marks:checked~#marks_panel {
+    display: flex;
+}
+
+.side-panel {
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    overflow: auto;
+}
+
+.find-form {
+    display: flex;
+    gap: 6px;
+    padding: 0 12px 8px;
+}
+
+.find-form input {
+    flex: 1;
+    min-width: 0;
+}
+
+.find-count,
+.panel-empty {
+    margin: 0;
+    padding: 0 16px 8px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.find-hits,
+.marks {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0 8px 12px;
+}
+
+.hit,
+.mark-row .mark {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink-soft);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.hit-title,
+.mark-title {
+    font-size: 13px;
+    color: var(--ink);
+}
+
+.hit-snip,
+.mark-snip {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.mark-row {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+}
+
+.mark-row .mark {
+    flex: 1;
+    min-width: 0;
+}
+
+.mark-del {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0 8px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--danger);
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.mark-btn.is-on {
+    background: var(--tint);
+    color: var(--accent);
+}
+
+.flow {
+    line-break: strict;
+}
+
+:root:has(#font_sans:checked) .flow,
+:root:has(#font_sans:checked) .chapter-title,
+:root:has(#font_sans:checked) .ch {
+    font-family: var(--sans);
+}
+
+.para {
+    overflow-wrap: break-word;
+}
+
+.para-cont {
+    text-indent: 0;
+}
+
+mark.hit-mark {
+    display: inline;
+    background: var(--tint);
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    border-radius: 2px;
+}
+
+.page,
+.flow.page {
+    box-sizing: border-box;
+    width: auto;
+    margin: 0;
+    padding: 28px 0 calc(48px + env(safe-area-inset-bottom));
+}
+
+#reader:has(#mode_page:checked) .flow {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#reader:has(#mode_page:checked) .flow-wrap {
+    overflow: hidden;
+    padding-left: max(20px, calc((100% - 41rem) / 2));
+    padding-right: max(20px, calc((100% - 41rem) / 2));
+    touch-action: manipulation;
+}
+
+:root:has(#size_s:checked) #reader:has(#mode_page:checked) .flow-wrap {
+    padding-left: max(20px, calc((100% - 35rem) / 2));
+    padding-right: max(20px, calc((100% - 35rem) / 2));
+}
+
+:root:has(#size_l:checked) #reader:has(#mode_page:checked) .flow-wrap {
+    padding-left: max(16px, calc((100% - 50rem) / 2));
+    padding-right: max(16px, calc((100% - 50rem) / 2));
+}
+
+.page.from-right {
+    animation: page-right 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page.from-left {
+    animation: page-left 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes page-right {
+    from {
+        transform: translateX(42px) scale(0.985);
+        opacity: 0.15;
+    }
+
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+@keyframes page-left {
+    from {
+        transform: translateX(-42px) scale(0.985);
+        opacity: 0.15;
+    }
+
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.chapter-next,
+.chapter-end {
+    display: block;
+    width: 100%;
+    margin: 3.2em 0 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--accent);
+    font: inherit;
+    font-size: 0.8em;
+    letter-spacing: 0.24em;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* A short rule above the label, the way a printed book closes a section. */
+.chapter-next::before,
+.chapter-end::before {
+    content: "";
+    display: block;
+    width: 3em;
+    height: 1px;
+    margin: 0 auto 1.15em;
+    background: currentColor;
+    opacity: 0.28;
+}
+
+.chapter-end {
+    color: var(--muted);
+    letter-spacing: 0.16em;
+    cursor: default;
+}
+
+.page-edge {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 22%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    align-items: center;
+}
+
+.page-prev {
+    left: 0;
+    justify-content: flex-start;
+}
+
+.page-next {
+    right: 0;
+    justify-content: flex-end;
+}
+
+.page-edge::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    opacity: 0;
+}
+
+.page-prev::before {
+    transform: rotate(-135deg);
+    margin-left: 12px;
+}
+
+.page-next::before {
+    transform: rotate(45deg);
+    margin-right: 12px;
+}
+
+#reader:has(#mode_page:checked) .page-edge {
+    display: flex;
+}
+
+#settings_open:checked~.page-edge {
+    pointer-events: none;
+}
+
+.page-edge:active::before {
+    opacity: 0.7;
+}
+
+.page-probe {
+    position: fixed;
+    left: -10000px;
+    top: 0;
+    visibility: hidden;
+    pointer-events: none;
+    height: auto;
+    overflow: visible;
+    transform: none;
+    z-index: -1;
+}
+
+.status {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 30px;
+    padding: 8px 20px calc(8px + env(safe-area-inset-bottom));
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.24s ease;
+}
+
+/* Part of the floating chrome: the progress hairline below stays, the words do not. */
+.status.ui-on {
+    opacity: 1;
+    background: var(--chrome);
+    border-top: 1px solid var(--line);
+}
+
+.status-chapter {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.status-progress {
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+/* How far into the book you are, as a hairline along the bottom edge: always
+   there, never in the way. */
+.status-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    height: 2px;
+    background: var(--line);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.status-fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--accent);
+}
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: calc(52px + env(safe-area-inset-bottom));
+    z-index: 40;
+    max-width: calc(100% - 32px);
+    margin: 0;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 719px) {
+    .topbar {
+        flex-wrap: wrap;
+    }
+
+    .brand {
+        order: 1;
+        flex: 1 1 auto;
+        min-width: 9em;
+    }
+
+    .menu-wrap {
+        order: 2;
+    }
+
+    .finder {
+        order: 3;
+        flex: 1 1 calc(100% - 64px);
+        max-width: none;
+    }
+
+    .sort-btn {
+        order: 4;
+    }
+
+    /* The shelf layout and theme toggles joined the bar after these orders were
+       written. Without one they default to order 0 and push the brand and the
+       search row down, so they get the trailing row. */
+    .view-toggle {
+        order: 5;
+    }
+
+    .theme-pair {
+        order: 6;
+    }
+
+    .page {
+        padding-top: calc(36px + env(safe-area-inset-top));
+    }
+}
+
+@media (min-width: 820px) {
+
+    /* The preferences hang directly under the Aa button that opens them, right-aligned
+       with it: the same panel, presented as a card instead of a sheet. */
+    .settings {
+        top: 62px;
+        right: 16px;
+        bottom: auto;
+        left: auto;
+        width: 300px;
+        max-height: none;
+        overflow: visible;
+        padding: 4px 14px 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    #settings_open:checked~.sheet .settings {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+
+    .settings .grabber {
+        display: none;
+    }
+
+    .settings-head {
+        margin: 0 0 4px;
+        padding: 8px 0 4px;
+    }
+
+    .settings .chip {
+        padding: 3px 8px;
+    }
+
+    #settings_open:checked~.sheet .settings-btn {
+        background: var(--tint);
+        color: var(--accent);
+    }
+
+    .resume {
+        width: auto;
+        margin: 28px 36px 0;
+    }
+}
+
+@media (hover: hover) {
+
+    .card-remove:hover,
+    .mark-del:hover {
+        color: var(--danger);
+    }
+
+    .hit:hover,
+    .mark-row .mark:hover,
+    .resume:hover {
+        background: var(--tint);
+    }
+
+    .page-edge:hover::before {
+        opacity: 0.75;
+    }
+
+    .page-prev:hover {
+        background: linear-gradient(90deg, var(--tint), transparent);
+    }
+
+    .page-next:hover {
+        background: linear-gradient(270deg, var(--tint), transparent);
+    }
+}
+
+.view-toggle {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.shelf:has(#shelf_list:checked) .books {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.shelf:has(#shelf_list:checked) .card {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+}
+
+.shelf:has(#shelf_list:checked) .cover {
+    width: 52px;
+    aspect-ratio: 3 / 4;
+    flex: 0 0 auto;
+    padding: 8px 8px 8px 12px;
+}
+
+.shelf:has(#shelf_grid:checked) label[for="shelf_grid"],
+.shelf:has(#shelf_list:checked) label[for="shelf_list"] {
+    background: var(--tint);
+    color: var(--accent);
+}
+
+@keyframes z-rise {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes z-menu {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .menu-wrap:has(#shelf_menu:checked) .menu {
+        animation: z-menu 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    #settings_open:checked~.sheet .settings {
+        animation: z-rise 380ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card,
+    .plus,
+    .menu button {
+        transition:
+            transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card:hover .cover {
+        transform: translateY(-10px) rotate(-0.6deg);
+        box-shadow:
+            0 1px 1px rgba(43, 38, 31, 0.08),
+            0 22px 36px rgba(43, 38, 31, 0.18);
+    }
+
+    .card:active .cover {
+        transform: translateY(-2px) scale(0.985);
+    }
+}
+
+html,
+body {
+    background: var(--desk);
+}
+
+.shelf {
+    padding: 14px;
+    gap: 12px;
+    background:
+        radial-gradient(980px 420px at -8% -16%, rgba(12, 154, 96, 0.34), transparent 56%),
+        radial-gradient(640px 300px at 108% -10%, rgba(36, 126, 196, 0.22), transparent 52%),
+        var(--desk);
+}
+
+:root:has(#theme_ink:checked) .shelf,
+:root:has(#theme_dusk:checked) .shelf {
+    background:
+        radial-gradient(980px 420px at -8% -16%, rgba(62, 224, 143, 0.16), transparent 56%),
+        radial-gradient(640px 300px at 108% -10%, rgba(70, 150, 230, 0.12), transparent 50%),
+        var(--desk);
+}
+
+.shelf>.topbar {
+    min-height: 64px;
+    border: 1px solid rgba(255, 255, 255, 0.66);
+    border-radius: 20px;
+    background: var(--chrome);
+    box-shadow: var(--shadow-sm);
+}
+
+.topbar {
+    background: var(--chrome);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 10px 28px rgba(8, 32, 22, 0.08);
+}
+
+.theme-pair {
+    display: flex;
+    gap: 4px;
+    padding: 3px;
+    border-radius: 999px;
+    background: rgba(16, 24, 20, 0.06);
+}
+
+.theme-pair .text-btn {
+    border-radius: 999px;
+}
+
+:root:has(#theme_paper:checked) .theme-pair label[for="theme_paper"],
+:root:has(#theme_ink:checked) .theme-pair label[for="theme_ink"],
+:root:has(#theme_eye:checked) .theme-pair label[for="theme_paper"],
+:root:has(#theme_dusk:checked) .theme-pair label[for="theme_ink"] {
+    background: var(--accent);
+    color: #042117;
+}
+
+:root:has(#theme_ink:checked) .theme-pair,
+:root:has(#theme_dusk:checked) .theme-pair {
+    background: rgba(232, 244, 238, 0.08);
+}
+
+.brand .mark {
+    border-radius: 13px;
+    background: linear-gradient(145deg, #8dffc8 0%, #14c274 46%, #067848 100%);
+    color: #042117;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 10px 18px rgba(12, 154, 96, 0.42);
+}
+
+.brand-name {
+    letter-spacing: 0.04em;
+    font-weight: 800;
+}
+
+.cover {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        0 18px 32px rgba(8, 32, 22, 0.22);
+}
+
+.cover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 46%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent 72%);
+    pointer-events: none;
+}
+
+.menu {
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: var(--shadow);
+}
+
+#settings_open:checked~.scrim {
+    backdrop-filter: blur(8px);
+}
+
+.settings {
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -18px 48px rgba(28, 18, 10, 0.22);
+}
+
+/* EPUB / PDF format hosts ------------------------------------------- */
+.chapter-host { display: block; }
+.chapter-host[hidden], .pdf-host[hidden] { display: none !important; }
+.epub-body { padding: 0 4px 24px; line-height: 1.7; }
+.epub-body .epub-p, .epub-body p { margin: 0.6em 0; text-indent: 2em; }
+.epub-body .epub-h1, .epub-body h1 { font-size: 1.4em; margin: 1em 0 0.5em; text-indent: 0; }
+.epub-body .epub-h2, .epub-body h2 { font-size: 1.25em; margin: 1em 0 0.5em; text-indent: 0; }
+.epub-body .epub-h3, .epub-body h3,
+.epub-body .epub-h4, .epub-body h4,
+.epub-body .epub-h5, .epub-body h5,
+.epub-body .epub-h6, .epub-body h6 { font-size: 1.1em; margin: 0.8em 0 0.4em; text-indent: 0; }
+.epub-img { max-width: 100%; height: auto; display: block; margin: 0.8em auto; }
+.pdf-host { padding: 12px 8px 32px; }
+.pdf-page-card {
+  background: var(--paper, #fffaf0);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 6px;
+  padding: 20px 18px 28px;
+  min-height: 60vh;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.pdf-page-text { line-height: 1.75; }
+.pdf-line { margin: 0.35em 0; text-indent: 0; white-space: pre-wrap; }
+.pdf-page-img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+
+.pdf-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 32px 20px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.55);
+}
+.pdf-empty-title {
+  font-size: 1.05em;
+  margin: 0 0 0.6em;
+  text-indent: 0;
+}
+.pdf-empty-hint {
+  font-size: 0.9em;
+  line-height: 1.55;
+  max-width: 28em;
+  margin: 0;
+  text-indent: 0;
+}
+.theme-ink .pdf-empty,
+html.theme-ink .pdf-empty {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* Brief highlight when bookmark / progress restore lands on #paN (TXT + EPUB/PDF).
+   Uses --tint / --accent so paper/eye/dusk/ink themes stay consistent. */
+.restore-flash,
+.para.restore-flash,
+[class^="epub-"].restore-flash,
+.pdf-line.restore-flash {
+  animation: restore-flash 1.25s ease;
+  border-radius: 4px;
+}
+
+@keyframes restore-flash {
+  0%,
+  22% {
+    background-color: var(--tint);
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  100% {
+    background-color: transparent;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+}

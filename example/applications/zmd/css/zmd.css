@@ -1,0 +1,460 @@
+/*
+  zmd 自己的那一层：视图 / 查找 / 对话框 / 文件读写。
+  原型那张样式表一字未动，这里只写原型没有的那几件，用的还是原型的量（同一个圆角、
+  同一支强调色、同一套浮层投影）。
+*/
+
+/* 外壳跟着窗口长。原型的 --stage-h 仍是 620px，两边宿主都加载这张表，所以浏览器和
+   原生都用这一条盖过它。状态行是 .mdw 里 flex:none 的最后一行，纸面吃掉剩下的高度。 */
+#md-editor-mock {
+  height: 100%;
+  min-height: 0;
+}
+
+#md-editor-mock .mdw {
+  height: 100%;
+  min-height: 0;
+}
+
+/* 四种视图共用一张纸：写作=渲染，源码=等宽，分栏=两张，预览=只读渲染 */
+#md-editor-mock .zmd-src {
+  display: none;
+  width: 100%;
+  min-height: 100%;
+  border: 0;
+  outline: none;
+  resize: none;
+  background: transparent;
+  color: var(--w-fg);
+  font-family: var(--mdw-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  tab-size: 2;
+}
+
+#md-editor-mock.view-source #mdc-a-doc,
+#md-editor-mock.view-source #mdc-a-preview,
+#md-editor-mock.view-preview #mdc-a-doc,
+#md-editor-mock.view-preview #mdc-a-source,
+#md-editor-mock.view-split #mdc-a-doc {
+  display: none;
+}
+
+#md-editor-mock.view-source .zmd-src,
+#md-editor-mock.view-split .zmd-src,
+#md-editor-mock.view-split #mdc-a-preview,
+#md-editor-mock.view-preview #mdc-a-preview {
+  display: block;
+}
+
+#md-editor-mock.view-split .mdw-scroll {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 18px;
+}
+
+#md-editor-mock.view-split .mdw-doc {
+  flex: 1 1 0;
+  width: auto;
+  max-width: none;
+  margin: 0;
+}
+
+/* 查找条：与格式条同一套浮层语言 */
+#md-editor-mock .zmd-find {
+  position: absolute;
+  z-index: 5;
+  top: 10px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 12px;
+  background: var(--w-paper);
+  box-shadow:
+    0 0 0 1px var(--w-line),
+    0 16px 32px -18px light-dark(rgb(0 0 0 / 26%), rgb(0 0 0 / 72%));
+  transform: translateX(-50%);
+}
+
+#md-editor-mock .zmd-find[hidden] {
+  display: none;
+}
+
+#md-editor-mock .zmd-find input {
+  width: 180px;
+  padding: 4px 8px;
+  border: 1px solid var(--w-line);
+  border-radius: 7px;
+  outline: none;
+  background: var(--w-canvas);
+  color: var(--w-fg);
+  font: inherit;
+  font-size: 13px;
+}
+
+#md-editor-mock .zmd-find-count {
+  min-width: 42px;
+  color: var(--w-fg-faint);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 查找条的按钮是带字的（上一个 / 下一个 / 关闭）。原型的 .mdw-tbtn 是 24×24 的图标钮，
+   宽度交给内容，高与圆角沿用同一支。 */
+#md-editor-mock .zmd-find .mdw-tbtn {
+  width: auto;
+  height: 24px;
+  padding: 0 8px;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+/*
+  app.css writes translateX(calc(-100% - 24px)). A calc() inside a transform
+  function does not resolve here, so the used translation is restated: the 190px
+  panel moves by its own width plus 24px. Hover and pin rules in app.css stay
+  more specific and still set transform: none.
+*/
+#md-editor-mock .mdw-float-l { transform: translateX(-214px); }
+#md-editor-mock .mdw-float-r { transform: translateX(214px); }
+
+/* The scroller is inset 0 and was the hit target on the 24px edge strips, so
+   :hover never reached .mdw-hot and the panels never slid in. Pull the scroller
+   in by that strip; the hot zones sit on the stage underneath and keep the
+   prototype's slide. A definite width is what lets the prototype's auto
+   margins actually center the paper. */
+#md-editor-mock .mdw-scroll {
+  left: 24px;
+  right: 24px;
+}
+
+#md-editor-mock .mdw-a .mdw-doc {
+  width: var(--w-doc-w);
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  /* app.css puts calc() inside this linear-gradient; that stop does not
+     resolve here and painted a seam down the middle of the paper. */
+  background: var(--w-paper);
+}
+
+#md-editor-mock .mdw-status {
+  position: relative;
+  z-index: 5;
+}
+
+#md-editor-mock .mdw-doc table {
+  /* Fixed columns share the paper. Auto min-content with overflow-wrap was a
+     few letters wide, so Table / Structure / Behavior broke mid-word. */
+  table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
+}
+
+#md-editor-mock .mdw-doc th,
+#md-editor-mock .mdw-doc td {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+#md-editor-mock .mdw-doc li,
+#md-editor-mock .mdw-doc p {
+  /* break-word splits the last word of a full line (`code` → `cod` / `e`).
+     Normal wrapping keeps the word whole. */
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+/* Keep `# `, `- `, `>` and `|` as one chip. anywhere/break-all was
+   slicing those tokens and splitting the welcome table. */
+#md-editor-mock .mdw-doc code,
+#md-editor-mock .mdw-doc kbd {
+  white-space: pre;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+#md-editor-mock .mdw-doc pre {
+  margin: 0 0 16px;
+  white-space: pre-wrap;
+}
+
+#md-editor-mock .mdw-doc pre code {
+  /* The chip rule (padding on every code) made a fence one atomic inline.
+     Its line boxes then painted on top of the heading after the fence. */
+  display: block;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  white-space: pre-wrap;
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-height: 1.45;
+  font-size: 13px;
+}
+
+/* 对话框：沿用设置弹层的皮肤，只把尺寸收窄并居中 */
+#md-editor-mock .zmd-sheet {
+  top: 50%;
+  left: 50%;
+  width: min(420px, calc(100% - 48px));
+  /* Definite height, same form as the settings sheet. height:auto on this flex
+     box let the flex body cycle into the shell and drop #mdc-a's box. */
+  height: min(220px, calc(100% - 48px));
+  transform: translate(-50%, -50%);
+}
+
+/*
+  设置弹层在那边的规矩是「设置关着 = 弹层整片 display:none」，靠 .mdw-a.set-closed 选到
+  所有 .mdw-set。对话框借了同一套皮肤，但仍由自己的 hidden 开关：这条按更高的特异性
+  把它从 set-closed 里放回来。host.css 的 [hidden] 是 !important，所以 hidden 说了算。
+*/
+#md-editor-mock .mdw-a.set-closed .mdw-set.zmd-sheet {
+  display: flex;
+}
+
+#md-editor-mock .zmd-sheet[hidden] {
+  display: none;
+}
+
+#md-editor-mock .zmd-sheet .mdw-set-body {
+  overflow: visible;
+}
+
+.zmd-hid {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+/* 写作视图：浏览器继续用原型那张 contenteditable 的纸。原生把渲染后的预览
+   当作写作面（所见即所得）。源码框铺在纸上接键盘和 IME，本身看不见。 */
+#md-editor-mock.view-live #mdc-a-preview,
+#md-editor-mock.view-live .zmd-src {
+  display: none;
+}
+
+#md-editor-mock.zmd-host.view-live #mdc-a-doc {
+  display: none;
+}
+
+#md-editor-mock.zmd-host.view-live #mdc-a-preview {
+  display: block;
+  cursor: text;
+}
+
+#md-editor-mock.zmd-host.view-live .zmd-src {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  opacity: 0.02;
+  color: transparent;
+  /* The bar the user watches is the caret marker the render plants in the paper (`zmd-caret`).
+     A real caret here paints at this proxy's box - a full-strength 2%-opacity leftover at the
+     paper's top-left corner - so this one asks for none. */
+  caret-color: transparent;
+  pointer-events: none;
+}
+
+#md-editor-mock .mdw-a:not(.set-closed) #mdc-a-preview,
+#md-editor-mock .mdw-a:not(.pal-closed) #mdc-a-preview {
+  pointer-events: none;
+}
+
+/* The paper caret is not an element in the line. The engine paints it at the glyph
+   edge (`Document::set_text_caret`), in this colour. */
+#md-editor-mock .mdw-doc {
+  caret-color: var(--w-accent, #4a6cf7);
+}
+
+/* Format strip for a writing-view selection. It is a sibling of the paper, filled
+   when a range is up. It is not a box in the selected line. */
+#md-editor-mock.zmd-host #zmd-sel-host {
+  position: absolute;
+  z-index: 6;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+#md-editor-mock.zmd-host #zmd-sel-host .mdw-bubble {
+  pointer-events: auto;
+}
+
+/* Native never runs Lucide. The PNG is the control. A previous :has(svg)
+   rule hid those images when the matcher treated the argument as universal,
+   which left the H1/H2 text fallback on the toolbar. */
+#md-editor-mock.zmd-host i[data-lucide],
+#md-editor-mock.zmd-host .mdw-glyph {
+  display: none;
+}
+
+#md-editor-mock.zmd-host .mdw-tbtn,
+#md-editor-mock.zmd-host .mdw-pin {
+  overflow: hidden;
+}
+
+#md-editor-mock.zmd-host .mdw-ico-img {
+  display: block;
+  width: 15px;
+  height: 15px;
+}
+
+#md-editor-mock.zmd-host .mdw-pin .mdw-ico-img {
+  width: 13px;
+  height: 13px;
+}
+
+#md-editor-mock.zmd-host .mdw-sbtn .mdw-ico-img {
+  width: 15px;
+  height: 15px;
+}
+
+#md-editor-mock:not(.zmd-host) .mdw-ico-img {
+  display: none;
+}
+
+#md-editor-mock .mdw-glyph {
+  display: none;
+}
+
+/* 字号 / 页宽 / 行距走类，不写 style。页宽类改的是原型已经在用的 --w-doc-w。 */
+#md-editor-mock .mdw.sz14 { --w-doc-size: 14px; }
+#md-editor-mock .mdw.sz15 { --w-doc-size: 15px; }
+#md-editor-mock .mdw.sz16 { --w-doc-size: 16px; }
+#md-editor-mock .mdw.sz17 { --w-doc-size: 17px; }
+#md-editor-mock .mdw.sz18 { --w-doc-size: 18px; }
+
+#md-editor-mock .mdw.w520 { --w-doc-w: 520px; }
+#md-editor-mock .mdw.w530 { --w-doc-w: 530px; }
+#md-editor-mock .mdw.w540 { --w-doc-w: 540px; }
+#md-editor-mock .mdw.w550 { --w-doc-w: 550px; }
+#md-editor-mock .mdw.w560 { --w-doc-w: 560px; }
+#md-editor-mock .mdw.w570 { --w-doc-w: 570px; }
+#md-editor-mock .mdw.w580 { --w-doc-w: 580px; }
+#md-editor-mock .mdw.w590 { --w-doc-w: 590px; }
+#md-editor-mock .mdw.w600 { --w-doc-w: 600px; }
+#md-editor-mock .mdw.w610 { --w-doc-w: 610px; }
+#md-editor-mock .mdw.w620 { --w-doc-w: 620px; }
+#md-editor-mock .mdw.w630 { --w-doc-w: 630px; }
+#md-editor-mock .mdw.w640 { --w-doc-w: 640px; }
+#md-editor-mock .mdw.w650 { --w-doc-w: 650px; }
+#md-editor-mock .mdw.w660 { --w-doc-w: 660px; }
+#md-editor-mock .mdw.w670 { --w-doc-w: 670px; }
+#md-editor-mock .mdw.w680 { --w-doc-w: 680px; }
+#md-editor-mock .mdw.w690 { --w-doc-w: 690px; }
+#md-editor-mock .mdw.w700 { --w-doc-w: 700px; }
+#md-editor-mock .mdw.w710 { --w-doc-w: 710px; }
+#md-editor-mock .mdw.w720 { --w-doc-w: 720px; }
+#md-editor-mock .mdw.w730 { --w-doc-w: 730px; }
+#md-editor-mock .mdw.w740 { --w-doc-w: 740px; }
+#md-editor-mock .mdw.w750 { --w-doc-w: 750px; }
+#md-editor-mock .mdw.w760 { --w-doc-w: 760px; }
+
+#md-editor-mock .mdw.lh140 { --w-line-h: 1.4; }
+#md-editor-mock .mdw.lh142 { --w-line-h: 1.42; }
+#md-editor-mock .mdw.lh144 { --w-line-h: 1.44; }
+#md-editor-mock .mdw.lh146 { --w-line-h: 1.46; }
+#md-editor-mock .mdw.lh148 { --w-line-h: 1.48; }
+#md-editor-mock .mdw.lh150 { --w-line-h: 1.5; }
+#md-editor-mock .mdw.lh152 { --w-line-h: 1.52; }
+#md-editor-mock .mdw.lh154 { --w-line-h: 1.54; }
+#md-editor-mock .mdw.lh156 { --w-line-h: 1.56; }
+#md-editor-mock .mdw.lh158 { --w-line-h: 1.58; }
+#md-editor-mock .mdw.lh160 { --w-line-h: 1.6; }
+#md-editor-mock .mdw.lh162 { --w-line-h: 1.62; }
+#md-editor-mock .mdw.lh164 { --w-line-h: 1.64; }
+#md-editor-mock .mdw.lh166 { --w-line-h: 1.66; }
+#md-editor-mock .mdw.lh168 { --w-line-h: 1.68; }
+#md-editor-mock .mdw.lh170 { --w-line-h: 1.7; }
+#md-editor-mock .mdw.lh172 { --w-line-h: 1.72; }
+#md-editor-mock .mdw.lh174 { --w-line-h: 1.74; }
+#md-editor-mock .mdw.lh176 { --w-line-h: 1.76; }
+#md-editor-mock .mdw.lh178 { --w-line-h: 1.78; }
+#md-editor-mock .mdw.lh180 { --w-line-h: 1.8; }
+#md-editor-mock .mdw.lh182 { --w-line-h: 1.82; }
+#md-editor-mock .mdw.lh184 { --w-line-h: 1.84; }
+#md-editor-mock .mdw.lh186 { --w-line-h: 1.86; }
+#md-editor-mock .mdw.lh188 { --w-line-h: 1.88; }
+#md-editor-mock .mdw.lh190 { --w-line-h: 1.9; }
+#md-editor-mock .mdw.lh192 { --w-line-h: 1.92; }
+#md-editor-mock .mdw.lh194 { --w-line-h: 1.94; }
+#md-editor-mock .mdw.lh196 { --w-line-h: 1.96; }
+#md-editor-mock .mdw.lh198 { --w-line-h: 1.98; }
+#md-editor-mock .mdw.lh200 { --w-line-h: 2; }
+#md-editor-mock .mdw.lh202 { --w-line-h: 2.02; }
+#md-editor-mock .mdw.lh204 { --w-line-h: 2.04; }
+#md-editor-mock .mdw.lh206 { --w-line-h: 2.06; }
+#md-editor-mock .mdw.lh208 { --w-line-h: 2.08; }
+#md-editor-mock .mdw.lh210 { --w-line-h: 2.1; }
+#md-editor-mock .mdw.lh212 { --w-line-h: 2.12; }
+#md-editor-mock .mdw.lh214 { --w-line-h: 2.14; }
+#md-editor-mock .mdw.lh216 { --w-line-h: 2.16; }
+#md-editor-mock .mdw.lh218 { --w-line-h: 2.18; }
+#md-editor-mock .mdw.lh220 { --w-line-h: 2.2; }
+
+#md-editor-mock .mdw.theme-light { color-scheme: light; }
+#md-editor-mock .mdw.theme-dark { color-scheme: dark; }
+
+/* 强调色与窗口圆角走类，理由同 sz16 / w660：A-tier 写不了自定义属性。强调色的类名就是它写回
+   控件的那支十六进制色（`acc-4a6cf7`），圆角按 4px 一档（`rad12`）。 */
+#md-editor-mock .mdw.acc-e5484d { --w-accent: #e5484d; }
+#md-editor-mock .mdw.acc-e0672b { --w-accent: #e0672b; }
+#md-editor-mock .mdw.acc-d98200 { --w-accent: #d98200; }
+#md-editor-mock .mdw.acc-a3a300 { --w-accent: #a3a300; }
+#md-editor-mock .mdw.acc-12a150 { --w-accent: #12a150; }
+#md-editor-mock .mdw.acc-0d9bb5 { --w-accent: #0d9bb5; }
+#md-editor-mock .mdw.acc-3f78d8 { --w-accent: #3f78d8; }
+#md-editor-mock .mdw.acc-4a6cf7 { --w-accent: #4a6cf7; }
+#md-editor-mock .mdw.acc-7c4dff { --w-accent: #7c4dff; }
+#md-editor-mock .mdw.acc-a855f7 { --w-accent: #a855f7; }
+#md-editor-mock .mdw.acc-e0398c { --w-accent: #e0398c; }
+#md-editor-mock .mdw.acc-55606e { --w-accent: #55606e; }
+
+#md-editor-mock .mdw.rad0 { --w-radius: 0px; }
+#md-editor-mock .mdw.rad4 { --w-radius: 4px; }
+#md-editor-mock .mdw.rad8 { --w-radius: 8px; }
+#md-editor-mock .mdw.rad12 { --w-radius: 12px; }
+#md-editor-mock .mdw.rad16 { --w-radius: 16px; }
+#md-editor-mock .mdw.rad20 { --w-radius: 20px; }
+#md-editor-mock .mdw.rad24 { --w-radius: 24px; }
+
+/* 目录面板的阅读进度：原型在滚动时写内联高度，原生没有样式写入，改成 5% 一档的类
+   （`prog0` … `prog100`），条子本身的高度读 `--w-progress`。 */
+#md-editor-mock .mdw-outline-bar { height: var(--w-progress, 0%); }
+#md-editor-mock .prog0 { --w-progress: 0%; }
+#md-editor-mock .prog5 { --w-progress: 5%; }
+#md-editor-mock .prog10 { --w-progress: 10%; }
+#md-editor-mock .prog15 { --w-progress: 15%; }
+#md-editor-mock .prog20 { --w-progress: 20%; }
+#md-editor-mock .prog25 { --w-progress: 25%; }
+#md-editor-mock .prog30 { --w-progress: 30%; }
+#md-editor-mock .prog35 { --w-progress: 35%; }
+#md-editor-mock .prog40 { --w-progress: 40%; }
+#md-editor-mock .prog45 { --w-progress: 45%; }
+#md-editor-mock .prog50 { --w-progress: 50%; }
+#md-editor-mock .prog55 { --w-progress: 55%; }
+#md-editor-mock .prog60 { --w-progress: 60%; }
+#md-editor-mock .prog65 { --w-progress: 65%; }
+#md-editor-mock .prog70 { --w-progress: 70%; }
+#md-editor-mock .prog75 { --w-progress: 75%; }
+#md-editor-mock .prog80 { --w-progress: 80%; }
+#md-editor-mock .prog85 { --w-progress: 85%; }
+#md-editor-mock .prog90 { --w-progress: 90%; }
+#md-editor-mock .prog95 { --w-progress: 95%; }
+#md-editor-mock .prog100 { --w-progress: 100%; }
+
+/* Glyphs stay in the markup for the prototype fallback, but the painted
+   control is the PNG (native) or the Lucide svg (browser). */

@@ -1,0 +1,92 @@
+.auto {
+    display: grid;
+    width: 200px;
+    grid-template-columns: 100px 100px;
+    row-gap: 8px;
+    column-gap: 0;
+}
+
+#tall { height: 48px; }
+#short { height: 20px; }
+#next { height: 36px; }
+
+.fixed {
+    display: grid;
+    width: 80px;
+    grid-template-columns: 80px;
+    grid-template-rows: 30px;
+}
+
+#fat { height: 80px; }
+
+.fixedm {
+    display: grid;
+    width: 80px;
+    grid-template-columns: 80px;
+    grid-template-rows: 30px;
+}
+
+#fatm {
+    height: 10px;
+    margin-top: 6px;
+    margin-bottom: 2px;
+}
+
+.impl {
+    display: grid;
+    width: 160px;
+    grid-template-columns: 80px 80px;
+    grid-template-rows: 40px;
+    gap: 0;
+}
+
+#i1 { height: 10px; }
+#i2 { height: 10px; }
+#i3 { height: 55px; }
+
+.spanned {
+    display: grid;
+    width: 80px;
+    grid-template-columns: 80px;
+    grid-template-rows: auto auto;
+    row-gap: 8px;
+}
+
+#span {
+    grid-row: 1 / 3;
+    height: 100px;
+}
+
+.mixed {
+    display: grid;
+    width: 80px;
+    grid-template-columns: 80px;
+    grid-template-rows: 40px auto;
+    row-gap: 8px;
+}
+
+#mix {
+    grid-row: 1 / 3;
+    height: 100px;
+}
+
+.marg {
+    display: grid;
+    width: 80px;
+    grid-template-columns: 80px;
+}
+
+#inset {
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.mc {
+    display: grid;
+    width: 50px;
+    grid-template-columns: 50px;
+    grid-template-rows: min-content;
+}
+
+#mci { height: 27px; }

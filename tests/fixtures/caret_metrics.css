@@ -1,0 +1,33 @@
+/* The reader's search field: a 36px border-box pill whose text sits on a 36px line, so the font
+   box and the content box (34px) are two different things. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+.finder {
+    width: 360px;
+    height: 36px;
+    margin: 0;
+    padding: 0 14px;
+    border: 1px solid rgba(72, 54, 32, 0.12);
+    border-radius: 999px;
+    background: #fbf6ec;
+    color: #2b261f;
+    font-family: "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 36px;
+}
+
+.finder::placeholder {
+    color: #8a7f72;
+    font-weight: 400;
+    line-height: 36px;
+}

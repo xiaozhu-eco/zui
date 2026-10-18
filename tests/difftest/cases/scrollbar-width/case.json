@@ -1,0 +1,17 @@
+{
+  "name": "scrollbar-width",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "scrollbar-width:none reserves no gutter. thin is recorded against Chrome with the pinned classic bar.",
+  "matrix": ["scroll.scrollbar"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

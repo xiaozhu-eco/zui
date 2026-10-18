@@ -1,0 +1,41 @@
+# clangd 项目配置（clangd 会自动读取工程根目录下的 .clangd，改完立即生效，无需重启）
+#
+# 头文件清理 / 补全相关（Include Cleaner）：
+#   UnusedIncludes   报告"包含了但本文件没用到"的头文件，并给出删除的快速修复
+#                    clangd >= 17 默认就是 Strict，这里显式写出来
+#   MissingIncludes  报告"用到了某符号但没直接包含其头文件"，可一键补 include
+#                    clangd >= 17 默认是 None（关），必须显式开启
+#   IgnoreHeader     命中（后缀匹配）的头文件不参与诊断/删除
+#   AnalyzeAngledIncludes
+#                    默认 false：只判定标准库的尖括号 include。
+#                    本项目项目头也用 <>（<core/event.h>），想让它们也被判定可设为 true，
+#                    代价是"为下游转手提供"的头文件容易误报。
+#
+# 单独保留某一行 include：在该行末尾加注释   // IWYU pragma: keep
+# 声明"此头只能被间接包含"：在头文件里加     // IWYU pragma: private, include "public.h"
+# 注意：诊断只针对当前打开的文件（TU）本身，头文件里"未使用"的 include 有可能是
+#       给包含它的 .cpp 用的，删除前先确认 .cpp 自己 include 了（详见 event_bus 的例子）。
+
+# 编译数据库：build/compile_commands.json
+# 由 CMake 的 cmake.copyCompileCommands 生成（源头是 build/windows-x64/compile_commands.json）。
+# 默认值 Ancestors 本来也会逐级向上找 build/ 子目录，这里显式写死，避免依赖 VS Code 的
+# clangd.arguments，命令行/其他编辑器打开时行为一致。
+CompileFlags:
+  CompilationDatabase: build
+
+Diagnostics:
+  UnusedIncludes: Strict
+  MissingIncludes: Strict
+  Includes:
+    AnalyzeAngledIncludes: false
+    IgnoreHeader:
+      - 'export\.h' # CMake 生成的导出宏头，一般不用管
+
+# 接受补全时自动插入所属头文件（IWYU 即 "include what you use"，默认值）
+Completion:
+  HeaderInsertion: IWYU
+
+# 让自动插入的 include 保持本项目的 <> 风格（正则匹配头文件路径）
+Style:
+  AngledHeaders:
+    - '(^|/)(core|zui|application|render|window)/'

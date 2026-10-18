@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+<template>
+  <div id="markrow{{index}}" class="mark-row">
+    <button type="button" id="mark{{index}}" class="mark" data-id="{{id}}" onclick="on_mark">
+      <span class="mark-title">{{label}}</span>
+      <span class="mark-snip">{{snip}}</span>
+    </button>
+    <button type="button" id="unmark{{index}}" class="mark-del" data-id="{{id}}"
+      onclick="on_unmark">&#21024;&#38500;</button>
+  </div>
+</template>
+</body>
+</html>

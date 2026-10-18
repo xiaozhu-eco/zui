@@ -1,0 +1,17 @@
+{
+  "name": "grid-abspos-scroll",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "overflow:auto grid plus a far absolutely-positioned child. The browser recording pins scrollHeight (and the clamped scroll offset) that only the out-of-flow child creates.",
+  "matrix": ["flow.grid", "position.out-of-flow", "scroll.overflow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "scroll", "target": "#grid", "x": 0, "y": 5000 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

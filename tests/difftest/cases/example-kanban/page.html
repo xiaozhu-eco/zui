@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="kanban">
+  <title>小竹看板</title>
+  <link rel="stylesheet" href="../../../../example/applications/kanban/css/tokens.css">
+  <link rel="stylesheet" href="../../../../example/applications/kanban/css/shell.css">
+  <link rel="stylesheet" href="../../../../example/applications/kanban/css/board.css">
+</head>
+<body onkeydown="on_accel">
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">竹</span>
+        <h1 class="brand-name">小竹看板</h1>
+      </div>
+      <div class="top-actions">
+        <p class="status" id="status" role="status"></p>
+        <button type="button" class="btn" id="restore" onclick="on_restore">恢复示例</button>
+        <button type="button" class="btn btn-primary" id="add-column" onclick="on_add_column">新建列</button>
+      </div>
+    </header>
+    <div class="board" id="board" aria-label="看板"></div>
+  </div>
+
+  <div class="back" id="editor" hidden>
+    <form class="dialog" id="editor-form" role="dialog" aria-modal="true" aria-labelledby="editor-title">
+      <h2 id="editor-title">编辑卡片</h2>
+      <label class="field"><span>标题</span><input id="f-title" autocomplete="off"></label>
+      <label class="field"><span>说明</span><textarea id="f-note"></textarea></label>
+      <label class="field" id="column-field"><span>列</span><select id="f-column"></select></label>
+      <div class="field" id="column-picks">
+        <span>列</span>
+        <div class="picks" id="column-pick-list">
+          <template>
+            <button type="button" class="chip {{on}}" onclick="on_pick_column" data-id="{{id}}">{{name}}</button>
+          </template>
+        </div>
+      </div>
+      <p class="form-error" id="editor-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-danger" id="editor-remove" onclick="on_editor_remove">删除</button>
+        <button type="button" class="btn" id="editor-cancel" onclick="on_editor_cancel">取消</button>
+        <button type="submit" class="btn btn-primary" onclick="on_save">保存</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="back" id="confirm" hidden>
+    <div class="dialog dialog-confirm" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <h2 id="confirm-title">确认</h2>
+      <p id="confirm-body"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="confirm-cancel" onclick="on_confirm_cancel">取消</button>
+        <button type="button" class="btn btn-danger" id="confirm-ok" onclick="on_confirm_ok">确定</button>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+</html>

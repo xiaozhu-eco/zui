@@ -1,0 +1,368 @@
+{
+  "schema": "zui.difftest.trace/2",
+  "engine": "chromium",
+  "engine_version": "Edg/154.0.4258.37",
+  "viewport": [
+    800,
+    600
+  ],
+  "scroll": [
+    0,
+    0
+  ],
+  "elements": [
+    {
+      "path": "0",
+      "tag": "html",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        144
+      ],
+      "scroll_size": [
+        800,
+        600
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          144
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      },
+      "style_digest": "0c3e941748b4921c"
+    },
+    {
+      "path": "0/0",
+      "tag": "head",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      },
+      "style_digest": "0c3e941748b4921c"
+    },
+    {
+      "path": "0/0/0",
+      "tag": "link",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      },
+      "style_digest": "0c3e941748b4921c"
+    },
+    {
+      "path": "0/1",
+      "tag": "body",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        16,
+        800,
+        112
+      ],
+      "scroll_size": [
+        800,
+        112
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        16,
+        800,
+        112
+      ],
+      "client_rects": [
+        [
+          0,
+          16,
+          800,
+          112
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      },
+      "style_digest": "0c3e941748b4921c"
+    },
+    {
+      "path": "0/1/0",
+      "tag": "div",
+      "id": "clip",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        16,
+        16,
+        80,
+        48
+      ],
+      "scroll_size": [
+        140,
+        96
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        16,
+        16,
+        80,
+        48
+      ],
+      "client_rects": [
+        [
+          16,
+          16,
+          80,
+          48
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          140,
+          96
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "overflow-x": "clip",
+        "overflow-y": "clip"
+      },
+      "style_digest": "a61fa416974d1888"
+    },
+    {
+      "path": "0/1/0/0",
+      "tag": "div",
+      "id": "big",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        16,
+        16,
+        140,
+        96
+      ],
+      "scroll_size": [
+        140,
+        96
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        16,
+        16,
+        140,
+        96
+      ],
+      "client_rects": [
+        [
+          16,
+          16,
+          140,
+          96
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      },
+      "style_digest": "0c3e941748b4921c"
+    },
+    {
+      "path": "0/1/1",
+      "tag": "div",
+      "id": "hidden",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        16,
+        80,
+        80,
+        48
+      ],
+      "scroll_size": [
+        140,
+        96
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        16,
+        80,
+        80,
+        48
+      ],
+      "client_rects": [
+        [
+          16,
+          80,
+          80,
+          48
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          140,
+          96
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "overflow-x": "hidden",
+        "overflow-y": "hidden"
+      },
+      "style_digest": "8a01d9203bd3c35c"
+    },
+    {
+      "path": "0/1/1/0",
+      "tag": "div",
+      "id": "big2",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        16,
+        80,
+        140,
+        96
+      ],
+      "scroll_size": [
+        140,
+        96
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        16,
+        80,
+        140,
+        96
+      ],
+      "client_rects": [
+        [
+          16,
+          80,
+          140,
+          96
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "overflow-x": "visible",
+        "overflow-y": "visible"
+      },
+      "style_digest": "0c3e941748b4921c"
+    }
+  ],
+  "extras": null
+}

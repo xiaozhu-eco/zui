@@ -1,0 +1,7 @@
+html, body { margin: 0; padding: 0; }
+div { display: inline-block; height: 20px; font-size: 16px; }
+.sans { font-family: sans-serif; }
+.arial { font-family: Arial; }
+.yahei { font-family: "Microsoft YaHei"; }
+.segoe { font-family: "Segoe UI"; }
+.noto { font-family: "Noto Sans"; }

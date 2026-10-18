@@ -1,0 +1,17 @@
+html, body { margin: 0; padding: 0; background-color: #101418; }
+
+#clip, #hidden {
+  width: 80px;
+  height: 48px;
+  margin: 16px;
+  background-color: #222831;
+}
+
+#clip { overflow: clip; }
+#hidden { overflow: hidden; }
+
+#big, #big2 {
+  width: 140px;
+  height: 96px;
+  background-color: #7cb7ff;
+}

@@ -1,0 +1,3706 @@
+{
+  "entries": [
+    {
+      "name": "AppInteract.Album",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "album"
+      ]
+    },
+    {
+      "name": "AppInteract.Calendar",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "AppInteract.CalendarMonthChipOpensTheEvent",
+      "kind": "gtest",
+      "tags": [
+        "正确性",
+        "交互"
+      ],
+      "sessions": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "AppInteract.SetModelSameIsFree",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ReStampedFlexListKeepsItsBox",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ReplaceFragmentDropsTheOldChildren",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.IdleObservationIsFree",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ScrollDoesNotCascadeOrLayout",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.LocalTextEditDoesNotGrowWithRowCount",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EngineUnitsInputEventsCountTheDispatch",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EngineUnitsHtmlAndCssParseCountTheWork",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EngineUnitsTextShapeCountsTheMiss",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EngineUnitsImageDecodeCountsTheMiss",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.SameTextSetIsFree",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EmptyToFirstCharIsIdempotent",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ClassToggleScope",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.VisibilityToggleScope",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.SetModelKeepsEqualRows",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ToggleLocalToTheControl",
+      "kind": "gtest",
+      "tags": [
+        "正确性"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ToggleLocalToTheControlStaysLocal",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.CollapsedTableVariesEveryCell",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.LocalWriteCascadesOnlyTheClosure",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.HoverCompoundWithAttributeStaysLocal",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.HasClosureStaysAtTheAnchor",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.IdHasStaysOffTheUnrelatedWrite",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.SiblingEdgeStaysOnTheLeftCompound",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.DebugBudgetProbe",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.GpuRetainsUnchangedAndScroll",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ShowingHiddenSiblingDoesNotRebuildThePage",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.TableRowReusesTheCellFinal",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.SubjectBucketSkipsUnrelatedRules",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.FlexBaseSkipsMinWhenTheInlineSizeMatches",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.BlockBasisStaysOutOfUnrelatedKeys",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.MinMaxContentAskCollapsesWhenTheInlineSizeMatches",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ShrinkToFitStretchDoesNotWalkEveryAncestor",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ShrinkToFitSkipsTheUnchangedSecondWalk",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.UnloadRetiredStyleRootStaysInClosure",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.UnloadDropsTheRetiredStyleRoot",
+      "kind": "gtest",
+      "tags": [
+        "正确性"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.GlobalSelectorKeepsTheWholeDocumentClosure",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.UnloadFragmentStaysInTheParentSubtree",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.PaintOnlyWriteDoesNotWalkTheWorld",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ClickReusesTheHitWalk",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.NthOfClosureStaysInTheParent",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.TableModelReconcilesByRowKey",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.Chat",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "chat"
+      ]
+    },
+    {
+      "name": "AppInteract.ChatConversationRowClickKeepsTheAnchorValid",
+      "kind": "gtest",
+      "tags": [
+        "正确性",
+        "交互"
+      ],
+      "sessions": [
+        "chat"
+      ]
+    },
+    {
+      "name": "AppInteract.ChatSendRebuildsTheScrolledLog",
+      "kind": "gtest",
+      "tags": [
+        "交互",
+        "app"
+      ],
+      "sessions": [
+        "chat"
+      ]
+    },
+    {
+      "name": "AppInteract.Contacts",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "contacts"
+      ]
+    },
+    {
+      "name": "AppInteract.Kanban",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "kanban"
+      ]
+    },
+    {
+      "name": "AppInteract.Zmd",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "zmd"
+      ]
+    },
+    {
+      "name": "AppInteract.Zdb",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "zdb"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderShell",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderPageMeasureGate",
+      "kind": "gtest",
+      "tags": [
+        "正确性"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.LabelFlexFixedSizeHit",
+      "kind": "gtest",
+      "tags": [
+        "正确性"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "ConcernTags.ManifestMatchesSources",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.IdleFrameResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": [
+        "render-present"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ColorTransitionRepaintsUntilItEnds",
+      "kind": "gtest",
+      "tags": [
+        "渲染",
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.IdleFrameDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.PumpKeystrokeInsertsTheCharacter",
+      "kind": "gtest",
+      "tags": [
+        "正确性"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.PumpKeystrokeRestylesOnlyTheControl",
+      "kind": "gtest",
+      "tags": [
+        "性能"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.KeyDoesNotInsertText",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.BorrowedSessionRejectsRun",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ReaderRefreshShelf",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderShelfPlusMenu",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderOpenAndBack",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderTocAndClose",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderSettings",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderReadingTap",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderChapterJump",
+      "kind": "gtest",
+      "tags": [
+        "交互",
+        "app"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderPrevNextChapter",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderTypeKeyEscape",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderAccelArrowsAndEscape",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderSort",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderResume",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderBookmark",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderRemove",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderImportUnsupported",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderImportUtf8NameLandsOnTheShelf",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderClearProgress",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderFilterFindMarks",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderPageModeMeasureAndTurn",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "AppInteract.ReaderPageModeChapterNext",
+      "kind": "gtest",
+      "tags": [
+        "smoke"
+      ],
+      "sessions": [
+        "reader"
+      ]
+    },
+    {
+      "name": "PlatformFactory.NoopPickOpenUnsupported",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "PlatformFactory.NoopUserDataDirExists",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppHost.UserDataDirBeforeRun",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppHost.PickViaNoopUnsupported",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppHost.OpenUriViaNoopFalse",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "PlatformFactory.Win32OpenUriRejectsBadScheme",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "PlatformFactory.CrossPlatformKindsResolve",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "PlatformFactory.MobileIosAndroidStubs",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "HostProbe.DialogAndMotionClassifiers",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "PlatformFactory.MobilePickInjection",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppHost.PickOpenAsyncNoopInvokesHandler",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppHost.PickOpenAsyncMobileWaitsForComplete",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "HostMedia.QueryHostMediaSmoke",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "HostMedia.WindowsPointerSignalsMapToMediaFacts",
+      "kind": "gtest",
+      "tags": [
+        "正确性"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "FakeWindow.DiscardPendingInputClearsEdges",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "FakeWindow.TakeDroppedPathsDrainsQueue",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "FakeWindow.InMemoryClipboardRoundTrip",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "IWindow.DefaultClipboardUnsupported",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppHost.ClipboardWithoutWindowUnsupported",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "WindowFactory.MobileIosAndroidStubs",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "WindowFactory.MobileStubInsetsTitleSizeVisibility",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "WindowFactory.MobileInjectOpenedPathsToDropQueue",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "PointerFrame.FakeWindowPublishesTheStagedMouseContact",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.LiveTouchContactBeatsTheMouseInThePointerFold",
+      "kind": "gtest",
+      "tags": [
+        "正确性",
+        "交互"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.SecondTouchKeepsItsOwnPointerStream",
+      "kind": "gtest",
+      "tags": [
+        "正确性",
+        "交互"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.CancelledTouchFiresPointerCancel",
+      "kind": "gtest",
+      "tags": [
+        "正确性",
+        "交互"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.TouchDragScrollsTheNearestScroller",
+      "kind": "gtest",
+      "tags": [
+        "正确性",
+        "交互"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.TouchActionNoneStopsThePan",
+      "kind": "gtest",
+      "tags": [
+        "正确性",
+        "交互"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ActivePseudoClassFollowsThePress",
+      "kind": "gtest",
+      "tags": [
+        "正确性",
+        "交互"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.GamepadsArePolledIntoTheApp",
+      "kind": "gtest",
+      "tags": [
+        "正确性"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.PenContactCarriesPressure",
+      "kind": "gtest",
+      "tags": [
+        "正确性",
+        "交互"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppHost.PumpFrameWithoutSessionReturnsFalse",
+      "kind": "gtest",
+      "tags": [
+        "guard"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "DifftestSelfCheck.SelectPopupDefaultBehavior",
+      "kind": "gtest",
+      "tags": [
+        "正确性"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "DifftestSelfCheck.AppendShiftedKeepsGroupBoundaries",
+      "kind": "gtest",
+      "tags": [
+        "渲染",
+        "render-kernel"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "Host.UnmatchedBeginFilterScalesLaterPrimitives",
+      "kind": "gtest",
+      "tags": [
+        "渲染",
+        "render-gpu"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.CalendarMonthKeepsDayNumbers",
+      "kind": "gtest",
+      "tags": [
+        "正确性",
+        "app"
+      ],
+      "sessions": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "AppInteract.KanbanColumnsStayOnTheRowAxis",
+      "kind": "gtest",
+      "tags": [
+        "正确性",
+        "app"
+      ],
+      "sessions": [
+        "kanban"
+      ]
+    },
+    {
+      "name": "AppInteract.AlbumIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.CalendarIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.ChatIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ContactsIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.KanbanIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.ZdbIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZmdIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ReaderIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "ReaderOracle.Shell",
+      "kind": "oracle",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.AlbumDeleteRemovesTheAlbum",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumNewAlbumSortsBeforeTheLooseBin",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.ContactsStarFilterShrinksTheList",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.KanbanEnterAddsTheCardTitle",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.ZdbModeSwitchShowsTheStructurePane",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.MeasureFlushesAndTheObservationSeamDoesNot",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.WindowWheelNotchScrollsFortyEightPixels",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.WindowWheelClampsAtTheScrollEnd",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.WindowWheelScrollsTheViewport",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.WindowWheelClampsTheViewportAtTheEnd",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "form-control-empty",
+      "kind": "difftest-case",
+      "tags": [
+        "正确性"
+      ],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleHelloKeepsItsHeaderAndWritePath",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleChecksKeepsWrappedAndNowrapSamples",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTableLaysOutItsCellsWithText",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStyleThemeRadioMovesTheSelection",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTransitionKeepsItsStageAndTiles",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTextKeepsEverySampleOnScreen",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleFlowCollapsesAdjacentMargins",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStudioBindsItsGridAndTogglesItsControls",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ChatQueryWithoutAMatchShowsTheEmptyNote",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatQueryKeepsTheMatchingConversation",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatQueryLeavesTheScrolledLogInPlace",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatConversationClickSwitchesTheThread",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatCreateOpensTheCreatorDialog",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatCreatorCancelHidesTheDialog",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatCreatorSaveAddsAndSelectsTheConversation",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatCreatorSaveRejectsAnEmptyName",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatSendAppendsTheDraft",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatDraftEnterSendsTheMessage",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatComposerCaretWalksTheWrappedLines",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatRemoveAsksThenDeletesTheConversation",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatRestoreAsksThenReseeds",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatConfirmCancelKeepsTheData",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatAccelEscapeClosesTheOpenDialog",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatScrollingAwayFromTheBottomShowsJump",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ChatJumpReturnsToTheBottom",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ContactsQueryWithoutAMatchShowsTheEmptyNote",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsQueryKeepsTheMatchingPerson",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsStarOnlyShrinksTheList",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsFilterChipNarrowsToTheGroup",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsPersonClickShowsTheDetail",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsCreateOpensTheEmptyEditor",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsEditOpensTheEditorOnTheSelection",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsSaveRejectsAMissingName",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsSaveRejectsAMalformedEmail",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsSaveRejectsAnEmptyDomainLabel",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsSaveAddsTheNewPerson",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsEditorCancelHidesTheEditor",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsGroupPickerIsHiddenAndTheSelectIsReachable",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsDeleteAsksThenRemovesThePerson",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsRestoreAsksThenReseeds",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsConfirmCancelKeepsTheList",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsAccelEscapeClosesTheOpenDialog",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.ContactsOpenUriReadsTheDetailHref",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.CalendarTodayRestoresTheCurrentMonth",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarPrevMovesBackAMonth",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarNextMovesForwardAMonth",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarMonthButtonShowsTheGrid",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarWeekButtonShowsTheWeek",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarDayCellSelectsTheDate",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarWeekDaySelectsTheDate",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarWeekDayNewOpensTheEditor",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarEventChipOpensTheEditor",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarAgendaItemOpensTheEditor",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarColorRadioPaintsTheSavedEvent",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarCreateOpensTheEditor",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarEditorCancelHidesTheEditor",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarSaveRejectsAMissingTitle",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarSaveAddsTheEventToTheAgenda",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarRemoveAsksThenDeletesTheEvent",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarRestoreAsksThenReseeds",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarConfirmCancelKeepsTheEvents",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.CalendarAccelEscapeClosesTheOpenDialog",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.KanbanColumnNameEditPersists",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanAddCardOnEnter",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanCardClickOpensTheEditor",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanCardMoveUpReordersTheColumn",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanCardMoveDownReordersTheColumn",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanDragCardToAnotherColumn",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanDragColumnReordersTheBoard",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanColumnHeadShowsGrip",
+      "kind": "gtest",
+      "tags": ["渲染", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanAddColumnAppendsAnEmptyColumn",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanRemoveColumnAsksThenMovesItsCards",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanPickColumnMarksTheTarget",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanSaveRejectsAMissingTitle",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanSaveMovesTheCardToThePickedColumn",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanEditorCancelHidesTheEditor",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanRemoveCardAsksThenDeletes",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanRestoreAsksThenReseeds",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanConfirmCancelKeepsTheBoard",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.KanbanAccelEscapeClosesTheOpenDialog",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.AlbumClickSelectsTheAlbum",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumNameEditRenamesTheButton",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumPhotoClickOpensTheLightbox",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumLightOpensWithTheToolsClosed",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumLightClickLeavesTheViewer",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumLightClickKeepsTheToolsOpen",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumLightCloseHidesTheLightbox",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumPrevStepsBack",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumNextStepsForward",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumZoomInRaisesTheLabel",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumZoomOutClampsAtOneHundred",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumControlWheelZoomsTheStage",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumNoteEditPersistsOnReopen",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumNoteEscapeClosesTheLightbox",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumAccelEscapeClosesAndArrowsStep",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumPickAlbumMovesThePhoto",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumStageDragScrollsByTheDelta",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumDeletePhotoAsksThenDeletes",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumDeleteAlbumAsksThenMovesItsPhotos",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumRestoreAsksThenReseeds",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumAddAlbumOpensTheDialog",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumCancelDialogHidesIt",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumSaveDialogRejectsAnEmptyName",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumSaveDialogAddsAndSelectsTheAlbum",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumConfirmCancelKeepsThePhotos",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.AlbumImportLabelIsWiredToTheFileInput",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.ExampleHelloHomeShowsTheHomePage",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleHelloProjectsShowsTheProjectsCopy",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleHelloSettingsShowsTheSettingsCopy",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleHelloNameInputDrivesTheStatus",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleHelloSaveWritesTheProfile",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleHelloIncrementRaisesTheProjectCount",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleHelloContentScrollsOnWheel",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleFlowPageScrollsOnWheel",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleChecksSheetTogglesTheMaskClass",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTransitionCascadeSendsTheTilesIn",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTransitionHeroAlternates",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTransitionToastShowsTheToast",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTransitionDrawerOpens",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTransitionSheetShowsTheMask",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTransitionStageSwitchesToDay",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTransitionPlayTogglesEverything",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStudioPageSwitchShowsTheLog",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStudioOpenLoadsTheExportFragment",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStudioCloseUnloadsTheFragment",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStudioConfirmExportsWithNotifyOn",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStudioThemeDawnSwitchesThePack",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStudioReshuffleRebuildsAndReportsTheGrid",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ReaderMarkClickJumpsToItsChapter",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderUnmarkClickRemovesTheBookmark",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ZdbSampleButtonLoadsTheSampleLibrary",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbObjectClickSelectsItInTheStructurePane",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbModeSwitchShowsEachPane",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbShowStructureButtonOpensTheStructurePane",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbObjectFilterShrinksTheList",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbSortHeaderReordersTheGrid",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbCellClickShowsTheDetail",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbDetailCloseHidesTheDetail",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbRunSqlShowsTheResult",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbSqlCtrlEnterRuns",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbClearSqlEmptiesTheResults",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbQueryCellClickShowsTheDetail",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbQueryDetailCloseHidesIt",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbQueryPickSwitchesTheResult",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbPagerMovesAndChangesTheLimit",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbStructureOpenTableSelectsTheTable",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbDropOpensTheDroppedDatabase",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbOpenAndExportAreWiredToTheHostPickers",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ReaderClassicMacNewlinesSplitChapters",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnRefreshRebuildsTheShelf",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnOpenShowsTheChapter",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnBackReturnsToTheShelf",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnTocShowsTheTray",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnTocCloseLeavesTheReaderUi",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnTrayScrimClosesTheTray",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnSettingsTogglesThePanel",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnReadingTapTogglesTheChrome",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnChapterJumpsToIt",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnNextStepsForward",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnPrevStepsBack",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnTypeKeyEscapeClosesTheOverlays",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnAccelStepsAndCloses",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnSortSwitchesTheShelfOrder",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnResumeOpensTheMostRecentBook",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnBookmarkTogglesTheMark",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnRemoveHidesTheBookFromTheShelf",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnImportWithoutAPickerHintsAtTheBooksDir",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnClearResetsTheReadingProgress",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnHitJumpsToTheMatch",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnMarkJumpsToItsChapter",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderOnUnmarkRemovesTheBookmark",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ExampleHelloIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleHelloIncrementStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleChecksSheetToggleStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTransitionPlayStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStudioReshuffleStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.AlbumSelectStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.CalendarPrevMonthStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.ChatSwitchThreadStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ContactsStarFilterStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.KanbanAddCardStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.ZdbOpenTableStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ReaderRefreshShelfStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ZdbFixtureOpensAndListsEveryObject",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbWideTableStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZdbObjectPanelFilterStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ExampleHelloIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleChecksIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTransitionIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStudioIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleFlowIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleFlowPageScrollPaintsTheNewOffset",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleHelloContentScrollPaintsTheNewOffset",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ScrollInsideFixedPaintsTheNewOffset",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStyleIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTableIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTextIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleFlowIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStyleIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTableIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleTextIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStudioNestedScrollStaysInItsBox",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleStudioScrollStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ExampleHelloContentScrollDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EventDblclickReachesItsHandler",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EventContextmenuReachesItsHandler",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EventAuxclickReachesItsHandler",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EventHoverOrderMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EventKeyupReachesItsHandler",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EventBlurReachesItsHandler",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.EventResizeReachesItsHandler",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.InteractionCensusMatchesEveryPage",
+      "kind": "gtest",
+      "tags": ["交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.DumpInteractionCensus",
+      "kind": "gtest",
+      "tags": ["guard"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.SetModelInsertKeepsTheMovedRows",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.SetModelKeptRowsKeepAbsorbedInlineTextOnTheParentLine",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "Host.FilterBrightnessScalesRgbAndRestores",
+      "kind": "gtest",
+      "tags": ["渲染", "render-gpu"],
+      "sessions": []
+    },
+    {
+      "name": "Host.IsolateGroupKeepsAlphaAndEmitsMarkers",
+      "kind": "gtest",
+      "tags": ["渲染", "render-gpu"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage0.PaintOnlyClassDoesNotLayOut",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage0.HoverOnOneButtonStaysInsideItsSubtree",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage0.ThemeColorClassDoesNotLayOut",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage0.ScrollOnlyDoesNotLayOut",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage0.WriteUnderDisplayNoneDoesNoBoxWork",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage1.PaintOnlyRadiusReinternsWithoutLayout",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStageG.AbsorbedChildChangeDoesNotStoreTheParent",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStageG.ChildThatGrowsItsParentStoresTheParent",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStageG.ManyChangedBoxesCompareEachAncestorOnce",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage3.TwoDistantEditsKeepTwoDamageRects",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage3.SelectiveDamageMatchesTheFullWalk",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage3.FixedLayerClosedLeavesNoResidue",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage3b.OneBackgroundChangeWalksOnlyItsTiles",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage3b.TwoDistantEditsWalkTwoTileGroups",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage4.SelectPopupLocksTheBasePage",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage2.ThemeColorClassSkipsTheRuleList",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage2.TransitionFeedClaimsOnlyTransitionedProperties",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage2.NewRowsUnderContentVisibilitySkipOffscreenOnTheFirstLayout",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage2.HoveringTheAncestorCompoundIsNotAReuse",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage2.PrecedingSiblingChangeIsNotAReuse",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage2.AddingASiblingIsNotAReuse",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage2.ReplacingTheSheetsDropsEveryEntry",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStageP.ScrollPlacesOnlyTheScrolledSubtree",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStageP.LocalLayoutChangeDoesNotPlaceThePage",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStageP.ViewportChangeStillPlacesTheWholeTree",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStageW.TheWallStopsTheCoupling",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.CalendarDayClickKeepsEveryCellHittable",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "WindowChrome.NoWindowRejectsChromeAndQueuesIcon",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "WindowChrome.IconChromeDisplayRoundTripOnTheOneWindow",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "WindowChrome.MultiWindowAndPrintStayASeam",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "WindowChrome.CancelledTaskObservesCancelAndSkipsCompletion",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "WindowChrome.EventPayloadShapeStaysFrozen",
+      "kind": "gtest",
+      "tags": ["guard"],
+      "sessions": []
+    },
+    {
+      "name": "SdlWindow.VisibilityAndOrientationReachTheAuthor",
+      "kind": "gtest",
+      "tags": ["guard"],
+      "sessions": []
+    },
+    {
+      "name": "SdlWindow.HiddenWindowAcceptsIconAndReportsDisplay",
+      "kind": "gtest",
+      "tags": ["guard"],
+      "sessions": []
+    },
+    {
+      "name": "SdlWindow.PushedFingersReachTheAuthor",
+      "kind": "gtest",
+      "tags": ["guard"],
+      "sessions": []
+    },
+    {
+      "name": "SdlWindow.HiddenStaysOneToOneAndVisibleMatchesContentScale",
+      "kind": "gtest",
+      "tags": ["guard"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ShareFirstNameMustNotBeEmpty",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareBrowseListsTheRealDirectory",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareFolderRowEntersAndUpReturns",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareSelectionDrivesTheBottomBar",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.SharePickShowsTheEmptyPeerState",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareSettingsPersistIdentity",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareLargeDirectoryShowsTheBrowserWindow",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareEnterOnTheNameStarts",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareRefreshPicksUpANewFile",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.SharePathEditOpensThatDirectory",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.SharePeerStripDoesNotOpenThePicker",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareSendToAPeerWaits",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareWaitCancelReturnsToBrowse",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareIncomingAcceptStartsTheTransfer",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareIncomingRejectHidesTheSheet",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareIncomingScrimRejects",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareTransferCancelReturnsToBrowse",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareDoneReturnsToBrowse",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareFailBackReturnsToBrowse",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareSaveDirectoryPersists",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareSettingsBackReturnsToBrowse",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareRefreshStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.ShareIdleResubmitsTheLastList",
+      "kind": "gtest",
+      "tags": ["render-present"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.AlbumPageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "AppInteract.CalendarPageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["calendar"]
+    },
+    {
+      "name": "AppInteract.ChatPageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["chat"]
+    },
+    {
+      "name": "AppInteract.ContactsPageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["contacts"]
+    },
+    {
+      "name": "AppInteract.FileExplorerPageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.KanbanPageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.ParticlePageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.ReaderPageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.SharePageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["share"]
+    },
+    {
+      "name": "AppInteract.WriterPageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.ZdbPageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zdb"]
+    },
+    {
+      "name": "AppInteract.ZmdPageMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.FileExplorerRadiosMatchTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.FileExplorerRadiosSwitchFolderFileAndView",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.MarkupRestoreStaysHiddenUntilOpened",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "HostServices.DataAndAriaRoundTrip",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "HostServices.WatchFiresForThatNodeOnly",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "HostServices.ChildModalTakesInputAndCloseLeavesParent",
+      "kind": "gtest",
+      "tags": ["正确性", "交互"],
+      "sessions": []
+    },
+    {
+      "name": "HostServices.DiagnosticsLogAndCrashReport",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "HostServices.ImageClipboardIsSeparateFromText",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "HostServices.ImeCaretAndSdlComposition",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "HostServices.GlfwImeCompositionThroughPoll",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "HostServices.NotifyTrayBadgeHotkeyAndMedia",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "HostServices.SingleInstanceFileUrlAndLocalUpdate",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "HostServices.ChoosableOpener",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.WriterNewPieceShowsInTheTree",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterNewFolderHoldsAPiece",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterTreeSelectOpensThePiece",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterRenameChangesTheTree",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterEditModeAcceptsText",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterReadModeShowsTextAndRejectsEdits",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterDeleteRemovesThePiece",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterStorageRoundTrip",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterCalendarShowsActivity",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterHistoryShowsTheOlderText",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterDesktopTreeSitsBesideThePiece",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterPhonePieceFitsAndTreeIsReachable",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.ParticleRegionsSitInTheWorkbench",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.ParticleSimulationAdvances",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.ParticleEffectSelectUpdatesTheField",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.ParticleCountChangesTheNextAdvance",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.ParticleSpeedChangesTheNextAdvance",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.ParticleSpreadChangesTheNextAdvance",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.ParticleDragKeepsTheNewWidths",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.ParticleShaderRoundTrip",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.KanbanBoardMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["kanban"]
+    },
+    {
+      "name": "AppInteract.ParticleEffectAndCountMatchTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.ParticleEffectStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.ParticleIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["particle"]
+    },
+    {
+      "name": "AppInteract.WriterNewPieceMatchesTheBrowser",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterNewPieceStaysInsideItsBound",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "AppInteract.WriterIdleDoesNotWalkPaint",
+      "kind": "gtest",
+      "tags": ["性能"],
+      "sessions": ["writer"]
+    },
+    {
+      "name": "OpenedPath.AlbumImportsImageOnAlbumPage",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["album"]
+    },
+    {
+      "name": "OpenedPath.MarkdownOpensDocumentOnEditorPage",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "OpenedPath.DatabaseOpensDocumentOnAppPage",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zdb"]
+    },
+    {"name": "AppInteract.StudioReaderDebugResponse", "kind": "gtest", "tags": ["性能"], "sessions": []},
+    {
+      "name": "AppInteract.ZmdChromeWritesTheDocumentName",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdChromeWritesGroupedCounts",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdChromeSaveDotCarriesTheStateAttribute",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdChromeTypingVeilMarksTheWindow",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdMarkdownKeepsPipesInsideInlineCode",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdMarkdownRendersWelcomeTablePipes",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdMarkdownKeepsSpacedInlineCode",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdMarkdownHighlightsTheDoubleEqualsRun",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdMarkdownRendersBlocksAndInline",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdMarkdownKeepsAnOrderedListStart",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdMarkdownEscapesMarkupAndKeepsCodeLiteral",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdMarkdownCountsWordsAndLines",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdMarkdownOutlinesHeadingsWithDepth",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdDocumentTracksDirtyTypingAndUndo",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdWorkspaceListsFoldersFirstThenDocuments",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdWorkspacePicksTheFirstFreeName",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdFileListModelCarriesKindAndActive",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdPaletteModelFiltersByLabel",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdPaletteModelExposesRowFields",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdOutlineModelMarksTheCurrentRow",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdSourceTypingUpdatesTheCountsRow",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdFindFieldCountsTheMatches",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdSessionPushesViewAndCountsToThePage",
+      "kind": "gtest",
+      "tags": ["交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdLaunchShowsTheWritingSurface",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdEditingGoesThroughThePage",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdWriteClickKeepsThePaperWhole",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdWritingViewPaintsOneCaret",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdWritingViewPutsTheCaretWhereTheOffsetIs",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdWritingViewPaintsTheSelection",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdDragInTheWritingViewSelects",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdMultiClickInTheWritingViewWidensTheSelection",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdShiftArrowGrowsTheSelectionOnThePaper",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdWriteClickMapsXThroughTheText",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdShiftClickExtendsTheSelection",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdFilesRoundTripOnDisk",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdChromePaintsAndRestores",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdPreviewResolvesImagesNextToTheDocument",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdDropCopiesThePictureAndLinksIt",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdDroppedDocumentAsksBeforeItReplacesTheBuffer",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdNewDocumentFollowsTheNewFileRow",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdFilePanelWalksFolders",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdTypewriterKeepsTheCaretInTheMiddle",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdSourceTypingKeepsTheCaretInView",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdWritingViewPageKeysScrollThePaper",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdWritingViewDragPastTheFoldKeepsScrolling",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdToolbarClickAfterAScrollAndADialog",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdAcceleratorsReachTheCommands",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdPaletteHighlightsTheSelection",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdFindMarksItsHitsInThePreview",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdFindJumpBringsTheHitIntoView",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdDeletingTextRetiresItsBlocks",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdFocusModeKeepsTheCaretBlockLit",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdPaletteKeysDriveTheList",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdUndoRedoShortcutsReachTheDocument",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdLongDocumentWalksEveryViewAndSaves",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdPanelsTakeTheKeyboardWhenTheyOpen",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdEditKeysWaitForTheEditorsFocus",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdFilePaletteOpensThePickedFile",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdWindowBlurDimsTheSheet",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdSaveFailureStaysOnTheDot",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdDropWithoutALandingCopyInsertsNothing",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdPickImageFillsTheFieldsOnlyWhenTheCopyLands",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdSaveAsAndExportWriteThePickedPath",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdOpenPickerAsksFirstAndRefusesAFolder",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdRestartDoesNotStrandTheTypingVeil",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdPaletteHintFollowsItsMode",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "AppInteract.ZmdOutlineFollowsTheReadingPosition",
+      "kind": "gtest",
+      "tags": ["正确性", "交互", "app"],
+      "sessions": ["zmd"]
+    },
+    {
+      "name": "Host.IsolateBlurAndDropShadowEmitMarkers",
+      "kind": "gtest",
+      "tags": ["渲染", "render-gpu"],
+      "sessions": []
+    },
+    {
+      "name": "HostPermission.DesktopUnsupportedAndMobileStubAnswers",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "HostPermission.NameRoundTripCoversTheClosedSet",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "PlatformFactory.NoopNextPickAnswersOnce",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage2.MediaQueryFlipRestylesTheMatchedNode",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "PerfStage2.ViewportSizeWithoutAMediaFlipReusesTheMemo",
+      "kind": "gtest",
+      "tags": ["性能", "guard"],
+      "sessions": []
+    },
+    {
+      "name": "AppEntry.SessionOwnsOptionalServicesAndValues",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppEntryExt.NotifyStubReturnsTheSessionResult",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+    {
+      "name": "AppInteract.ReaderImportedBookOpensItsText",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "AppInteract.ReaderWindowParsesAroundProgress",
+      "kind": "gtest",
+      "tags": ["正确性", "app"],
+      "sessions": ["reader"]
+    },
+    {
+      "name": "PluginPlatform.HelpersAndWindowsServices",
+      "kind": "gtest",
+      "tags": ["正确性"],
+      "sessions": []
+    },
+{"name": "AppInteract.DebugOverlapZmdPhase2InlineCodeGap", "kind": "gtest", "tags": ["正确性"], "sessions": ["zmd"]},
+{"name": "AppInteract.DebugOverlapZmdPhase2bFirstBodyRun", "kind": "gtest", "tags": ["正确性"], "sessions": ["zmd"]},
+{"name": "AppInteract.ShareApplySaveDirPersistsResolvedPath", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareApplySaveDirRejectsContentUriWithoutPersist", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareDoneAndFailPhaseDoNotCrashWithoutNotifyPlugin", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareDoneOpenButtonExists", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareFailRetryHiddenAfterDone", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareFailRetryHiddenAfterXferCancelToBrowse", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareFailRetryHiddenWithoutSelection", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareFailRetryReoffersSamePeer", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareGestureMouseDoesNotRefresh", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareGestureMouseSwipeRightDoesNotBack", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareGesturePenDoesNotRefresh", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareGestureShortPullDoesNotRefresh", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareGestureTouchPullDownNotRejectOffIncoming", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareGestureTouchPullDownRefresh", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareGestureTouchPullDownRejectOnIncoming", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareGestureTouchSwipeRightBack", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareIncomingOfferDoesNotCrashWithoutNotifyPlugin", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareLoadConfigDropsContentUri", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareLoadConfigKeepsSavedDir", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareNotifyDoneBody", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareNotifyFailErrorBody", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareNotifyFailRejectedBody", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareNotifyIncomingBody", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareNotifyIncomingBodySingleFile", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.SharePathToFileUriWindowsStyle", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.SharePeerChipDirectOfferWaits", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.SharePeerDirectOfferSetsRetryPeer", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.SharePeerSideDirectOfferWaits", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareStoragePermissionStatusDesktop", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareTryResolveAcceptsPrimaryAbsolute", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareTryResolveRejectsContentUri", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ShareWaitShowsResumeHint", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": ["share"]},
+{"name": "AppInteract.ZmdArrowDownStepsOnePaperLine", "kind": "gtest", "tags": ["正确性", "交互", "app"], "sessions": ["zmd"]},
+{"name": "AppInteract.ZmdHeadingStaysPutWhenTheCaretArrives", "kind": "gtest", "tags": ["正确性", "交互", "app"], "sessions": ["zmd"]},
+{"name": "AppInteract.ZmdWriteClickPastWrappedPeriod", "kind": "gtest", "tags": ["正确性", "交互", "app"], "sessions": ["zmd"]},
+{"name": "AppInteract.ZmdWriteClickSoftWrapSecondLine", "kind": "gtest", "tags": ["正确性", "交互", "app"], "sessions": ["zmd"]},
+{"name": "AppInteract.ZmdWritingViewArrowDownStepsPaperLines", "kind": "gtest", "tags": ["正确性", "交互", "app"], "sessions": ["zmd"]},
+{"name": "CaretService.BlinkTogglesWithoutLayout", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": []},
+{"name": "CaretService.P54CaretOnlyDamageNoRelayout", "kind": "gtest", "tags": ["正确性", "交互"], "sessions": []},
+{"name": "DamageIsolation.SecondLiveDocumentDoesNotSeeTheFirstPaintStamp", "kind": "gtest", "tags": ["正确性"], "sessions": []},
+{"name": "DamageIsolation.ReloadClearsLiveTransitionsBeforeTheDocumentDies", "kind": "gtest", "tags": ["正确性"], "sessions": []}
+]
+}

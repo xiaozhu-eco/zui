@@ -1,0 +1,25 @@
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+.col {
+  width: 480px;
+  margin: 16px 16px 16px 48px;
+  padding: 10px;
+  background: #eef1f5;
+  column-count: 3;
+  column-gap: 28px;
+  column-rule-width: 8px;
+  column-rule-color: #c4554a;
+}
+
+.blk {
+  height: 36px;
+  margin: 0 0 10px 0;
+  background: #eef1f5;
+}
+
+#dashed { column-rule-style: dashed; }
+#dotted { column-rule-style: dotted; }
+#double { column-rule-style: double; }

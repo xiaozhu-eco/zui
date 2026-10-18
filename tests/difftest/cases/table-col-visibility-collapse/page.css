@@ -1,0 +1,31 @@
+/* A4: table-column visibility:collapse — collapsed tracks contribute 0 width
+   and drop their border-spacing slot (CSS 2.1 §17.5.5). */
+
+html, body { margin: 0; padding: 0; background: #101418; color: #e8eef4; font: 16px sans-serif; }
+
+table {
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 8px;
+  background: #1a222c;
+}
+
+#spaced { border-spacing: 10px; }
+
+col.w80 { width: 80px; }
+col.w60 { width: 60px; }
+col.w40 { width: 40px; }
+col.gone, colgroup.gone { visibility: collapse; }
+
+td {
+  box-sizing: border-box;
+  height: 24px;
+  padding: 0;
+  background: #7cb7ff;
+  color: #101418;
+  text-align: center;
+}
+
+#b, #gb, #gc, #sb { background: #e07a5f; }
+#c, #gd, #sc { background: #3d8f6e; }

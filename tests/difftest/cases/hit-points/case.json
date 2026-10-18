@@ -1,0 +1,56 @@
+{
+  "name": "hit-points",
+  "page": "page.html",
+  "viewport": [
+    800,
+    600
+  ],
+  "_comment": "Each scroll step samples elementFromPoint at a fixed point.",
+  "matrix": [
+    "scroll.overflow"
+  ],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 800,
+      "h": 600
+    },
+    {
+      "op": "scroll",
+      "target": "#pane",
+      "x": 0,
+      "y": 0,
+      "hits": [
+        {
+          "x": 20,
+          "y": 20
+        }
+      ]
+    },
+    {
+      "op": "scroll",
+      "target": "#pane",
+      "x": 0,
+      "y": 160,
+      "hits": [
+        {
+          "x": 20,
+          "y": 20
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": {
+    "breaks": false,
+    "advances": false
+  }
+}

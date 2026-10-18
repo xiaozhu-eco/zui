@@ -1,0 +1,52 @@
+{
+  "schema": "zui.difftest.state/1",
+  "op": "dispatch",
+  "target": "0",
+  "scroll": [
+    0,
+    0
+  ],
+  "client_box": [
+    1100,
+    720
+  ],
+  "hit": "0/1/0/0/2/3",
+  "hits": [
+    {
+      "x": 1045,
+      "y": 28,
+      "path": "0/1/0/0/2/3"
+    }
+  ],
+  "scrollers": [
+    {
+      "path": "0/1/0/1/0/0",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "path": "0/1/0/1/1",
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "focus": "0/1/0/1/1/2/1",
+  "checked": [
+    {
+      "path": "0/1/1/0/1/5/1/0",
+      "checked": true
+    },
+    {
+      "path": "0/1/1/0/1/5/2/0",
+      "checked": false
+    },
+    {
+      "path": "0/1/1/0/1/5/3/0",
+      "checked": false
+    },
+    {
+      "path": "0/1/1/0/1/5/4/0",
+      "checked": false
+    }
+  ]
+}

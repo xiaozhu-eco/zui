@@ -1,0 +1,5 @@
+html, body { margin: 0; height: 100%; }
+#app { height: 100dvh; }
+#side { width: 50vw; height: 10vh; }
+#fixed { height: 200px; }
+#bar { height: 10vh; }

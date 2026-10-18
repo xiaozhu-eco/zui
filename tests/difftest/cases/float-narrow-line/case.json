@@ -1,0 +1,16 @@
+{
+  "name": "float-narrow-line",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "两侧浮动把一行的可用宽度挤到放不下第一个字：那一行整行下移到浮动下面，而不是把字形硬塞进窄缝（CSS 2.1 第 9.5 节）。中间的盒子是对照组：缝够宽时行留在浮动旁边。",
+  "matrix": ["flow.normal", "float"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

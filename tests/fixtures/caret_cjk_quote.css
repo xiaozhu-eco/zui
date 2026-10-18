@@ -1,0 +1,9 @@
+body { margin: 0; font-size: 16px; }
+blockquote {
+  margin: 0;
+  padding: 1px 0 1px 16px;
+  border-left: 2px solid #ccc;
+  width: 640px;
+}
+p { margin: 0; }
+.zmd-body { }

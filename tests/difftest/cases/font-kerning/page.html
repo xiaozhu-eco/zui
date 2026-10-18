@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="page.css"></head>
+<body>
+  <!-- `lang` 不是 kerning 开关：浏览器在 zh/ja/ko 文档里对拉丁文本照常成对调整。 -->
+  <div class="row" id="en_pair" lang="en">AVAVAV</div>
+  <div class="row" id="zh_pair" lang="zh-CN">AVAVAV</div>
+  <div class="row" id="ja_pair" lang="ja">AVAVAV</div>
+  <div class="row" id="ko_pair" lang="ko">AVAVAV</div>
+  <div class="row" id="en_text" lang="en">ZUI Text 0123</div>
+  <div class="row" id="zh_text" lang="zh-CN">ZUI Text 0123</div>
+  <!-- 关掉 kerning 的只有一个属性值。 -->
+  <div class="row off" id="none_pair" lang="en">AVAVAV</div>
+  <div class="row off" id="none_text" lang="en">ZUI Text 0123</div>
+  <!-- `normal` 是初始值 `auto` 的等义写法，两个都不关。 -->
+  <div class="row normal" id="normal_pair">AVAVAV</div>
+  <!-- 逐字形量：两端每个字形的 advance 是不是同一个量子倍数。长串（>6 个字形）会累积逐字形
+       最后 1/64px 的差，见 tests/difftest/README.md 第 12.5 节，所以这里用短串。 -->
+  <div class="row" id="glyph_A">A</div>
+  <div class="row" id="glyph_V">V</div>
+  <div class="row" id="pair_AV">AV</div>
+  <div class="row" id="pair_AA">AA</div>
+  <div class="row" id="pair_AVAV">AVAV</div>
+</body>
+</html>

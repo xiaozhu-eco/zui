@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="zui-designer">
+  <meta name="zui-window" content="width=1280,height=800">
+  <title>小竹设计</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/board.css">
+  <link rel="stylesheet" href="css/inspector.css">
+</head>
+
+<body onpointermove="on_move" onpointerup="on_up" onkeydown="on_key">
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">竹</span>
+        <h1 class="brand-name">小竹设计</h1>
+      </div>
+      <nav class="menubar" aria-label="菜单">
+        <div class="menu-wrap">
+          <input id="menu_file" class="hid menu-toggle" type="checkbox">
+          <label class="menu-btn" for="menu_file">文件</label>
+          <div class="menu" role="menu">
+            <button type="button" id="menu-sample" data-act="sample" onclick="on_sample">放入示例</button>
+            <button type="button" id="menu-clear" data-act="clear" onclick="on_clear">清空画布</button>
+            <div class="menu-sep"></div>
+            <button type="button" id="menu-export" data-act="export" onclick="on_export">导出 HTML</button>
+          </div>
+        </div>
+        <div class="menu-wrap">
+          <input id="menu_edit" class="hid menu-toggle" type="checkbox">
+          <label class="menu-btn" for="menu_edit">编辑</label>
+          <div class="menu" role="menu">
+            <button type="button" id="menu-undo" data-act="undo" onclick="on_undo" disabled>撤销 <kbd>Ctrl+Z</kbd></button>
+            <button type="button" id="menu-redo" data-act="redo" onclick="on_redo" disabled>重做 <kbd>Ctrl+Y</kbd></button>
+          </div>
+        </div>
+        <div class="menu-wrap">
+          <input id="menu_view" class="hid menu-toggle" type="checkbox">
+          <label class="menu-btn" for="menu_view">视图</label>
+          <div class="menu" role="menu">
+            <button type="button" class="is-on" id="menu-desktop" data-act="device" data-device="desktop" onclick="on_device">桌面画布</button>
+            <button type="button" id="menu-phone" data-act="device" data-device="phone" onclick="on_device">手机画布</button>
+            <div class="menu-sep"></div>
+            <button type="button" class="is-on" id="menu-props" data-act="tab" data-tab="props" onclick="on_tab">属性</button>
+            <button type="button" id="menu-code" data-act="tab" data-tab="code" onclick="on_tab">代码</button>
+          </div>
+        </div>
+        <div class="menu-wrap">
+          <input id="menu_help" class="hid menu-toggle" type="checkbox">
+          <label class="menu-btn" for="menu_help">帮助</label>
+          <div class="menu" role="menu">
+            <p class="menu-note">按住左侧组件，拖到画布上。</p>
+            <p class="menu-note">Delete 删除选中。方向键微调桌面上的顶层组件。</p>
+            <p class="menu-note">容器最多套三层。导出的页面只有 HTML 和 CSS。</p>
+          </div>
+        </div>
+      </nav>
+      <div class="doc-name" id="doc-name">未命名界面</div>
+    </header>
+
+    <div class="toolbar" role="toolbar" aria-label="工具">
+      <button type="button" class="tb" id="btn-undo" data-act="undo" onclick="on_undo" disabled><span class="tb-ico" aria-hidden="true">↩</span>撤销</button>
+      <button type="button" class="tb" id="btn-redo" data-act="redo" onclick="on_redo" disabled><span class="tb-ico" aria-hidden="true">↪</span>重做</button>
+      <span class="tb-gap"></span>
+      <div class="devices" role="group" aria-label="画布">
+        <button type="button" class="btn is-on" id="btn-desktop" data-act="device" data-device="desktop" onclick="on_device">桌面</button>
+        <button type="button" class="btn" id="btn-phone" data-act="device" data-device="phone" onclick="on_device">手机</button>
+      </div>
+      <span class="tb-gap"></span>
+      <button type="button" class="tb" id="btn-sample" data-act="sample" onclick="on_sample">示例</button>
+      <button type="button" class="tb" id="btn-clear" data-act="clear" onclick="on_clear">清空</button>
+      <span class="spacer"></span>
+      <button type="button" class="btn btn-primary" id="btn-export" data-act="export" onclick="on_export">导出 HTML</button>
+    </div>
+
+    <div class="workspace">
+      <aside class="palette">
+        <div class="dock-head">组件库</div>
+        <div class="pal-body">
+          <p class="group-label">基础</p>
+          <button type="button" class="pal" id="pal-heading" data-role="pal" data-kind="heading" onpointerdown="on_down"><span class="glyph g-heading" aria-hidden="true"><span></span><span></span><span></span></span><span class="pal-copy"><span class="pal-name">标题</span><span class="pal-hint">页面大标题</span></span></button>
+          <button type="button" class="pal" id="pal-text" data-role="pal" data-kind="text" onpointerdown="on_down"><span class="glyph g-text" aria-hidden="true"><span></span><span></span><span></span></span><span class="pal-copy"><span class="pal-name">文本</span><span class="pal-hint">说明段落</span></span></button>
+          <button type="button" class="pal" id="pal-button" data-role="pal" data-kind="button" onpointerdown="on_down"><span class="glyph g-button" aria-hidden="true"><span></span></span><span class="pal-copy"><span class="pal-name">按钮</span><span class="pal-hint">可点击操作</span></span></button>
+          <button type="button" class="pal" id="pal-input" data-role="pal" data-kind="input" onpointerdown="on_down"><span class="glyph g-input" aria-hidden="true"><span class="box"><b></b></span></span><span class="pal-copy"><span class="pal-name">输入框</span><span class="pal-hint">单行文字</span></span></button>
+          <button type="button" class="pal" id="pal-area" data-role="pal" data-kind="area" onpointerdown="on_down"><span class="glyph g-area" aria-hidden="true"><span class="box"><b></b><b></b><b></b></span></span><span class="pal-copy"><span class="pal-name">多行文本</span><span class="pal-hint">成段输入</span></span></button>
+          <button type="button" class="pal" id="pal-check" data-role="pal" data-kind="check" onpointerdown="on_down"><span class="glyph g-check" aria-hidden="true"><span class="box"></span><span class="ln"></span></span><span class="pal-copy"><span class="pal-name">勾选</span><span class="pal-hint">是否选项</span></span></button>
+          <button type="button" class="pal" id="pal-image" data-role="pal" data-kind="image" onpointerdown="on_down"><span class="glyph g-image" aria-hidden="true"><span class="box"><b class="sun"></b><b class="hill"></b></span></span><span class="pal-copy"><span class="pal-name">图片</span><span class="pal-hint">占位图</span></span></button>
+          <button type="button" class="pal" id="pal-rule" data-role="pal" data-kind="rule" onpointerdown="on_down"><span class="glyph g-rule" aria-hidden="true"><span></span></span><span class="pal-copy"><span class="pal-name">分割线</span><span class="pal-hint">横向分隔</span></span></button>
+          <p class="group-label">布局</p>
+          <button type="button" class="pal" id="pal-row" data-role="pal" data-kind="row" onpointerdown="on_down"><span class="glyph g-row" aria-hidden="true"><span></span><span></span><span></span></span><span class="pal-copy"><span class="pal-name">横向</span><span class="pal-hint">从左到右</span></span></button>
+          <button type="button" class="pal" id="pal-col" data-role="pal" data-kind="col" onpointerdown="on_down"><span class="glyph g-col" aria-hidden="true"><span></span><span></span><span></span></span><span class="pal-copy"><span class="pal-name">纵向</span><span class="pal-hint">从上到下</span></span></button>
+        </div>
+        <p class="pal-foot">按住组件，拖到中间的画布上。</p>
+      </aside>
+
+      <main class="desk">
+        <div class="device device-desktop" id="device">
+          <div class="device-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="device-title" id="device-title">桌面 704 × 480</span>
+          </div>
+          <div class="canvas">
+            <div class="ruler-corner" aria-hidden="true"></div>
+            <div class="ruler-x" aria-hidden="true">
+              <b class="rx-0">0</b><b class="rx-80">80</b><b class="rx-160">160</b><b class="rx-240">240</b><b class="rx-320">320</b><b class="rx-400">400</b><b class="rx-480">480</b><b class="rx-560">560</b><b class="rx-640">640</b>
+            </div>
+            <div class="ruler-y" aria-hidden="true">
+              <b class="ry-0">0</b><b class="ry-80">80</b><b class="ry-160">160</b><b class="ry-240">240</b><b class="ry-320">320</b><b class="ry-400">400</b><b class="ry-480">480</b><b class="ry-560">560</b>
+            </div>
+            <div class="board-wrap">
+            <span class="notch" aria-hidden="true"></span>
+            <div class="board mode-free" id="board" data-role="board" onpointerdown="on_down">
+              <template>
+                <div id="{{id}}" class="node {{kind}} {{sel}} {{geom}} {{look}} {{flags}}" data-id="{{id}}" data-role="node" onpointerdown="on_down">
+                  <span class="tick"></span>
+                  <span id="cap-{{id}}" class="cap">{{text}}</span>
+                  <span class="drop-hint">放到这里</span>
+                  <div id="kids-{{id}}" class="kids">
+                    <template>
+                      <div id="{{id}}" class="node {{kind}} {{sel}} {{geom}} {{look}} {{flags}}" data-id="{{id}}" data-role="node" onpointerdown="on_down">
+                        <span class="tick"></span>
+                        <span id="cap-{{id}}" class="cap">{{text}}</span>
+                        <span class="drop-hint">放到这里</span>
+                        <div id="kids-{{id}}" class="kids">
+                          <template>
+                            <div id="{{id}}" class="node {{kind}} {{sel}} {{geom}} {{look}} {{flags}}" data-id="{{id}}" data-role="node" onpointerdown="on_down">
+                              <span class="tick"></span>
+                              <span id="cap-{{id}}" class="cap">{{text}}</span>
+                              <span class="drop-hint">放到这里</span>
+                              <div id="kids-{{id}}" class="kids">
+                                <template>
+                                  <div id="{{id}}" class="node {{kind}} {{sel}} {{geom}} {{look}} {{flags}}" data-id="{{id}}" data-role="node" onpointerdown="on_down">
+                                    <span class="tick"></span>
+                                    <span id="cap-{{id}}" class="cap">{{text}}</span>
+                                    <span class="drop-hint">放到这里</span>
+                                    <div id="kids-{{id}}" class="kids"></div>
+                                    <span id="resize-{{id}}" class="resize" data-id="{{id}}" data-role="resize" onpointerdown="on_down"></span>
+                                  </div>
+                                </template>
+                              </div>
+                              <span id="resize-{{id}}" class="resize" data-id="{{id}}" data-role="resize" onpointerdown="on_down"></span>
+                            </div>
+                          </template>
+                        </div>
+                        <span id="resize-{{id}}" class="resize" data-id="{{id}}" data-role="resize" onpointerdown="on_down"></span>
+                      </div>
+                    </template>
+                  </div>
+                  <span id="resize-{{id}}" class="resize" data-id="{{id}}" data-role="resize" onpointerdown="on_down"></span>
+                </div>
+              </template>
+            </div>
+            <div id="ghost" class="ghost w-14 h-5" hidden><span id="ghost-cap"></span></div>
+            <div class="empty-hint" id="empty-hint">
+              <span class="empty-mark" aria-hidden="true">竹</span>
+              <strong>从组件库拖到画布</strong>
+              <span class="empty-copy">桌面按 8 像素网格自由摆放。手机画布则从上到下排列。</span>
+            </div>
+            </div>
+          </div>
+          <span class="home-bar" aria-hidden="true"></span>
+        </div>
+      </main>
+
+      <aside class="side inspector">
+        <div class="side-head">检查器</div>
+        <div class="tabs" role="tablist">
+          <button type="button" class="tab is-on" id="tab-props" data-act="tab" data-tab="props" onclick="on_tab">属性</button>
+          <button type="button" class="tab" id="tab-code" data-act="tab" data-tab="code" onclick="on_tab">代码</button>
+        </div>
+        <div class="panel" id="panel-props">
+          <section class="sect">
+            <h2 class="sect-h">页面</h2>
+            <p class="hint" id="page-hint">还没有选中组件。拖入之后，可以在这里改文字、颜色和大小。</p>
+            <label class="prow"><span>标题</span>
+              <input id="prop-title" value="未命名界面" oninput="on_title" onkeydown="on_field_key" onblur="on_field_blur">
+            </label>
+          </section>
+          <div id="comp-block" hidden>
+            <section class="sect">
+              <h2 class="sect-h">组件</h2>
+              <p class="kind-line" id="prop-kind">按钮</p>
+              <label class="prow"><span>文本</span>
+                <textarea id="prop-text" oninput="on_text" onkeydown="on_field_key" onblur="on_field_blur"></textarea>
+              </label>
+            </section>
+            <section class="sect">
+              <h2 class="sect-h">布局</h2>
+              <div class="pair">
+                <div class="field"><span class="field-label">横</span>
+                  <div class="spin">
+                    <button type="button" class="spin-btn" id="nx-dec" data-act="nudge" data-key="x" data-step="-1" onclick="on_nudge">−</button>
+                    <span class="spin-val"><b id="lab-x">0</b><i>px</i></span>
+                    <button type="button" class="spin-btn" id="nx-inc" data-act="nudge" data-key="x" data-step="1" onclick="on_nudge">+</button>
+                  </div>
+                </div>
+                <div class="field"><span class="field-label">纵</span>
+                  <div class="spin">
+                    <button type="button" class="spin-btn" id="ny-dec" data-act="nudge" data-key="y" data-step="-1" onclick="on_nudge">−</button>
+                    <span class="spin-val"><b id="lab-y">0</b><i>px</i></span>
+                    <button type="button" class="spin-btn" id="ny-inc" data-act="nudge" data-key="y" data-step="1" onclick="on_nudge">+</button>
+                  </div>
+                </div>
+              </div>
+              <div class="pair">
+                <div class="field"><span class="field-label">宽</span>
+                  <div class="spin">
+                    <button type="button" class="spin-btn" id="nw-dec" data-act="nudge" data-key="w" data-step="-1" onclick="on_nudge">−</button>
+                    <span class="spin-val"><b id="lab-w">0</b><i>px</i></span>
+                    <button type="button" class="spin-btn" id="nw-inc" data-act="nudge" data-key="w" data-step="1" onclick="on_nudge">+</button>
+                  </div>
+                </div>
+                <div class="field"><span class="field-label">高</span>
+                  <div class="spin">
+                    <button type="button" class="spin-btn" id="nh-dec" data-act="nudge" data-key="h" data-step="-1" onclick="on_nudge">−</button>
+                    <span class="spin-val"><b id="lab-h">0</b><i>px</i></span>
+                    <button type="button" class="spin-btn" id="nh-inc" data-act="nudge" data-key="h" data-step="1" onclick="on_nudge">+</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="sect">
+              <h2 class="sect-h">外观</h2>
+              <div class="prow"><span>填充</span>
+                <div class="swatches">
+                  <button type="button" class="swatch swatch-none" id="sw-bg-default" data-act="swatch" data-group="bg" data-token="" onclick="on_swatch" title="默认"></button>
+                  <button type="button" class="swatch" id="sw-bg-paper" style="background:#fffdf8" data-act="swatch" data-group="bg" data-token="bg-paper" onclick="on_swatch" title="纸"></button>
+                  <button type="button" class="swatch" id="sw-bg-tint" style="background:rgba(44,107,78,.12)" data-act="swatch" data-group="bg" data-token="bg-tint" onclick="on_swatch" title="浅竹"></button>
+                  <button type="button" class="swatch" id="sw-bg-accent" style="background:#2c6b4e" data-act="swatch" data-group="bg" data-token="bg-accent" onclick="on_swatch" title="竹绿"></button>
+                  <button type="button" class="swatch" id="sw-bg-ink" style="background:#2b261f" data-act="swatch" data-group="bg" data-token="bg-ink" onclick="on_swatch" title="墨"></button>
+                  <button type="button" class="swatch" id="sw-bg-danger" style="background:#8c3a32" data-act="swatch" data-group="bg" data-token="bg-danger" onclick="on_swatch" title="朱红"></button>
+                </div>
+              </div>
+              <div class="prow"><span>文字</span>
+                <div class="swatches">
+                  <button type="button" class="swatch" id="sw-fg-ink" style="background:#2b261f" data-act="swatch" data-group="fg" data-token="fg-ink" onclick="on_swatch" title="墨"></button>
+                  <button type="button" class="swatch" id="sw-fg-soft" style="background:#8a7f72" data-act="swatch" data-group="fg" data-token="fg-soft" onclick="on_swatch" title="灰"></button>
+                  <button type="button" class="swatch" id="sw-fg-paper" style="background:#fffdf8" data-act="swatch" data-group="fg" data-token="fg-paper" onclick="on_swatch" title="纸"></button>
+                  <button type="button" class="swatch" id="sw-fg-accent" style="background:#2c6b4e" data-act="swatch" data-group="fg" data-token="fg-accent" onclick="on_swatch" title="竹绿"></button>
+                  <button type="button" class="swatch" id="sw-fg-danger" style="background:#8c3a32" data-act="swatch" data-group="fg" data-token="fg-danger" onclick="on_swatch" title="朱红"></button>
+                </div>
+              </div>
+              <div class="prow"><span>字号</span>
+                <div class="seg">
+                  <button type="button" class="chip" id="sw-fs-12" data-act="swatch" data-group="fs" data-token="fs-12" onclick="on_swatch">12</button>
+                  <button type="button" class="chip" id="sw-fs-14" data-act="swatch" data-group="fs" data-token="fs-14" onclick="on_swatch">14</button>
+                  <button type="button" class="chip" id="sw-fs-16" data-act="swatch" data-group="fs" data-token="fs-16" onclick="on_swatch">16</button>
+                  <button type="button" class="chip" id="sw-fs-20" data-act="swatch" data-group="fs" data-token="fs-20" onclick="on_swatch">20</button>
+                  <button type="button" class="chip" id="sw-fs-28" data-act="swatch" data-group="fs" data-token="fs-28" onclick="on_swatch">28</button>
+                </div>
+              </div>
+              <div class="prow"><span>圆角</span>
+                <div class="seg">
+                  <button type="button" class="chip" id="sw-radius-0" data-act="swatch" data-group="radius" data-token="radius-0" onclick="on_swatch">直角</button>
+                  <button type="button" class="chip" id="sw-radius-8" data-act="swatch" data-group="radius" data-token="radius-8" onclick="on_swatch">8</button>
+                  <button type="button" class="chip" id="sw-radius-12" data-act="swatch" data-group="radius" data-token="radius-12" onclick="on_swatch">12</button>
+                  <button type="button" class="chip" id="sw-radius-999" data-act="swatch" data-group="radius" data-token="radius-999" onclick="on_swatch">圆</button>
+                </div>
+              </div>
+              <div class="prow"><span>对齐</span>
+                <div class="seg">
+                  <button type="button" class="chip" id="sw-align-left" data-act="swatch" data-group="align" data-token="align-left" onclick="on_swatch">左</button>
+                  <button type="button" class="chip" id="sw-align-center" data-act="swatch" data-group="align" data-token="align-center" onclick="on_swatch">中</button>
+                  <button type="button" class="chip" id="sw-align-right" data-act="swatch" data-group="align" data-token="align-right" onclick="on_swatch">右</button>
+                </div>
+              </div>
+            </section>
+          </div>
+          <section class="sect sect-layers">
+            <h2 class="sect-h"><span>图层</span><span class="count" id="layer-count">0</span></h2>
+            <p class="hint" id="layers-empty">还没有组件</p>
+            <div class="layers" id="layers">
+              <template>
+                <button type="button" id="layer-{{id}}" class="layer {{sel}}" data-act="layer" data-id="{{id}}" onclick="on_layer">{{text}}</button>
+              </template>
+            </div>
+          </section>
+        </div>
+        <div class="panel panel-code" id="panel-code" hidden>
+          <div class="code-bar">
+            <span>生成的页面</span>
+            <button type="button" class="tb" id="btn-copy" data-act="copy" onclick="on_copy">复制</button>
+          </div>
+          <textarea id="code-view" readonly spellcheck="false" onkeydown="on_field_key"></textarea>
+        </div>
+      </aside>
+    </div>
+    <footer class="statusbar">
+      <span id="status">就绪</span>
+      <span class="status-fill"></span>
+      <span class="status-item">网格 8 px</span>
+      <span class="status-item" id="status-sel">未选中</span>
+    </footer>
+  </div>
+  <script src="../js/model.js"></script>
+  <script src="../js/codegen.js"></script>
+  <script src="../js/render.js"></script>
+  <script src="../js/inspector.js"></script>
+  <script src="../js/interact.js"></script>
+  <script src="../js/boot.js"></script>
+</body>
+
+</html>

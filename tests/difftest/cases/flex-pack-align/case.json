@@ -1,0 +1,17 @@
+{
+  "name": "flex-pack-align",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Phase1: flex justify-content space-around/space-evenly and multi-line align-content.",
+  "matrix": ["flow.flex"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

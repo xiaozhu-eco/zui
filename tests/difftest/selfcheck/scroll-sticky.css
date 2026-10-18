@@ -1,0 +1,31 @@
+/* A `sticky` box is positioned against the scroll, not carried by it, so its container's listing
+   cannot be replayed with a plain shift (LAYOUT.md section 9 step D). */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #101418;
+}
+
+#pane {
+  width: 240px;
+  height: 120px;
+  overflow: auto;
+  background: #1b2733;
+}
+
+#header {
+  position: sticky;
+  top: 0;
+  height: 24px;
+  background: #3d8f6e;
+}
+
+.row {
+  height: 24px;
+  background: #22303c;
+}
+
+#tail {
+  height: 1200px;
+}

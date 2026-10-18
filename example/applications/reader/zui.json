@@ -1,0 +1,31 @@
+{
+  "schema": 2,
+  "name": "zui_reader",
+  "version": "1.0.0",
+  "identifier": "com.zui.zui_reader",
+  "icon": "icon.svg",
+  "page": "reader.html",
+  "entry": "main.cpp",
+  "targets": ["portable", "installer", "android"],
+  "permissions": [
+    {
+      "name": "network",
+      "android": "android.permission.INTERNET",
+      "reason": "The page may open a network address"
+    }
+  ],
+  "target": "zui_reader",
+  "android": {
+    "minSdk": 24,
+    "targetSdk": 36,
+    "abis": ["arm64-v8a"],
+    "orientation": "sensor",
+    "target": "zui_reader_android"
+  },
+  "windows": {
+    "description": "Read books in HTML, laid out by zui",
+    "company": "zui",
+    "copyright": "Copyright (c) zui contributors"
+  },
+  "files": ["reader.css", "reader.js", "chapter.html", "manifest.webmanifest", "sw.js", "fragments"]
+}

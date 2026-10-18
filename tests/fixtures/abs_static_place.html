@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>abs static</title>
+  <style>
+    #app {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 800px;
+      height: 200px;
+    }
+    .clip {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+    }
+    #toggle {
+      position: relative;
+      display: flex;
+      padding: 3px;
+    }
+    .btn {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 32px;
+    }
+    #tools {
+      display: flex;
+      justify-content: flex-end;
+      width: 199px;
+      height: 32px;
+    }
+    #bar {
+      display: flex;
+      justify-content: space-between;
+      width: 800px;
+      height: 40px;
+    }
+    #fit {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    #fit button {
+      width: 64px;
+      height: 32px;
+      padding: 0;
+    }
+    #search {
+      display: block;
+      padding: 12px 12px 4px;
+      width: 200px;
+    }
+    #pad {
+      position: relative;
+      padding: 12px;
+      width: 80px;
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div id="gone" class="clip"></div>
+    <div id="toggle">
+      <div id="hid" class="clip"></div>
+      <div id="btn" class="btn"><span id="sr" class="clip">x</span></div>
+      <div id="btn2" class="btn"><span id="sr2" class="clip">y</span></div>
+    </div>
+    <div id="tools">
+      <button type="button">open</button>
+      <div id="file" class="clip"></div>
+    </div>
+    <div id="bar">
+      <div id="brand">brand</div>
+      <div id="fit">
+        <button type="button">open</button>
+        <div id="fitfile" class="clip"></div>
+      </div>
+    </div>
+    <div id="side">
+      <label id="search"><span id="screen" class="clip">z</span></label>
+    </div>
+    <div id="pad"><div id="padabs" class="clip"></div></div>
+  </div>
+</body>
+</html>

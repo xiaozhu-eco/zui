@@ -1,0 +1,60 @@
+@font-face {
+    font-family: "Zui Test";
+    src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+/* `max-content` rows, so each row's width is the advance of the transformed text and the rows do
+   not depend on how the whitespace between two inline-level boxes is collapsed. The ink is
+   transparent: the layout signal is the bar, not the glyph raster. */
+.bar {
+    display: block;
+    width: max-content;
+    height: 20px;
+    margin: 6px 8px;
+    background-color: #7cb7ff;
+    color: transparent;
+    font-family: "Zui Test";
+    font-size: 16px;
+    line-height: 20px;
+}
+
+/* One glyph at the pen origin, visible: `text-transform` has to reach the painter too. */
+.ink {
+    display: block;
+    width: max-content;
+    margin: 6px 8px;
+    color: #e8edf5;
+    font-family: "Zui Test";
+    font-size: 16px;
+    line-height: 20px;
+}
+
+#up {
+    text-transform: uppercase;
+}
+
+#low {
+    text-transform: lowercase;
+}
+
+/* Capitalize touches the first cased letter of each word: `3d` keeps its `d`. */
+#cap {
+    text-transform: capitalize;
+}
+
+.up {
+    text-transform: uppercase;
+}
+
+.low {
+    text-transform: lowercase;
+}

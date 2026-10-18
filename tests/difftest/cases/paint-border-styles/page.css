@@ -1,0 +1,31 @@
+/* B3: non-solid border-style on sharp boxes. 6px keeps corner-join residuals under the
+   L4 edge_run threshold (8) while still showing dash/dot/double/3D banding. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #eef1f5;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.sw {
+  box-sizing: border-box;
+  width: 100px;
+  height: 70px;
+  background-color: #dce3ec;
+}
+
+#dashed { border: 6px dashed #1a4f8c; }
+#dotted { border: 6px dotted #1a4f8c; }
+#double { border: 6px double #1a4f8c; }
+#solid  { border: 6px solid  #1a4f8c; }
+
+#groove { border: 6px groove #6b4c9a; }
+#ridge  { border: 6px ridge  #6b4c9a; }
+#inset  { border: 6px inset  #6b4c9a; }
+#outset { border: 6px outset #6b4c9a; }

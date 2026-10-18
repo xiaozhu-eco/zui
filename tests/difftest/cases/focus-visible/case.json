@@ -1,0 +1,37 @@
+{
+  "name": "focus-visible",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1 Selectors 4 :focus-visible. Click #a: :focus grows height to 40, width stays 40. Tab to #b: keyboard focus matches both (120×40). Tab to #t: text fields always match :focus-visible (width 160). Lexbor used to drop :focus-visible at parse time; third_party patch allows the rule through. Buttons have no text so line-box offsets stay out of the geometry diff.",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    {
+      "op": "dispatch",
+      "events": [
+        { "type": "mousePressed", "x": 20, "y": 10, "button": "left", "count": 1 },
+        { "type": "mouseReleased", "x": 20, "y": 10, "button": "left", "count": 1 }
+      ]
+    },
+    { "op": "trace" },
+    {
+      "op": "dispatch",
+      "events": [
+        { "type": "keyDown", "key": "Tab" }
+      ]
+    },
+    { "op": "trace" },
+    {
+      "op": "dispatch",
+      "events": [
+        { "type": "keyDown", "key": "Tab" }
+      ]
+    },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,51 @@
+{
+  "schema": 2,
+  "name": "zui_share",
+  "version": "1.0.0",
+  "identifier": "com.zui.zui_share",
+  "icon": "icon.png",
+  "page": "index.html",
+  "entry": "main.cpp",
+  "targets": ["portable", "installer", "android"],
+  "permissions": [
+    {
+      "name": "network",
+      "android": "android.permission.INTERNET",
+      "reason": "LAN device discovery and file transfer"
+    },
+    {
+      "name": "network-state",
+      "reason": "Read whether a network is connected"
+    },
+    {
+      "name": "wifi-state",
+      "reason": "Read Wi-Fi connection state"
+    },
+    {
+      "name": "multicast",
+      "reason": "Receive multicast packets for LAN discovery"
+    },
+    {
+      "name": "notifications",
+      "reason": "Post transfer status notifications"
+    },
+    {
+      "name": "manage-storage",
+      "reason": "Browse folders and write received files under shared storage"
+    }
+  ],
+  "target": "zui_share",
+  "android": {
+    "minSdk": 24,
+    "targetSdk": 36,
+    "abis": ["arm64-v8a"],
+    "orientation": "sensor",
+    "target": "zui_share_android"
+  },
+  "windows": {
+    "description": "LAN file share",
+    "company": "zui",
+    "copyright": "Copyright (c) zui contributors"
+  },
+  "files": ["css", "js", "icon.png"]
+}

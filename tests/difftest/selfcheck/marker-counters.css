@@ -1,0 +1,3 @@
+.row { list-style-position: inside; list-style-type: decimal; }
+.custom::marker { content: counter(list-item) ". "; }
+.as-none { list-style-type: none; }

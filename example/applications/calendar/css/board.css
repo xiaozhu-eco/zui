@@ -1,0 +1,406 @@
+.board {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.month-view {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 32px repeat(6, minmax(72px, 1fr));
+  overflow: auto;
+}
+
+.mh {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 12px;
+  background: var(--raised);
+}
+
+.cell {
+  min-width: 0;
+  overflow: hidden;
+  padding: 4px;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: var(--paper);
+}
+
+/* A date cell is one `<button>` (the whole cell is the click target), and a browser centres a
+   button's content in its content box - with a `1fr` row the numbers and chips would drift to the
+   middle of the cell. The grid stretches the button, so the only way to keep the content at the
+   top edge is a child that fills the content box: the button then has no leftover space to
+   centre into. */
+.cell-inner {
+  display: block;
+  height: 100%;
+}
+
+.cell.is-out {
+  background: var(--sidebar);
+  color: var(--muted);
+}
+
+.cell.is-on {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.num {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 4px;
+  font-size: 12px;
+}
+
+.num.is-today {
+  border-radius: 999px;
+  background: linear-gradient(180deg, #3d8a64, #1e523c);
+  color: #fbf6ec;
+  box-shadow: 0 6px 14px rgba(30, 82, 60, 0.28);
+}
+
+.chip,
+.block,
+.agenda-item {
+  border: 0;
+  text-align: left;
+}
+
+.chip {
+  display: block;
+  width: 100%;
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 4px;
+  padding: 0 4px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.more {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.week-view {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.week-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+.week-head,
+.week-grid {
+  display: grid;
+  grid-template-columns: 56px repeat(7, minmax(0, 1fr));
+}
+
+.week-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--raised);
+  border-bottom: 1px solid var(--line);
+}
+
+.dow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: transparent;
+  padding: 6px 0;
+}
+
+.dow.is-on {
+  background: var(--tint);
+}
+
+.dow-name {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.dow-num {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  font-weight: 600;
+}
+
+.dow-num.is-today {
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fbf6ec;
+}
+
+.gutter,
+.day {
+  position: relative;
+  height: calc(24 * 44px);
+}
+
+.day {
+  border-left: 1px solid var(--line);
+  background-image: repeating-linear-gradient(to bottom,
+      transparent 0,
+      transparent 43px,
+      var(--line) 43px,
+      var(--line) 44px);
+}
+
+.day.is-on {
+  background-color: rgba(44, 107, 78, 0.04);
+}
+
+.hour {
+  position: absolute;
+  right: 6px;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.hour:first-child {
+  transform: none;
+}
+
+.block {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 6px;
+  padding: 2px 4px;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.block-title,
+.block-time {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.block-time {
+  opacity: 0.75;
+}
+
+.chip.is-blank,
+.more.is-blank {
+  display: none;
+}
+
+button.cell,
+button.mh {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  text-align: left;
+}
+
+button.cell {
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+button.mh {
+  background: var(--raised);
+}
+
+.hour.hour-first {
+  transform: none;
+}
+
+.tone-green {
+  background: #e5f0e8;
+  color: #1d4d36;
+}
+
+.tone-clay {
+  background: #f8ebe3;
+  color: #6b3a28;
+}
+
+.tone-sea {
+  background: #e6eef5;
+  color: #1e3f5a;
+}
+
+.tone-gold {
+  background: #f8f1dc;
+  color: #6a5420;
+}
+
+.chip[data-color="green"],
+.block[data-color="green"],
+.agenda-item[data-color="green"] {
+  background: #e5f0e8;
+  color: #1d4d36;
+}
+
+.chip[data-color="clay"],
+.block[data-color="clay"],
+.agenda-item[data-color="clay"] {
+  background: #f8ebe3;
+  color: #6b3a28;
+}
+
+.chip[data-color="sea"],
+.block[data-color="sea"],
+.agenda-item[data-color="sea"] {
+  background: #e6eef5;
+  color: #1e3f5a;
+}
+
+.chip[data-color="gold"],
+.block[data-color="gold"],
+.agenda-item[data-color="gold"] {
+  background: #f8f1dc;
+  color: #6a5420;
+}
+
+.agenda {
+  width: 280px;
+  flex-shrink: 0;
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid rgba(255, 253, 248, 0.7);
+  border-radius: 18px;
+  background: rgba(255, 253, 248, 0.78);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(16px);
+}
+
+.app {
+  background: transparent;
+}
+
+.workspace {
+  gap: 12px;
+  padding: 12px;
+}
+
+.month-view {
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+}
+
+.cell:hover:not(.is-on) {
+  background: #fffdf8;
+}
+
+.agenda-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.agenda-title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.agenda:has(#agenda-fold:checked) .legend,
+.agenda:has(#agenda-fold:checked) #agenda-list,
+.agenda:has(#agenda-fold:checked) #agenda-empty {
+  display: none;
+}
+
+.app:has(#density-compact:checked) .menu-btn[for="density-compact"] {
+  background: var(--tint);
+  color: var(--accent);
+}
+
+.app:has(#density-compact:checked) .cell-inner {
+  gap: 1px;
+}
+
+.app:has(#density-compact:checked) .chip,
+.app:has(#density-compact:checked) .more {
+  font-size: 11px;
+}
+
+.agenda-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.agenda-time,
+.agenda-place,
+.empty {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.agenda-item .agenda-time,
+.agenda-item .agenda-place {
+  color: inherit;
+  opacity: 0.8;
+}
+
+.agenda-name {
+  font-weight: 600;
+}
+
+.empty {
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .workspace {
+    flex-direction: column;
+  }
+
+  .agenda {
+    width: auto;
+    max-height: 34%;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}

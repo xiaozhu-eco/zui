@@ -1,0 +1,33 @@
+{
+  "name": "multicol-text",
+  "page": "page.html",
+  "viewport": [
+    800,
+    600
+  ],
+  "_comment": "多栏里的行内格式化上下文：段落在栏间按行边界切开（CSS Multi-column 第 7 节、CSS Fragmentation 第 4 节）。",
+  "matrix": [
+    "multicol",
+    "fragmentation"
+  ],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 800,
+      "h": 600
+    },
+    {
+      "op": "trace"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": {
+    "breaks": true,
+    "advances": false
+  }
+}

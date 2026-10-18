@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .box { width: 80px; height: 30px; display: block; }
+    #field { width: 120px; }
+  </style>
+</head>
+<body onresize="on_resize">
+  <!-- One handler per event kind the engine dispatches. The ids/names are driven by
+       tests/app_interact/event_kinds_test.cpp; apps do not declare these kinds, so this page is
+       the engine-level interaction coverage (docs/TEST_ARCHITECTURE.md 交互). -->
+  <div id="hover" class="box" onmouseenter="on_enter" onmouseleave="on_leave"
+       onmouseover="on_over" onmouseout="on_out"></div>
+  <button id="dbl" ondblclick="on_dbl">dbl</button>
+  <button id="ctx" oncontextmenu="on_ctx">ctx</button>
+  <button id="mid" onauxclick="on_aux">mid</button>
+  <input id="field" onfocus="on_focus" onblur="on_blur" onkeyup="on_keyup">
+  <p id="status">idle</p>
+</body>
+</html>

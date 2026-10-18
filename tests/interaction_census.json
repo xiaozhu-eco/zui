@@ -1,0 +1,908 @@
+{
+  "album": {
+    "file": "example/applications/album/index.html",
+    "ids": {
+      "add-album": [
+        "AlbumAddAlbumOpensTheDialog",
+        "AlbumCancelDialogHidesIt",
+        "AlbumNameEditRenamesTheButton",
+        "AlbumNewAlbumSortsBeforeTheLooseBin",
+        "AlbumSaveDialogAddsAndSelectsTheAlbum",
+        "AlbumSaveDialogRejectsAnEmptyName"
+      ],
+      "album-form-cancel": [
+        "AlbumCancelDialogHidesIt"
+      ],
+      "album-name": [
+        "AlbumClickSelectsTheAlbum",
+        "AlbumNameEditRenamesTheButton",
+        "AlbumSaveDialogAddsAndSelectsTheAlbum"
+      ],
+      "confirm-cancel": [
+        "AlbumConfirmCancelKeepsThePhotos"
+      ],
+      "confirm-ok": [
+        "AlbumDeleteAlbumAsksThenMovesItsPhotos",
+        "AlbumDeletePhotoAsksThenDeletes",
+        "AlbumRestoreAsksThenReseeds"
+      ],
+      "delete-album": [
+        "AlbumDeleteAlbumAsksThenMovesItsPhotos"
+      ],
+      "light-album": [
+        "AlbumPickAlbumMovesThePhoto"
+      ],
+      "light-close": [
+        "AlbumLightCloseHidesTheLightbox",
+        "AlbumLightOpensWithTheToolsClosed",
+        "AlbumNoteEditPersistsOnReopen"
+      ],
+      "light-delete": [
+        "AlbumDeletePhotoAsksThenDeletes",
+        "AlbumRestoreAsksThenReseeds"
+      ],
+      "light-next": [
+        "AlbumNextStepsForward"
+      ],
+      "light-note": [
+        "AlbumLightOpensWithTheToolsClosed",
+        "AlbumNoteEditPersistsOnReopen",
+        "AlbumNoteEscapeClosesTheLightbox"
+      ],
+      "light-prev": [
+        "AlbumPrevStepsBack"
+      ],
+      "lightbox": [
+        "AlbumAccelEscapeClosesAndArrowsStep",
+        "AlbumDeletePhotoAsksThenDeletes",
+        "AlbumLightClickKeepsTheToolsOpen",
+        "AlbumLightClickLeavesTheViewer",
+        "AlbumLightCloseHidesTheLightbox",
+        "AlbumLightOpensWithTheToolsClosed",
+        "AlbumNoteEscapeClosesTheLightbox",
+        "AlbumPhotoClickOpensTheLightbox",
+        "AlbumPickAlbumMovesThePhoto",
+        "AlbumStageDragScrollsByTheDelta"
+      ],
+      "restore": [
+        "AlbumConfirmCancelKeepsThePhotos",
+        "AlbumRestoreAsksThenReseeds"
+      ],
+      "stage": [
+        "AlbumControlWheelZoomsTheStage",
+        "AlbumStageDragScrollsByTheDelta",
+        "AlbumZoomInRaisesTheLabel",
+        "AlbumZoomOutClampsAtOneHundred"
+      ],
+      "zoom-in": [
+        "AlbumZoomInRaisesTheLabel"
+      ],
+      "zoom-out": [
+        "AlbumZoomOutClampsAtOneHundred"
+      ]
+    }
+  },
+  "calendar": {
+    "file": "example/applications/calendar/index.html",
+    "ids": {
+      "color-clay": [
+        "CalendarColorRadioPaintsTheSavedEvent"
+      ],
+      "color-gold": [
+        "CalendarColorRadioPaintsTheSavedEvent"
+      ],
+      "color-green": [
+        "CalendarColorRadioPaintsTheSavedEvent"
+      ],
+      "color-sea": [
+        "CalendarColorRadioPaintsTheSavedEvent"
+      ],
+      "confirm-cancel": [
+        "CalendarConfirmCancelKeepsTheEvents"
+      ],
+      "confirm-ok": [
+        "CalendarRemoveAsksThenDeletesTheEvent",
+        "CalendarRestoreAsksThenReseeds"
+      ],
+      "create": [
+        "CalendarAccelEscapeClosesTheOpenDialog",
+        "CalendarColorRadioPaintsTheSavedEvent",
+        "CalendarCreateOpensTheEditor",
+        "CalendarEditorCancelHidesTheEditor",
+        "CalendarSaveAddsTheEventToTheAgenda",
+        "CalendarSaveRejectsAMissingTitle"
+      ],
+      "day-0": [
+        "CalendarWeekDayNewOpensTheEditor",
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "day-1": [
+        "CalendarWeekDayNewOpensTheEditor",
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "day-2": [
+        "CalendarWeekDayNewOpensTheEditor",
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "day-3": [
+        "CalendarWeekDayNewOpensTheEditor",
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "day-4": [
+        "CalendarWeekDayNewOpensTheEditor",
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "day-5": [
+        "CalendarWeekDayNewOpensTheEditor",
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "day-6": [
+        "CalendarWeekDayNewOpensTheEditor",
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "dow-0": [
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "dow-1": [
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "dow-2": [
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "dow-3": [
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "dow-4": [
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "dow-5": [
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "dow-6": [
+        "CalendarWeekDaySelectsTheDate"
+      ],
+      "editor-cancel": [
+        "CalendarEditorCancelHidesTheEditor"
+      ],
+      "editor-remove": [
+        "CalendarCreateOpensTheEditor",
+        "CalendarEventChipOpensTheEditor",
+        "CalendarRemoveAsksThenDeletesTheEvent",
+        "CalendarRestoreAsksThenReseeds"
+      ],
+      "next": [
+        "CalendarNextMovesForwardAMonth",
+        "CalendarTodayRestoresTheCurrentMonth"
+      ],
+      "prev": [
+        "CalendarPrevMonthStaysInsideItsBound",
+        "CalendarPrevMovesBackAMonth"
+      ],
+      "restore": [
+        "CalendarAccelEscapeClosesTheOpenDialog",
+        "CalendarConfirmCancelKeepsTheEvents",
+        "CalendarRestoreAsksThenReseeds"
+      ],
+      "today": [
+        "CalendarTodayRestoresTheCurrentMonth"
+      ],
+      "view-month": [
+        "CalendarMonthButtonShowsTheGrid"
+      ],
+      "view-week": [
+        "CalendarMonthButtonShowsTheGrid",
+        "CalendarWeekButtonShowsTheWeek"
+      ]
+    }
+  },
+  "chat": {
+    "file": "example/applications/chat/index.html",
+    "ids": {
+      "confirm-cancel": [
+        "ChatConfirmCancelKeepsTheData"
+      ],
+      "confirm-ok": [
+        "ChatRemoveAsksThenDeletesTheConversation",
+        "ChatRestoreAsksThenReseeds"
+      ],
+      "create": [
+        "ChatAccelEscapeClosesTheOpenDialog",
+        "ChatCreateOpensTheCreatorDialog",
+        "ChatCreatorCancelHidesTheDialog",
+        "ChatCreatorSaveAddsAndSelectsTheConversation",
+        "ChatCreatorSaveRejectsAnEmptyName"
+      ],
+      "creator-cancel": [
+        "ChatCreatorCancelHidesTheDialog"
+      ],
+      "draft": [
+        "ChatDraftEnterSendsTheMessage",
+        "ChatSendAppendsTheDraft"
+      ],
+      "jump": [
+        "ChatJumpReturnsToTheBottom",
+        "ChatQueryLeavesTheScrolledLogInPlace",
+        "ChatScrollingAwayFromTheBottomShowsJump"
+      ],
+      "log": [
+        "ChatJumpReturnsToTheBottom",
+        "ChatQueryLeavesTheScrolledLogInPlace",
+        "ChatScrollingAwayFromTheBottomShowsJump"
+      ],
+      "q": [
+        "ChatQueryKeepsTheMatchingConversation",
+        "ChatQueryLeavesTheScrolledLogInPlace",
+        "ChatQueryWithoutAMatchShowsTheEmptyNote"
+      ],
+      "remove": [
+        "ChatRemoveAsksThenDeletesTheConversation",
+        "ChatRestoreAsksThenReseeds"
+      ],
+      "restore": [
+        "ChatAccelEscapeClosesTheOpenDialog",
+        "ChatConfirmCancelKeepsTheData",
+        "ChatRestoreAsksThenReseeds"
+      ]
+    }
+  },
+  "contacts": {
+    "file": "example/applications/contacts/index.html",
+    "ids": {
+      "confirm-cancel": [
+        "ContactsConfirmCancelKeepsTheList"
+      ],
+      "confirm-ok": [
+        "ContactsDeleteAsksThenRemovesThePerson",
+        "ContactsRestoreAsksThenReseeds"
+      ],
+      "create": [
+        "ContactsAccelEscapeClosesTheOpenDialog",
+        "ContactsCreateOpensTheEmptyEditor",
+        "ContactsEditorCancelHidesTheEditor",
+        "ContactsGroupPickerIsHiddenAndTheSelectIsReachable",
+        "ContactsSaveAddsTheNewPerson",
+        "ContactsSaveRejectsAMalformedEmail",
+        "ContactsSaveRejectsAMissingName",
+        "ContactsSaveRejectsAnEmptyDomainLabel"
+      ],
+      "d-email": [
+        "ContactsOpenUriReadsTheDetailHref"
+      ],
+      "d-phone": [
+        "ContactsOpenUriReadsTheDetailHref",
+        "ContactsPersonClickShowsTheDetail"
+      ],
+      "editor-cancel": [
+        "ContactsEditorCancelHidesTheEditor"
+      ],
+      "g-family": [
+        "ContactsFilterChipNarrowsToTheGroup"
+      ],
+      "g-friend": [
+        "ContactsFilterChipNarrowsToTheGroup"
+      ],
+      "g-other": [
+        "ContactsFilterChipNarrowsToTheGroup"
+      ],
+      "g-work": [
+        "ContactsFilterChipNarrowsToTheGroup"
+      ],
+      "q": [
+        "ContactsQueryKeepsTheMatchingPerson",
+        "ContactsQueryWithoutAMatchShowsTheEmptyNote"
+      ],
+      "restore": [
+        "ContactsConfirmCancelKeepsTheList",
+        "ContactsRestoreAsksThenReseeds"
+      ],
+      "star-only": [
+        "ContactsStarFilterStaysInsideItsBound",
+        "ContactsStarOnlyShrinksTheList"
+      ]
+    }
+  },
+  "kanban": {
+    "file": "example/applications/kanban/index.html",
+    "ids": {
+      "add-column": [
+        "KanbanAddColumnAppendsAnEmptyColumn",
+        "KanbanColumnNameEditPersists"
+      ],
+      "add-{{id}}": [
+        "KanbanAddCardOnEnter",
+        "KanbanAddCardStaysInsideItsBound",
+        "KanbanAddColumnAppendsAnEmptyColumn",
+        "KanbanBoardMatchesTheBrowser",
+        "KanbanColumnNameEditPersists"
+      ],
+      "board": [
+        "KanbanBoardMatchesTheBrowser",
+        "KanbanDragCardToAnotherColumn"
+      ],
+      "card-{{id}}": [
+        "KanbanAccelEscapeClosesTheOpenDialog",
+        "KanbanAddCardOnEnter",
+        "KanbanBoardMatchesTheBrowser",
+        "KanbanCardClickOpensTheEditor",
+        "KanbanCardMoveDownReordersTheColumn",
+        "KanbanCardMoveUpReordersTheColumn",
+        "KanbanDragCardToAnotherColumn",
+        "KanbanEditorCancelHidesTheEditor",
+        "KanbanPickColumnMarksTheTarget",
+        "KanbanRemoveCardAsksThenDeletes",
+        "KanbanRemoveColumnAsksThenMovesItsCards",
+        "KanbanRestoreAsksThenReseeds",
+        "KanbanSaveMovesTheCardToThePickedColumn",
+        "KanbanSaveRejectsAMissingTitle"
+      ],
+      "col-{{id}}": [
+        "KanbanDragCardToAnotherColumn",
+        "KanbanDragColumnReordersTheBoard"
+      ],
+      "confirm-cancel": [
+        "KanbanConfirmCancelKeepsTheBoard"
+      ],
+      "confirm-ok": [
+        "KanbanRemoveCardAsksThenDeletes",
+        "KanbanRemoveColumnAsksThenMovesItsCards",
+        "KanbanRestoreAsksThenReseeds"
+      ],
+      "editor-cancel": [
+        "KanbanBoardMatchesTheBrowser",
+        "KanbanEditorCancelHidesTheEditor"
+      ],
+      "editor-remove": [
+        "KanbanRemoveCardAsksThenDeletes",
+        "KanbanRestoreAsksThenReseeds"
+      ],
+      "name-{{id}}": [
+        "KanbanColumnNameEditPersists"
+      ],
+      "restore": [
+        "KanbanAccelEscapeClosesTheOpenDialog",
+        "KanbanConfirmCancelKeepsTheBoard",
+        "KanbanRestoreAsksThenReseeds"
+      ]
+    }
+  },
+  "particle": {
+    "file": "example/applications/particle/index.html",
+    "ids": {
+      "count-dec": [
+        "ParticleCountChangesTheNextAdvance"
+      ],
+      "count-inc": [
+        "ParticleCountChangesTheNextAdvance",
+        "ParticleEffectAndCountMatchTheBrowser"
+      ],
+      "effect-fountain": [
+        "ParticleEffectAndCountMatchTheBrowser",
+        "ParticleEffectSelectUpdatesTheField"
+      ],
+      "effect-orbit": [
+        "ParticleEffectSelectUpdatesTheField"
+      ],
+      "effect-snow": [
+        "ParticleEffectAndCountMatchTheBrowser",
+        "ParticleEffectSelectUpdatesTheField",
+        "ParticleEffectStaysInsideItsBound"
+      ],
+      "shader-export": [
+        "ParticleShaderRoundTrip"
+      ],
+      "shader-import": [
+        "ParticleShaderRoundTrip"
+      ],
+      "shader-source": [
+        "ParticleShaderRoundTrip"
+      ],
+      "speed-dec": [
+        "ParticleSpeedChangesTheNextAdvance"
+      ],
+      "speed-inc": [
+        "ParticleShaderRoundTrip",
+        "ParticleSpeedChangesTheNextAdvance"
+      ],
+      "split-param": [
+        "ParticleDragKeepsTheNewWidths"
+      ],
+      "split-tree": [
+        "ParticleDragKeepsTheNewWidths"
+      ],
+      "spread-dec": [
+        "ParticleSpreadChangesTheNextAdvance"
+      ],
+      "spread-inc": [
+        "ParticleSpreadChangesTheNextAdvance"
+      ]
+    }
+  },
+  "writer": {
+    "file": "example/applications/writer/index.html",
+    "ids": {
+      "mode-edit": [
+        "WriterDesktopTreeSitsBesideThePiece",
+        "WriterEditModeAcceptsText",
+        "WriterPhonePieceFitsAndTreeIsReachable",
+        "WriterReadModeShowsTextAndRejectsEdits"
+      ],
+      "mode-read": [
+        "WriterDesktopTreeSitsBesideThePiece",
+        "WriterPhonePieceFitsAndTreeIsReachable",
+        "WriterReadModeShowsTextAndRejectsEdits"
+      ],
+      "tree-toggle": [
+        "WriterPhonePieceFitsAndTreeIsReachable"
+      ],
+      "view-calendar": [
+        "WriterCalendarShowsActivity"
+      ],
+      "view-history": [
+        "WriterHistoryShowsTheOlderText",
+        "WriterNewPieceMatchesTheBrowser"
+      ],
+      "view-tree": [
+        "WriterCalendarShowsActivity"
+      ]
+    }
+  },
+  "zdb": {
+    "file": "example/applications/zdb/index.html",
+    "ids": {
+      "clear-sql": [
+        "ZdbClearSqlEmptiesTheResults"
+      ],
+      "detail-close": [
+        "ZdbDetailCloseHidesTheDetail"
+      ],
+      "export-db": [
+        "ZdbOpenAndExportAreWiredToTheHostPickers"
+      ],
+      "limit-100": [
+        "ZdbPagerMovesAndChangesTheLimit"
+      ],
+      "limit-200": [
+        "ZdbPagerMovesAndChangesTheLimit"
+      ],
+      "limit-25": [
+        "ZdbPagerMovesAndChangesTheLimit"
+      ],
+      "limit-50": [
+        "ZdbPagerMovesAndChangesTheLimit"
+      ],
+      "mode-data": [
+        "ZdbModeSwitchShowsEachPane",
+        "ZdbShowStructureButtonOpensTheStructurePane"
+      ],
+      "mode-query": [
+        "ZdbClearSqlEmptiesTheResults",
+        "ZdbModeSwitchShowsEachPane",
+        "ZdbQueryCellClickShowsTheDetail",
+        "ZdbQueryDetailCloseHidesIt",
+        "ZdbQueryPickSwitchesTheResult",
+        "ZdbRunSqlShowsTheResult",
+        "ZdbSqlCtrlEnterRuns"
+      ],
+      "mode-structure": [
+        "ZdbModeSwitchShowsEachPane",
+        "ZdbObjectClickSelectsItInTheStructurePane"
+      ],
+      "obj-{{index}}": [
+        "ZdbCellClickShowsTheDetail",
+        "ZdbDetailCloseHidesTheDetail",
+        "ZdbObjectClickSelectsItInTheStructurePane",
+        "ZdbOpenTableStaysInsideItsBound",
+        "ZdbPagerMovesAndChangesTheLimit",
+        "ZdbSortHeaderReordersTheGrid"
+      ],
+      "object-filter": [
+        "ZdbObjectFilterShrinksTheList",
+        "ZdbObjectPanelFilterStaysInsideItsBound"
+      ],
+      "open-file": [
+        "ZdbOpenAndExportAreWiredToTheHostPickers"
+      ],
+      "open-sample": [
+        "ZdbSampleButtonLoadsTheSampleLibrary"
+      ],
+      "page-next": [
+        "ZdbPagerMovesAndChangesTheLimit"
+      ],
+      "page-prev": [
+        "ZdbPagerMovesAndChangesTheLimit"
+      ],
+      "run-sql": [
+        "ZdbClearSqlEmptiesTheResults",
+        "ZdbQueryCellClickShowsTheDetail",
+        "ZdbQueryDetailCloseHidesIt",
+        "ZdbQueryPickSwitchesTheResult",
+        "ZdbRunSqlShowsTheResult"
+      ],
+      "sql-input": [
+        "ZdbQueryCellClickShowsTheDetail",
+        "ZdbQueryDetailCloseHidesIt",
+        "ZdbQueryPickSwitchesTheResult",
+        "ZdbSqlCtrlEnterRuns"
+      ],
+      "struct-parent": [
+        "ZdbStructureOpenTableSelectsTheTable"
+      ]
+    }
+  },
+  "zmd": {
+    "file": "example/applications/zmd/index.html",
+    "ids": {
+      "cm{{index}}": ["ZmdChromePaintsAndRestores"],
+      "zmd-accent": ["ZmdChromePaintsAndRestores"],
+      "fl{{index}}": ["ZmdFilesRoundTripOnDisk"],
+      "hd{{index}}": ["ZmdChromePaintsAndRestores"],
+      "mdc-a-pal-input": ["ZmdChromePaintsAndRestores"],
+      "mdc-a-preview": ["ZmdLaunchShowsTheWritingSurface", "ZmdEditingGoesThroughThePage"],
+      "mdc-a-scroll": ["ZmdOutlineFollowsTheReadingPosition"],
+      "mdc-a-source": ["ZmdSourceTypingUpdatesTheCountsRow", "ZmdEditingGoesThroughThePage"],
+      "zmd-assets": ["ZmdChromePaintsAndRestores"],
+      "zmd-autosave": ["ZmdFilesRoundTripOnDisk"],
+      "zmd-bold": ["ZmdEditingGoesThroughThePage"],
+      "zmd-code": ["ZmdEditingGoesThroughThePage"],
+      "zmd-export-html": ["ZmdFilesRoundTripOnDisk"],
+      "zmd-file-new": ["ZmdFilesRoundTripOnDisk"],
+      "zmd-find-close": ["ZmdEditingGoesThroughThePage"],
+      "zmd-find-next": ["ZmdEditingGoesThroughThePage"],
+      "zmd-find-open": ["ZmdEditingGoesThroughThePage"],
+      "zmd-find-prev": ["ZmdEditingGoesThroughThePage"],
+      "zmd-find-q": ["ZmdFindFieldCountsTheMatches", "ZmdEditingGoesThroughThePage"],
+      "zmd-focus": ["ZmdChromePaintsAndRestores"],
+      "zmd-focus-sw": ["ZmdChromePaintsAndRestores"],
+      "zmd-folder-up": ["ZmdFilePanelWalksFolders"],
+      "zmd-folder-new": ["ZmdFilesRoundTripOnDisk"],
+      "zmd-font-sans": ["ZmdChromePaintsAndRestores"],
+      "zmd-font-serif": ["ZmdChromePaintsAndRestores"],
+      "zmd-h1": ["ZmdEditingGoesThroughThePage"],
+      "zmd-h2": ["ZmdEditingGoesThroughThePage"],
+      "zmd-hr": ["ZmdEditingGoesThroughThePage"],
+      "zmd-image": ["ZmdEditingGoesThroughThePage"],
+      "zmd-image-apply": ["ZmdEditingGoesThroughThePage"],
+      "zmd-image-cancel": ["ZmdEditingGoesThroughThePage"],
+      "zmd-image-pick": ["ZmdEditingGoesThroughThePage"],
+      "zmd-italic": ["ZmdEditingGoesThroughThePage"],
+      "zmd-line": ["ZmdChromePaintsAndRestores"],
+      "zmd-link": ["ZmdEditingGoesThroughThePage"],
+      "zmd-link-apply": ["ZmdEditingGoesThroughThePage"],
+      "zmd-link-cancel": ["ZmdEditingGoesThroughThePage"],
+      "zmd-new-here": ["ZmdChromePaintsAndRestores"],
+      "zmd-new-root": ["ZmdChromePaintsAndRestores"],
+      "zmd-ol": ["ZmdEditingGoesThroughThePage"],
+      "zmd-page": ["ZmdLaunchShowsTheWritingSurface", "ZmdEditingGoesThroughThePage", "ZmdFilesRoundTripOnDisk"],
+      "zmd-pal-open": ["ZmdChromePaintsAndRestores"],
+      "zmd-radius": ["ZmdChromePaintsAndRestores"],
+      "zmd-pal-scrim": ["ZmdChromePaintsAndRestores"],
+      "zmd-pin-files": ["ZmdChromePaintsAndRestores"],
+      "zmd-pin-outline": ["ZmdChromePaintsAndRestores"],
+      "zmd-quote": ["ZmdEditingGoesThroughThePage"],
+      "zmd-scrim": ["ZmdLaunchShowsTheWritingSurface"],
+      "zmd-set-open": ["ZmdLaunchShowsTheWritingSurface"],
+      "zmd-set-status": ["ZmdLaunchShowsTheWritingSurface"],
+      "zmd-size": ["ZmdChromePaintsAndRestores"],
+      "zmd-tab-export": ["ZmdFilesRoundTripOnDisk"],
+      "zmd-tab-file": ["ZmdChromePaintsAndRestores"],
+      "zmd-tab-keys": ["ZmdChromePaintsAndRestores"],
+      "zmd-tab-look": ["ZmdChromePaintsAndRestores"],
+      "zmd-tab-type": ["ZmdChromePaintsAndRestores"],
+      "zmd-table": ["ZmdEditingGoesThroughThePage"],
+      "zmd-theme-dark": ["ZmdChromePaintsAndRestores"],
+      "zmd-theme-light": ["ZmdChromePaintsAndRestores"],
+      "zmd-theme-system": ["ZmdChromePaintsAndRestores"],
+      "zmd-to-top": ["ZmdChromePaintsAndRestores"],
+      "zmd-ul": ["ZmdEditingGoesThroughThePage"],
+      "zmd-unsaved-cancel": ["ZmdFilesRoundTripOnDisk"],
+      "zmd-unsaved-discard": ["ZmdFilesRoundTripOnDisk"],
+      "zmd-unsaved-save": ["ZmdFilesRoundTripOnDisk"],
+      "zmd-view-preview": ["ZmdEditingGoesThroughThePage"],
+      "zmd-view-write": ["ZmdEditingGoesThroughThePage"],
+      "zmd-width": ["ZmdChromePaintsAndRestores"],
+      "zmd-ws": ["ZmdChromePaintsAndRestores"]
+    }
+  },
+  "reader": {
+    "file": "example/applications/reader/reader.html",
+    "ids": {
+      "bookmark_btn": [
+        "ReaderOnBookmarkTogglesTheMark"
+      ],
+      "chapter_next": [
+        "ReaderOnNextStepsForward"
+      ],
+      "ch{{index}}": [
+        "ReaderOnChapterJumpsToIt",
+        "ReaderOnHitJumpsToTheMatch",
+        "ReaderOnNextStepsForward",
+        "ReaderOnOpenShowsTheChapter",
+        "ReaderOnSettingsTogglesThePanel",
+        "ReaderOnTocShowsTheTray"
+      ],
+      "clear_btn": [
+        "ReaderOnClearResetsTheReadingProgress"
+      ],
+      "find_query": [
+        "ReaderOnHitJumpsToTheMatch"
+      ],
+      "flow_wrap": [
+        "ReaderOnReadingTapTogglesTheChrome"
+      ],
+      "open{{index}}": [
+        "ReaderOnBackReturnsToTheShelf",
+        "ReaderOnOpenShowsTheChapter",
+        "ReaderOnRefreshRebuildsTheShelf"
+      ],
+      "remove{{index}}": [
+        "ReaderOnRemoveHidesTheBookFromTheShelf"
+      ],
+      "resume": [
+        "ReaderOnResumeOpensTheMostRecentBook"
+      ],
+      "shelf_query": [
+        "ReaderOnTypeKeyEscapeClosesTheOverlays"
+      ],
+      "sort_btn": [
+        "ReaderOnSortSwitchesTheShelfOrder"
+      ],
+      "toc_query": [
+        "ReaderOnTypeKeyEscapeClosesTheOverlays"
+      ],
+      "toc_toggle": [
+        "ReaderOnTocShowsTheTray"
+      ],
+      "tray_scrim": [
+        "ReaderOnTrayScrimClosesTheTray"
+      ]
+    }
+  },
+  "hello": {
+    "file": "example/tests/hello/hello.html",
+    "ids": {
+      "inc": [
+        "ExampleHelloIncrementRaisesTheProjectCount"
+      ],
+      "name": [
+        "ExampleHelloKeepsItsHeaderAndWritePath",
+        "ExampleHelloNameInputDrivesTheStatus"
+      ],
+      "nav_home": [
+        "ExampleHelloHomeShowsTheHomePage"
+      ],
+      "nav_projects": [
+        "ExampleHelloHomeShowsTheHomePage",
+        "ExampleHelloProjectsShowsTheProjectsCopy"
+      ],
+      "nav_settings": [
+        "ExampleHelloSettingsShowsTheSettingsCopy"
+      ],
+      "save": [
+        "ExampleHelloKeepsItsHeaderAndWritePath",
+        "ExampleHelloSaveWritesTheProfile"
+      ]
+    }
+  },
+  "studio": {
+    "file": "example/tests/studio/studio.html",
+    "ids": {
+      "nav_inspect": [
+        "ExampleStudioPageSwitchShowsTheLog"
+      ],
+      "nav_log": [
+        "ExampleStudioPageSwitchShowsTheLog"
+      ],
+      "open": [
+        "ExampleStudioCloseUnloadsTheFragment",
+        "ExampleStudioConfirmExportsWithNotifyOn",
+        "ExampleStudioOpenLoadsTheExportFragment",
+        "ExampleTransitionDrawerOpens",
+        "ExampleTransitionPlayTogglesEverything"
+      ],
+      "reshuffle": [
+        "ExampleStudioReshuffleRebuildsAndReportsTheGrid"
+      ],
+      "theme_dawn": [
+        "ExampleStudioBindsItsGridAndTogglesItsControls",
+        "ExampleStudioThemeDawnSwitchesThePack"
+      ],
+      "theme_night": [
+        "ExampleStudioBindsItsGridAndTogglesItsControls"
+      ]
+    }
+  },
+  "checks": {
+    "file": "example/tests/checks/checks.html",
+    "ids": {}
+  },
+  "transition": {
+    "file": "example/tests/transition/transition.html",
+    "ids": {}
+  },
+  "flow": {
+    "file": "example/tests/flow/flow.html",
+    "ids": {}
+  },
+  "style": {
+    "file": "example/tests/style/style.html",
+    "ids": {}
+  },
+  "table": {
+    "file": "example/tests/table/table.html",
+    "ids": {}
+  },
+  "text": {
+    "file": "example/tests/text/text.html",
+    "ids": {}
+  },
+  "share": {
+    "file": "example/applications/share/index.html",
+    "ids": {
+      "accept": [
+        "ShareIncomingAcceptStartsTheTransfer"
+      ],
+      "chip-{{id}}": [
+        "SharePeerStripDoesNotOpenThePicker"
+      ],
+      "clear": [
+        "ShareSelectionDrivesTheBottomBar"
+      ],
+      "done-ok": [
+        "ShareDoneReturnsToBrowse"
+      ],
+      "fail-back": [
+        "ShareFailBackReturnsToBrowse"
+      ],
+      "name-input": [
+        "ShareEnterOnTheNameStarts",
+        "ShareFirstNameMustNotBeEmpty"
+      ],
+      "path": [
+        "ShareBrowseListsTheRealDirectory",
+        "ShareFolderRowEntersAndUpReturns",
+        "SharePathEditOpensThatDirectory"
+      ],
+      "peer-{{id}}": [
+        "SharePeerStripDoesNotOpenThePicker",
+        "SharePickShowsTheEmptyPeerState"
+      ],
+      "pick-back": [
+        "SharePickShowsTheEmptyPeerState"
+      ],
+      "refresh": [
+        "SharePathEditOpensThatDirectory",
+        "ShareRefreshPicksUpANewFile",
+        "ShareRefreshStaysInsideItsBound"
+      ],
+      "reject": [
+        "ShareIncomingRejectHidesTheSheet"
+      ],
+      "row-{{id}}": [
+        "ShareFolderRowEntersAndUpReturns",
+        "SharePickShowsTheEmptyPeerState",
+        "ShareSelectionDrivesTheBottomBar",
+        "ShareSendToAPeerWaits",
+        "ShareWaitCancelReturnsToBrowse"
+      ],
+      "save-dir": [
+        "ShareSaveDirectoryPersists"
+      ],
+      "save-name": [
+        "ShareSettingsPersistIdentity"
+      ],
+      "send-{{id}}": [
+        "ShareSendToAPeerWaits",
+        "ShareWaitCancelReturnsToBrowse"
+      ],
+      "set-name": [
+        "ShareSettingsPersistIdentity"
+      ],
+      "settings": [
+        "ShareSaveDirectoryPersists",
+        "ShareSettingsBackReturnsToBrowse",
+        "ShareSettingsPersistIdentity"
+      ],
+      "settings-back": [
+        "ShareSettingsBackReturnsToBrowse"
+      ],
+      "share": [
+        "SharePickShowsTheEmptyPeerState",
+        "ShareSelectionDrivesTheBottomBar",
+        "ShareSendToAPeerWaits",
+        "ShareWaitCancelReturnsToBrowse"
+      ],
+      "start": [
+        "ShareFirstNameMustNotBeEmpty"
+      ],
+      "up": [
+        "ShareFolderRowEntersAndUpReturns"
+      ],
+      "use-cwd": [
+        "ShareSettingsPersistIdentity"
+      ],
+      "wait-cancel": [
+        "ShareWaitCancelReturnsToBrowse"
+      ],
+      "xfer-cancel": [
+        "ShareTransferCancelReturnsToBrowse"
+      ]
+    },
+    "unkeyed": {
+      "on_accel": [
+        "ShareSettingsPersistIdentity"
+      ],
+      "on_reject": [
+        "ShareIncomingScrimRejects"
+      ]
+    }
+  },
+  "file-explorer": {
+    "file": "example/applications/file-explorer/index.html",
+    "ids": {
+      "dir-code": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "dir-docs": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "dir-images": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "dir-notes": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "dir-reports": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "dir-root": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "file-card": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "file-catalog": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "file-coast": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "file-ferry": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "file-guide": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "file-lantern": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "file-ledger": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "file-mark": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "file-none": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "file-shelf": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "file-theme": [
+        "FileExplorerRadiosMatchTheBrowser"
+      ],
+      "view-details": [
+        "FileExplorerRadiosMatchTheBrowser",
+        "FileExplorerRadiosSwitchFolderFileAndView"
+      ],
+      "view-grid": [
+        "FileExplorerRadiosMatchTheBrowser",
+        "FileExplorerRadiosSwitchFolderFileAndView"
+      ],
+      "view-list": [
+        "FileExplorerRadiosMatchTheBrowser",
+        "FileExplorerRadiosSwitchFolderFileAndView"
+      ]
+    },
+    "controls": "radio"
+  }
+}

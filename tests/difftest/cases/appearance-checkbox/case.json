@@ -1,0 +1,17 @@
+{
+  "name": "appearance-checkbox",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Phase1: appearance:none suppresses checkbox chrome; default still paints the checked mark.",
+  "matrix": ["paint.form-control"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,8 @@
+html, body { margin: 0; background: #eef1f5; }
+.sw { margin: 16px 0 16px 48px; }
+#early { width: 160px; height: 160px;
+  background-image: conic-gradient(#e23a3a, 20%, #2e6eee); }
+#late { width: 160px; height: 160px;
+  background-image: conic-gradient(#e23a3a, 80%, #2e6eee); }
+#plain { width: 160px; height: 160px;
+  background-image: conic-gradient(#e23a3a, #2e6eee); }

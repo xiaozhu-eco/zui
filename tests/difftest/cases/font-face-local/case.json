@@ -1,0 +1,18 @@
+{
+  "name": "font-face-local",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "本地 @font-face url()，family 不在 env.json。浏览器与引擎都在首次绘制前用同一份 TTF。",
+  "matrix": ["text.font-load"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": true }
+}

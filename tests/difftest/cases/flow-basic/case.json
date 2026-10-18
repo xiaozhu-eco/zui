@@ -1,0 +1,18 @@
+{
+  "name": "flow-basic",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "阶段 0 的静态单帧用例：块布局 + 外边距 + 边框 + flex 分配。无文本，长度全是 px，所以不依赖字体度量，L1/L2/L4 都应当是确定性的。",
+  "matrix": ["flow.normal", "flow.flex"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "_comment_pixels": "strict = 非文本严格相等；本用例没有文本，所以整幅都严格比。text-aa 才给行盒区域 AA 容差。",
+  "text": { "breaks": false, "advances": false }
+}

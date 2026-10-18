@@ -1,0 +1,16 @@
+{
+  "name": "transform-functions",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1：transform 函数子集 matrix/matrix3d(2D)/skew*/perspective(no-op)/origin 三值。L2 变换后边框盒 AABB。",
+  "matrix": ["transform"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

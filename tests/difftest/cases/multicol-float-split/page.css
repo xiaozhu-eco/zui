@@ -1,0 +1,32 @@
+/* A float taller than the column. Chrome fragments it at the column edge: the part that fits stays,
+   and the rest continues at the top of the next column (CSS Multi-column section 7), which is why
+   the float's own rect is the union of its parts and the lines of the column after the break start
+   beside the remainder. A definite column height with `column-fill: auto` keeps the columns filling
+   in order, so what the case measures is the split itself and not the balancer. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+body { font: 400 12px/20px "Zui Test", sans-serif; }
+p { margin: 0; }
+
+.box {
+  width: 420px;
+  height: 100px;
+  margin: 0 0 20px 0;
+  padding: 10px;
+  background-color: #161c27;
+  column-count: 2;
+  column-gap: 20px;
+  column-fill: auto;
+}
+
+.inner { background-color: #101820; }
+
+/* 240 tall over 100 tall columns. */
+.fl { float: left; width: 60px; height: 240px; background-color: #7cb7ff; }

@@ -1,0 +1,12 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+.field {
+    display: block;
+    width: 220px;
+    height: 28px;
+    margin: 8px;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 16px;
+    font-weight: 400;
+}
+.wide { width: 80px; }

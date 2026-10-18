@@ -1,0 +1,317 @@
+.workspace,
+#calendar-view,
+#history-view {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+.workspace { display: flex; }
+
+/* A full-height strip. The card inside is not a drawer. */
+.edge {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  width: 18px;
+}
+
+.edge-right {
+  left: auto;
+  right: 0;
+}
+
+#edge-docs:hover,
+#app.show-tree #edge-docs,
+#edge-outline:hover {
+  width: 276px;
+}
+
+#tree-pane,
+#outline-pane {
+  display: none;
+  position: absolute;
+  top: 56px;
+  width: 220px;
+  max-height: 420px;
+  overflow: auto;
+  flex-direction: column;
+  padding: 8px;
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(28, 28, 28, 0.08);
+}
+
+#tree-pane { left: 8px; }
+
+#outline-pane { right: 8px; }
+
+#edge-docs:hover #tree-pane,
+#app.show-tree #tree-pane,
+#edge-outline:hover #outline-pane {
+  display: flex;
+}
+
+.tree-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.card-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.tree-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tree-actions button,
+.tree-rename button {
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 2px 4px;
+  white-space: nowrap;
+}
+
+.tree {
+  min-height: 0;
+  overflow: auto;
+}
+
+.twig {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 0 0 2px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink);
+}
+
+.twig.folder { font-weight: 600; }
+
+.twig.folder::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 6px;
+  margin-right: 6px;
+  border-radius: 1px;
+  background: var(--muted);
+  vertical-align: 1px;
+}
+
+.twig.d0 { padding-left: 10px; }
+.twig.d1 { padding-left: 26px; }
+.twig.d2 { padding-left: 42px; }
+.twig.d3 { padding-left: 58px; }
+.twig.d4 { padding-left: 74px; }
+.twig.d5 { padding-left: 90px; }
+.twig.d6 { padding-left: 106px; }
+
+.twig.is-on {
+  background: var(--today);
+  color: var(--ink);
+}
+
+.tree-rename {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+#doc-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+#rename-name {
+  flex: 1 1 120px;
+  /* Floor at the horizontal padding and border. max-width: 100% resolved to 0
+     while this row's width was indefinite and the field came back 18px. */
+  min-width: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 8px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.outline-body {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+#doc-pane {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 72px 48px 16px;
+  background: var(--paper);
+}
+
+.sheet {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 620px;
+  min-width: 0;
+  min-height: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#editor {
+  flex: 1 1 auto;
+  min-height: 160px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 4px 0 12px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.85;
+  resize: none;
+  outline: none;
+}
+
+.reader {
+  flex: 1 1 auto;
+  min-height: 160px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  padding: 4px 0 12px;
+  background: transparent;
+  font-size: 18px;
+  line-height: 1.85;
+}
+
+.app.tx0 #editor, .app.tx0 .reader { font-size: 13px; }
+.app.tx1 #editor, .app.tx1 .reader { font-size: 15px; }
+.app.tx2 #editor, .app.tx2 .reader { font-size: 16px; }
+.app.tx3 #editor, .app.tx3 .reader { font-size: 18px; }
+.app.tx4 #editor, .app.tx4 .reader { font-size: 20px; }
+.app.tx5 #editor, .app.tx5 .reader { font-size: 22px; }
+.app.tx6 #editor, .app.tx6 .reader { font-size: 26px; }
+.app.tx7 #editor, .app.tx7 .reader { font-size: 30px; }
+.app.tx8 #editor, .app.tx8 .reader { font-size: 36px; }
+
+.status { color: var(--muted); margin-top: 8px; font-size: 12px; }
+
+.page-head { margin-bottom: 16px; }
+
+.page-head h2 { font-size: 22px; font-weight: 600; }
+
+.lead, #history-note {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+#calendar-view, #history-view {
+  overflow: auto;
+  padding: 28px 32px;
+  background: var(--raised);
+}
+
+.weekdays, .cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.weekdays {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.cal-day {
+  min-height: 72px;
+  padding: 8px;
+  background: var(--paper);
+  border-radius: 10px;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+
+.cal-day.has {
+  background: var(--today);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.cal-day.pad { background: transparent; }
+
+.history-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+
+.snap {
+  border-color: var(--line);
+  background: var(--paper);
+}
+
+.history-body {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: var(--paper);
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 160px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+@media (max-width: 720px) {
+  #tree-toggle { display: inline-flex; }
+
+  #tree-pane,
+  #outline-pane { width: 220px; }
+
+  #edge-docs:hover,
+  #app.show-tree #edge-docs,
+  #edge-outline:hover { width: 236px; }
+
+  #doc-pane { padding: 28px 20px 12px; }
+
+  #calendar-view, #history-view { padding: 16px; }
+
+  .cal-day { min-height: 48px; }
+}

@@ -1,0 +1,37 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+}
+
+.sw {
+  width: 100px;
+  height: 80px;
+  background-color: #7cb7ff;
+}
+
+#inset {
+  clip-path: inset(12px 8px);
+}
+
+#circle {
+  clip-path: circle(35px at center);
+}
+
+#ellipse {
+  clip-path: ellipse(45px 30px at center);
+}
+
+#round-inset {
+  clip-path: inset(10px round 12px);
+}
+
+#plain {
+  background-color: #3c516c;
+}

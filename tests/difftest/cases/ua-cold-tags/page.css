@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+}
+html, body {
+  margin: 0;
+  padding: 8px;
+  font: 16px/20px "Zui Test", sans-serif;
+  background: #ffffff;
+  color: #000000;
+}
+#fs { width: 280px; }
+#mq { height: 24px; background: #ffeeee; }
+#fr { width: 120px; height: 60px; }
+#vid { width: 160px; height: 90px; background: #ddeeff; }
+#cv { width: 40px; height: 20px; background: #eeddff; }

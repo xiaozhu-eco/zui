@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="chat">
+  <title>小竹会话</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/thread.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body onkeydown="on_accel">
+  <input id="theme-dark" class="hid" type="checkbox">
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">竹</span>
+        <h1 class="brand-name">小竹会话</h1>
+      </div>
+      <div class="top-actions">
+        <label class="theme-toggle" for="theme-dark"><span class="when-light">深色</span><span class="when-dark">浅色</span></label>
+        <div class="menu-wrap">
+          <input id="sample-menu" class="hid sample-toggle" type="checkbox">
+          <label class="menu-btn" id="sample-open" for="sample-menu">更多</label>
+          <div class="menu" role="menu">
+            <button type="button" id="restore" onclick="on_restore">恢复示例</button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="create" onclick="on_create">新建会话</button>
+      </div>
+    </header>
+    <div class="workspace">
+      <aside class="list-pane">
+        <label class="search">
+          <span class="sr">搜索会话</span>
+          <input id="q" type="search" placeholder="搜索会话" autocomplete="off" oninput="on_query">
+        </label>
+        <p class="conv-empty" id="conv-empty" hidden></p>
+        <div class="conv-list" id="conv-list" aria-label="会话">
+          <template>
+            <button type="button" class="conv {{on}}" onclick="on_conv" data-id="{{id}}">
+              <span class="avatar">{{initial}}</span>
+              <span class="who">
+                <span class="conv-line">
+                  <span class="name">{{name}}</span>
+                  <span class="when">{{when}}</span>
+                </span>
+                <span class="preview">{{preview}}</span>
+              </span>
+            </button>
+          </template>
+        </div>
+      </aside>
+      <section class="thread">
+        <header class="thread-head" id="thread-head">
+          <h2 class="thread-name" id="thread-name"></h2>
+          <input id="info-open" class="hid" type="checkbox">
+          <label class="info-btn" for="info-open">详情</label>
+          <input id="bubble-wide" class="hid" type="checkbox">
+          <label class="info-btn" for="bubble-wide">宽气泡</label>
+          <button type="button" class="btn btn-danger" id="remove" onclick="on_remove">删除会话</button>
+        </header>
+        <aside class="thread-info" id="thread-info" aria-label="会话详情">
+          <p class="info-kicker">当前会话</p>
+          <h3 class="info-name" id="info-name"></h3>
+          <p class="info-count" id="info-count"></p>
+          <p class="info-hint">消息写在这台浏览器里。换一台设备不会带过去。</p>
+        </aside>
+        <div class="log-wrap">
+          <div class="log" id="log" aria-live="polite" onscroll="on_log_scroll">
+            <template>
+              <div class="{{kind}}">
+                <span class="sep">{{sep}}</span>
+                <div class="bubble">{{text}}<span class="time">{{time}}</span></div>
+              </div>
+            </template>
+          </div>
+          <button type="button" class="jump" id="jump" hidden onclick="on_jump">回到底部</button>
+        </div>
+        <p class="thread-empty" id="thread-empty" hidden>还没有会话。新建一个就可以开始写。</p>
+        <form class="composer" id="composer">
+          <textarea id="draft" rows="1" placeholder="写一条消息，Enter 发送，Shift+Enter 换行" aria-label="消息" onkeydown="on_draft_key"></textarea>
+          <button type="submit" class="btn btn-primary" onclick="on_send">发送</button>
+        </form>
+        <p class="status" id="status" role="status"></p>
+      </section>
+    </div>
+  </div>
+
+  <div class="back" id="creator" hidden>
+    <form class="dialog" id="creator-form" role="dialog" aria-modal="true" aria-labelledby="creator-title">
+      <h2 id="creator-title">新建会话</h2>
+      <label class="field"><span>名字</span><input id="creator-name" autocomplete="off"></label>
+      <p class="form-error" id="creator-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="creator-cancel" onclick="on_creator_cancel">取消</button>
+        <button type="submit" class="btn btn-primary" onclick="on_creator_save">创建</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="back" id="confirm" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <h2 id="confirm-title">确认</h2>
+      <p id="confirm-body"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="confirm-cancel" onclick="on_confirm_cancel">取消</button>
+        <button type="button" class="btn btn-danger" id="confirm-ok" onclick="on_confirm_ok">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="file-notice" id="file-notice" hidden>此页使用模块脚本，用文件地址打开不会运行。在这个目录执行 <code>python -m http.server</code>，再用浏览器打开给出的地址。</p>
+  <script>
+  (function () {
+    if (location.protocol === "file:") {
+      var note = document.getElementById("file-notice");
+      if (note) note.hidden = false;
+    }
+  })();
+  </script>
+  <script type="module" src="js/boot.js"></script>
+</body>
+</html>

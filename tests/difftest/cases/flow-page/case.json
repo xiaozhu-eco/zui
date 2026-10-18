@@ -1,0 +1,26 @@
+{
+  "name": "flow-page",
+  "page": "../../../../example/tests/flow/flow.html",
+  "viewport": [1100, 720],
+  "_comment": "example/tests/flow/flow.html 是全量示范页：margin 折叠（含负值与空盒）、固有宽度、flex 内容尺寸、grid 轨道、绝对定位、浮动、替换元素。它同时是 ui-visual-diff 技能里的对照页，用同一尺寸 1100x720 跑，两个机制的结论可以直接互相印证。",
+  "_comment_fonts": "这一页写的是 font-family: sans-serif，两端会解析到不同的系统字体，所以文本行的断行位置会有系统性差异。这一条目前是诊断用例，不进必过集。",
+  "matrix": [
+    "flow.normal",
+    "flow.inline",
+    "flow.flex",
+    "flow.grid",
+    "position.out-of-flow",
+    "scroll.overflow",
+    "replaced.size"
+  ],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 1100, "h": 720 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "text-aa",
+  "text": { "breaks": false, "advances": false }
+}

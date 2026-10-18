@@ -1,0 +1,239 @@
+{
+  "name": "example-calendar",
+  "page": "page.html",
+  "source": "../../../../example/applications/calendar/index.html",
+  "viewport": [
+    1100,
+    720
+  ],
+  "scripts": false,
+  "_comment": "小竹日历去掉页面脚本后的静态壳。空态提示、日程项与时间块、顶部「新建」的 hover/按下、Tab/Escape，最后撤掉 #editor 的 hidden。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 1100,
+      "h": 720
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_text",
+          "target": "#title",
+          "text": "2026 年 10 月"
+        },
+        {
+          "do": "remove_attr",
+          "target": "#agenda-empty",
+          "name": "hidden"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_attr",
+          "target": "#agenda-empty",
+          "name": "hidden",
+          "value": ""
+        },
+        {
+          "do": "insert",
+          "target": "#agenda-list",
+          "tag": "button",
+          "text": "09:30 站会",
+          "class": "agenda-item tone-gold"
+        },
+        {
+          "do": "insert",
+          "target": "#agenda-list",
+          "tag": "button",
+          "text": "14:00 评审",
+          "class": "agenda-item tone-gold"
+        },
+        {
+          "do": "insert",
+          "target": "#agenda-list",
+          "tag": "button",
+          "text": "17:30 交接",
+          "class": "agenda-item tone-gold"
+        },
+        {
+          "do": "insert",
+          "target": "#day-0",
+          "tag": "button",
+          "text": "站会",
+          "class": "block tone-sea"
+        },
+        {
+          "do": "insert",
+          "target": "#day-1",
+          "tag": "button",
+          "text": "评审",
+          "class": "block tone-sea"
+        },
+        {
+          "do": "insert",
+          "target": "#day-2",
+          "tag": "button",
+          "text": "交接",
+          "class": "block tone-sea"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "dispatch",
+      "events": [
+        {
+          "type": "mouseMoved",
+          "x": 1045,
+          "y": 28
+        },
+        {
+          "type": "mousePressed",
+          "x": 1045,
+          "y": 28,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseReleased",
+          "x": 1045,
+          "y": 28,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "keyDown",
+          "key": "Tab"
+        },
+        {
+          "type": "keyUp",
+          "key": "Tab"
+        },
+        {
+          "type": "keyDown",
+          "key": "Escape"
+        },
+        {
+          "type": "keyUp",
+          "key": "Escape"
+        }
+      ],
+      "hits": [
+        {
+          "x": 1045,
+          "y": 28
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "remove_attr",
+          "target": "#editor",
+          "name": "hidden"
+        },
+        {
+          "do": "set_text",
+          "target": "#editor-title",
+          "text": "新建日程"
+        }
+      ]
+    },
+    {
+      "op": "freeze",
+      "t": 400
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "style_props": [
+    "display",
+    "position",
+    "box-sizing",
+    "width",
+    "height",
+    "min-width",
+    "min-height",
+    "max-width",
+    "max-height",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+    "border-top-width",
+    "border-right-width",
+    "border-bottom-width",
+    "border-left-width",
+    "overflow-x",
+    "overflow-y",
+    "visibility",
+    "z-index",
+    "flex-direction",
+    "flex-wrap",
+    "flex-grow",
+    "flex-shrink",
+    "flex-basis",
+    "justify-content",
+    "align-items",
+    "align-content",
+    "align-self",
+    "order",
+    "row-gap",
+    "column-gap",
+    "font-family",
+    "font-size",
+    "font-weight",
+    "font-style",
+    "line-height",
+    "letter-spacing",
+    "word-spacing",
+    "text-align",
+    "text-indent",
+    "text-overflow",
+    "white-space",
+    "word-break",
+    "overflow-wrap",
+    "vertical-align"
+  ],
+  "text": {
+    "breaks": true,
+    "advances": false
+  }
+}

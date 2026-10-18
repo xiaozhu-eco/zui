@@ -1,0 +1,7 @@
+* { box-sizing: content-box; }
+body { margin: 0; }
+#host { width: 800px; }
+#three { width: min(100px, 50px, 25px); }
+#one { width: min(40px); }
+#nested { width: calc(min(10px, 20px, 30px) + 5px); }
+#q { width: 4Q; }

@@ -1,0 +1,17 @@
+{
+  "name": "ua-body-margin",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A1: UA margin:8px on body only. #probe at x=8 (html must not also add 8px horizontally).",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

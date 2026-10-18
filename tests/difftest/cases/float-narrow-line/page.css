@@ -1,0 +1,29 @@
+/* CSS 2.1 section 9.5: a line box that cannot hold even its first character is moved down to the
+   next position the floats leave free. `#narrow` has a 4px gap between two 48px floats and a 40px
+   font, so nothing fits and the line starts below them; `#roomy` leaves 60px, which holds the word,
+   so the control's line stays beside the floats. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+body { font: 400 12px/20px "Zui Test", sans-serif; }
+p { margin: 0; font: 400 40px/40px "Zui Test", sans-serif; }
+
+.box {
+  width: 100px;
+  margin: 0 0 20px 0;
+  padding: 0;
+  background-color: #161c27;
+}
+
+.fl { height: 40px; background-color: #7cb7ff; }
+.fl.l { float: left; }
+.fl.r { float: right; }
+
+#narrow .fl { width: 48px; }
+#roomy .fl { width: 20px; }

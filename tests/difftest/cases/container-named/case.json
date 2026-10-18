@@ -1,0 +1,17 @@
+{
+  "name": "container-named",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "container: cards / size on #outer and container: none / size on the nearer #inner. @container cards (min-width: 300px) skips #inner and paints #named 96px red. @container (max-width: 200px) uses #inner and paints #near 72px green. The unstyled fallback is 24px gray.",
+  "matrix": ["container.query"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

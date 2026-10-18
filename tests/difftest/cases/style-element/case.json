@@ -1,0 +1,17 @@
+{
+  "name": "style-element",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1：`<style>` 正文进级联，且与 `<link>` 按文档序排。`#a` 由头内 `<style>` 定 120、被后面（文档序更晚）的 `<link>` 改回 40；`#b` 只由 body 内的 `<style>` 定 120；`#c` 被 body 内 `<style>` 定 40、又被它后面的 `<link>` 改回 120；`#d` 只有基类 40 作对照。覆盖「只收 head>link」的三种失败：正文完全不上、源序颠倒、body 内 link 被丢。",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

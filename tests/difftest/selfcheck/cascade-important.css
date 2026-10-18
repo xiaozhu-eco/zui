@@ -1,0 +1,23 @@
+#ua-important-probe,
+#ua-important-vs-author-important,
+#author-important-wins {
+  box-sizing: border-box;
+  height: 24px;
+  margin: 8px;
+}
+#ua-important-probe {
+  width: 40px;
+  background-color: #3a4450;
+}
+#ua-important-vs-author-important {
+  width: 40px !important;
+  background-color: #3a4450 !important;
+}
+.box {
+  width: 40px;
+  background-color: #3a4450;
+}
+#author-important-wins {
+  width: 120px !important;
+  background-color: #7cb7ff !important;
+}

@@ -1,0 +1,13 @@
+.box {
+    width: 80px;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.narrow {
+    width: 40px;
+}

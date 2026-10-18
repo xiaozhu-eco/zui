@@ -1,0 +1,17 @@
+{
+  "name": "paint-bg-round-position",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "background-repeat:round rescales 100px tiles to 80px inside 160px. background-position stays the offset of the specified size: #center starts at 30px, #right at 52px. #bitmap is the same phase for a url() tile.",
+  "matrix": ["css.background", "paint.gradient", "paint.bg-url"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,81 @@
+/* `contain: paint` (CSS Containment section 2.4) clips a box's descendants to its padding box and
+   makes the box a containing block for its out-of-flow descendants. The layout side records that
+   as `Overflow::ink` plus `Overflow::clipped_by_paint_contain`; the strict pixel compare here is
+   what proves the paint side. Nothing on this page carries text, so no glyph metric can move the
+   result. */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+#clipped,
+#abs-clipped,
+#neg,
+#open {
+    margin: 16px;
+}
+
+.spill {
+    width: 180px;
+    height: 120px;
+    background-color: #e85d4c;
+}
+
+/* The border ring must survive the clip: paint containment cuts at the *padding* box, so the 6px
+   border is painted whole while the 180x120 child is cut at the 136x96 padding box. */
+#clipped {
+    contain: paint;
+    width: 120px;
+    height: 80px;
+    padding: 8px;
+    border: 6px solid #4a5b6d;
+    background-color: #22303c;
+}
+
+/* Control: the same child with no containment paints past the box. */
+#open {
+    width: 120px;
+    height: 80px;
+    padding: 8px;
+    background-color: #22303c;
+}
+
+/* An out-of-flow descendant: paint containment is its containing block, and painting is clipped
+   all the same - the right 30px of the 60px box falls outside the padding box. */
+#abs-clipped {
+    contain: paint;
+    width: 100px;
+    height: 60px;
+    background-color: #22303c;
+}
+
+#abs-clipped .far {
+    position: absolute;
+    left: 70px;
+    top: 20px;
+    width: 60px;
+    height: 40px;
+    background-color: #3d8f6e;
+}
+
+/* A relative offset moves the child above and left of the padding box without touching the flow;
+   that part is cut, and it is what makes the ink rectangle start at a negative coordinate instead
+   of at the box origin. */
+#neg {
+    contain: paint;
+    width: 80px;
+    height: 40px;
+    border: 6px solid #4a5b6d;
+    background-color: #22303c;
+}
+
+#neg .neg-kid {
+    position: relative;
+    left: -30px;
+    top: -14px;
+    width: 60px;
+    height: 30px;
+    background-color: #7cb7ff;
+}

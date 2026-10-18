@@ -1,0 +1,21 @@
+/* Container queries (TESTPLAN section 2: `container.query` is an「一致」feature, LAYOUT section
+   10). The inline-size container is resized between the two traces, so the second one only
+   matches if the frame-end re-entry actually re-ran the descendants with the new `cqw` values.
+
+   Fixed px elsewhere: the case is about the requery, not about text. */
+
+html, body { margin: 0; padding: 0; }
+
+#host { width: 600px; }
+
+#cont {
+  width: 200px;
+  container-type: inline-size;
+  background: #f4f4f4;
+}
+
+#card {
+  width: 50cqw;
+  height: 20px;
+  background: #cccccc;
+}

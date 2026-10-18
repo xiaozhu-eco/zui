@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ZUI Studio</title>
+  <link rel="stylesheet" href="hello.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <span class="brand">ZUI Studio</span>
+      <span id="clock" class="muted">HTML + CSS + C++</span>
+    </header>
+    <div class="workspace">
+      <nav class="sidebar">
+        <button id="nav_home" class="nav active" onclick="on_home">Home</button>
+        <button id="nav_projects" class="nav" onclick="on_projects">Projects</button>
+        <button id="nav_settings" class="nav" onclick="on_settings">Settings</button>
+      </nav>
+      <main class="content">
+        <h1 id="heading">Home</h1>
+        <p id="blurb" class="muted">Structure in HTML, layout in CSS, behavior in C++.</p>
+        <div class="cards">
+          <div class="card">
+            <span class="label">Projects</span>
+            <span id="stat_projects" class="stat">12</span>
+          </div>
+          <div class="card">
+            <span class="label">Open</span>
+            <span id="stat_open" class="stat">3</span>
+          </div>
+          <div class="card">
+            <span class="label">Alerts</span>
+            <span id="stat_alerts" class="stat">1</span>
+          </div>
+        </div>
+        <div class="form">
+          <input id="name" class="field" value="Ada Lovelace" oninput="on_name">
+          <button id="save" class="primary" onclick="on_save">Save</button>
+          <button id="inc" class="ghost" onclick="on_inc">+ Project</button>
+        </div>
+        <p id="status" class="status">Click a page or Save. Type in the field. Scroll this pane.</p>
+        <div class="feed">
+          <div class="feed-item">09:14  Layout engine matched inline baselines against Chrome.</div>
+          <div class="feed-item">09:22  Flex items no longer inherit the parent's vertical margin into height.</div>
+          <div class="feed-item">09:31  Save wrote the profile for the focused text field.</div>
+          <div class="feed-item">10:02  Wheel events scroll overflow:auto panes.</div>
+          <div class="feed-item">10:18  :focus restyles the name field while the caret is visible.</div>
+          <div class="feed-item">11:05  Projects counter is bound from C++ via set(id, text).</div>
+          <div class="feed-item">11:40  Sidebar nav swaps the heading with add_class / remove_class.</div>
+          <div class="feed-item">12:03  GPU backend is ZUI_RENDERER=gl or vk, window is ZUI_WINDOW.</div>
+          <div class="feed-item">12:17  Shrink the window if this list does not overflow yet.</div>
+          <div class="feed-item">12:44  Backspace, arrows, Home and End move the caret in the field.</div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+/* A normal browser window: display-mode browser, update fast, overflow scroll, grid 0. */
+
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+.box {
+  width: 40px;
+  height: 28px;
+  margin: 12px 0 0 20px;
+  background: #c4554a;
+}
+
+@media (display-mode: browser) {
+  #dmode { width: 180px; background: #3d9a6a; }
+}
+
+@media (display-mode) {
+  #dmodebool { width: 180px; background: #3d9a6a; }
+}
+
+@media (display-mode: standalone) {
+  #standalone { width: 180px; background: #2e6eee; }
+}
+
+@media (update: fast) {
+  #update { width: 180px; background: #3d9a6a; }
+}
+
+@media (update) {
+  #updatebool { width: 180px; background: #3d9a6a; }
+}
+
+@media (update: none) {
+  #updnone { width: 180px; background: #2e6eee; }
+}
+
+@media (overflow-block: scroll) {
+  #oblock { width: 180px; background: #3d9a6a; }
+}
+
+@media (overflow-block) {
+  #oblockbool { width: 180px; background: #3d9a6a; }
+}
+
+@media (overflow-block: paged) {
+  #paged { width: 180px; background: #2e6eee; }
+}
+
+@media (overflow-inline: scroll) {
+  #oinline { width: 180px; background: #3d9a6a; }
+}
+
+@media (overflow-inline: none) {
+  #oinone { width: 180px; background: #2e6eee; }
+}
+
+@media (grid: 0) {
+  #grid0 { width: 180px; background: #3d9a6a; }
+}
+
+@media (grid) {
+  #grid { width: 180px; background: #2e6eee; }
+}
+
+@media (grid: 1) {
+  #grid1 { width: 180px; background: #2e6eee; }
+}

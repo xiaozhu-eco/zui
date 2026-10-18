@@ -1,0 +1,36 @@
+{
+    "name": "paint-flex-basis",
+    "page": "page.html",
+    "viewport": [
+        800,
+        600
+    ],
+    "_comment": "弹性基线清单用例：`.hit, .mark` 的同名级联（后面一条规则给 width:100%，再一条给 flex:1）在块容器里必须撑满宽度；进了 `.mark-row` 这个 flex 行之后，`flex: 1` 也就是 `1 1 0%` 的主轴尺寸要由 0% 基线加剩余空间推出，不能被早先的 width:100% 抢过去，末尾的 `.mark-del` 靠 flex-shrink: 0 保持自身宽度。这是 reader 顶栏/标记行宽度的最小复现。",
+    "matrix": [
+        "paint.flex-basis",
+        "flow.flex"
+    ],
+    "required": false,
+    "steps": [
+        {
+            "op": "load"
+        },
+        {
+            "op": "resize",
+            "w": 800,
+            "h": 600
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        }
+    ],
+    "expect": "golden/",
+    "pixels": "text-aa",
+    "text": {
+        "breaks": false,
+        "advances": false
+    }
+}

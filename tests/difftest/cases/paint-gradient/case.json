@@ -1,0 +1,37 @@
+{
+    "name": "paint-gradient",
+    "page": "page.html",
+    "viewport": [
+        800,
+        600
+    ],
+    "_comment": "背景渐变清单用例：linear-gradient 的角度（deg）与关键字方向（含角关键字：线垂直于两个相邻角的连线，长度是 |w·dx| + |h·dy|）、两/三色标与显式位置、按 border-radius 裁剪，外加一个同尺寸纯色控制盒。pixel_tolerance 是 1 而不是默认的 0，因为 Blink 会给渐变加抖动：引擎与它的差值是全通道 ±1，而且会沿渐变方向连成条带（宽 14px 的竖条、高 46px 的横带），本来过得了一块区阈值。这不是“像素级一致”，但它只吸收抖动，不吸收拓扑差异。",
+    "matrix": [
+        "paint.gradient",
+        "paint.radius"
+    ],
+    "required": false,
+    "steps": [
+        {
+            "op": "load"
+        },
+        {
+            "op": "resize",
+            "w": 800,
+            "h": 600
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        }
+    ],
+    "expect": "golden/",
+    "pixels": "strict",
+    "pixel_tolerance": 1,
+    "text": {
+        "breaks": false,
+        "advances": false
+    }
+}

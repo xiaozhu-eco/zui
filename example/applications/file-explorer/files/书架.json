@@ -1,0 +1,23 @@
+{
+  "shelf": "小竹",
+  "books": [
+    {
+      "title": "灯塔",
+      "author": "岸边",
+      "chapters": 3,
+      "status": "在读"
+    },
+    {
+      "title": "渡口",
+      "author": "岸边",
+      "chapters": 2,
+      "status": "读完"
+    },
+    {
+      "title": "盐霜",
+      "author": "岸边",
+      "chapters": 6,
+      "status": "未读"
+    }
+  ]
+}

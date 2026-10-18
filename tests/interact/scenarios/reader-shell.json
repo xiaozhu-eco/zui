@@ -1,0 +1,31 @@
+{
+  "name": "reader-shell",
+  "_comment": "Same control activations on Chrome (reader.js) and the native session. status_chapter is the current chapter on both hosts. The browser keeps several chapter headings in the scroll window, so the first .chapter-title is not the current chapter.",
+  "query": [
+    {"id": "sort_btn", "fields": ["text"]},
+    {"id": "reader", "fields": ["class"]},
+    {"id": "book_title", "fields": ["text"]},
+    {"id": "status_chapter", "fields": ["text"]},
+    {"id": "toolbar", "fields": ["class"]},
+    {"id": "toc_panel", "fields": ["class"]},
+    {"id": "shelf", "fields": ["class"]}
+  ],
+  "actions": [
+    {"do": "click", "id": "sort_btn"},
+    {"do": "mark", "name": "sorted"},
+    {"do": "click", "id": "sort_btn"},
+    {"do": "mark", "name": "recent"},
+    {"do": "click", "id": "open0", "browser": ".card"},
+    {"do": "mark", "name": "opened"},
+    {"do": "click", "id": "flow_wrap"},
+    {"do": "mark", "name": "chrome"},
+    {"do": "click", "id": "toc_toggle"},
+    {"do": "mark", "name": "toc"},
+    {"do": "click", "id": "ch1"},
+    {"do": "mark", "name": "jumped"},
+    {"do": "key", "key": "Escape"},
+    {"do": "mark", "name": "escaped"},
+    {"do": "key", "key": "ArrowRight"},
+    {"do": "mark", "name": "arrow"}
+  ]
+}

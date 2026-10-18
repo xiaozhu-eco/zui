@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="selector-markup.css">
+</head>
+<body>
+  <div id="poison"></div>
+  <div id="mixed"></div>
+  <div id="media"></div>
+  <div id="later"></div>
+  <div id="mover"></div>
+  <p id="line">line</p>
+
+  <input class="ph" id="ph" placeholder="hint">
+  <input class="ph" id="ph-filled" placeholder="hint" value="x">
+  <input class="ph" id="ph-none">
+  <textarea class="ph" id="ph-ta" placeholder="hint"></textarea>
+  <textarea class="ph" id="ph-ta-x" placeholder="hint">x</textarea>
+
+  <div class="fw" id="fw-a"><button type="button" class="fw-kid" id="fw-btn">a</button></div>
+  <div class="fw" id="fw-b"><button type="button" class="fw-kid" id="fw-twin">b</button></div>
+
+  <input class="req opt" id="req-text" type="text" required>
+  <input class="req opt" id="req-search" type="search" required>
+  <input class="req opt" id="req-url" type="url" required>
+  <input class="req opt" id="req-tel" type="tel" required>
+  <input class="req opt" id="req-email" type="email" required>
+  <input class="req opt" id="req-password" type="password" required>
+  <input class="req opt" id="req-date" type="date" required>
+  <input class="req opt" id="req-month" type="month" required>
+  <input class="req opt" id="req-week" type="week" required>
+  <input class="req opt" id="req-time" type="time" required>
+  <input class="req opt" id="req-dt" type="datetime-local" required>
+  <input class="req opt" id="req-number" type="number" required>
+  <input class="req opt" id="req-check" type="checkbox" required>
+  <input class="req opt" id="req-radio" type="radio" name="req-radio" required>
+  <input class="req opt" id="req-file" type="file" required>
+  <select class="req opt" id="sreq" required><option>a</option></select>
+  <textarea class="req opt" id="treq" required></textarea>
+  <input class="req opt" id="opt-text" type="text">
+  <input class="req opt" id="opt-file" type="file">
+  <select class="req opt" id="sopt"><option>a</option></select>
+  <textarea class="req opt" id="topt"></textarea>
+  <input class="req opt" id="bar-hidden" type="hidden" required>
+  <input class="req opt" id="bar-range" type="range" required>
+  <input class="req opt" id="bar-color" type="color" required>
+  <input class="req opt" id="bar-button" type="button" required>
+  <input class="req opt" id="bar-submit" type="submit" required>
+  <input class="req opt" id="bar-reset" type="reset" required>
+  <input class="req opt" id="bar-image" type="image" alt="" required>
+  <div class="req opt" id="divreq" required></div>
+  <button class="req opt" id="btnreq" type="button" required>b</button>
+
+  <input class="rw ro" id="rw" type="text">
+  <input class="rw ro" id="rw-ro" type="text" readonly>
+  <input class="rw ro" id="rw-search" type="search">
+  <input class="rw ro" id="rw-url" type="url">
+  <input class="rw ro" id="rw-tel" type="tel">
+  <input class="rw ro" id="rw-email" type="email">
+  <input class="rw ro" id="rw-password" type="password">
+  <input class="rw ro" id="rw-date" type="date">
+  <input class="rw ro" id="rw-month" type="month">
+  <input class="rw ro" id="rw-week" type="week">
+  <input class="rw ro" id="rw-time" type="time">
+  <input class="rw ro" id="rw-dt" type="datetime-local">
+  <input class="rw ro" id="rw-number" type="number">
+  <input class="rw ro" id="ro-dis" type="text" disabled>
+  <input class="rw ro" id="ro-search" type="search" readonly>
+  <textarea class="rw ro" id="ta"></textarea>
+  <textarea class="rw ro" id="ta-ro" readonly></textarea>
+  <textarea class="rw ro" id="ta-dis" disabled></textarea>
+  <input class="rw ro" id="cb" type="checkbox">
+  <input class="rw ro" id="ro-radio" type="radio" name="ro-solo" checked>
+  <input class="rw ro" id="ro-file" type="file">
+  <input class="rw ro" id="ro-hidden" type="hidden">
+  <input class="rw ro" id="ro-range" type="range">
+  <input class="rw ro" id="ro-color" type="color">
+  <input class="rw ro" id="ro-button" type="button">
+  <input class="rw ro" id="ro-submit" type="submit">
+  <input class="rw ro" id="ro-reset" type="reset">
+  <input class="rw ro" id="ro-image" type="image" alt="">
+  <div class="rw ro" id="host" contenteditable="true">
+    <span class="rw ro" id="edit-child">x</span>
+    <input class="rw ro" id="in-host" type="text">
+    <input class="rw ro" id="cb-host" type="checkbox">
+  </div>
+  <div class="rw ro" id="host-empty" contenteditable><span class="rw ro" id="edit-empty">e</span></div>
+  <div class="rw ro" id="host-plain" contenteditable="plaintext-only"><span class="rw ro" id="edit-plain">p</span></div>
+  <div class="rw ro" id="host-true" contenteditable="TRUE">t</div>
+  <div class="rw ro" id="locked" contenteditable="false"><span class="rw ro" id="locked-child">c</span>
+    <div class="rw ro" id="reopen" contenteditable="true">z</div>
+  </div>
+  <div class="rw ro" id="locked-case" contenteditable="FALSE">no</div>
+  <div class="rw ro" id="plain">plain</div>
+  <button type="button" class="rw ro" id="plain-btn">b</button>
+
+  <input class="def" id="def-on" type="checkbox" checked>
+  <input class="def" id="def-off" type="checkbox">
+  <input class="def" id="rad-def" type="radio" name="rd" checked>
+  <input class="def" id="rad-other" type="radio" name="rd">
+  <select id="sel-def">
+    <option class="def" id="opt-def" selected>A</option>
+    <option class="def" id="opt-other">B</option>
+  </select>
+  <select id="sel-live"><option class="def" id="opt-live">Only</option></select>
+  <form id="f">
+    <button class="def" id="sub1">Go</button>
+    <button class="def" id="sub2" type="submit">Later</button>
+    <button class="def" id="reset" type="reset">Reset</button>
+    <input class="def" id="text-in-form" type="text">
+  </form>
+  <button class="def" id="orphan" type="submit">Orphan</button>
+  <button class="def" id="outside" type="submit" form="f">Outside</button>
+  <form id="f2"></form>
+  <button class="def" id="ext-only" type="submit" form="f2">Ext</button>
+  <button class="def" id="missing-form" type="submit" form="no-such">No</button>
+  <form id="f3">
+    <input class="def" id="img-sub" type="image" alt="">
+    <input class="def" id="img-later" type="submit" value="later">
+  </form>
+
+  <progress class="ind" id="prog-ind"></progress>
+  <progress class="ind" id="prog-val" value="0.4"></progress>
+  <progress class="ind" id="prog-empty" value=""></progress>
+  <input class="ind" id="r1" type="radio" name="g-ind">
+  <input class="ind" id="r2" type="radio" name="g-ind">
+  <input class="ind" id="r3" type="radio" name="g-set" checked>
+  <input class="ind" id="r4" type="radio" name="g-set">
+  <input class="ind" id="r-none" type="radio">
+  <input class="ind" id="r-none2" type="radio">
+  <form id="fa">
+    <input class="ind" id="fa1" type="radio" name="shared">
+    <input class="ind" id="fa2" type="radio" name="shared">
+  </form>
+  <form id="fb">
+    <input class="ind" id="fb1" type="radio" name="shared" checked>
+    <input class="ind" id="fb2" type="radio" name="shared">
+  </form>
+
+  <a class="link alink vonly lboth" id="a-href" href="https://example.test">t</a>
+  <a class="link alink vonly lboth" id="a-empty" href="">e</a>
+  <a class="link alink vonly lboth" id="a-none">n</a>
+  <area class="link alink vonly lboth" id="area-href" href="#x">
+  <area class="link alink vonly lboth" id="area-none">
+
+  <div id="lang-zhcn" lang="zh-CN" class="lz lzh len lze">
+    <span id="lang-child" class="lz lzh len lze">c</span>
+  </div>
+  <div id="lang-zh" lang="zh" class="lz lzh len lze"></div>
+  <div id="lang-en" lang="en" class="lz lzh len lze"></div>
+  <div id="lang-case" lang="ZH-cn" class="lz lzh len lze"></div>
+  <div id="lang-xml" xml:lang="zh-CN" class="lz lzh len lze"></div>
+  <div id="lang-none" class="lz lzh len lze"></div>
+  <div lang="zh-CN"><span id="lang-override" lang="en" class="lz lzh len lze">o</span></div>
+  <div class="lang-scope" lang="zh"><span class="twin" id="under-zh" lang="en">u</span></div>
+  <div class="lang-scope" lang="en"><span class="twin" id="under-en" lang="en">u</span></div>
+
+  <button type="button" id="dis" disabled>d</button>
+  <button type="button" id="foc">f</button>
+  <div id="nth"><span id="nth1">a</span><span id="nth2">b</span></div>
+</body>
+</html>

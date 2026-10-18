@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #101418;
+  font-family: "Zui Test", sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+/* ch = advance of "0"; 10ch wide bar. */
+#ch {
+  width: 10ch;
+  height: 10px;
+  background: #7cb7ff;
+}
+
+/* ex = x-height; 10ex wide bar. */
+#ex {
+  width: 10ex;
+  height: 10px;
+  margin-top: 8px;
+  background: #3d8f6e;
+}
+
+/* lh = used line-height (30px here); height 2lh = 60. */
+#lh {
+  width: 40px;
+  height: 2lh;
+  margin-top: 8px;
+  background: #e0a050;
+}
+
+/* calc() over ch. */
+#calc-ch {
+  width: calc(5ch + 10px);
+  height: 10px;
+  margin-top: 8px;
+  background: #e85d4c;
+}

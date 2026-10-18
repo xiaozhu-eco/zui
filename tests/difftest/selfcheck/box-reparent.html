@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="box-reparent.css">
+</head>
+<body>
+  <!-- Mixed inline + block forces an anonymous block around #keep. Toggling
+       #keep to display:block rebuilds that wrapper; reparent_box must unlink
+       #keep from the old anon before forget_subtree_boxes runs. -->
+  <div id="host">
+    <span id="keep">keep</span>
+    <div id="block">block</div>
+  </div>
+</body>
+</html>

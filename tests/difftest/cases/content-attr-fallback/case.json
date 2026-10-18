@@ -1,0 +1,17 @@
+{
+  "name": "content-attr-fallback",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A1: content:attr(name, fallback). #has-label=OK, #missing-label=FALLBACK. Golden pinned from engine (Chrome omits attr fallback).",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

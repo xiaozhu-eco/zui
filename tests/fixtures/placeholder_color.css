@@ -1,0 +1,10 @@
+.finder {
+    color: #112233;
+    font-family: "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+.finder::placeholder {
+    color: #8a7f72;
+    font-weight: 400;
+}

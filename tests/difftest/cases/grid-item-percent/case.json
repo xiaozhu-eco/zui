@@ -1,0 +1,17 @@
+{
+  "name": "grid-item-percent",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "网格子项的包含块是网格区域：子项的百分比宽高与百分比 padding 都按区域解析。",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

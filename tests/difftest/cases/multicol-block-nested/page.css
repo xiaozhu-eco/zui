@@ -1,0 +1,39 @@
+/* Deeper multi-level block fragmentation: a nested block container breaks at a
+   child boundary inside a fragmentainer. column-fill:auto + definite height so
+   the break itself is measured, not the balancer. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+body { font: 400 12px/20px "Zui Test", sans-serif; }
+
+.box {
+  width: 420px;
+  height: 100px;
+  margin: 0;
+  padding: 10px;
+  background-color: #161c27;
+  column-count: 2;
+  column-gap: 20px;
+  column-fill: auto;
+}
+
+.level1, .level2 { background-color: #101820; }
+
+.cell {
+  /* 50px so exactly two cells fill a 100px column; the break is at a child
+     boundary inside .level2, not mid-box through a fixed-height cell. */
+  height: 50px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #2a3344;
+  background-color: #1c2433;
+}
+#a { background-color: #3d5a80; }
+#b { background-color: #4a6fa5; }
+#c { background-color: #8fd18a; }
+#d { background-color: #6bbf6a; }

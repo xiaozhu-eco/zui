@@ -1,0 +1,17 @@
+{
+  "name": "position-relative-inset",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Phase1: position:relative honors right/bottom when left/top are auto (CSS 2.1 9.4.3).",
+  "matrix": ["flow.positioning"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

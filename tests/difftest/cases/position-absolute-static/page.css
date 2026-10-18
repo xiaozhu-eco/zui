@@ -1,0 +1,89 @@
+/* A2: absolute static position + dual-inset stretch / clamp / over-constrained.
+   CSS 2.1 10.3.7 / 10.6.4; shrink-to-fit with a single inset (narrow measure replay). */
+
+html, body { margin: 0; padding: 0; background-color: #101418; }
+
+#cb {
+  position: relative;
+  box-sizing: border-box;
+  width: 300px;
+  height: 220px;
+  margin: 8px;
+  background-color: #1a222c;
+}
+
+#spacer {
+  box-sizing: border-box;
+  width: 60px;
+  height: 40px;
+  background-color: #2a3540;
+}
+
+/* No insets: sit at the static position (after #spacer → y=40). */
+#abs-static {
+  position: absolute;
+  box-sizing: border-box;
+  width: 48px;
+  height: 24px;
+  background-color: #7cb7ff;
+}
+
+/* Dual insets + auto size: stretch to fill free space. */
+#abs-stretch {
+  position: absolute;
+  box-sizing: border-box;
+  left: 16px;
+  right: 24px;
+  top: 12px;
+  bottom: 40px;
+  background-color: #3d8f6e;
+}
+
+/* End insets only: anchor to right/bottom. */
+#abs-end {
+  position: absolute;
+  box-sizing: border-box;
+  right: 8px;
+  bottom: 8px;
+  width: 40px;
+  height: 20px;
+  background-color: #c9893a;
+}
+
+/* Over-constrained (LTR): ignore right; left+width win → x=10, w=100. */
+#abs-over {
+  position: absolute;
+  box-sizing: border-box;
+  left: 10px;
+  right: 10px;
+  width: 100px;
+  top: 180px;
+  height: 16px;
+  background-color: #b45a8a;
+}
+
+/* Single start inset + auto width: shrink-to-fit to a fixed child (measure replay). */
+#abs-fit {
+  position: absolute;
+  box-sizing: border-box;
+  left: 50px;
+  top: 80px;
+  background-color: transparent;
+}
+#fit-inner {
+  box-sizing: border-box;
+  width: 90px;
+  height: 24px;
+  background-color: #5a6a7a;
+}
+
+/* Dual insets larger than CB: free space clamps to 0. */
+#abs-clamp {
+  position: absolute;
+  box-sizing: border-box;
+  left: 200px;
+  right: 200px;
+  top: 200px;
+  height: 10px;
+  background-color: #e05555;
+}

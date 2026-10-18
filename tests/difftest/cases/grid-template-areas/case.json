@@ -1,0 +1,17 @@
+{
+  "name": "grid-template-areas",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "grid-template-areas 的区域名（含 `.` 空单元格）与 grid-area 简写。",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

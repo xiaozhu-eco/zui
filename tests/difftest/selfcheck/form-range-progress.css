@@ -1,0 +1,15 @@
+html, body { margin: 0; padding: 8px; background: #eef1f5; }
+#range-native, #range-none {
+  display: block;
+  width: 120px;
+  height: 16px;
+  margin: 0 0 12px 0;
+}
+#range-none { appearance: none; background: #7cb7ff; border: 0; padding: 0; }
+#prog-native, #prog-none, #prog-empty {
+  display: block;
+  width: 120px;
+  height: 16px;
+  margin: 0 0 12px 0;
+}
+#prog-none { appearance: none; background: #7cb7ff; border: 0; padding: 0; }

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <input id="num" type="number" min="0" max="10" step="2" value="3" oninput="on_num" onchange="on_num">
+  <input id="num-freeze" type="number" value="3" onkeydown="on_freeze_num">
+  <input id="swatch" type="color" value="#112233" oninput="on_color" onchange="on_color">
+  <input id="swatch-freeze" type="color" value="#112233" onpointerdown="on_freeze_color">
+  <input id="when" type="date" value="2026-10-09">
+  <input id="clock" type="time" value="09:30">
+  <progress id="bar" max="100" value="25"></progress>
+  <meter id="gauge" min="0" max="100" value="25"></meter>
+  <a id="go" href="https://example.com/z">Go</a>
+  <a id="frag" href="#top">Frag</a>
+  <a id="script" href="javascript:alert(1)">Js</a>
+  <a id="stop" href="https://example.com/no" onclick="on_stop">Stop</a>
+</body>
+</html>

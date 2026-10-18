@@ -1,0 +1,16 @@
+{
+  "name": "fragmentation-breaks",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A4/B2 fragmentation subset: break-before:column forces the next column; break-inside:avoid keeps a tall child whole.",
+  "matrix": ["multicol", "fragmentation"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

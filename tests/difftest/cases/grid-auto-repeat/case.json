@@ -1,0 +1,17 @@
+{
+  "name": "grid-auto-repeat",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "repeat(auto-fill) 铺满 5 轨，repeat(auto-fit) 折叠空轨道后两个 1fr 轨道各 200px。",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

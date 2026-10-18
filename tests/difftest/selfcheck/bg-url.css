@@ -1,0 +1,56 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+#stretch {
+  width: 80px;
+  height: 60px;
+  background-color: #203040;
+  background-image: url("red8.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#tile {
+  width: 40px;
+  height: 40px;
+  margin-top: 8px;
+  background-color: #102030;
+  background-image: url(green4.png);
+  background-repeat: repeat;
+  background-size: 10px 10px;
+}
+
+#corner {
+  width: 60px;
+  height: 40px;
+  margin-top: 8px;
+  background-color: #304050;
+  background-image: url("red8.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 16px 16px;
+}
+
+#cover {
+  width: 50px;
+  height: 30px;
+  margin-top: 8px;
+  background-color: #405060;
+  background-image: url(red8.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#clip {
+  width: 48px;
+  height: 48px;
+  margin-top: 8px;
+  border-radius: 12px;
+  background-color: #506070;
+  background-image: url("red8.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

@@ -1,0 +1,18 @@
+{
+  "name": "paint-clip-path",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3：clip-path 子集 inset / circle / ellipse（含 inset round）。必过像素对拍；控制盒无 clip。",
+  "matrix": ["paint.clip-path"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": false }
+}

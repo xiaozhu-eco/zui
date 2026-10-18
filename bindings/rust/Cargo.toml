@@ -1,0 +1,3 @@
+[workspace]
+members = ["zui-sys", "zui"]
+resolver = "2"

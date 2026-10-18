@@ -1,0 +1,17 @@
+{
+  "name": "media-resolution",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "The difftest browser pins deviceScaleFactor to 1, so 1dppx, 96dpi, and (1dppx <= resolution <= 2x) apply. (min-resolution: 2dppx) and (resolution >= 2x) do not.",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

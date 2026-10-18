@@ -1,0 +1,51 @@
+{
+  "name": "wheel-delta",
+  "page": "page.html",
+  "viewport": [
+    800,
+    600
+  ],
+  "_comment": "Pixel wheel deltas. Expected offset is recorded, not written in the step.",
+  "matrix": [
+    "scroll.overflow"
+  ],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 800,
+      "h": 600
+    },
+    {
+      "op": "dispatch",
+      "events": [
+        {
+          "type": "mouseWheel",
+          "x": 40,
+          "y": 40,
+          "deltaX": 0,
+          "deltaY": 120
+        },
+        {
+          "type": "mouseWheel",
+          "x": 40,
+          "y": 40,
+          "deltaX": 0,
+          "deltaY": 120
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": {
+    "breaks": false,
+    "advances": false
+  }
+}

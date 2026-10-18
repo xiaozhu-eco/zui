@@ -1,0 +1,33 @@
+/* A block that is the multi-column container's own child, split between its own lines: the lines
+   that fit stay in the column, the rest resume at the top of the next one (CSS Fragmentation
+   section 4). A definite column height with `column-fill: auto` fills the columns in order, and the
+   paragraph plus the block after it tile the two columns exactly, so the case measures the break
+   itself and not the balancer. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+body { font: 400 12px/20px "Zui Test", sans-serif; }
+p { margin: 0; }
+
+.box {
+  width: 420px;
+  height: 100px;
+  margin: 0 0 20px 0;
+  padding: 10px;
+  background-color: #161c27;
+  column-count: 2;
+  column-gap: 20px;
+  column-fill: auto;
+}
+
+.inner { background-color: #101820; }
+
+/* What falls after the paragraph fills what is left of the second column. */
+/* 9 lines of paragraph (180) + 20 here is exactly two 100px columns. */
+.tail { height: 20px; background-color: #8fd18a; }

@@ -1,0 +1,122 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+/* Faithful reduction of the reader's `.hit` / `.mark` cascade: a column of full-width rows,
+   where the same box is declared 100% wide and then grown by `flex: 1` from a second rule.
+   `flex: 1` is `1 1 0%`: the used main size must come from the 0% basis grown by the free
+   space, not from the `width: 100%` declaration. */
+.hit,
+.mark {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 8px 10px;
+    border: 0;
+    background-color: #161c27;
+    color: #e8edf5;
+    font-family: sans-serif;
+    font-size: 13px;
+}
+
+.hit-title {
+    color: #e8edf5;
+    font-size: 13px;
+}
+
+/* Row wrapper: one growing item plus a fixed-shrink trailing item. */
+.mark-row {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+    margin-top: 12px;
+}
+
+.mark-row .mark {
+    flex: 1;
+    min-width: 0;
+}
+
+.mark-del {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0 8px;
+    background-color: #2c6b4e;
+    color: #e8edf5;
+    font-family: sans-serif;
+    font-size: 13px;
+}
+
+/* The reader sets this globally, and a border-box item makes the max-width clamp apply to the
+   border box instead of the content box. */
+* {
+    box-sizing: border-box;
+}
+
+/* The reader topbar shape. Measured against the browser: the capped-grow item itself is exact
+   (`label.finder` 258.765625 on both sides), and the 30px that the reader lost lives one level
+   down, in `input#query`: the browser's border box is 258.765625 and the engine's is 288.765625,
+   i.e. the declared `width: 100%` came out as a content width and the 28px padding plus 2px
+   border were added on top even though `box-sizing: border-box` is set. The height follows the
+   same rule (36 against 38). Nothing here should need the cap to be relaxed. */
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    width: 420px;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background-color: #161c27;
+}
+
+.topbar.wide {
+    width: 1044px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    color: #e8edf5;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.finder {
+    flex: 1;
+    min-width: 0;
+    max-width: 360px;
+    /* The reader inherits `line-height: 1.5` from its base sheet, which puts a strut on the line
+       the inline-block input sits on. */
+    line-height: 1.5;
+}
+
+.finder input {
+    width: 100%;
+    height: 36px;
+    margin: 0;
+    padding: 0 14px;
+    border: 1px solid #3a4657;
+    border-radius: 999px;
+    background-color: #0d1219;
+    color: #e8edf5;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.sort-btn {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 4px 8px;
+    background-color: #2c6b4e;
+    color: #e8edf5;
+    font-family: sans-serif;
+    font-size: 14px;
+}

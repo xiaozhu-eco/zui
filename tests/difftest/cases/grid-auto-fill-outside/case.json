@@ -1,0 +1,17 @@
+{
+  "name": "grid-auto-fill-outside",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "repeat(auto-fill) 与重复段之外的固定轨、gap 一起决定重复次数；重复段内的命名线要跟着展开。",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

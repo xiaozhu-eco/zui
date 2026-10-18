@@ -1,0 +1,25 @@
+{
+  "name": "transition-color-formats",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A1: transition parses #rrggbbaa and hsl(). Numeric used-value check is CssTransition.ColorFormatsHex8AndHsl; this case pins engine paint mid/end frames (Chrome dumps used rgb while engine dumps specified).",
+  "matrix": ["animation.interpolation"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "eval", "actions": [
+      { "do": "add_class", "target": "#hex8", "name": "on" },
+      { "do": "add_class", "target": "#hsl", "name": "on" }
+    ]},
+    { "op": "freeze", "t": 100 },
+    { "op": "trace" },
+    { "op": "freeze", "t": 200 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

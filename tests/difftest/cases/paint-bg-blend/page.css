@@ -1,0 +1,115 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px;
+  width: 768px;
+}
+
+.sw {
+  width: 96px;
+  height: 64px;
+}
+
+#multiply {
+  background-color: #808080;
+  background-image: linear-gradient(#c4554a, #c4554a);
+  background-blend-mode: multiply;
+}
+
+#screen {
+  background-color: #202020;
+  background-image: linear-gradient(#4060a0, #4060a0);
+  background-blend-mode: screen;
+}
+
+#overlay {
+  background-color: #808080;
+  background-image: linear-gradient(#c4554a, #c4554a);
+  background-blend-mode: overlay;
+}
+
+#darken {
+  background-color: #e0c080;
+  background-image: linear-gradient(#4080c0, #4080c0);
+  background-blend-mode: darken;
+}
+
+#lighten {
+  background-color: #304050;
+  background-image: linear-gradient(#80a0c0, #80a0c0);
+  background-blend-mode: lighten;
+}
+
+#dodge {
+  background-color: #404040;
+  background-image: linear-gradient(#808080, #808080);
+  background-blend-mode: color-dodge;
+}
+
+#burn {
+  background-color: #c0c0c0;
+  background-image: linear-gradient(#808080, #808080);
+  background-blend-mode: color-burn;
+}
+
+#hard {
+  background-color: #306090;
+  background-image: linear-gradient(#e0c040, #e0c040);
+  background-blend-mode: hard-light;
+}
+
+#soft {
+  background-color: #204060;
+  background-image: linear-gradient(#f0c0a0, #f0c0a0);
+  background-blend-mode: soft-light;
+}
+
+#difference {
+  background-color: #808080;
+  background-image: linear-gradient(#c4554a, #c4554a);
+  background-blend-mode: difference;
+}
+
+#exclusion {
+  background-color: #808080;
+  background-image: linear-gradient(#c4554a, #c4554a);
+  background-blend-mode: exclusion;
+}
+
+#plate {
+  position: absolute;
+  left: 16px;
+  top: 176px;
+  width: 420px;
+  height: 88px;
+  background-color: #3dba6a;
+}
+
+#isolate {
+  position: absolute;
+  left: 32px;
+  top: 190px;
+  width: 120px;
+  height: 60px;
+  background-color: transparent;
+  background-image: linear-gradient(#c4554a, #c4554a);
+  background-blend-mode: multiply;
+}
+
+#stack {
+  position: absolute;
+  left: 180px;
+  top: 190px;
+  width: 140px;
+  height: 60px;
+  background-color: #ffffff;
+  background-image: linear-gradient(#4040c0, #4040c0), linear-gradient(#c04040, #c04040);
+  background-blend-mode: multiply, normal;
+}

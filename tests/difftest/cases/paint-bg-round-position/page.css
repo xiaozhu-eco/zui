@@ -1,0 +1,31 @@
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+.box {
+  margin: 16px 0 0 20px;
+  width: 160px;
+  height: 64px;
+  background-color: #d7dee8;
+  background-repeat: round;
+  background-size: 100px 64px;
+}
+
+/* 160/100 rounds to 2, so each tile is 80px. center is resolved against 100px: (160-100)/2 = 30px. */
+#center {
+  background-image: linear-gradient(to right, #c4554a 0% 50%, #3d9a6a 50% 100%);
+  background-position: center top;
+}
+
+/* right 8px is resolved against 100px: (160-100)-8 = 52px. The drawn tile is still 80px. */
+#right {
+  background-image: linear-gradient(to right, #c4554a 0% 50%, #3d9a6a 50% 100%);
+  background-position: right 8px top;
+}
+
+/* Same phase on a bitmap. tile.png edges match, so a scaled tile does not blend the border. */
+#bitmap {
+  background-image: url("tile.png");
+  background-position: center top;
+}

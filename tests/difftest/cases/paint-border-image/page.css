@@ -1,0 +1,83 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #101418;
+}
+
+.b {
+  display: block;
+  box-sizing: content-box;
+  padding: 0;
+  margin: 8px 0 0 24px;
+  border-style: solid;
+  border-color: #ff00ff;
+  background: #101418;
+}
+
+#grad {
+  width: 160px;
+  height: 16px;
+  border-width: 16px;
+  border-image: linear-gradient(to right, #c4554a, #3d6ad4) 16 / 16px stretch;
+}
+
+#fill {
+  width: 160px;
+  height: 16px;
+  border-width: 16px;
+  border-image: linear-gradient(to right, #e6c15a, #2a9d8f) 16 fill / 16px stretch;
+}
+
+#outset {
+  width: 140px;
+  height: 16px;
+  border-width: 12px;
+  margin-top: 18px;
+  border-image: linear-gradient(to bottom, #c4554a, #3d6ad4) 12 / 12px / 10px stretch;
+}
+
+#pct {
+  width: 140px;
+  height: 16px;
+  border-width: 18px;
+  border-image-source: linear-gradient(to right, #3dba6a, #e6c15a);
+  border-image-slice: 25%;
+  border-image-width: 18px;
+  border-image-repeat: stretch;
+}
+
+#radial {
+  width: 120px;
+  height: 16px;
+  border-width: 20px;
+  border-image: radial-gradient(circle at center, #c4554a, #3d6ad4) 12 / 20px stretch;
+}
+
+#nine {
+  width: 80px;
+  height: 16px;
+  border-width: 20px;
+  border-image: url("slices.png") 20 / 20px stretch;
+}
+
+#rep {
+  width: 100px;
+  height: 16px;
+  border-width: 20px;
+  border-image: url("slices.png") 20 / 20px repeat;
+}
+
+#space {
+  width: 90px;
+  height: 16px;
+  border-width: 20px;
+  border-image: url("slices.png") 20 / 20px space;
+}
+
+#over {
+  width: 120px;
+  height: 16px;
+  border-width: 16px;
+  border-image: linear-gradient(to right, #c4554a, #3d6ad4) 40 / 16px stretch;
+  border-image-slice: 16;
+}

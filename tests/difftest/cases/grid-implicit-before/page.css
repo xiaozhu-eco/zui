@@ -1,0 +1,37 @@
+/* A negative line number can count back past the first explicit line, which puts implicit tracks
+   *before* the explicit grid (CSS Grid section 7.5). They are ordinary tracks: `grid-auto-*` sizes
+   them (the list is walked backwards from the explicit grid) and the explicit lines stay where
+   their numbers say. */
+
+html, body { margin: 0; padding: 0; }
+
+#g {
+  display: grid;
+  width: 300px;
+  height: 20px;
+  grid-template-columns: 100px 100px;
+  grid-auto-columns: 50px;
+  justify-content: start;
+  background: #f4f4f4;
+}
+
+/* -4 is one line before the first explicit one, -2 is the second explicit line: the 50px implicit
+   column plus the first 100px column. */
+#a { grid-column: -4 / -2; grid-row: 1; background: #cccccc; }
+/* The first explicit column, one implicit column to the right. */
+#b { grid-column: 1; grid-row: 1; background: #bbbbbb; }
+
+#h {
+  display: grid;
+  width: 100px;
+  height: 60px;
+  margin-top: 8px;
+  grid-template-rows: 20px;
+  grid-auto-rows: 8px;
+  align-content: start;
+  background: #f4f4f4;
+}
+
+/* One implicit row before the explicit one. */
+#c { grid-column: 1; grid-row: -3 / -1; background: #cccccc; }
+#d { grid-column: 1; grid-row: 1; background: #bbbbbb; }

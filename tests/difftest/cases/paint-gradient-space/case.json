@@ -1,0 +1,18 @@
+{
+  "name": "paint-gradient-space",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "CSS Images 4 gradient interpolation. Omitting `in oklch` blends #e23a3a to #2e6eee in premultiplied sRGB, so the midpoint is the muddy purple (136, 84, 148) instead of the oklch mix. `in hsl longer hue` walks the long way around the hue circle. pixel_tolerance 1 absorbs the same dither as paint-gradient. #plain has no interpolation method.",
+  "matrix": ["paint.gradient"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": false }
+}

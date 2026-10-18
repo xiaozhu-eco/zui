@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="page.css"></head>
+<body>
+  <div class="stack" id="over-block">
+    <div class="fl" id="fl-a"></div>
+    <div class="blk" id="blk"></div>
+  </div>
+
+  <div class="stack" id="control">
+    <div class="blk" id="blk2"></div>
+  </div>
+
+  <!-- Own in-flow content (step 5) after negative-z (step 2): yellow covers red. -->
+  <div class="stack ctx" id="text-over-neg">
+    <div class="neg" id="neg-under-text"></div>
+    <div class="ink" id="ink"></div>
+  </div>
+
+  <!-- z-index:auto positioned mid does not trap a negative-z absolute: red paints under green. -->
+  <div class="stack ctx" id="auto-lift">
+    <div class="front-flow" id="auto-front"></div>
+    <div class="auto-mid" id="auto-mid">
+      <div class="neg-deep" id="auto-lifted"></div>
+    </div>
+  </div>
+</body>
+</html>

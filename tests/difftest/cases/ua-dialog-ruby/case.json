@@ -1,0 +1,17 @@
+{
+  "name": "ua-dialog-ruby",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1 UA dialog[open]/closed: closed display:none (no box), open display:block. Nested h1 / ruby/rt/rp / u,s,del,ins text-decoration covered by selfcheck UaDialogRubyNestedH1 (Edge :heading() does not nest-shrink; ruby layout deferred).",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false },
+  "style_props": ["display", "position"]
+}

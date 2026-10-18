@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="page.css">
+</head>
+<body>
+  <!-- #prewrap is short so Chrome Range getClientRects stays at one line (trailing hang
+       spaces otherwise yield a same-y second rect). #break keeps trailing U+0020 via
+       character references; break-spaces wraps them onto extra lines. Hang-vs-wrap with
+       identical content is covered by DifftestSelfCheck.BreakSpacesWrapsTrailing. -->
+  <div id="prewrap" class="box">Hi</div>
+  <div id="break" class="box break">Hi&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</div>
+</body>
+</html>

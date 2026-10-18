@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="calendar">
+  <title>小竹月历</title>
+  <link rel="stylesheet" href="../../../../example/applications/calendar/css/tokens.css">
+  <link rel="stylesheet" href="../../../../example/applications/calendar/css/shell.css">
+  <link rel="stylesheet" href="../../../../example/applications/calendar/css/board.css">
+</head>
+
+<body onkeydown="on_accel">
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">竹</span>
+        <h1 class="brand-name">小竹月历</h1>
+      </div>
+      <div class="nav">
+        <button type="button" class="btn" id="today" onclick="on_today">今天</button>
+        <button type="button" class="btn icon-btn" id="prev" aria-label="上个月" onclick="on_prev">‹</button>
+        <h2 class="period" id="title"></h2>
+        <button type="button" class="btn icon-btn" id="next" aria-label="下个月" onclick="on_next">›</button>
+      </div>
+      <div class="top-actions">
+        <p class="status" id="status" role="status"></p>
+        <div class="view-toggle" role="group" aria-label="视图">
+          <button type="button" class="btn is-on" id="view-month" aria-pressed="true" onclick="on_month">月</button>
+          <button type="button" class="btn" id="view-week" aria-pressed="false" onclick="on_week">周</button>
+        </div>
+        <button type="button" class="btn" id="restore" onclick="on_restore">恢复示例</button>
+        <button type="button" class="btn btn-primary" id="create" onclick="on_create">新建日程</button>
+      </div>
+    </header>
+    <div class="workspace">
+      <div class="board">
+        <div class="month-view" id="month-view">
+          <template>
+            <button type="button" class="{{kind}}" onclick="on_day" data-date="{{date}}">
+              <span class="cell-inner">
+                <span class="num {{today}}">{{num}}</span>
+                <span class="chip tone-{{c0}} {{b0}}" onclick="on_event" data-id="{{i0}}">{{t0}}</span>
+                <span class="chip tone-{{c1}} {{b1}}" onclick="on_event" data-id="{{i1}}">{{t1}}</span>
+                <span class="chip tone-{{c2}} {{b2}}" onclick="on_event" data-id="{{i2}}">{{t2}}</span>
+                <span class="more {{bm}}">{{more}}</span>
+              </span>
+            </button>
+          </template>
+        </div>
+        <div class="week-view" id="week-view" hidden>
+          <div class="week-scroll" id="week-scroll">
+            <div class="week-head" id="week-head">
+              <div class="gutter-spacer"></div>
+              <button type="button" class="dow" id="dow-0" onclick="on_week_day"><span class="dow-name"
+                  id="dow-name-0"></span><span class="dow-num" id="dow-num-0"></span></button>
+              <button type="button" class="dow" id="dow-1" onclick="on_week_day"><span class="dow-name"
+                  id="dow-name-1"></span><span class="dow-num" id="dow-num-1"></span></button>
+              <button type="button" class="dow" id="dow-2" onclick="on_week_day"><span class="dow-name"
+                  id="dow-name-2"></span><span class="dow-num" id="dow-num-2"></span></button>
+              <button type="button" class="dow" id="dow-3" onclick="on_week_day"><span class="dow-name"
+                  id="dow-name-3"></span><span class="dow-num" id="dow-num-3"></span></button>
+              <button type="button" class="dow" id="dow-4" onclick="on_week_day"><span class="dow-name"
+                  id="dow-name-4"></span><span class="dow-num" id="dow-num-4"></span></button>
+              <button type="button" class="dow" id="dow-5" onclick="on_week_day"><span class="dow-name"
+                  id="dow-name-5"></span><span class="dow-num" id="dow-num-5"></span></button>
+              <button type="button" class="dow" id="dow-6" onclick="on_week_day"><span class="dow-name"
+                  id="dow-name-6"></span><span class="dow-num" id="dow-num-6"></span></button>
+            </div>
+            <div class="week-grid" id="week-grid">
+              <div class="gutter" id="hours">
+                <template><span class="hour {{first}}" style="top:{{top}}px">{{label}}</span></template>
+              </div>
+              <div class="day" id="day-0" onclick="on_day_new"><template><button type="button"
+                    class="block tone-{{color}}" style="{{style}}" onclick="on_event" data-id="{{id}}"><span
+                      class="block-title">{{title}}</span><span class="block-time">{{when}}</span></button></template>
+              </div>
+              <div class="day" id="day-1" onclick="on_day_new"><template><button type="button"
+                    class="block tone-{{color}}" style="{{style}}" onclick="on_event" data-id="{{id}}"><span
+                      class="block-title">{{title}}</span><span class="block-time">{{when}}</span></button></template>
+              </div>
+              <div class="day" id="day-2" onclick="on_day_new"><template><button type="button"
+                    class="block tone-{{color}}" style="{{style}}" onclick="on_event" data-id="{{id}}"><span
+                      class="block-title">{{title}}</span><span class="block-time">{{when}}</span></button></template>
+              </div>
+              <div class="day" id="day-3" onclick="on_day_new"><template><button type="button"
+                    class="block tone-{{color}}" style="{{style}}" onclick="on_event" data-id="{{id}}"><span
+                      class="block-title">{{title}}</span><span class="block-time">{{when}}</span></button></template>
+              </div>
+              <div class="day" id="day-4" onclick="on_day_new"><template><button type="button"
+                    class="block tone-{{color}}" style="{{style}}" onclick="on_event" data-id="{{id}}"><span
+                      class="block-title">{{title}}</span><span class="block-time">{{when}}</span></button></template>
+              </div>
+              <div class="day" id="day-5" onclick="on_day_new"><template><button type="button"
+                    class="block tone-{{color}}" style="{{style}}" onclick="on_event" data-id="{{id}}"><span
+                      class="block-title">{{title}}</span><span class="block-time">{{when}}</span></button></template>
+              </div>
+              <div class="day" id="day-6" onclick="on_day_new"><template><button type="button"
+                    class="block tone-{{color}}" style="{{style}}" onclick="on_event" data-id="{{id}}"><span
+                      class="block-title">{{title}}</span><span class="block-time">{{when}}</span></button></template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="agenda" aria-label="当天日程">
+        <h2 class="agenda-title" id="agenda-title"></h2>
+        <p class="empty" id="agenda-empty" hidden>这一天没有日程</p>
+        <div id="agenda-list">
+          <template>
+            <button type="button" class="agenda-item tone-{{color}}" onclick="on_agenda" data-id="{{id}}">
+              <span class="agenda-time">{{time}}</span>
+              <span class="agenda-name">{{title}}</span>
+              <span class="agenda-place">{{place}}</span>
+            </button>
+          </template>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="back" id="editor" hidden>
+    <form class="dialog" id="editor-form" role="dialog" aria-modal="true" aria-labelledby="editor-title">
+      <h2 id="editor-title"></h2>
+      <div class="form-grid">
+        <label class="field wide"><span>标题</span><input id="f-title" autocomplete="off"></label>
+        <label class="field"><span>日期</span><input id="f-date" type="text" placeholder="YYYY-MM-DD"
+            autocomplete="off"></label>
+        <label class="field"><span>地点</span><input id="f-place" autocomplete="off"></label>
+        <label class="field"><span>开始</span><input id="f-start" type="text" placeholder="HH:MM"
+            autocomplete="off"></label>
+        <label class="field"><span>结束</span><input id="f-end" type="text" placeholder="HH:MM"
+            autocomplete="off"></label>
+        <fieldset class="colors">
+          <legend>颜色</legend>
+          <label><input type="radio" name="color" id="color-green" value="green" checked onchange="on_color"> <i
+              class="swatch" data-color="green"></i> 竹</label>
+          <label><input type="radio" name="color" id="color-clay" value="clay" onchange="on_color"> <i class="swatch"
+              data-color="clay"></i> 赭</label>
+          <label><input type="radio" name="color" id="color-sea" value="sea" onchange="on_color"> <i class="swatch"
+              data-color="sea"></i> 蓝</label>
+          <label><input type="radio" name="color" id="color-gold" value="gold" onchange="on_color"> <i class="swatch"
+              data-color="gold"></i> 金</label>
+        </fieldset>
+      </div>
+      <p class="form-error" id="editor-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-danger" id="editor-remove" hidden onclick="on_editor_remove">删除</button>
+        <button type="button" class="btn" id="editor-cancel" onclick="on_editor_cancel">取消</button>
+        <button type="submit" class="btn btn-primary" onclick="on_save">保存</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="back" id="confirm" hidden>
+    <div class="dialog dialog-confirm" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <h2 id="confirm-title">确认</h2>
+      <p id="confirm-body"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="confirm-cancel" onclick="on_confirm_cancel">取消</button>
+        <button type="button" class="btn btn-danger" id="confirm-ok" onclick="on_confirm_ok">确定</button>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+
+</html>

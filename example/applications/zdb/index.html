@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>小竹数据库</title>
+  <link rel="icon" href="icon.svg">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="stylesheet" href="css/structure.css">
+  <link rel="stylesheet" href="css/query.css">
+  <link rel="stylesheet" href="css/welcome.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body ondrop="on_drop">
+  <input id="theme-dark" class="hid" type="checkbox">
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">竹</span>
+        <div class="brand-text">
+          <h1>小竹数据库</h1>
+          <p class="file-name" id="file-name">未打开数据库</p>
+        </div>
+      </div>
+      <div class="tools">
+        <label class="theme-toggle" for="theme-dark"><span class="when-light">深色</span><span class="when-dark">浅色</span></label>
+        <button type="button" class="btn primary" id="open-file" onclick="on_open" data-needs-engine>打开</button>
+        <input id="file-open" class="hid" type="file" accept=".db,.sqlite,.sqlite3,.db3">
+        <button type="button" class="btn" id="open-sample" onclick="on_sample" data-sample data-needs-engine>示例库</button>
+        <button type="button" class="btn" id="export-db" onclick="on_export" data-needs-db disabled>导出</button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar scroll-thin" aria-label="数据库对象">
+        <label class="search">
+          <span class="sr">筛选对象</span>
+          <input id="object-filter" type="search" placeholder="筛选表、视图、索引" data-search data-needs-db oninput="on_filter" disabled>
+        </label>
+        <p id="object-empty" class="empty-note side-note" hidden>打开数据库后，对象会列在这里。</p>
+        <div id="object-list" class="object-list scroll-thin" data-list>
+          <template>
+            <button type="button" class="{{rowclass}}" id="obj-{{index}}" onclick="{{handler}}" data-key="{{key}}" title="{{tip}}">
+              <span class="kind">{{badge}}</span>
+              <span class="obj-name">{{name}}</span>
+              <span class="obj-meta">{{meta}}</span>
+              <span class="obj-count">{{count}}</span>
+            </button>
+          </template>
+        </div>
+      </aside>
+
+      <main class="stage">
+        <div class="modebar" id="modebar" role="tablist" aria-label="内容" hidden>
+          <button type="button" class="mode" role="tab" id="mode-data" onclick="on_mode" data-mode="data" data-needs-db disabled>数据</button>
+          <button type="button" class="mode" role="tab" id="mode-structure" onclick="on_mode" data-mode="structure" data-needs-db disabled>结构</button>
+          <button type="button" class="mode" role="tab" id="mode-query" onclick="on_mode" data-mode="query" data-needs-db disabled>查询</button>
+        </div>
+
+        <section class="pane pane-welcome" id="pane-welcome" data-pane="welcome" aria-label="开始">
+          <div class="welcome-card">
+            <span class="mark mark-lg" aria-hidden="true">竹</span>
+            <h2>打开一个 SQLite 数据库</h2>
+            <p>浏览表和视图、查看列与索引，或直接执行 SQL。文件在内存里打开，磁盘上的原件不会被修改。</p>
+            <div class="welcome-actions">
+              <button type="button" class="btn primary" onclick="on_open" data-needs-engine>打开文件</button>
+              <button type="button" class="btn" onclick="on_sample" data-sample data-needs-engine>载入示例库</button>
+            </div>
+            <noscript><p class="welcome-error">需要启用 JavaScript，才能在浏览器里打开 SQLite。</p></noscript>
+            <p class="welcome-error" data-engine-error hidden></p>
+          </div>
+        </section>
+
+        <section class="pane pane-data" id="pane-data" data-pane="data" hidden aria-label="数据">
+          <div data-head>
+            <div class="grid-title" id="grid-title-row" hidden>
+              <h2 id="grid-title"></h2>
+              <span class="pill" id="grid-kind"></span>
+              <span class="empty-note" id="grid-total"></span>
+            </div>
+          </div>
+          <div class="sheet-wrap scroll-thin" data-scroll id="grid-scroll">
+            <p class="empty-note pad" id="grid-empty" hidden></p>
+            <p class="pad" id="grid-structure-wrap" hidden>
+              <button type="button" class="btn" onclick="on_show_structure">查看结构</button>
+            </p>
+            <div class="ztable" id="grid-table" hidden>
+              <div id="grid-head" class="zrow zhead">
+                <template>
+                  <div class="ztd"><button type="button" class="zhead-btn {{mark}}" onclick="on_sort" data-name="{{name}}">{{label}}</button></div>
+                </template>
+              </div>
+              <div id="grid-body" class="zgroup">
+                <template>
+                  <div class="zrow">
+                    <template>
+                      <div class="ztd"><button type="button" class="zcell {{class}}" onclick="on_cell" data-cell="{{cell}}" value="{{text}}">{{text}}</button></div>
+                    </template>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </div>
+          <div class="cell-detail" data-detail id="cell-detail" hidden>
+            <div class="cell-detail-bar">
+              <span data-detail-label id="detail-label"></span>
+              <button type="button" class="btn btn-tiny" data-detail-close id="detail-close" onclick="on_detail_close">关闭</button>
+            </div>
+            <pre class="scroll-thin" data-detail-value id="detail-value"></pre>
+          </div>
+          <div class="pager" data-pager id="pager" hidden>
+            <span class="pager-range" id="page-range"></span>
+            <button type="button" class="btn btn-tiny" id="page-prev" onclick="on_page_prev">上一页</button>
+            <button type="button" class="btn btn-tiny" id="page-next" onclick="on_page_next">下一页</button>
+            <button type="button" class="btn btn-tiny" id="limit-25" onclick="on_limit" value="25">25</button>
+            <button type="button" class="btn btn-tiny" id="limit-50" onclick="on_limit" value="50">50</button>
+            <button type="button" class="btn btn-tiny" id="limit-100" onclick="on_limit" value="100">100</button>
+            <button type="button" class="btn btn-tiny" id="limit-200" onclick="on_limit" value="200">200</button>
+          </div>
+        </section>
+
+        <section class="pane pane-structure" id="pane-structure" data-pane="structure" hidden aria-label="结构">
+          <div class="structure-body scroll-thin" data-structure id="structure">
+            <p class="empty-note pad" id="struct-empty">从左侧选择一个对象。</p>
+            <div class="structure-title" id="struct-title" hidden>
+              <h2 id="struct-name"></h2>
+              <span class="pill" id="struct-kind"></span>
+            </div>
+            <p id="struct-facts" class="empty-note" hidden></p>
+            <div class="jump-row" id="struct-parent-wrap" hidden>
+              <button type="button" class="btn btn-tiny" id="struct-parent" onclick="on_open_table">打开</button>
+            </div>
+            <h3 id="struct-col-h" hidden>列</h3>
+            <div id="struct-columns-wrap" class="ztable" hidden>
+              <div class="zrow zhead">
+                <div class="ztd"><span class="zhead-btn">#</span></div>
+                <div class="ztd"><span class="zhead-btn">名称</span></div>
+                <div class="ztd"><span class="zhead-btn">类型</span></div>
+                <div class="ztd"><span class="zhead-btn">非空</span></div>
+                <div class="ztd"><span class="zhead-btn">默认值</span></div>
+                <div class="ztd"><span class="zhead-btn">主键</span></div>
+              </div>
+              <div id="struct-columns" class="zgroup">
+                <template>
+                  <div class="zrow">
+                    <div class="ztd"><span class="zcell">{{cid}}</span></div>
+                    <div class="ztd"><span class="zcell">{{name}}</span></div>
+                    <div class="ztd"><span class="zcell">{{type}}</span></div>
+                    <div class="ztd"><span class="zcell">{{notnull}}</span></div>
+                    <div class="ztd"><span class="zcell">{{dflt}}</span></div>
+                    <div class="ztd"><span class="zcell">{{pk}}</span></div>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <h3 id="struct-idxcol-h" hidden>列</h3>
+            <div id="struct-idxcols-wrap" class="ztable" hidden>
+              <div class="zrow zhead">
+                <div class="ztd"><span class="zhead-btn">序号</span></div>
+                <div class="ztd"><span class="zhead-btn">列</span></div>
+                <div class="ztd"><span class="zhead-btn">表列序号</span></div>
+              </div>
+              <div id="struct-idxcols" class="zgroup">
+                <template>
+                  <div class="zrow">
+                    <div class="ztd"><span class="zcell">{{seq}}</span></div>
+                    <div class="ztd"><span class="zcell">{{name}}</span></div>
+                    <div class="ztd"><span class="zcell">{{cid}}</span></div>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <h3 id="struct-fk-h" hidden>外键</h3>
+            <div id="struct-fks-wrap" class="ztable" hidden>
+              <div class="zrow zhead">
+                <div class="ztd"><span class="zhead-btn">列</span></div>
+                <div class="ztd"><span class="zhead-btn">引用表</span></div>
+                <div class="ztd"><span class="zhead-btn">引用列</span></div>
+                <div class="ztd"><span class="zhead-btn">更新</span></div>
+                <div class="ztd"><span class="zhead-btn">删除</span></div>
+              </div>
+              <div id="struct-fks" class="zgroup">
+                <template>
+                  <div class="zrow">
+                    <div class="ztd"><span class="zcell">{{from}}</span></div>
+                    <div class="ztd"><span class="zcell">{{table}}</span></div>
+                    <div class="ztd"><span class="zcell">{{to}}</span></div>
+                    <div class="ztd"><span class="zcell">{{on_update}}</span></div>
+                    <div class="ztd"><span class="zcell">{{on_delete}}</span></div>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <div id="struct-fk-jumps" class="jump-row" hidden>
+              <template>
+                <button type="button" class="btn btn-tiny" onclick="on_open_table" data-table="{{table}}">打开 {{table}}</button>
+              </template>
+            </div>
+            <h3 id="struct-index-h" hidden>索引</h3>
+            <div id="struct-indexes-wrap" class="ztable" hidden>
+              <div class="zrow zhead">
+                <div class="ztd"><span class="zhead-btn">名称</span></div>
+                <div class="ztd"><span class="zhead-btn">列</span></div>
+                <div class="ztd"><span class="zhead-btn">来源</span></div>
+                <div class="ztd"><span class="zhead-btn">唯一</span></div>
+                <div class="ztd"><span class="zhead-btn">部分</span></div>
+              </div>
+              <div id="struct-indexes" class="zgroup">
+                <template>
+                  <div class="zrow">
+                    <div class="ztd"><span class="zcell">{{name}}</span></div>
+                    <div class="ztd"><span class="zcell">{{columns}}</span></div>
+                    <div class="ztd"><span class="zcell">{{origin}}</span></div>
+                    <div class="ztd"><span class="zcell">{{unique}}</span></div>
+                    <div class="ztd"><span class="zcell">{{partial}}</span></div>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <h3 id="struct-trigger-h" hidden>触发器</h3>
+            <div id="struct-triggers" hidden>
+              <template>
+                <p class="empty-note">{{name}}</p>
+                <pre class="sql-block">{{sql}}</pre>
+              </template>
+            </div>
+            <h3 id="struct-sql-h" hidden>SQL</h3>
+            <pre id="struct-sql" class="sql-block scroll-thin" hidden></pre>
+            <p id="struct-auto" class="empty-note" hidden>这是 SQLite 自动创建的索引，没有单独的 CREATE INDEX 语句。</p>
+          </div>
+        </section>
+
+        <section class="pane pane-query" id="pane-query" data-pane="query" hidden aria-label="查询">
+          <div class="query-bar">
+            <label class="sr" for="sql-input">SQL</label>
+            <textarea id="sql-input" spellcheck="false" autocomplete="off" onkeydown="on_sql_key">SELECT type, name
+FROM sqlite_master
+WHERE substr(name, 1, 7) <> 'sqlite_'
+ORDER BY 1, 2;</textarea>
+            <div class="query-actions">
+              <button type="button" class="btn primary" id="run-sql" onclick="on_run" data-needs-db disabled>执行</button>
+              <button type="button" class="btn" id="clear-sql" onclick="on_clear" data-needs-db disabled>清空结果</button>
+              <span class="hint">Ctrl+Enter</span>
+            </div>
+          </div>
+          <div class="query-results scroll-thin" data-results id="query-results">
+            <p class="empty-note" id="query-note">执行后，结果会显示在这里。</p>
+            <div id="query-list" class="query-picks" hidden>
+              <template>
+                <button type="button" class="btn btn-tiny {{on}}" onclick="on_query_pick" data-index="{{index}}">{{label}}</button>
+              </template>
+            </div>
+            <p id="query-error" class="result-error" hidden></p>
+            <p id="query-meta" class="empty-note" hidden></p>
+            <!-- Native-only host: one card per result set, the same `article.result` markup
+                 js/ui/query.js builds, so the shared CSS in query.css paints both the same.
+                 The `.ztable` is the nested host; row 0 of that result's TableModel is the
+                 column header (docs/RFC_MODEL.md KD2/KD4). The browser clears [data-results],
+                 so this block only exists for the native build. -->
+            <div id="query-tables" hidden>
+              <template>
+                <article class="result {{class}}">
+                  <div class="result-head">
+                    <span>{{label}}</span>
+                    <span>{{meta}}</span>
+                  </div>
+                  <p class="result-error" role="alert">{{error}}</p>
+                  <div class="sheet-wrap scroll-thin">
+                    <div class="ztable">
+                      <template>
+                        <div class="zrow">
+                          <template>
+                            <div class="ztd"><button type="button" class="zcell {{class}}" onclick="on_query_cell" data-cell="{{cell}}" value="{{text}}">{{text}}</button></div>
+                          </template>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </article>
+              </template>
+            </div>
+            <div class="ztable" id="query-table" hidden>
+              <div id="query-head" class="zrow zhead">
+                <template>
+                  <div class="ztd"><span class="zhead-btn">{{text}}</span></div>
+                </template>
+              </div>
+              <div id="query-body" class="zgroup">
+                <template>
+                  <div class="zrow">
+                    <template>
+                      <div class="ztd"><button type="button" class="zcell {{class}}" onclick="on_query_cell" data-cell="{{cell}}" value="{{text}}">{{text}}</button></div>
+                    </template>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <div class="cell-detail" id="query-detail" hidden>
+              <div class="cell-detail-bar">
+                <span id="query-detail-label"></span>
+                <button type="button" class="btn btn-tiny" onclick="on_query_detail_close">关闭</button>
+              </div>
+              <pre class="scroll-thin" id="query-detail-value"></pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="statusbar" id="status">
+      <p id="status-text">正在加载 SQLite…</p>
+      <p id="status-meta"></p>
+    </footer>
+  </div>
+  <script src="vendor/sql-wasm.js"></script>
+  <p class="file-notice" id="file-notice" hidden>此页使用模块脚本，用文件地址打开不会运行。在这个目录执行 <code>python -m http.server</code>，再用浏览器打开给出的地址。</p>
+  <script>
+  (function () {
+    if (location.protocol === "file:") {
+      var note = document.getElementById("file-notice");
+      if (note) note.hidden = false;
+    }
+  })();
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+#rules, #none {
+  width: 480px;
+  margin: 16px;
+  padding: 10px;
+  background-color: #161c27;
+  column-count: 3;
+  column-gap: 28px;
+}
+#rules {
+  column-rule: 6px solid #ffcc33;
+}
+.blk {
+  height: 36px;
+  margin: 0 0 10px 0;
+}
+.a { background-color: #243044; }
+.b { background-color: #7cb7ff; }
+.c { background-color: #8fd18a; }

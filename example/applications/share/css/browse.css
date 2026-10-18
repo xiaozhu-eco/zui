@@ -1,0 +1,479 @@
+/*
+ * Main screen: device strip / sidebar, file list, bottom bar.
+ * The base is desktop (wide); `@media (max-width: 760px)` turns it into the narrow layout:
+ * device strip on top, no table head, full-width Share.
+ */
+.browse-body {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  gap: 16px;
+  min-height: 0;
+  padding: 0 20px 18px;
+}
+
+/* ---------------------------------------------------------------- devices */
+.peers-strip {
+  display: none;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 250px;
+  flex: none;
+  min-height: 0;
+}
+
+.peers-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.peer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.peer-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+}
+
+.peer-card:hover {
+  background: var(--elev);
+}
+
+.peer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.peer-name {
+  font-size: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.peer-ip {
+  font-size: 13px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.dot-corner {
+  position: absolute;
+  left: 48px;
+  top: 14px;
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--card);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 99px;
+  background: var(--elev);
+  font-size: 15px;
+}
+
+.peers-empty {
+  font-size: 14px;
+}
+
+.peer-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  margin-top: auto;
+}
+
+.peer-hint p {
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------------- files */
+.files {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+/* The text field is a plain block inside this flex item. An `<input>` that is itself the
+   flex item hits the engine's two-round flex ceiling (LAYOUT section 5) and re-lays the
+   whole subtree every frame. */
+.path-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.path {
+  width: 100%;
+}
+
+.file-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+  height: 34px;
+  padding: 0 14px;
+  font-size: 13px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+
+.file-head .col-name {
+  flex: 1;
+  padding-left: 72px;
+}
+
+.file-head .col-size {
+  width: 110px;
+  flex: none;
+  text-align: right;
+}
+
+.file-head .col-kind {
+  width: 72px;
+  flex: none;
+  text-align: right;
+}
+
+.file-list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  background: var(--card);
+  border-radius: var(--radius);
+}
+
+.frow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+  height: 48px;
+  padding: 0 14px;
+}
+
+.frow + .frow {
+  border-top: 1px solid var(--line);
+}
+
+.frow:hover {
+  background: rgba(44, 107, 78, 0.06);
+}
+
+.frow.on {
+  background: var(--accent-soft);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: 7px;
+  border: 1.5px solid rgba(43, 38, 31, 0.28);
+  background: rgba(43, 38, 31, 0.04);
+}
+
+.frow.on .check {
+  background: var(--accent);
+  border-color: var(--accent-hi);
+}
+
+.frow.on .check::after {
+  content: "✓";
+  color: var(--on-accent);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.fname {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 16px;
+}
+
+.fsize,
+.fkind {
+  flex: none;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.fsize {
+  width: 110px;
+  text-align: right;
+}
+
+.fkind {
+  width: 72px;
+  text-align: right;
+}
+
+/* ---------------------------------------------------------------- file-type glyphs */
+.gl {
+  position: relative;
+  width: 24px;
+  height: 26px;
+  flex: none;
+}
+
+.gl::before,
+.gl::after {
+  content: "";
+  position: absolute;
+}
+
+/* folder */
+.gl-dir::before {
+  left: 0;
+  top: 9px;
+  width: 24px;
+  height: 17px;
+  background: var(--amber);
+  border-radius: 5px;
+}
+
+.gl-dir::after {
+  left: 1px;
+  top: 4px;
+  width: 11px;
+  height: 8px;
+  background: var(--amber-hi);
+  border-radius: 4px 4px 0 0;
+}
+
+/* text / other: gray tile with white rules */
+.gl-doc {
+  background: var(--gray);
+  border-radius: 6px;
+}
+
+.gl-doc::before,
+.gl-doc::after {
+  left: 6px;
+  width: 12px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 2px;
+}
+
+.gl-doc::before {
+  top: 9px;
+}
+
+.gl-doc::after {
+  top: 15px;
+}
+
+/* PDF / package: solid tile with a letter */
+.gl-pdf,
+.gl-apk,
+.gl-vid {
+  border-radius: 6px;
+}
+
+.gl-pdf {
+  background: var(--reddoc);
+}
+
+.gl-apk {
+  background: var(--accent);
+}
+
+.gl-vid {
+  background: var(--violet);
+}
+
+.gl-pdf::before,
+.gl-apk::before,
+.gl-vid::before {
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.gl-pdf::before {
+  content: "P";
+}
+
+.gl-apk::before {
+  content: "A";
+  color: var(--on-accent);
+}
+
+.gl-vid::before {
+  content: "▶";
+  font-size: 12px;
+}
+
+/* image: blue tile with a dot and a bar */
+.gl-img {
+  background: var(--blue);
+  border-radius: 6px;
+}
+
+.gl-img::before {
+  left: 6px;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.gl-img::after {
+  left: 5px;
+  bottom: 6px;
+  width: 14px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------------- bottom bar */
+.bottombar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+}
+
+.sel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sel-label {
+  font-size: 15px;
+}
+
+/* ---------------------------------------------------------------- narrow */
+@media (max-width: 760px) {
+  .browse-body {
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 14px 14px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .peers-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: none;
+    padding: 14px;
+    background: var(--card);
+    border-radius: var(--radius);
+  }
+
+  .file-head {
+    display: none;
+  }
+
+  .frow {
+    height: 52px;
+    padding: 0 12px;
+  }
+
+  .fname {
+    font-size: 15px;
+  }
+
+  .fsize {
+    width: auto;
+  }
+
+  /* Narrow keeps one right-hand column: size for files, 文件夹 for folders. */
+  .fkind {
+    display: none;
+  }
+
+  .frow.is-dir .fsize {
+    display: none;
+  }
+
+  .frow.is-dir .fkind {
+    display: block;
+    width: auto;
+  }
+
+  .bottombar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sel-row {
+    flex: none;
+    width: 100%;
+  }
+
+  .btn-share {
+    width: 100%;
+    height: 52px;
+    font-size: 16px;
+  }
+}

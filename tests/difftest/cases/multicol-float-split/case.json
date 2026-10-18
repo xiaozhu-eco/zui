@@ -1,0 +1,16 @@
+{
+  "name": "multicol-float-split",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "比栏还高的浮动：Chrome 把它按栏切开，元素矩形是跨栏并集，切开的每一段占用它所在栏的顶部（CSS Multi-column 第 7 节 + CSS 2.1 第 9.5 节）。",
+  "matrix": ["multicol", "float"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

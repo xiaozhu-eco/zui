@@ -1,0 +1,41 @@
+html, body { margin: 0; padding: 0; }
+
+.row {
+  display: block;
+  width: max-content;
+  font-family: "Noto Sans SC";
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.w100 { font-weight: 100; }
+.w400 { font-weight: 400; }
+.w700 { font-weight: 700; }
+
+#g400_arial { font-family: Arial; }
+
+/* The same measurements at a second pixel size: an advance that matches at 16px and not at 15px
+   means the size, not the table, is being read wrong. */
+.s15 { font-size: 15px; }
+
+#s15_sans, #s15_sans_av { font-family: sans-serif; }
+
+.rowflex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.case {
+  width: max-content;
+  max-width: 320px;
+  padding: 12px;
+}
+
+.k { font-size: 13px; }
+.expect { font-size: 12px; }
+.sentence { background-color: #1a2230; }
+#nest_sentence { width: max-content; font-size: 15px; font-family: sans-serif; }

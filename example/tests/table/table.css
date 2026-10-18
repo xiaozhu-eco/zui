@@ -1,0 +1,184 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #10141c;
+    color: #e8edf5;
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+.shell {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.topbar {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    height: 52px;
+    padding: 0 20px;
+    background-color: #161c27;
+    column-gap: 16px;
+}
+
+.brand {
+    color: #7cb7ff;
+    font-size: 18px;
+}
+
+.muted {
+    color: #8b97ab;
+    font-size: 13px;
+}
+
+.content {
+    flex-grow: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 20px 24px 40px;
+}
+
+h2 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    color: #d5deea;
+}
+
+.sec {
+    margin: 0 0 28px 0;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    column-gap: 16px;
+    row-gap: 16px;
+}
+
+.case {
+    width: max-content;
+    max-width: 320px;
+    padding: 12px;
+    background-color: #161c27;
+    border-radius: 12px;
+}
+
+.k {
+    color: #7cb7ff;
+    font-size: 13px;
+}
+
+.expect {
+    margin: 4px 0 10px 0;
+    color: #8b97ab;
+    font-size: 12px;
+}
+
+/* The tables under test. Cell colours make the box boundaries visible; `border-spacing: 0` and
+   `border-collapse: separate` are the initial values, so a case only states what it changes. */
+table {
+    background-color: #0d121a;
+    color: #e8edf5;
+    font-size: 13px;
+    /* Chrome's UA sheet gives every table `border-spacing: 2px`; this engine's UA style only
+       supplies the default `display` (LAYOUT.md section 7), so the page states the spacing it
+       wants and both ends start from the same place. */
+    border-spacing: 0;
+}
+
+td, th {
+    background-color: #1a2230;
+    padding: 4px 8px;
+}
+
+.auto {
+    width: max-content;
+}
+
+.grid td {
+    border: 1px solid #3d4654;
+}
+
+.fixed {
+    table-layout: fixed;
+    width: 240px;
+}
+
+.fixed .c2 {
+    overflow: hidden;
+}
+
+.cols {
+    table-layout: fixed;
+    width: 240px;
+}
+
+.w60 { width: 60px; }
+
+.collapse {
+    border-collapse: collapse;
+    border: 2px solid #3d4654;
+}
+
+/* The shared border model: the neighbours' 1px borders become one line, and the thicker border
+   wins the line it touches (CSS 2.1 section 17.6.2.1). */
+.collapse td {
+    border: 1px solid #3d4654;
+}
+
+.collapse .bold {
+    border: 3px solid #7cb7ff;
+}
+
+.spaced {
+    border-spacing: 6px;
+}
+
+.padded td {
+    padding: 10px 12px;
+}
+
+.tall {
+    height: 48px;
+}
+
+.gone {
+    visibility: collapse;
+}
+
+.auto2 td {
+    border: 1px solid #3d4654;
+}
+
+.cap caption {
+    color: #7cb7ff;
+    font-size: 12px;
+    padding: 2px 0;
+}
+
+.bottom caption {
+    caption-side: bottom;
+}
+
+.dtable {
+    display: table;
+    width: 160px;
+    background-color: #0d121a;
+}
+
+.drow {
+    display: table-row;
+}
+
+.dcell {
+    display: table-cell;
+    padding: 4px 8px;
+    background-color: #1a2230;
+    border: 1px solid #3d4654;
+}

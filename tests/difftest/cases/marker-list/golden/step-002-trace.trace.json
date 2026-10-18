@@ -1,0 +1,1111 @@
+{
+  "schema": "zui.difftest.trace/2",
+  "engine": "chromium",
+  "engine_version": "Edg/154.0.4258.37",
+  "viewport": [
+    800,
+    600
+  ],
+  "scroll": [
+    0,
+    0
+  ],
+  "elements": [
+    {
+      "path": "0",
+      "tag": "html",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        220
+      ],
+      "scroll_size": [
+        800,
+        600
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          220
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "block",
+        "list-style-type": "disc",
+        "list-style-position": "outside",
+        "padding-left": "0"
+      },
+      "style_digest": "3cf8cc4eff3c4140"
+    },
+    {
+      "path": "0/0",
+      "tag": "head",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "none",
+        "list-style-type": "disc",
+        "list-style-position": "outside",
+        "padding-left": "0"
+      },
+      "style_digest": "61ac015782814339"
+    },
+    {
+      "path": "0/0/0",
+      "tag": "link",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "none",
+        "list-style-type": "disc",
+        "list-style-position": "outside",
+        "padding-left": "0"
+      },
+      "style_digest": "61ac015782814339"
+    },
+    {
+      "path": "0/1",
+      "tag": "body",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        220
+      ],
+      "scroll_size": [
+        800,
+        221
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        220
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          220
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          800,
+          221
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "block",
+        "list-style-type": "disc",
+        "list-style-position": "outside",
+        "padding-left": "0"
+      },
+      "style_digest": "3cf8cc4eff3c4140"
+    },
+    {
+      "path": "0/1/0",
+      "tag": "ol",
+      "id": "in",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        100
+      ],
+      "scroll_size": [
+        800,
+        101
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        100
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          100
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          800,
+          101
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "block",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "40px"
+      },
+      "style_digest": "4433ac04a989882f"
+    },
+    {
+      "path": "0/1/0/0",
+      "tag": "li",
+      "id": "a",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        0,
+        760,
+        20
+      ],
+      "scroll_size": [
+        760,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        0,
+        760,
+        20
+      ],
+      "client_rects": [
+        [
+          40,
+          0,
+          760,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          760,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "list-item",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "0"
+      },
+      "style_digest": "2e7da279e6c69b3c",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          -1
+        ],
+        "heights": [
+          22
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1",
+      "tag": "li",
+      "id": "b",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        20,
+        760,
+        20
+      ],
+      "scroll_size": [
+        760,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        20,
+        760,
+        20
+      ],
+      "client_rects": [
+        [
+          40,
+          20,
+          760,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          760,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "list-item",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "0"
+      },
+      "style_digest": "2e7da279e6c69b3c",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          19
+        ],
+        "heights": [
+          22
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/2",
+      "tag": "li",
+      "id": "wrap",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        40,
+        120,
+        60
+      ],
+      "scroll_size": [
+        120,
+        61
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        40,
+        120,
+        60
+      ],
+      "client_rects": [
+        [
+          40,
+          40,
+          120,
+          60
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          120,
+          61
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "list-item",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "0"
+      },
+      "style_digest": "2e7da279e6c69b3c",
+      "lines": {
+        "count": 3,
+        "line_count": 3,
+        "tops": [
+          39,
+          59,
+          79
+        ],
+        "heights": [
+          22,
+          22,
+          22
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0,
+          11,
+          23
+        ],
+        "advances": [],
+        "line_breaks": [
+          0,
+          11,
+          23
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/1",
+      "tag": "ol",
+      "id": "author",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        100,
+        800,
+        20
+      ],
+      "scroll_size": [
+        800,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        100,
+        800,
+        20
+      ],
+      "client_rects": [
+        [
+          0,
+          100,
+          800,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          800,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "block",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "40px"
+      },
+      "style_digest": "4433ac04a989882f"
+    },
+    {
+      "path": "0/1/1/0",
+      "tag": "li",
+      "id": "c1",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        100,
+        760,
+        20
+      ],
+      "scroll_size": [
+        760,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        100,
+        760,
+        20
+      ],
+      "client_rects": [
+        [
+          40,
+          100,
+          760,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          760,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "list-item",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "0"
+      },
+      "style_digest": "2e7da279e6c69b3c",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          99
+        ],
+        "heights": [
+          22
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/2",
+      "tag": "ul",
+      "id": "nest",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        120,
+        800,
+        80
+      ],
+      "scroll_size": [
+        800,
+        81
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        120,
+        800,
+        80
+      ],
+      "client_rects": [
+        [
+          0,
+          120,
+          800,
+          80
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          800,
+          81
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "block",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "40px"
+      },
+      "style_digest": "4433ac04a989882f"
+    },
+    {
+      "path": "0/1/2/0",
+      "tag": "li",
+      "id": "n1",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        120,
+        760,
+        60
+      ],
+      "scroll_size": [
+        760,
+        61
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        120,
+        760,
+        60
+      ],
+      "client_rects": [
+        [
+          40,
+          120,
+          760,
+          60
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          760,
+          61
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "list-item",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "0"
+      },
+      "style_digest": "2e7da279e6c69b3c"
+    },
+    {
+      "path": "0/1/2/0/0",
+      "tag": "ol",
+      "id": "inner",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        140,
+        760,
+        40
+      ],
+      "scroll_size": [
+        760,
+        41
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        140,
+        760,
+        40
+      ],
+      "client_rects": [
+        [
+          40,
+          140,
+          760,
+          40
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          760,
+          41
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "block",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "40px"
+      },
+      "style_digest": "4433ac04a989882f"
+    },
+    {
+      "path": "0/1/2/0/0/0",
+      "tag": "li",
+      "id": "i1",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        80,
+        140,
+        720,
+        20
+      ],
+      "scroll_size": [
+        720,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        80,
+        140,
+        720,
+        20
+      ],
+      "client_rects": [
+        [
+          80,
+          140,
+          720,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          720,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "list-item",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "0"
+      },
+      "style_digest": "2e7da279e6c69b3c",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          139
+        ],
+        "heights": [
+          22
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/2/0/0/1",
+      "tag": "li",
+      "id": "i2",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        80,
+        160,
+        720,
+        20
+      ],
+      "scroll_size": [
+        720,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        80,
+        160,
+        720,
+        20
+      ],
+      "client_rects": [
+        [
+          80,
+          160,
+          720,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          720,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "list-item",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "0"
+      },
+      "style_digest": "2e7da279e6c69b3c",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          159
+        ],
+        "heights": [
+          22
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/2/1",
+      "tag": "li",
+      "id": "n2",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        180,
+        760,
+        20
+      ],
+      "scroll_size": [
+        760,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        180,
+        760,
+        20
+      ],
+      "client_rects": [
+        [
+          40,
+          180,
+          760,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          760,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "list-item",
+        "list-style-type": "decimal",
+        "list-style-position": "inside",
+        "padding-left": "0"
+      },
+      "style_digest": "2e7da279e6c69b3c",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          179
+        ],
+        "heights": [
+          22
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/3",
+      "tag": "ul",
+      "id": "none",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        200,
+        800,
+        20
+      ],
+      "scroll_size": [
+        800,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        200,
+        800,
+        20
+      ],
+      "client_rects": [
+        [
+          0,
+          200,
+          800,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          800,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "block",
+        "list-style-type": "none",
+        "list-style-position": "outside",
+        "padding-left": "40px"
+      },
+      "style_digest": "ef8edef5fded92f3"
+    },
+    {
+      "path": "0/1/3/0",
+      "tag": "li",
+      "id": "bare",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        200,
+        760,
+        20
+      ],
+      "scroll_size": [
+        760,
+        21
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        200,
+        760,
+        20
+      ],
+      "client_rects": [
+        [
+          40,
+          200,
+          760,
+          20
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          760,
+          21
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {
+        "display": "list-item",
+        "list-style-type": "none",
+        "list-style-position": "outside",
+        "padding-left": "0"
+      },
+      "style_digest": "edca4f7b2cf8c380",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          199
+        ],
+        "heights": [
+          22
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    }
+  ],
+  "extras": null
+}

@@ -1,0 +1,22 @@
+html, body { margin: 0; padding: 0; background: #000000; }
+#group {
+  position: relative;
+  width: 120px;
+  height: 80px;
+  opacity: 0.5;
+}
+#a, #b {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: #ff0000;
+}
+#a { left: 0; top: 0; }
+#b { left: 40px; top: 0; }
+#single {
+  margin-top: 16px;
+  width: 80px;
+  height: 80px;
+  background-color: #ff0000;
+  opacity: 0.5;
+}

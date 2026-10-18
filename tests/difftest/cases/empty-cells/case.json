@@ -1,0 +1,17 @@
+{
+  "name": "empty-cells",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2：表 `empty-cells`（CSS 2.1 §17.6.1）。`#hide` 上的 `empty-cells: hide` 只对「没有流入内容」的格子生效：空、仅空白、仅注释都算空（它们既不画背景也不画边框）；含块级子元素的格子算有内容，照画。`#show` 表是默认 show 的对照。`line-height: 0` 与 `vertical-align: top` 把行盒高度和对齐的字体依赖去掉，格子与子元素的位置只由声明的尺寸决定。",
+  "matrix": ["flow.table"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

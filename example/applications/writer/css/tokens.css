@@ -1,0 +1,50 @@
+:root {
+  --paper: #f7f7f5;
+  --raised: #ffffff;
+  --ink: #1c1c1c;
+  --muted: #6f6f68;
+  --line: #e4e4df;
+  --accent: #0c7a4b;
+  --accent-ink: #ffffff;
+  --sidebar: #f3f3f0;
+  --today: #e7f6ee;
+  --sans: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", "Segoe UI", sans-serif;
+  --mono: "Cascadia Code", "Sarasa Mono SC", Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+button, input, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+button.is-on {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+[hidden] { display: none !important; }
+
+h1, h2, p { margin: 0; }

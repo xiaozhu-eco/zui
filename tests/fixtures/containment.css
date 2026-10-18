@@ -1,0 +1,39 @@
+/* `布局可见性与规范修补方案.md` M7 / M7b. `content-visibility: auto` and `hidden` change the
+   *used* value of `contain` (CSS Containment section 4) - the element still computes
+   `contain: none` - turning on layout, style and paint containment. `contain: layout` on its own
+   already establishes a containing block for out-of-flow descendants (section 3.3 effect 4) and
+   is a stacking context (section 3.4).
+
+   The probes are `position: static` and carry no transform / filter / perspective / will-change,
+   so nothing but the containment clause can give them a containing block. Each one holds an
+   absolutely positioned child at `left: 0; top: 0`: when its parent is the containing block the
+   child lands on that parent's padding edge (x = 40, the margin), and when it is not, the child
+   falls through to the initial containing block at the page origin. */
+body {
+    margin: 0;
+    font: 14px serif;
+}
+
+.probe {
+    width: 200px;
+    height: 60px;
+    margin-left: 40px;
+}
+
+.abs {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 8px;
+    height: 8px;
+}
+
+/* M7b: `contain: layout` alone, with no `contain: paint` to lean on. */
+#lay {
+    contain: layout;
+}
+
+/* M7: `content-visibility: auto` must reach the same used value through its own clause. */
+#viz {
+    content-visibility: auto;
+}

@@ -1,0 +1,10 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+#rtl {
+  direction: rtl;
+}
+.pad-inline {
+  padding-inline-start: 24px;
+}

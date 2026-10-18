@@ -1,0 +1,17 @@
+{
+  "name": "css-lengths",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "相对长度与数学函数：em / rem / calc() / min() / max() / clamp()，盒属性与网格轨道都要算出同样的值。",
+  "matrix": ["flow.normal"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

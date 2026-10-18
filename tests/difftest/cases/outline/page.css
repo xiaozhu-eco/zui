@@ -1,0 +1,55 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+/* The outline never takes part in layout: every box below stays 60x30 at the same x. */
+.box {
+    display: block;
+    width: 60px;
+    height: 30px;
+    margin: 18px 24px;
+    background-color: #3a4450;
+}
+
+.round {
+    border-radius: 8px;
+}
+
+/* A one pixel ring flush with the border box. */
+#o1 {
+    outline: 1px solid #7cb7ff;
+}
+
+/* No colour: the outline uses currentColor. `medium` is 3px. */
+#o2 {
+    color: #e0a050;
+    outline: 3px solid;
+}
+
+/* Offset pushes the ring away from the border box: the gap shows the page background. */
+#o3 {
+    outline: 2px solid #3d8f6e;
+    outline-offset: 4px;
+}
+
+/* A negative offset pulls the ring inside the border box, over the background. */
+#o4 {
+    outline: 2px solid #e85d4c;
+    outline-offset: -3px;
+}
+
+/* The ring follows the border radius, inflated by the same offset. */
+#o5 {
+    outline: 2px solid #e85d4c;
+    outline-offset: 2px;
+}
+
+/* `thin` / `thick` keywords, and a longhand style with no width. */
+#o6 {
+    outline-width: thick;
+    outline-style: solid;
+    outline-color: #2f6fbd;
+}

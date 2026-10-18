@@ -1,0 +1,31 @@
+/* A float inside a multi-column container: it shortens the lines that follow it in its own column,
+   a float that does not fit the rest of a column opens the next one, and content that starts in the
+   next column is not shortened by it (CSS 2.1 section 9.5 through CSS Multi-column section 7). */
+
+/* TESTPLAN section 6: both ends load this file, so the line breaks are the engine's rule and not
+   this machine's font list. The paragraphs keep well inside the measure either way - a line that
+   ends a fraction of a pixel from the edge would compare the per-glyph advance quantum instead
+   (README section 12.5). */
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+body { font: 400 12px/20px "Zui Test", sans-serif; }
+p { margin: 0; }
+
+.box {
+  width: 420px;
+  margin: 0 0 20px 0;
+  padding: 10px;
+  background-color: #161c27;
+  column-count: 2;
+  column-gap: 20px;
+}
+
+.fl { width: 90px; height: 60px; background-color: #7cb7ff; }
+.fl.right { float: right; }
+#left .fl { float: left; }

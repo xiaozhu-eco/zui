@@ -1,0 +1,31 @@
+html, body { margin: 0; padding: 0; background-color: #101418; }
+
+#line {
+  margin: 16px;
+  height: 48px;
+  line-height: 48px;
+  width: max-content;
+  background-color: #222831;
+  font-size: 16px;
+}
+
+#line > span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+#parent {
+  vertical-align: top;
+  background-color: #7cb7ff;
+}
+
+/* No vertical-align declaration: must stay baseline, not inherit top. */
+#child {
+  background-color: #e85d4c;
+}
+
+#ref-top {
+  vertical-align: top;
+  background-color: #3d8f6e;
+}

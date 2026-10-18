@@ -1,0 +1,37 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #eef1f5;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 28px;
+}
+
+.sw {
+  width: 90px;
+  height: 60px;
+  background-color: #1a2230;
+}
+
+/* Two hard outer layers: first listed on top. */
+#multi {
+  box-shadow: 8px 8px 0 #7cb7ff, -6px -6px 0 #3d8f6e;
+}
+
+/* Hard inset ring. Soft inset blur AA is covered by BoxShadowOuter selfcheck. */
+#inset {
+  box-shadow: inset 0 0 0 8px #7cb7ff;
+}
+
+/* Outer + inset together. */
+#mixed {
+  box-shadow: 5px 5px 0 #7cb7ff, inset 0 0 0 5px #e08a3c;
+}
+
+#plain {
+  background-color: #1a2230;
+}

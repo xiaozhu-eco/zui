@@ -1,0 +1,17 @@
+{
+  "name": "container-inline-size",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "The size container is 320 by 220. (min-inline-size: 300px), (200px <= inline-size <= 400px), and (max-block-size: 240px) apply. (inline-size > 400px) and (block-size > 400px) do not. inline-size is not a media feature, so the media query leaves #media red.",
+  "matrix": ["container.query"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

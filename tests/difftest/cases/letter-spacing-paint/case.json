@@ -1,0 +1,16 @@
+{
+  "name": "letter-spacing-paint",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Phase1: letter-spacing widens max-content bars (geometry). No capture — glyph AA is out of scope for this case.",
+  "matrix": ["text.opentype", "paint.text"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

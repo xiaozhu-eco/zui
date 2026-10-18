@@ -1,0 +1,55 @@
+/* image-set at the pinned 1x. green64.png is the 1x (or only) candidate.
+   blue64.png is what always taking the first option, or always taking 2x, would paint.
+   The red background shows when image-set is dropped. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #101418;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  align-items: flex-start;
+}
+
+.row > div {
+  width: 64px;
+  height: 40px;
+  background-color: #c4554a;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#density {
+  background-image: image-set(url("green64.png") 1x, url("blue64.png") 2x);
+}
+
+#order {
+  background-image: image-set(url("blue64.png") 2x, url("green64.png") 1x);
+}
+
+#string {
+  background-image: image-set("green64.png" 1x, "blue64.png" 2x);
+}
+
+#omit {
+  background-image: image-set(url("green64.png"), url("blue64.png") 2x);
+}
+
+#type {
+  background-image: image-set(
+    url("blue64.png") type("image/x-zui-nope"),
+    url("green64.png") type("image/png")
+  );
+}
+
+#dpi {
+  background-image: image-set(url("blue64.png") 192dpi, url("green64.png") 96dpi);
+}
+
+#only {
+  background-image: image-set(url("blue64.png") 2x);
+}

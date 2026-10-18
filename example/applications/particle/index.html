@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="particle">
+  <meta name="zui-window" content="1100x720">
+  <title>粒子工作台</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/bench.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+  <input id="theme-dark" class="hid" type="checkbox">
+  <div class="app" id="app">
+    <header class="topbar">
+      <h1>粒子工作台</h1>
+      <label class="theme-toggle" for="theme-dark"><span class="when-light">深色</span><span class="when-dark">浅色</span></label>
+      <p class="hint">特效树、粒子场、日志和参数。拖边界改宽度，导入导出 GLSL。</p>
+    </header>
+    <div id="bench" class="bench tree-3 param-3">
+      <aside id="effects">
+        <h2>特效树</h2>
+        <button type="button" id="effect-fountain" class="effect is-on" onclick="on_effect" data-id="fountain">喷泉</button>
+        <button type="button" id="effect-snow" class="effect" onclick="on_effect" data-id="snow">飘雪</button>
+        <button type="button" id="effect-orbit" class="effect" onclick="on_effect" data-id="orbit">环绕</button>
+      </aside>
+      <div id="split-tree" class="split" onpointerdown="on_split_down" onpointermove="on_split_move" onpointerup="on_split_up"></div>
+      <div id="center">
+        <div id="stage">
+          <div id="field">
+            <template>
+              <div class="dot" id="dot-{{index}}" style="left:{{x}}%;top:{{y}}%"></div>
+            </template>
+          </div>
+        </div>
+        <div id="console">
+          <div id="log">
+            <template>
+              <p class="log-line">{{line}}</p>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div id="split-param" class="split" onpointerdown="on_split_down" onpointermove="on_split_move" onpointerup="on_split_up"></div>
+      <aside id="params">
+        <h2>参数调整</h2>
+        <p id="count-value">数量 12</p>
+        <div class="row">
+          <button type="button" id="count-dec" onclick="on_count_dec">数量-</button>
+          <button type="button" id="count-inc" onclick="on_count_inc">数量+</button>
+        </div>
+        <p id="speed-value">速度 1.0</p>
+        <div class="row">
+          <button type="button" id="speed-dec" onclick="on_speed_dec">速度-</button>
+          <button type="button" id="speed-inc" onclick="on_speed_inc">速度+</button>
+        </div>
+        <p id="spread-value">散布 0.6</p>
+        <div class="row">
+          <button type="button" id="spread-dec" onclick="on_spread_dec">散布-</button>
+          <button type="button" id="spread-inc" onclick="on_spread_inc">散布+</button>
+        </div>
+        <label class="field" for="shader-source">着色器</label>
+        <textarea id="shader-source" aria-label="着色器" oninput="on_shader_input" spellcheck="false"></textarea>
+        <label class="field" for="shader-path">导入路径</label>
+        <input id="shader-path" type="text" aria-label="导入路径" autocomplete="off">
+        <button type="button" id="shader-import" onclick="on_shader_import">导入 GLSL</button>
+        <label class="field" for="shader-out">导出路径</label>
+        <input id="shader-out" type="text" aria-label="导出路径" autocomplete="off">
+        <button type="button" id="shader-export" onclick="on_shader_export">导出 GLSL</button>
+      </aside>
+    </div>
+  </div>
+  <p class="file-notice" id="file-notice" hidden>此页使用模块脚本，用文件地址打开不会运行。在这个目录执行 <code>python -m http.server</code>，再用浏览器打开给出的地址。</p>
+  <script>
+  (function () {
+    if (location.protocol === "file:") {
+      var note = document.getElementById("file-notice");
+      if (note) note.hidden = false;
+    }
+  })();
+  </script>
+  <script type="module" src="js/boot.js"></script>
+</body>
+</html>

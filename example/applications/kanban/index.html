@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="kanban">
+  <title>小竹看板</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/board.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body onkeydown="on_accel">
+  <input id="theme-dark" class="hid" type="checkbox">
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">竹</span>
+        <h1 class="brand-name">小竹看板</h1>
+      </div>
+      <div class="top-actions">
+        <label class="theme-toggle" for="theme-dark"><span class="when-light">深色</span><span class="when-dark">浅色</span></label>
+        <p class="status" id="status" role="status"></p>
+        <div class="menu-wrap">
+          <input id="sample-menu" class="hid sample-toggle" type="checkbox">
+          <label class="menu-btn" id="sample-open" for="sample-menu">更多</label>
+          <div class="menu" role="menu">
+            <button type="button" id="restore" onclick="on_restore">恢复示例</button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="add-column" onclick="on_add_column">新建列</button>
+      </div>
+    </header>
+    <div class="board-tools">
+      <label class="search">
+        <span class="sr">搜索卡片</span>
+        <input id="card-q" type="search" placeholder="搜索标题或说明" autocomplete="off">
+      </label>
+      <div class="view-toggle" role="group" aria-label="卡片密度">
+        <input id="density-comfy" class="hid" type="radio" name="density" checked>
+        <label class="view-btn" for="density-comfy">宽松</label>
+        <input id="density-compact" class="hid" type="radio" name="density">
+        <label class="view-btn" for="density-compact">紧凑</label>
+      </div>
+      <span class="tool-count" id="card-visible"></span>
+    </div>
+    <!-- Each column row stamps its own card list into `.cards`, the parent of the inner
+         <template> (RFC_MODEL.md Q1). The browser build replaces these children with the DOM it
+         builds from js/view.js. -->
+    <div class="board" id="board" aria-label="看板"
+         ondragstart="on_drag_start" ondrag="on_drag" ondragend="on_drag_end"
+         ondragover="on_drag_over" ondrop="on_drop">
+      <template>
+        <section class="column" id="col-{{id}}" data-id="{{id}}"
+                 ondragover="on_drag_over" ondrop="on_drop">
+          <div class="col-head">
+            <button type="button" class="grip" draggable="true" data-kind="column" data-id="{{id}}"
+                    data-drag-ghost="drag-ghost" title="拖动调整列顺序" aria-label="拖动列 {{name}}">⋮⋮</button>
+            <input class="col-name" id="name-{{id}}" data-id="{{id}}" oninput="on_col_name"
+                   value="{{name}}" aria-label="列名">
+            <span class="count">{{count}}</span>
+            <button type="button" class="icon-btn" onclick="on_col_remove" data-id="{{id}}">×</button>
+          </div>
+          <div class="cards" id="cards-{{id}}">
+            <template>
+              <article class="card" id="card-{{id}}" draggable="true" data-kind="card"
+                       data-id="{{id}}" data-drag-ghost="drag-ghost" onclick="on_card">
+                <div class="card-title">{{title}}</div>
+                <div class="card-note">{{note}}</div>
+                <div class="card-moves">
+                  <button type="button" class="btn" onclick="on_card_up" data-id="{{id}}">上移</button>
+                  <button type="button" class="btn" onclick="on_card_down" data-id="{{id}}">下移</button>
+                </div>
+              </article>
+            </template>
+          </div>
+          <form class="adder">
+            <input id="add-{{id}}" data-id="{{id}}" placeholder="添加卡片，回车保存"
+                   onkeydown="on_add_card">
+          </form>
+        </section>
+      </template>
+    </div>
+  </div>
+
+  <!-- Native drag fills this chip and the engine parks a copy next to the pointer.
+       The browser script builds its own `.ghost` and leaves this one hidden. -->
+  <div id="drag-ghost" class="ghost" hidden>
+    <div class="card-title" id="drag-ghost-title"></div>
+    <div class="card-note" id="drag-ghost-note" hidden></div>
+  </div>
+
+  <div class="back" id="editor" hidden>
+    <form class="dialog" id="editor-form" role="dialog" aria-modal="true" aria-labelledby="editor-title">
+      <h2 id="editor-title">编辑卡片</h2>
+      <label class="field"><span>标题</span><input id="f-title" autocomplete="off"></label>
+      <label class="field"><span>说明</span><textarea id="f-note"></textarea></label>
+      <label class="field" id="column-field"><span>列</span>
+        <select id="f-column"><template><option value="{{id}}">{{name}}</option></template></select>
+      </label>
+      <div class="field" id="column-picks">
+        <span>列</span>
+        <div class="picks" id="column-pick-list">
+          <template>
+            <button type="button" class="chip {{on}}" onclick="on_pick_column" data-id="{{id}}">{{name}}</button>
+          </template>
+        </div>
+      </div>
+      <p class="form-error" id="editor-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-danger" id="editor-remove" onclick="on_editor_remove">删除</button>
+        <button type="button" class="btn" id="editor-cancel" onclick="on_editor_cancel">取消</button>
+        <button type="submit" class="btn btn-primary" onclick="on_save">保存</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="back" id="confirm" hidden>
+    <div class="dialog dialog-confirm" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <h2 id="confirm-title">确认</h2>
+      <p id="confirm-body"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="confirm-cancel" onclick="on_confirm_cancel">取消</button>
+        <button type="button" class="btn btn-danger" id="confirm-ok" onclick="on_confirm_ok">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="file-notice" id="file-notice" hidden>此页使用模块脚本，用文件地址打开不会运行。在这个目录执行 <code>python -m http.server</code>，再用浏览器打开给出的地址。</p>
+  <script>
+  (function () {
+    if (location.protocol === "file:") {
+      var note = document.getElementById("file-notice");
+      if (note) note.hidden = false;
+    }
+  })();
+  </script>
+  <script type="module" src="js/boot.js"></script>
+</body>
+</html>

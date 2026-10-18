@@ -1,0 +1,29 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #101418;
+}
+
+#scroller {
+  width: 320px;
+  height: 200px;
+  margin: 16px;
+  overflow: auto;
+  scroll-padding-top: 24px;
+  background: #1c2430;
+}
+
+#spacer {
+  height: 360px;
+}
+
+#mark {
+  height: 40px;
+  scroll-margin-top: 48px;
+  background: #c4554a;
+}
+
+#tail {
+  height: 360px;
+  background: #2a3442;
+}

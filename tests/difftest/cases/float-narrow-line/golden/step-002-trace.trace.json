@@ -1,0 +1,563 @@
+{
+  "schema": "zui.difftest.trace/2",
+  "engine": "chromium",
+  "engine_version": "Edg/154.0.4258.37",
+  "viewport": [
+    800,
+    600
+  ],
+  "scroll": [
+    0,
+    0
+  ],
+  "elements": [
+    {
+      "path": "0",
+      "tag": "html",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        200
+      ],
+      "scroll_size": [
+        800,
+        600
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          200
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0",
+      "tag": "head",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0/0",
+      "tag": "link",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1",
+      "tag": "body",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        180
+      ],
+      "scroll_size": [
+        800,
+        187
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        180
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          180
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          800,
+          187
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0",
+      "tag": "div",
+      "id": "narrow",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        100,
+        80
+      ],
+      "scroll_size": [
+        100,
+        87
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        100,
+        80
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          100,
+          80
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          100,
+          87
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/0",
+      "tag": "div",
+      "id": "",
+      "classes": "fl l",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        48,
+        40
+      ],
+      "scroll_size": [
+        48,
+        40
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        48,
+        40
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          48,
+          40
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1",
+      "tag": "div",
+      "id": "",
+      "classes": "fl r",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        52,
+        0,
+        48,
+        40
+      ],
+      "scroll_size": [
+        48,
+        40
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        52,
+        0,
+        48,
+        40
+      ],
+      "client_rects": [
+        [
+          52,
+          0,
+          48,
+          40
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/2",
+      "tag": "p",
+      "id": "p1",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        100,
+        80
+      ],
+      "scroll_size": [
+        100,
+        87
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        100,
+        80
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          100,
+          80
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          100,
+          87
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          32
+        ],
+        "heights": [
+          55
+        ],
+        "first_line_offset": 32,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [],
+        "advances": [],
+        "line_breaks": [],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/1",
+      "tag": "div",
+      "id": "roomy",
+      "classes": "box",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        100,
+        100,
+        80
+      ],
+      "scroll_size": [
+        100,
+        87
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        100,
+        100,
+        80
+      ],
+      "client_rects": [
+        [
+          0,
+          100,
+          100,
+          80
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          100,
+          87
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1/0",
+      "tag": "div",
+      "id": "",
+      "classes": "fl l",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        100,
+        20,
+        40
+      ],
+      "scroll_size": [
+        20,
+        40
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        100,
+        20,
+        40
+      ],
+      "client_rects": [
+        [
+          0,
+          100,
+          20,
+          40
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1/1",
+      "tag": "div",
+      "id": "",
+      "classes": "fl r",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        80,
+        100,
+        20,
+        40
+      ],
+      "scroll_size": [
+        20,
+        40
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        80,
+        100,
+        20,
+        40
+      ],
+      "client_rects": [
+        [
+          80,
+          100,
+          20,
+          40
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1/2",
+      "tag": "p",
+      "id": "p2",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        100,
+        100,
+        80
+      ],
+      "scroll_size": [
+        100,
+        87
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        100,
+        100,
+        80
+      ],
+      "client_rects": [
+        [
+          0,
+          100,
+          100,
+          80
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          100,
+          87
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          132
+        ],
+        "heights": [
+          55
+        ],
+        "first_line_offset": 32,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [],
+        "advances": [],
+        "line_breaks": [],
+        "cluster_advances": []
+      }
+    }
+  ],
+  "extras": null
+}

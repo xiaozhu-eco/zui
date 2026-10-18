@@ -1,0 +1,24 @@
+html, body { margin: 0; padding: 0; }
+
+#spacer {
+  height: 900px;
+  background-color: #101418;
+}
+
+#fixed {
+  position: fixed;
+  left: 24px;
+  top: 24px;
+  width: 64px;
+  height: 40px;
+  background-color: #7cb7ff;
+}
+
+#flow {
+  position: absolute;
+  left: 120px;
+  top: 200px;
+  width: 64px;
+  height: 40px;
+  background-color: #3d8f6e;
+}

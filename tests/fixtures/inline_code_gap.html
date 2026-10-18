@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; font-size: 16px; line-height: 1.72;
+    font-family: ui-sans-serif, system-ui, "Segoe UI", "Microsoft YaHei UI", sans-serif; }
+  /* Mirrors zmd welcome chips: inline code with horizontal padding.
+     The document line-height is what pushes a chip's own strut below the
+     siblings when paint keeps that half-leading on the chip baseline. */
+  #line { line-height: 1.72; }
+  #line code {
+    padding: 2px 5px;
+    font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-size: 13px;
+    white-space: pre;
+    background: #f4f4f6;
+  }
+</style>
+</head>
+<body>
+  <!-- Before fix: parent ShapedRun kept appending glyphs across the code chrome
+       piece, so "后" painted at the code's x (overlap). After fix: a new run
+       starts at cursor after the code's border box. -->
+  <p id="line"><span id="body" class="zmd-body">前<code id="chip"># </code>后字</span></p>
+</body>
+</html>

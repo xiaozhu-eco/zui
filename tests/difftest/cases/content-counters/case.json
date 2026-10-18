@@ -1,0 +1,16 @@
+{
+  "name": "content-counters",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1：author counter-reset/increment + content:counter()/counters()。#c1..#c3 为 1/2/3；嵌套 counters(section,'.')。L2 几何（伪元素文本宽度）。",
+  "matrix": ["css.marker"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

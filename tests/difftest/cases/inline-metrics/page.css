@@ -1,0 +1,31 @@
+/* flow.inline: what an inline box reports and where it sits.
+
+   An inline box hands the browser its *content area* (the font box: ascent + descent at the used
+   size) plus padding and border, not its `line-height` box; the line box is what carries
+   `line-height`. Sizes and line-height are fixed and the family is the embedded face both ends
+   load (TESTPLAN section 6), so every number here is about the rule, not about font choice. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; font-family: "Zui Test", sans-serif; font-size: 16px; line-height: 20px; }
+
+div { width: 300px; }
+
+#s16 { font-size: 16px; }
+#s24 { font-size: 24px; }
+#s32 { font-size: 32px; }
+
+#n16 { font-size: 16px; }
+#n64 { font-size: 64px; }
+#rnormal { line-height: normal; }
+
+#s_top { font-size: 32px; vertical-align: top; }
+#s_bottom { font-size: 32px; vertical-align: bottom; }
+#s_middle { font-size: 32px; vertical-align: middle; }
+#s_sub { font-size: 24px; vertical-align: sub; }
+#s_super { font-size: 24px; vertical-align: super; }

@@ -1,0 +1,55 @@
+/* A grid item with `align-self: stretch` (the initial value, so the container's
+   `align-items: normal` behaves as stretch) fills its grid area on the block axis. That has to
+   hold when the item is itself a flex container: the item is a flex formatting context, so the
+   block-size decision is made by flex.cpp and not by the flow path.
+
+   #grid: a definite 300x200 container with one implicit auto row. `align-content: normal`
+   stretches that row to 200, so every item is 200 tall.
+   #a: plain block control (already correct before the fix).
+   #b: `display: flex` - must fill 200 and not collapse onto its content height.
+   #c: `display: flex; flex-direction: column` with `#c1 { flex: 1 }` - the inner item grows to
+       whatever #c got, so the flex container's own block size is what makes it visible.
+
+   #fixed: an explicit 80px row, so the stretched flex item is 80 there too. */
+
+html, body { margin: 0; padding: 0; }
+
+#grid {
+  display: grid;
+  width: 300px;
+  height: 200px;
+  grid-template-columns: 100px 100px 100px;
+  background: #f4f4f4;
+}
+
+#a { background: #cccccc; }
+
+#b {
+  display: flex;
+  background: #dddddd;
+}
+
+#c {
+  display: flex;
+  flex-direction: column;
+  background: #eeeeee;
+}
+
+#c1 {
+  flex: 1;
+  background: #bbbbbb;
+}
+
+#fixed {
+  display: grid;
+  width: 300px;
+  grid-template-columns: 150px 150px;
+  grid-template-rows: 80px;
+  margin-top: 20px;
+  background: #f4f4f4;
+}
+
+#d {
+  display: flex;
+  background: #cccccc;
+}

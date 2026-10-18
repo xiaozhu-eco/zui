@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Head sheet. The `#a` value here must lose to the linked sheet below, which comes later
+           in document order (CSS Cascade 5 section 6.4). */
+        #a { width: 120px; }
+    </style>
+</head>
+
+<body>
+    <div id="a" class="box"></div>
+    <style>
+        #b { width: 120px; background-color: #7cb7ff; }
+        /* Same specificity as the linked `#c` below and earlier in document order: this one loses. */
+        #c { width: 40px; }
+    </style>
+    <div id="b" class="box"></div>
+    <link rel="stylesheet" href="page.css">
+    <div id="c" class="box"></div>
+    <div id="d" class="box"></div>
+</body>
+
+</html>

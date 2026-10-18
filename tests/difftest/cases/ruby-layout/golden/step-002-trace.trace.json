@@ -1,0 +1,470 @@
+{
+  "schema": "zui.difftest.trace/2",
+  "engine": "zui",
+  "engine_version": "0.1.0",
+  "viewport": [
+    800.0,
+    600.0
+  ],
+  "scroll": [
+    0.0,
+    0.0
+  ],
+  "elements": [
+    {
+      "path": "0",
+      "tag": "html",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "border_box": [
+        0.0,
+        0.0,
+        800.0,
+        224.0
+      ],
+      "scroll_size": [
+        800.0,
+        600.0
+      ],
+      "scroll_offset": [
+        0.0,
+        0.0
+      ],
+      "client_box": [
+        0.0,
+        0.0,
+        800.0,
+        600.0
+      ],
+      "client_rects": [
+        [
+          0.0,
+          0.0,
+          800.0,
+          224.0
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "transformed": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0",
+      "tag": "head",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "border_box": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "client_box": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0.0,
+        0.0
+      ],
+      "scroll_offset": [
+        0.0,
+        0.0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "transformed": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0/0",
+      "tag": "link",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "border_box": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "client_box": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0.0,
+        0.0
+      ],
+      "scroll_offset": [
+        0.0,
+        0.0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "transformed": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1",
+      "tag": "body",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "border_box": [
+        0.0,
+        48.0,
+        800.0,
+        128.0
+      ],
+      "scroll_size": [
+        800.0,
+        129.0
+      ],
+      "scroll_offset": [
+        0.0,
+        0.0
+      ],
+      "client_box": [
+        0.0,
+        48.0,
+        800.0,
+        128.0
+      ],
+      "client_rects": [
+        [
+          0.0,
+          48.0,
+          800.0,
+          128.0
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0.0,
+          0.0,
+          800.0,
+          129.0
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "transformed": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0",
+      "tag": "p",
+      "id": "line",
+      "classes": "",
+      "has_box": true,
+      "border_box": [
+        16.0,
+        48.0,
+        768.0,
+        40.0
+      ],
+      "scroll_size": [
+        768.0,
+        41.0
+      ],
+      "scroll_offset": [
+        0.0,
+        0.0
+      ],
+      "client_box": [
+        16.0,
+        48.0,
+        768.0,
+        40.0
+      ],
+      "client_rects": [
+        [
+          16.0,
+          48.0,
+          768.0,
+          40.0
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0.0,
+          0.0,
+          768.0,
+          41.0
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "transformed": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/0",
+      "tag": "ruby",
+      "id": "rb",
+      "classes": "",
+      "has_box": true,
+      "border_box": [
+        123.046875,
+        48.0,
+        72.125,
+        40.0
+      ],
+      "scroll_size": [
+        0.0,
+        0.0
+      ],
+      "scroll_offset": [
+        0.0,
+        0.0
+      ],
+      "client_box": [
+        123.046875,
+        48.0,
+        0.0,
+        0.0
+      ],
+      "client_rects": [
+        [
+          123.046875,
+          48.0,
+          72.125,
+          40.0
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "transformed": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/0/0",
+      "tag": "rt",
+      "id": "rt",
+      "classes": "",
+      "has_box": true,
+      "border_box": [
+        144.734375,
+        35.0,
+        28.75,
+        22.0
+      ],
+      "scroll_size": [
+        0.0,
+        0.0
+      ],
+      "scroll_offset": [
+        0.0,
+        0.0
+      ],
+      "client_box": [
+        144.734375,
+        35.0,
+        0.0,
+        0.0
+      ],
+      "client_rects": [
+        [
+          144.734375,
+          35.0,
+          28.75,
+          22.0
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "transformed": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          35.0
+        ],
+        "heights": [
+          40.0
+        ],
+        "first_line_offset": 0.0,
+        "baselines": [
+          26.0
+        ],
+        "baseline_defined": true,
+        "breaks": [],
+        "line_breaks": [],
+        "advances": [],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/1",
+      "tag": "p",
+      "id": "wide",
+      "classes": "",
+      "has_box": true,
+      "border_box": [
+        16.0,
+        136.0,
+        768.0,
+        40.0
+      ],
+      "scroll_size": [
+        768.0,
+        41.0
+      ],
+      "scroll_offset": [
+        0.0,
+        0.0
+      ],
+      "client_box": [
+        16.0,
+        136.0,
+        768.0,
+        40.0
+      ],
+      "client_rects": [
+        [
+          16.0,
+          136.0,
+          768.0,
+          40.0
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0.0,
+          0.0,
+          768.0,
+          41.0
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "transformed": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1/0",
+      "tag": "ruby",
+      "id": "rb2",
+      "classes": "",
+      "has_box": true,
+      "border_box": [
+        41.25,
+        136.0,
+        82.65625,
+        40.0
+      ],
+      "scroll_size": [
+        0.0,
+        0.0
+      ],
+      "scroll_offset": [
+        0.0,
+        0.0
+      ],
+      "client_box": [
+        41.25,
+        136.0,
+        0.0,
+        0.0
+      ],
+      "client_rects": [
+        [
+          41.25,
+          136.0,
+          82.65625,
+          40.0
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "transformed": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1/0/0",
+      "tag": "rt",
+      "id": "rt2",
+      "classes": "",
+      "has_box": true,
+      "border_box": [
+        41.25,
+        123.0,
+        82.65625,
+        22.0
+      ],
+      "scroll_size": [
+        0.0,
+        0.0
+      ],
+      "scroll_offset": [
+        0.0,
+        0.0
+      ],
+      "client_box": [
+        41.25,
+        123.0,
+        0.0,
+        0.0
+      ],
+      "client_rects": [
+        [
+          41.25,
+          123.0,
+          82.65625,
+          22.0
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "transformed": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          123.0
+        ],
+        "heights": [
+          40.0
+        ],
+        "first_line_offset": 0.0,
+        "baselines": [
+          26.0
+        ],
+        "baseline_defined": true,
+        "breaks": [],
+        "line_breaks": [],
+        "advances": [],
+        "cluster_advances": []
+      }
+    }
+  ]
+}

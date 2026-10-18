@@ -1,0 +1,7 @@
+html, body { margin: 0; padding: 0; font-size: 16px; }
+#p { width: 600px; }
+div { height: 20px; }
+#m { width: max-content; background: #cccccc; }
+#f { width: fit-content; background: #bbbbbb; }
+#n { width: min-content; background: #aaaaaa; }
+#a { background: #999999; }

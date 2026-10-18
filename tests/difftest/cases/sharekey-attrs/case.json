@@ -1,0 +1,17 @@
+{
+  "name": "sharekey-attrs",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Phase1: ShareKey mixes selector-visible attrs so div[data-kind=a|b|c] keep distinct used sizes (120x28 / 28x48 / 64x28).",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

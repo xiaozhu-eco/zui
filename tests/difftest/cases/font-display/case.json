@@ -1,0 +1,18 @@
+{
+  "name": "font-display",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A local TTF is available before first layout, so font-display block, swap, fallback, and optional all shape Hamburgefonstiv with that file. A value that dropped the face would measure the fallback instead.",
+  "matrix": ["text.font-load"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": true }
+}

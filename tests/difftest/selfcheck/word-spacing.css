@@ -1,0 +1,11 @@
+html, body { margin: 0; padding: 8px; }
+#normal, #wide, #tight {
+  display: block;
+  width: max-content;
+  font-family: sans-serif;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+#normal { word-spacing: normal; }
+#wide { word-spacing: 12px; }
+#tight { word-spacing: -4px; }

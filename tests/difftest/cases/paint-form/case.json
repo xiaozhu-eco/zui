@@ -1,0 +1,24 @@
+{
+    "name": "paint-form",
+    "page": "page.html",
+    "viewport": [
+        800,
+        600
+    ],
+    "_comment": "B1 UA 表 / 表单控件盒：Chromium html.css 给 text input 的是 content-box + padding 1px 2px；无声明宽度时按 HTML size（默认 20）用 avg/max 字宽算固有内容宽（Blink TextFieldIntrinsicInlineSize），display:block 也不拉满包含块。覆盖：声明宽高的 text input、UA 默认盒、仅 padding 的 button、声明边框盒的 button、checkbox、textarea。字体钉 Zui Test（Noto Sans）。",
+    "matrix": [
+        "paint.form-control"
+    ],
+    "required": true,
+    "steps": [
+        { "op": "load" },
+        { "op": "resize", "w": 800, "h": 600 },
+        { "op": "trace" }
+    ],
+    "expect": "golden/",
+    "pixels": "strict",
+    "text": {
+        "breaks": false,
+        "advances": false
+    }
+}

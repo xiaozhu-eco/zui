@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font: 16px/20px "Zui Test", sans-serif;
+}
+#in, #author, #nest, #inner {
+  margin: 0;
+  padding-left: 40px;
+  list-style-position: inside;
+  list-style-type: decimal;
+}
+#none {
+  margin: 0;
+  padding-left: 40px;
+  list-style: none;
+}
+#wrap {
+  width: 120px;
+}
+#c1::marker {
+  content: counter(list-item) ". ";
+}
+#c1::before {
+  content: "[";
+}
+#c1::after {
+  content: "]";
+}

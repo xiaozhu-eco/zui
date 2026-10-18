@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Display Block";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-display: block;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Display Swap";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Display Fallback";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-display: fallback;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Display Optional";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-display: optional;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+div {
+  font-size: 32px;
+  line-height: 40px;
+  width: max-content;
+  color: #f4f7fb;
+  padding: 8px 16px;
+}
+
+#block { font-family: "Display Block", sans-serif; }
+#swap { font-family: "Display Swap", sans-serif; }
+#fallback { font-family: "Display Fallback", sans-serif; }
+#optional { font-family: "Display Optional", sans-serif; }

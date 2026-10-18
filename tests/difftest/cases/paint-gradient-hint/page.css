@@ -1,0 +1,27 @@
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+.sw {
+  margin: 16px 0 16px 48px;
+}
+#early {
+  width: 200px;
+  height: 100px;
+  background-image: linear-gradient(to bottom, #e23a3a, 20%, #2e6eee);
+}
+#late {
+  width: 200px;
+  height: 72px;
+  background-image: linear-gradient(to right, #e23a3a, 80%, #2e6eee);
+}
+#plain {
+  width: 200px;
+  height: 72px;
+  background-image: linear-gradient(to bottom, #e23a3a, #2e6eee);
+}
+#disk {
+  width: 120px;
+  height: 120px;
+  background-image: radial-gradient(circle 50px, #e23a3a, 30%, #2e6eee);
+}

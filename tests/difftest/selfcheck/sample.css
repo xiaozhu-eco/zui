@@ -1,0 +1,57 @@
+/* Fixture for the architecture self-checks (TESTPLAN 第 12 节). Fixed px lengths only, so the
+   self-checks never depend on font metrics. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+}
+
+#stack {
+  width: 400px;
+}
+
+.row {
+  height: 40px;
+  margin-bottom: 8px;
+  background-color: #dddddd;
+}
+
+#tall {
+  width: 400px;
+  height: 900px;
+  background-color: #cccccc;
+}
+
+.hover-lift {
+  will-change: transform;
+}
+
+/* Driven by the animation self-check (TESTPLAN 第 12 节): transform-only, so an interpolating
+   frame must not mark anything Layout dirty (LAYOUT 第 1、16 节). */
+#first {
+  transition: transform 200ms linear;
+}
+
+.lifted {
+  transform: translateX(40px);
+}
+
+/* Driven by the structural self-check: switching `.absolute` on takes the element out of flow,
+   which the cascade reports as a reattach (`position`), not as a plain restyle. */
+.absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* The mask a fragment attaches in the fixed-mask self-check. It is out of flow, so adding it
+   cannot change the host's border box, and only a miss on the box that establishes its
+   containing block reaches `OutOfFlowAsk::collect`. */
+#mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

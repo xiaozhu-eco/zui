@@ -1,0 +1,33 @@
+/* CSS Grid section 11.7.1: when the sum of the flex factors is less than one, the sum is clamped
+   to one before it is used as the divisor, and the clamp is re-applied after any track freezes.
+
+   #g1 is one `0.5fr` track in a 100px container with nothing else to size: the track may take only
+   half of the free space (50px), not all of it.
+
+   #g2 is `minmax(40px, 0.2fr) 0.3fr` in a 100px container. With the clamp, the 0.2fr track's share
+   is 20px, below its 40px base, so it freezes and the 0.3fr track restarts with the remaining 60px
+   and takes 60 * 0.3 / max(0.3, 1) = 18px. Dividing by the raw 0.5 sum instead would hand out 320
+   per fr and give the second track 60px - the two readings are what this case separates. */
+
+html, body { margin: 0; padding: 0; }
+
+#g1 {
+  display: grid;
+  width: 100px;
+  height: 20px;
+  grid-template-columns: 0.5fr;
+  background: #f4f4f4;
+}
+
+#g2 {
+  display: grid;
+  width: 100px;
+  height: 20px;
+  margin-top: 10px;
+  grid-template-columns: minmax(40px, 0.2fr) 0.3fr;
+  background: #f4f4f4;
+}
+
+#i1 { background: #cce4ff; }
+#i2 { background: #c8f0c8; }
+#i3 { background: #ffd0d0; }

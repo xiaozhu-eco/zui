@@ -1,0 +1,705 @@
+/* App frame: places, breadcrumbs, preview pane, and the two breakpoints. */
+
+html,
+body {
+    overflow: hidden;
+    background: var(--raised);
+}
+
+.app {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    background: var(--raised);
+}
+
+.dir-state {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-shrink: 0;
+    height: calc(52px + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) 12px 0 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--raised);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.mark {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--accent);
+    color: var(--paper);
+    font-size: 15px;
+}
+
+.brand-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.view-toggle {
+    position: relative;
+    display: flex;
+    padding: 3px;
+    border-radius: 10px;
+    background: rgba(44, 107, 78, 0.08);
+}
+
+.view-btn {
+    width: 36px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    color: var(--ink-soft);
+}
+
+.view-toggle .hid:checked + .view-btn {
+    background: var(--raised);
+    color: var(--accent);
+    box-shadow: 0 1px 2px rgba(43, 38, 31, 0.1);
+}
+
+.view-toggle .hid:focus-visible + .view-btn {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.ico {
+    display: block;
+    background-repeat: no-repeat;
+}
+
+.ico-grid {
+    width: 14px;
+    height: 14px;
+    background-image:
+        linear-gradient(currentColor, currentColor),
+        linear-gradient(currentColor, currentColor),
+        linear-gradient(currentColor, currentColor),
+        linear-gradient(currentColor, currentColor);
+    background-size: 6px 6px;
+    background-position: 0 0, 8px 0, 0 8px, 8px 8px;
+}
+
+.ico-list {
+    width: 14px;
+    height: 12px;
+    background-image:
+        linear-gradient(currentColor, currentColor),
+        linear-gradient(currentColor, currentColor),
+        linear-gradient(currentColor, currentColor);
+    background-size: 14px 2px;
+    background-position: 0 0, 0 5px, 0 10px;
+}
+
+.ico-details {
+    width: 14px;
+    height: 12px;
+    background-image:
+        linear-gradient(currentColor, currentColor),
+        linear-gradient(currentColor, currentColor),
+        linear-gradient(currentColor, currentColor);
+    background-size: 14px 2px, 9px 2px, 14px 2px;
+    background-position: 0 0, 0 5px, 0 10px;
+    background-repeat: no-repeat;
+}
+
+.place-scroll {
+    display: none;
+}
+
+.workspace {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 216px minmax(0, 1fr) minmax(280px, 360px);
+}
+
+.places {
+    min-height: 0;
+    overflow: auto;
+    padding: 12px 0 24px;
+    border-right: 1px solid var(--line);
+    background: var(--sidebar);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(92, 72, 44, 0.4) transparent;
+}
+
+.places-label {
+    margin: 14px 16px 6px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.places-label:first-child {
+    margin-top: 4px;
+}
+
+.place {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    margin: 2px 8px;
+    padding: 0 12px;
+    border-left: 3px solid transparent;
+    border-radius: 0 8px 8px 0;
+    color: var(--ink);
+}
+
+.place:hover,
+.chip:hover {
+    background: rgba(44, 107, 78, 0.06);
+}
+
+.stage {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    background: var(--raised);
+}
+
+.pathbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    min-height: 48px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--line);
+}
+
+.crumbs {
+    display: none;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(92, 72, 44, 0.4) transparent;
+}
+
+.crumb {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    color: var(--accent);
+}
+
+.crumb.current {
+    color: var(--ink);
+    font-weight: 600;
+    cursor: default;
+}
+
+.crumbs label.crumb:hover {
+    text-decoration: underline;
+}
+
+.sep {
+    margin: 0 8px;
+    color: var(--muted);
+    user-select: none;
+}
+
+.count {
+    display: none;
+    flex-shrink: 0;
+    color: var(--muted);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+
+.scroll {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding-bottom: env(safe-area-inset-bottom);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(92, 72, 44, 0.4) transparent;
+}
+
+.preview {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    border-left: 1px solid var(--line);
+    background: var(--paper);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.pv-bar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    min-height: calc(52px + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) 12px 0 8px;
+    border-bottom: 1px solid var(--line);
+}
+
+.back {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    min-height: 40px;
+    padding: 0 10px;
+    border-radius: 8px;
+    color: var(--accent);
+}
+
+.back:hover {
+    background: var(--tint);
+}
+
+.back::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    margin-left: 2px;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+}
+
+.pv-heading {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pv-name,
+.pv-meta {
+    display: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.pv-name-empty {
+    display: block;
+}
+
+.pv-name {
+    font-weight: 600;
+}
+
+.pv-meta {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.pv-body {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+}
+
+.preview-empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.preview-empty p {
+    max-width: 16em;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.empty-glyph {
+    width: 46px;
+    height: 54px;
+    border: 2px solid rgba(138, 127, 114, 0.45);
+    border-radius: 6px;
+    position: relative;
+}
+
+.empty-glyph::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    border-style: solid;
+    border-width: 0 14px 14px 0;
+    border-color: transparent var(--paper) transparent transparent;
+}
+
+.empty-glyph::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 12px 12px 0;
+    border-color: transparent rgba(138, 127, 114, 0.45) transparent transparent;
+}
+
+.pv {
+    display: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: var(--paper);
+}
+
+.listing,
+.crumbs,
+.count {
+    display: none;
+}
+
+.app:has(#dir-root:checked) .listing-root,
+.app:has(#dir-docs:checked) .listing-docs,
+.app:has(#dir-notes:checked) .listing-notes,
+.app:has(#dir-reports:checked) .listing-reports,
+.app:has(#dir-images:checked) .listing-images,
+.app:has(#dir-code:checked) .listing-code {
+    display: block;
+}
+
+.app:has(#dir-root:checked) .crumbs-root,
+.app:has(#dir-docs:checked) .crumbs-docs,
+.app:has(#dir-notes:checked) .crumbs-notes,
+.app:has(#dir-reports:checked) .crumbs-reports,
+.app:has(#dir-images:checked) .crumbs-images,
+.app:has(#dir-code:checked) .crumbs-code {
+    display: flex;
+}
+
+.app:has(#dir-root:checked) .count-root,
+.app:has(#dir-docs:checked) .count-docs,
+.app:has(#dir-notes:checked) .count-notes,
+.app:has(#dir-reports:checked) .count-reports,
+.app:has(#dir-images:checked) .count-images,
+.app:has(#dir-code:checked) .count-code {
+    display: block;
+}
+
+.app:has(#dir-root:checked) .place[for="dir-root"],
+.app:has(#dir-docs:checked) .place[for="dir-docs"],
+.app:has(#dir-notes:checked) .place[for="dir-notes"],
+.app:has(#dir-reports:checked) .place[for="dir-reports"],
+.app:has(#dir-images:checked) .place[for="dir-images"],
+.app:has(#dir-code:checked) .place[for="dir-code"] {
+    border-left-color: var(--accent);
+    background: var(--tint);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.app:has(#dir-root:checked) .chip[for="dir-root"],
+.app:has(#dir-docs:checked) .chip[for="dir-docs"],
+.app:has(#dir-notes:checked) .chip[for="dir-notes"],
+.app:has(#dir-reports:checked) .chip[for="dir-reports"],
+.app:has(#dir-images:checked) .chip[for="dir-images"],
+.app:has(#dir-code:checked) .chip[for="dir-code"] {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--paper);
+}
+
+.app:has(#dir-root:focus-visible) .place[for="dir-root"],
+.app:has(#dir-root:focus-visible) .chip[for="dir-root"],
+.app:has(#dir-docs:focus-visible) .place[for="dir-docs"],
+.app:has(#dir-docs:focus-visible) .chip[for="dir-docs"],
+.app:has(#dir-notes:focus-visible) .place[for="dir-notes"],
+.app:has(#dir-notes:focus-visible) .chip[for="dir-notes"],
+.app:has(#dir-reports:focus-visible) .place[for="dir-reports"],
+.app:has(#dir-reports:focus-visible) .chip[for="dir-reports"],
+.app:has(#dir-images:focus-visible) .place[for="dir-images"],
+.app:has(#dir-images:focus-visible) .chip[for="dir-images"],
+.app:has(#dir-code:focus-visible) .place[for="dir-code"],
+.app:has(#dir-code:focus-visible) .chip[for="dir-code"] {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.app:has(#dir-root:checked):has(#file-guide:checked) .preview-empty,
+.app:has(#dir-notes:checked):has(#file-lantern:checked) .preview-empty,
+.app:has(#dir-notes:checked):has(#file-ferry:checked) .preview-empty,
+.app:has(#dir-reports:checked):has(#file-ledger:checked) .preview-empty,
+.app:has(#dir-reports:checked):has(#file-shelf:checked) .preview-empty,
+.app:has(#dir-images:checked):has(#file-mark:checked) .preview-empty,
+.app:has(#dir-images:checked):has(#file-coast:checked) .preview-empty,
+.app:has(#dir-code:checked):has(#file-card:checked) .preview-empty,
+.app:has(#dir-code:checked):has(#file-theme:checked) .preview-empty,
+.app:has(#dir-code:checked):has(#file-catalog:checked) .preview-empty,
+.app:has(#dir-root:checked):has(#file-guide:checked) .pv-name-empty,
+.app:has(#dir-notes:checked):has(#file-lantern:checked) .pv-name-empty,
+.app:has(#dir-notes:checked):has(#file-ferry:checked) .pv-name-empty,
+.app:has(#dir-reports:checked):has(#file-ledger:checked) .pv-name-empty,
+.app:has(#dir-reports:checked):has(#file-shelf:checked) .pv-name-empty,
+.app:has(#dir-images:checked):has(#file-mark:checked) .pv-name-empty,
+.app:has(#dir-images:checked):has(#file-coast:checked) .pv-name-empty,
+.app:has(#dir-code:checked):has(#file-card:checked) .pv-name-empty,
+.app:has(#dir-code:checked):has(#file-theme:checked) .pv-name-empty,
+.app:has(#dir-code:checked):has(#file-catalog:checked) .pv-name-empty {
+    display: none;
+}
+
+.app:has(#dir-root:checked):has(#file-guide:checked) .back,
+.app:has(#dir-notes:checked):has(#file-lantern:checked) .back,
+.app:has(#dir-notes:checked):has(#file-ferry:checked) .back,
+.app:has(#dir-reports:checked):has(#file-ledger:checked) .back,
+.app:has(#dir-reports:checked):has(#file-shelf:checked) .back,
+.app:has(#dir-images:checked):has(#file-mark:checked) .back,
+.app:has(#dir-images:checked):has(#file-coast:checked) .back,
+.app:has(#dir-code:checked):has(#file-card:checked) .back,
+.app:has(#dir-code:checked):has(#file-theme:checked) .back,
+.app:has(#dir-code:checked):has(#file-catalog:checked) .back {
+    display: inline-flex;
+}
+
+.app:has(#dir-root:checked):has(#file-guide:checked) .pv-guide,
+.app:has(#dir-root:checked):has(#file-guide:checked) .pv-name-guide,
+.app:has(#dir-root:checked):has(#file-guide:checked) .pv-meta-guide,
+.app:has(#dir-notes:checked):has(#file-lantern:checked) .pv-lantern,
+.app:has(#dir-notes:checked):has(#file-lantern:checked) .pv-name-lantern,
+.app:has(#dir-notes:checked):has(#file-lantern:checked) .pv-meta-lantern,
+.app:has(#dir-notes:checked):has(#file-ferry:checked) .pv-ferry,
+.app:has(#dir-notes:checked):has(#file-ferry:checked) .pv-name-ferry,
+.app:has(#dir-notes:checked):has(#file-ferry:checked) .pv-meta-ferry,
+.app:has(#dir-reports:checked):has(#file-ledger:checked) .pv-ledger,
+.app:has(#dir-reports:checked):has(#file-ledger:checked) .pv-name-ledger,
+.app:has(#dir-reports:checked):has(#file-ledger:checked) .pv-meta-ledger,
+.app:has(#dir-reports:checked):has(#file-shelf:checked) .pv-shelf,
+.app:has(#dir-reports:checked):has(#file-shelf:checked) .pv-name-shelf,
+.app:has(#dir-reports:checked):has(#file-shelf:checked) .pv-meta-shelf,
+.app:has(#dir-images:checked):has(#file-mark:checked) .pv-mark,
+.app:has(#dir-images:checked):has(#file-mark:checked) .pv-name-mark,
+.app:has(#dir-images:checked):has(#file-mark:checked) .pv-meta-mark,
+.app:has(#dir-images:checked):has(#file-coast:checked) .pv-coast,
+.app:has(#dir-images:checked):has(#file-coast:checked) .pv-name-coast,
+.app:has(#dir-images:checked):has(#file-coast:checked) .pv-meta-coast,
+.app:has(#dir-code:checked):has(#file-card:checked) .pv-card,
+.app:has(#dir-code:checked):has(#file-card:checked) .pv-name-card,
+.app:has(#dir-code:checked):has(#file-card:checked) .pv-meta-card,
+.app:has(#dir-code:checked):has(#file-theme:checked) .pv-theme,
+.app:has(#dir-code:checked):has(#file-theme:checked) .pv-name-theme,
+.app:has(#dir-code:checked):has(#file-theme:checked) .pv-meta-theme,
+.app:has(#dir-code:checked):has(#file-catalog:checked) .pv-catalog,
+.app:has(#dir-code:checked):has(#file-catalog:checked) .pv-name-catalog,
+.app:has(#dir-code:checked):has(#file-catalog:checked) .pv-meta-catalog {
+    display: block;
+}
+
+@media (max-width: 959px) {
+    .workspace {
+        grid-template-columns: 216px minmax(0, 1fr);
+    }
+
+    .preview {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        visibility: hidden;
+        border-left: 0;
+        box-shadow: var(--shadow);
+    }
+
+    .app:has(#dir-root:checked):has(#file-guide:checked) .preview,
+    .app:has(#dir-notes:checked):has(#file-lantern:checked) .preview,
+    .app:has(#dir-notes:checked):has(#file-ferry:checked) .preview,
+    .app:has(#dir-reports:checked):has(#file-ledger:checked) .preview,
+    .app:has(#dir-reports:checked):has(#file-shelf:checked) .preview,
+    .app:has(#dir-images:checked):has(#file-mark:checked) .preview,
+    .app:has(#dir-images:checked):has(#file-coast:checked) .preview,
+    .app:has(#dir-code:checked):has(#file-card:checked) .preview,
+    .app:has(#dir-code:checked):has(#file-theme:checked) .preview,
+    .app:has(#dir-code:checked):has(#file-catalog:checked) .preview {
+        visibility: visible;
+    }
+}
+
+@media (max-width: 719px) {
+    .workspace {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .places {
+        display: none;
+    }
+
+    .place-scroll {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+        background: var(--sidebar);
+        scroll-snap-type: x proximity;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(92, 72, 44, 0.4) transparent;
+    }
+
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        flex: 0 0 auto;
+        min-height: 44px;
+        padding: 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--raised);
+        color: var(--ink);
+        scroll-snap-align: start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .preview {
+        transition: none;
+    }
+}
+
+.explorer-status {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+    height: 28px;
+    padding: 0 14px;
+    border-top: 1px solid var(--line);
+    background: var(--sidebar);
+    color: var(--ink-soft);
+    font-size: 12px;
+}
+
+.status-where::before { content: "此电脑"; }
+.app:has(#dir-docs:checked) .status-where::before { content: "文档"; }
+.app:has(#dir-notes:checked) .status-where::before { content: "笔记"; }
+.app:has(#dir-reports:checked) .status-where::before { content: "报表"; }
+.app:has(#dir-images:checked) .status-where::before { content: "图片"; }
+.app:has(#dir-code:checked) .status-where::before { content: "代码"; }
+
+.status-file::before { content: "未选择文件"; }
+.app:has(#dir-root:checked):has(#file-guide:checked) .status-file::before { content: "使用说明.md"; }
+.app:has(#dir-notes:checked):has(#file-lantern:checked) .status-file::before { content: "灯塔摘录.txt"; }
+.app:has(#dir-notes:checked):has(#file-ferry:checked) .status-file::before { content: "渡口手记.md"; }
+.app:has(#dir-reports:checked):has(#file-ledger:checked) .status-file::before { content: "三月账单.csv"; }
+.app:has(#dir-reports:checked):has(#file-shelf:checked) .status-file::before { content: "书架.json"; }
+.app:has(#dir-images:checked):has(#file-mark:checked) .status-file::before { content: "竹标.svg"; }
+.app:has(#dir-images:checked):has(#file-coast:checked) .status-file::before { content: "海岸.svg"; }
+.app:has(#dir-code:checked):has(#file-card:checked) .status-file::before { content: "名片.html"; }
+.app:has(#dir-code:checked):has(#file-theme:checked) .status-file::before { content: "主题.css"; }
+.app:has(#dir-code:checked):has(#file-catalog:checked) .status-file::before { content: "书目.xml"; }
+
+.app:not(:has(#preview-open:checked)) .workspace {
+    grid-template-columns: 216px minmax(0, 1fr);
+}
+
+.app:not(:has(#preview-open:checked)) .preview {
+    display: none;
+}
+
+.app:has(#preview-open:checked) .view-btn[for="preview-open"] {
+    background: var(--raised);
+    color: var(--accent);
+}
+
+html,
+body,
+.app {
+    background:
+        radial-gradient(1100px 420px at 0% -10%, rgba(44, 107, 78, 0.13), transparent 58%),
+        radial-gradient(820px 380px at 100% 0%, rgba(176, 132, 62, 0.13), transparent 55%),
+        var(--sidebar);
+}
+
+.topbar {
+    background: rgba(255, 253, 248, 0.78);
+    backdrop-filter: blur(18px);
+    box-shadow: inset 0 -1px 0 rgba(72, 54, 32, 0.06), 0 12px 32px rgba(43, 38, 31, 0.05);
+}
+
+.brand .mark {
+    border-radius: 9px;
+    background: linear-gradient(155deg, #4c9a72 0%, #1d4c36 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), 0 8px 16px rgba(29, 76, 54, 0.3);
+}
+
+.brand-name {
+    letter-spacing: 0.12em;
+}
+
+.view-toggle {
+    background: rgba(43, 38, 31, 0.05);
+    box-shadow: inset 0 1px 2px rgba(43, 38, 31, 0.06);
+}
+
+.view-toggle .hid:checked + .view-btn {
+    background: #fffdf8;
+    box-shadow: var(--shadow-sm);
+}
+
+.places {
+    background:
+        linear-gradient(180deg, rgba(255, 253, 248, 0.5), transparent 160px),
+        var(--sidebar);
+}
+
+.places-label {
+    letter-spacing: 0.16em;
+}
+
+.stage {
+    background:
+        radial-gradient(680px 240px at 18% 0%, rgba(44, 107, 78, 0.07), transparent 70%),
+        var(--paper);
+}
+
+.preview {
+    background: linear-gradient(180deg, #fffdf8, var(--paper));
+    box-shadow: inset 1px 0 0 rgba(255, 253, 248, 0.85);
+}
+
+.explorer-status {
+    background: rgba(255, 253, 248, 0.76);
+    letter-spacing: 0.03em;
+}

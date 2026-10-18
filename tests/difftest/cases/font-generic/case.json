@@ -1,0 +1,16 @@
+{
+  "name": "font-generic",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "sans-serif / Arial / Microsoft YaHei / Segoe UI 在 16px 下的文本宽度，用来核对通用族映射。",
+  "matrix": [],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

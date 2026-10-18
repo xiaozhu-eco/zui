@@ -1,0 +1,17 @@
+{
+  "name": "stacking-appendix-e",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "CSS 2.1 appendix E: block then float; own in-flow ink after neg-z; positioned z-index:auto mid does not trap a deep negative-z absolute (lift into ancestor context).",
+  "matrix": ["paint.z-index"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

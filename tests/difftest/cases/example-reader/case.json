@@ -1,0 +1,34 @@
+{
+  "name": "example-reader",
+  "page": "page.html",
+  "source": "../../../../example/applications/reader/reader.html",
+  "viewport": [1100, 720],
+  "scripts": false,
+  "_comment": "小竹阅读去掉页面脚本后，两端用同一套动作打开书架菜单、阅读页和设置抽屉。书目正文不跑 JS，阅读区插一段和页面脚本相同的句子。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 1100, "h": 720 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "eval", "actions": [{ "do": "set_checked", "target": "#shelf_menu", "value": true }] },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "eval", "actions": [
+        { "do": "set_checked", "target": "#shelf_menu", "value": false },
+        { "do": "add_class", "target": "#reader", "name": "open" },
+        { "do": "set_text", "target": "#book_title", "text": "灯塔" },
+        { "do": "insert", "target": "#flow", "tag": "p", "text": "海风把盐粒吹到窗台上，刮得玻璃细细地响。" }
+    ] },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "eval", "actions": [{ "do": "set_checked", "target": "#settings_open", "value": true }] },
+    { "op": "freeze", "t": 400 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": true, "advances": false }
+}

@@ -1,0 +1,170 @@
+#b {
+  border: 6px solid #7cb7ff;
+}
+
+#over {
+  border: 2px solid red;
+  border-top-color: #00ff00;
+}
+
+#m {
+  margin: 1px 2px;
+}
+
+#p {
+  padding: 4px 5px 6px;
+}
+
+#f {
+  display: flex;
+  flex: 1;
+}
+
+#ov {
+  overflow: hidden auto;
+}
+
+#g {
+  display: flex;
+  gap: 4px 8px;
+}
+
+#bg {
+  background: #112233;
+}
+
+#bgimg {
+  background: linear-gradient(165deg, #2f6d50, #173728);
+}
+
+#bgboth {
+  background: linear-gradient(to right, #000000, #ffffff) #112233;
+}
+
+#bgpos {
+  background: linear-gradient(to right, #000000, #ffffff) center / cover no-repeat;
+}
+
+#bglayer {
+  background: linear-gradient(to right, #000000, #ffffff) center / cover no-repeat, #eeeeee;
+}
+
+#bglayers {
+  background: linear-gradient(#ff0000, #00ff00) 4px 6px / 20px 10px no-repeat fixed,
+    linear-gradient(#0000ff, #ffffff) right bottom / 8px 12px repeat-x,
+    #abcdef;
+}
+
+#bgtext {
+  background: linear-gradient(red, blue) text;
+}
+
+#bgtomato {
+  background: tomato;
+}
+
+#bgr {
+  background-repeat: no-repeat;
+  background: #cccccc;
+}
+
+#radius-slash {
+  border-radius: 1px/2px;
+}
+
+#fn {
+  font: italic 700 18px/1.4 sans-serif;
+}
+
+/* Parent longhands that the `font` shorthand must reset when omitted. */
+#fn-parent {
+  font-style: italic;
+  font-variant: small-caps;
+  font-weight: 700;
+  font-stretch: condensed;
+  font-size: 24px;
+  line-height: 2;
+  font-family: serif;
+  font-kerning: none;
+  font-feature-settings: "smcp";
+  font-size-adjust: 0.5;
+}
+
+#fn-reset {
+  font: 16px sans-serif;
+}
+
+#fn-stretch {
+  font: italic small-caps condensed 700 14px/1.2 Georgia, serif;
+}
+
+#fn-sys {
+  font: menu;
+}
+
+#in {
+  position: absolute;
+  inset: 10px 20px;
+}
+
+#mauto {
+  margin: 0 auto;
+  width: 100px;
+}
+
+#mleft {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+}
+
+/* CSS-wide keywords on shorthands (CSS Values 4 section 3.2): every longhand of the shorthand
+   takes the keyword. `#kw-font` sets its own font first, so the keyword has to reset all ten
+   longhands instead of only inheriting what the parent happened to set. */
+#kw-parent {
+  margin: 7px 8px 9px 10px;
+  overflow: hidden auto;
+  border: 2px dashed #123456;
+  font: italic 700 24px/2 serif;
+  font-size-adjust: 0.5;
+}
+
+#kw-font {
+  font: 10px/1 sans-serif;
+  font: inherit;
+}
+
+#kw-overflow {
+  overflow: inherit;
+}
+
+#kw-margin {
+  margin: inherit;
+}
+
+#kw-border {
+  border: inherit;
+}
+
+#kw-button {
+  font: inherit;
+}
+
+#kw-fn-unset {
+  font: unset;
+}
+
+:root {
+  --line: rgba(16, 24, 20, 0.1);
+}
+
+/* The variable is inherited. A dropped shorthand would leave the user-agent inset border. */
+#search-line {
+  border: 1px solid var(--line);
+}
+
+/* A custom property this element cannot compute must not fall through to :root. */
+#search-local {
+  --line: var(--missing-token);
+  border: 1px solid var(--line);
+}

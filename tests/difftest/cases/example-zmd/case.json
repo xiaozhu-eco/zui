@@ -1,0 +1,206 @@
+{
+  "name": "example-zmd",
+  "page": "page.html",
+  "source": "../../../../example/applications/zmd/index.html",
+  "viewport": [
+    1100,
+    720
+  ],
+  "scripts": false,
+  "_comment": "小竹 Markdown 去掉页面脚本后的静态壳：写作视图、打开文件菜单、分栏加一段渲染结果、换暮色主题。两端用同一套动作，比较 HTML/CSS 的布局与样式。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 1100,
+      "h": 720
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_checked",
+          "target": "#menu_file",
+          "value": true
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_checked",
+          "target": "#menu_file",
+          "value": false
+        },
+        {
+          "do": "add_class",
+          "target": "#app",
+          "name": "view-split"
+        },
+        {
+          "do": "remove_class",
+          "target": "#app",
+          "name": "view-live"
+        },
+        {
+          "do": "add_class",
+          "target": "#app",
+          "name": "is-focus"
+        },
+        {
+          "do": "set_text",
+          "target": "#doc-title",
+          "text": "欢迎.md"
+        },
+        {
+          "do": "insert",
+          "target": "#preview",
+          "tag": "h1",
+          "text": "欢迎使用小竹"
+        },
+        {
+          "do": "insert",
+          "target": "#preview",
+          "tag": "p",
+          "text": "HTML / CSS 做结构与皮肤，C++ 只绑交互和数据。"
+        },
+        {
+          "do": "insert",
+          "target": "#preview",
+          "tag": "ul",
+          "id": "md-ul"
+        },
+        {
+          "do": "insert",
+          "target": "#md-ul",
+          "tag": "li",
+          "text": "写作视图"
+        },
+        {
+          "do": "insert",
+          "target": "#md-ul",
+          "tag": "li",
+          "text": "源码视图"
+        },
+        {
+          "do": "insert",
+          "target": "#preview",
+          "tag": "blockquote",
+          "text": "同一份 HTML/CSS，画面与浏览器一致。"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "remove_class",
+          "target": "#app",
+          "name": "is-focus"
+        },
+        {
+          "do": "remove_class",
+          "target": "html",
+          "name": "theme-paper"
+        },
+        {
+          "do": "add_class",
+          "target": "html",
+          "name": "theme-dusk"
+        }
+      ]
+    },
+    {
+      "op": "freeze",
+      "t": 400
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "style_props": [
+    "display",
+    "position",
+    "box-sizing",
+    "width",
+    "height",
+    "min-width",
+    "min-height",
+    "max-width",
+    "max-height",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+    "border-top-width",
+    "border-right-width",
+    "border-bottom-width",
+    "border-left-width",
+    "overflow-x",
+    "overflow-y",
+    "visibility",
+    "z-index",
+    "flex-direction",
+    "flex-wrap",
+    "flex-grow",
+    "flex-shrink",
+    "flex-basis",
+    "justify-content",
+    "align-items",
+    "align-content",
+    "align-self",
+    "order",
+    "row-gap",
+    "column-gap",
+    "font-family",
+    "font-size",
+    "font-weight",
+    "font-style",
+    "line-height",
+    "letter-spacing",
+    "word-spacing",
+    "text-align",
+    "text-indent",
+    "text-overflow",
+    "white-space",
+    "word-break",
+    "overflow-wrap",
+    "vertical-align"
+  ],
+  "text": {
+    "breaks": true,
+    "advances": false
+  }
+}

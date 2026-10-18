@@ -1,0 +1,17 @@
+{
+  "name": "paint-bg-position",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "CSS Backgrounds 3 position with an edge offset. A two-value reading of 'right 16px bottom 12px' would pin the tile to the right edge and 16px from the top. The 32px tile is large enough that a wrong edge fails the pixel compare. #pair keeps the two-keyword form.",
+  "matrix": ["paint.bg-url"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

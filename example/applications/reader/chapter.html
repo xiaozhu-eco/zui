@@ -1,0 +1,23 @@
+<!--
+  One reading window: the current chapter plus the next one (when any), matching
+  reader.js's windowed continuous scroll. Replaced on every chapter change.
+-->
+<div id="chapter_page" class="chapter-page">
+    <article id="chapter_a" class="chapter">
+        <h2 id="chapter_title" class="chapter-title"></h2>
+        <div id="paras">
+            <template>
+                <p class="para" id="pa{{index}}" data-pi="{{index}}">{{text}}</p>
+            </template>
+        </div>
+    </article>
+    <article id="chapter_b" class="chapter is-follow" hidden>
+        <h2 id="chapter_title_b" class="chapter-title"></h2>
+        <div id="paras_b">
+            <template>
+                <p class="para" id="pb{{index}}" data-pi="{{index}}">{{text}}</p>
+            </template>
+        </div>
+    </article>
+    <button type="button" id="chapter_next" class="chapter-next" onclick="on_next"></button>
+</div>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>小竹文件</title>
+  <link rel="stylesheet" href="../../../../example/applications/file-explorer/css/tokens.css">
+  <link rel="stylesheet" href="../../../../example/applications/file-explorer/css/shell.css">
+  <link rel="stylesheet" href="../../../../example/applications/file-explorer/css/files.css">
+</head>
+<body>
+  <div class="app">
+    <div class="dir-state">
+      <input id="dir-root" class="hid" type="radio" name="dir" checked>
+      <input id="dir-docs" class="hid" type="radio" name="dir">
+      <input id="dir-notes" class="hid" type="radio" name="dir">
+      <input id="dir-reports" class="hid" type="radio" name="dir">
+      <input id="dir-images" class="hid" type="radio" name="dir">
+      <input id="dir-code" class="hid" type="radio" name="dir">
+      <input id="file-none" class="hid" type="radio" name="file" checked>
+    </div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">竹</span>
+        <h1 class="brand-name">小竹文件</h1>
+      </div>
+      <div class="view-toggle" role="radiogroup" aria-label="查看方式">
+        <input id="view-grid" class="hid" type="radio" name="view" checked>
+        <label class="view-btn" for="view-grid" title="图标"><span class="ico ico-grid" aria-hidden="true"></span><span class="sr">图标</span></label>
+        <input id="view-list" class="hid" type="radio" name="view">
+        <label class="view-btn" for="view-list" title="列表"><span class="ico ico-list" aria-hidden="true"></span><span class="sr">列表</span></label>
+      </div>
+    </header>
+
+    <div class="place-scroll">
+      <label class="chip" for="dir-root">此电脑</label>
+      <label class="chip" for="dir-docs">文档</label>
+      <label class="chip" for="dir-images">图片</label>
+      <label class="chip" for="dir-code">代码</label>
+      <label class="chip" for="dir-notes">笔记</label>
+      <label class="chip" for="dir-reports">报表</label>
+    </div>
+
+    <div class="workspace">
+      <aside class="places" aria-label="位置">
+        <p class="places-label">位置</p>
+        <label class="place" for="dir-root">此电脑</label>
+        <label class="place" for="dir-docs">文档</label>
+        <label class="place" for="dir-images">图片</label>
+        <label class="place" for="dir-code">代码</label>
+        <p class="places-label">收藏</p>
+        <label class="place" for="dir-notes">笔记</label>
+        <label class="place" for="dir-reports">报表</label>
+      </aside>
+
+      <main class="stage">
+        <div class="pathbar">
+          <nav class="crumbs crumbs-root" aria-label="面包屑">
+            <span class="crumb current" aria-current="page">此电脑</span>
+          </nav>
+          <nav class="crumbs crumbs-docs" aria-label="面包屑">
+            <label class="crumb" for="dir-root">此电脑</label>
+            <span class="sep" aria-hidden="true">/</span>
+            <span class="crumb current" aria-current="page">文档</span>
+          </nav>
+          <nav class="crumbs crumbs-notes" aria-label="面包屑">
+            <label class="crumb" for="dir-root">此电脑</label>
+            <span class="sep" aria-hidden="true">/</span>
+            <label class="crumb" for="dir-docs">文档</label>
+            <span class="sep" aria-hidden="true">/</span>
+            <span class="crumb current" aria-current="page">笔记</span>
+          </nav>
+          <nav class="crumbs crumbs-reports" aria-label="面包屑">
+            <label class="crumb" for="dir-root">此电脑</label>
+            <span class="sep" aria-hidden="true">/</span>
+            <label class="crumb" for="dir-docs">文档</label>
+            <span class="sep" aria-hidden="true">/</span>
+            <span class="crumb current" aria-current="page">报表</span>
+          </nav>
+          <nav class="crumbs crumbs-images" aria-label="面包屑">
+            <label class="crumb" for="dir-root">此电脑</label>
+            <span class="sep" aria-hidden="true">/</span>
+            <span class="crumb current" aria-current="page">图片</span>
+          </nav>
+          <nav class="crumbs crumbs-code" aria-label="面包屑">
+            <label class="crumb" for="dir-root">此电脑</label>
+            <span class="sep" aria-hidden="true">/</span>
+            <span class="crumb current" aria-current="page">代码</span>
+          </nav>
+          <span class="count count-root">4 个项目</span>
+          <span class="count count-docs">2 个项目</span>
+          <span class="count count-notes">2 个项目</span>
+          <span class="count count-reports">2 个项目</span>
+          <span class="count count-images">2 个项目</span>
+          <span class="count count-code">3 个项目</span>
+        </div>
+
+        <div class="scroll">
+          <div class="cols" aria-hidden="true">
+            <span></span>
+            <span>名称</span>
+            <span>类型</span>
+            <span>修改日期</span>
+          </div>
+
+          <section class="listing listing-root" aria-label="此电脑">
+            <div class="files">
+              <label class="entry" for="dir-docs" title="文档">
+                <span class="icon-slot"><span class="glyph g-folder" aria-hidden="true"></span></span>
+                <span class="name">文档</span>
+                <span class="meta" aria-hidden="true">文件夹</span>
+                <span class="date" aria-hidden="true">2026-05-09</span>
+              </label>
+              <label class="entry" for="dir-images" title="图片">
+                <span class="icon-slot"><span class="glyph g-folder" aria-hidden="true"></span></span>
+                <span class="name">图片</span>
+                <span class="meta" aria-hidden="true">文件夹</span>
+                <span class="date" aria-hidden="true">2026-06-12</span>
+              </label>
+              <label class="entry" for="dir-code" title="代码">
+                <span class="icon-slot"><span class="glyph g-folder" aria-hidden="true"></span></span>
+                <span class="name">代码</span>
+                <span class="meta" aria-hidden="true">文件夹</span>
+                <span class="date" aria-hidden="true">2026-08-19</span>
+              </label>
+              <label class="entry" title="使用说明.md">
+                <input id="file-guide" class="hid" type="radio" name="file">
+                <span class="icon-slot"><span class="glyph g-file g-md" aria-hidden="true">MD</span></span>
+                <span class="name">使用说明.md</span>
+                <span class="meta" aria-hidden="true">Markdown</span>
+                <span class="date" aria-hidden="true">2026-09-01</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="listing listing-docs" aria-label="文档">
+            <div class="files">
+              <label class="entry" for="dir-notes" title="笔记">
+                <span class="icon-slot"><span class="glyph g-folder" aria-hidden="true"></span></span>
+                <span class="name">笔记</span>
+                <span class="meta" aria-hidden="true">文件夹</span>
+                <span class="date" aria-hidden="true">2026-04-02</span>
+              </label>
+              <label class="entry" for="dir-reports" title="报表">
+                <span class="icon-slot"><span class="glyph g-folder" aria-hidden="true"></span></span>
+                <span class="name">报表</span>
+                <span class="meta" aria-hidden="true">文件夹</span>
+                <span class="date" aria-hidden="true">2026-05-09</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="listing listing-notes" aria-label="笔记">
+            <div class="files">
+              <label class="entry" title="灯塔摘录.txt">
+                <input id="file-lantern" class="hid" type="radio" name="file">
+                <span class="icon-slot"><span class="glyph g-file g-txt" aria-hidden="true">TXT</span></span>
+                <span class="name">灯塔摘录.txt</span>
+                <span class="meta" aria-hidden="true">文本</span>
+                <span class="date" aria-hidden="true">2026-03-18</span>
+              </label>
+              <label class="entry" title="渡口手记.md">
+                <input id="file-ferry" class="hid" type="radio" name="file">
+                <span class="icon-slot"><span class="glyph g-file g-md" aria-hidden="true">MD</span></span>
+                <span class="name">渡口手记.md</span>
+                <span class="meta" aria-hidden="true">Markdown</span>
+                <span class="date" aria-hidden="true">2026-04-02</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="listing listing-reports" aria-label="报表">
+            <div class="files">
+              <label class="entry" title="三月账单.csv">
+                <input id="file-ledger" class="hid" type="radio" name="file">
+                <span class="icon-slot"><span class="glyph g-file g-csv" aria-hidden="true">CSV</span></span>
+                <span class="name">三月账单.csv</span>
+                <span class="meta" aria-hidden="true">表格</span>
+                <span class="date" aria-hidden="true">2026-03-22</span>
+              </label>
+              <label class="entry" title="书架.json">
+                <input id="file-shelf" class="hid" type="radio" name="file">
+                <span class="icon-slot"><span class="glyph g-file g-json" aria-hidden="true">JSON</span></span>
+                <span class="name">书架.json</span>
+                <span class="meta" aria-hidden="true">JSON</span>
+                <span class="date" aria-hidden="true">2026-05-09</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="listing listing-images" aria-label="图片">
+            <div class="files">
+              <label class="entry" title="竹标.svg">
+                <input id="file-mark" class="hid" type="radio" name="file">
+                <span class="icon-slot"><span class="glyph g-file g-svg" aria-hidden="true">SVG</span></span>
+                <span class="name">竹标.svg</span>
+                <span class="meta" aria-hidden="true">图像</span>
+                <span class="date" aria-hidden="true">2026-06-01</span>
+              </label>
+              <label class="entry" title="海岸.svg">
+                <input id="file-coast" class="hid" type="radio" name="file">
+                <span class="icon-slot"><span class="glyph g-file g-svg" aria-hidden="true">SVG</span></span>
+                <span class="name">海岸.svg</span>
+                <span class="meta" aria-hidden="true">图像</span>
+                <span class="date" aria-hidden="true">2026-06-12</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="listing listing-code" aria-label="代码">
+            <div class="files">
+              <label class="entry" title="名片.html">
+                <input id="file-card" class="hid" type="radio" name="file">
+                <span class="icon-slot"><span class="glyph g-file g-html" aria-hidden="true">HTML</span></span>
+                <span class="name">名片.html</span>
+                <span class="meta" aria-hidden="true">网页</span>
+                <span class="date" aria-hidden="true">2026-07-04</span>
+              </label>
+              <label class="entry" title="主题.css">
+                <input id="file-theme" class="hid" type="radio" name="file">
+                <span class="icon-slot"><span class="glyph g-file g-css" aria-hidden="true">CSS</span></span>
+                <span class="name">主题.css</span>
+                <span class="meta" aria-hidden="true">样式</span>
+                <span class="date" aria-hidden="true">2026-07-04</span>
+              </label>
+              <label class="entry" title="书目.xml">
+                <input id="file-catalog" class="hid" type="radio" name="file">
+                <span class="icon-slot"><span class="glyph g-file g-xml" aria-hidden="true">XML</span></span>
+                <span class="name">书目.xml</span>
+                <span class="meta" aria-hidden="true">XML</span>
+                <span class="date" aria-hidden="true">2026-08-19</span>
+              </label>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <aside class="preview" aria-label="预览">
+        <header class="pv-bar">
+          <label class="back" for="file-none">返回</label>
+          <div class="pv-heading">
+            <span class="pv-name pv-name-empty">预览</span>
+            <span class="pv-name pv-name-guide">使用说明.md</span>
+            <span class="pv-name pv-name-lantern">灯塔摘录.txt</span>
+            <span class="pv-name pv-name-ferry">渡口手记.md</span>
+            <span class="pv-name pv-name-ledger">三月账单.csv</span>
+            <span class="pv-name pv-name-shelf">书架.json</span>
+            <span class="pv-name pv-name-mark">竹标.svg</span>
+            <span class="pv-name pv-name-coast">海岸.svg</span>
+            <span class="pv-name pv-name-card">名片.html</span>
+            <span class="pv-name pv-name-theme">主题.css</span>
+            <span class="pv-name pv-name-catalog">书目.xml</span>
+            <span class="pv-meta pv-meta-guide">Markdown · 455 字节 · 2026-09-01</span>
+            <span class="pv-meta pv-meta-lantern">文本 · 489 字节 · 2026-03-18</span>
+            <span class="pv-meta pv-meta-ferry">Markdown · 445 字节 · 2026-04-02</span>
+            <span class="pv-meta pv-meta-ledger">表格 · 185 字节 · 2026-03-22</span>
+            <span class="pv-meta pv-meta-shelf">JSON · 371 字节 · 2026-05-09</span>
+            <span class="pv-meta pv-meta-mark">图像 · 608 字节 · 2026-06-01</span>
+            <span class="pv-meta pv-meta-coast">图像 · 1.7 KB · 2026-06-12</span>
+            <span class="pv-meta pv-meta-card">网页 · 1.6 KB · 2026-07-04</span>
+            <span class="pv-meta pv-meta-theme">样式 · 340 字节 · 2026-07-04</span>
+            <span class="pv-meta pv-meta-catalog">XML · 576 字节 · 2026-08-19</span>
+          </div>
+        </header>
+        <div class="pv-body">
+          <div class="preview-empty">
+            <span class="empty-glyph" aria-hidden="true"></span>
+            <p>选择一个文件，在这里查看内容。</p>
+          </div>
+          <iframe class="pv pv-guide" title="使用说明.md" src="../../../../example/applications/file-explorer/preview/guide.html"></iframe>
+          <iframe class="pv pv-lantern" title="灯塔摘录.txt" src="../../../../example/applications/file-explorer/preview/lantern.html"></iframe>
+          <iframe class="pv pv-ferry" title="渡口手记.md" src="../../../../example/applications/file-explorer/preview/ferry.html"></iframe>
+          <iframe class="pv pv-ledger" title="三月账单.csv" src="../../../../example/applications/file-explorer/preview/ledger.html"></iframe>
+          <iframe class="pv pv-shelf" title="书架.json" src="../../../../example/applications/file-explorer/preview/shelf.html"></iframe>
+          <iframe class="pv pv-mark" title="竹标.svg" src="../../../../example/applications/file-explorer/preview/mark.html"></iframe>
+          <iframe class="pv pv-coast" title="海岸.svg" src="../../../../example/applications/file-explorer/preview/coast.html"></iframe>
+          <iframe class="pv pv-card" title="名片.html" src="../../../../example/applications/file-explorer/files/名片.html"></iframe>
+          <iframe class="pv pv-theme" title="主题.css" src="../../../../example/applications/file-explorer/preview/theme.html"></iframe>
+          <iframe class="pv pv-catalog" title="书目.xml" src="../../../../example/applications/file-explorer/preview/catalog.html"></iframe>
+        </div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>

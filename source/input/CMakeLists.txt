@@ -1,0 +1,22 @@
+zui_add_interface_sources(zui_src_input
+  interaction.cpp
+  pointer.cpp
+  pointer_hover.cpp
+  pointer_press.cpp
+  pointer_pan.cpp
+  pointer_select.cpp
+  pointer_range.cpp
+  pointer_activate.cpp
+  widgets.cpp
+  text_edit.cpp
+  text_caret.cpp
+  text_select.cpp
+  text_ce.cpp
+  text_mutate.cpp
+  text_ime.cpp
+  focus.cpp
+  scroll.cpp
+  keyboard.cpp
+  drag.cpp
+  form.cpp
+)

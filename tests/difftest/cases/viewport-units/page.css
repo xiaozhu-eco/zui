@@ -1,0 +1,23 @@
+/* CSS Values section 5.1: `vw` / `vh` / `vmin` / `vmax` resolve against the initial containing
+   block, and the `d` / `s` variants are the same here (a desktop window has no retracting UI).
+   The viewport is 800x600 and fixed by the case, so every number below is absolute. */
+
+html, body { margin: 0; padding: 0; }
+
+.row { display: flex; flex-direction: row; align-items: flex-start; }
+
+.bar {
+  font-size: 12px;
+  line-height: 20px;
+  background-color: #243044;
+  color: #e8edf5;
+}
+
+.vw20 { width: 20vw; }
+.vh20 { height: 20vh; }
+.vmin20 { width: 20vmin; height: 20vmin; }
+.vmax20 { width: 20vmax; }
+.dvh20 { height: 20dvh; }
+.svh20 { height: 20svh; }
+.calc { width: calc(50vw - 40px); height: calc(10vh + 6px); }
+.clamp { width: clamp(40px, 25vw, 300px); height: min(18vh, 160px); }

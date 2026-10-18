@@ -1,0 +1,22 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+#host {
+  display: block;
+  width: 200px;
+}
+
+#keep {
+  display: inline;
+}
+
+#keep.as-block {
+  display: block;
+}
+
+#block {
+  display: block;
+  height: 20px;
+}

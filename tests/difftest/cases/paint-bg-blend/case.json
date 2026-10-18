@@ -1,0 +1,18 @@
+{
+  "name": "paint-bg-blend",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "background-blend-mode separable modes, a two-layer list, and multiply over a transparent colour sitting on a green plate. The plate stays green: the blend is isolated from content behind the element. pixel_tolerance 2 absorbs 8-bit blend rounding.",
+  "matrix": ["css.background"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 2,
+  "text": { "breaks": false, "advances": false }
+}

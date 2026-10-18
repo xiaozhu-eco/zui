@@ -1,0 +1,18 @@
+{
+  "name": "paint-conic-hint",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "CSS Images 4 conic color-interpolation hint. Dropping the 20% hint blends linearly around the circle, so the colour at 72 degrees is only a fifth of the way instead of the midpoint. pixel_tolerance 1 absorbs the same dither as paint-gradient. #plain has no hint.",
+  "matrix": ["paint.gradient"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": false }
+}

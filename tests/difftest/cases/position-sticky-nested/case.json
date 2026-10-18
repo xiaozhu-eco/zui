@@ -1,0 +1,19 @@
+{
+  "name": "position-sticky-nested",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A2: sticky nested under #wrap still sticks to #scroller (scroll ancestor chain). Scroll 100px so #stick pins at top+8.",
+  "matrix": ["position.out-of-flow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "eval", "actions": [{ "do": "scroll", "target": "#scroller", "y": 100 }] },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

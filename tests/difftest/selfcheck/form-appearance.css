@@ -1,0 +1,5 @@
+html, body { margin: 0; padding: 8px; background: #eef1f5; }
+#radio-on, #radio-off, #radio-none { width: 16px; height: 16px; margin: 0 0 8px 0; display: block; }
+#radio-none { appearance: none; background: #7cb7ff; border: 0; }
+#sel, #sel-none { display: block; width: 100px; margin-bottom: 8px; font: 400 14px sans-serif; }
+#sel-none { appearance: none; padding-right: 4px; }

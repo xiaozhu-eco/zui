@@ -1,0 +1,19 @@
+{
+  "name": "container-query",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "容器查询：宽度变化后帧末重入必须按新的 cqw 重排后代（LAYOUT 第 10 节）。",
+  "matrix": ["container.query"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "eval", "actions": [{ "do": "set_style", "target": "#cont", "props": { "width": "400px" } }] },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

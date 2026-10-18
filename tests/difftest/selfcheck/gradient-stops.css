@@ -1,0 +1,13 @@
+html, body { margin: 0; padding: 0; background: #101418; }
+#six {
+  width: 200px;
+  height: 40px;
+  background-image: linear-gradient(to right,
+    #ff0000 0%, #ffff00 20%, #00ff00 40%, #00ffff 60%, #0000ff 80%, #ff00ff 100%);
+}
+#two {
+  width: 200px;
+  height: 40px;
+  margin-top: 8px;
+  background-image: linear-gradient(to right, #112233, #aabbcc);
+}

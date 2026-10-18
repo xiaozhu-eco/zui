@@ -1,0 +1,21 @@
+/* `rotate(90deg)` about a named origin: the engine folds the transform into the box's world
+   origin (rotated painting is still the documented subset), so the shift of a 100x60 box is
+   `(cx + cy, cy - cx)` for that origin, which is what the test below asserts. */
+
+html, body { margin: 0; padding: 0; }
+
+.cell {
+  width: 100px;
+  height: 60px;
+  margin: 0;
+  background-color: #7cb7ff;
+  transform: rotate(90deg);
+}
+
+#tl { transform-origin: left top; }
+#tr { transform-origin: right top; }
+#br { transform-origin: right bottom; }
+#bottom { transform-origin: bottom; }
+#turn { transform: rotate(0.25turn); transform-origin: right top; }
+#grad { transform: rotate(100grad); transform-origin: right top; }
+#pct { transform-origin: 100% 0; }

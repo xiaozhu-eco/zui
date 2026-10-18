@@ -1,0 +1,22 @@
+{
+  "name": "overscroll-contain",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2: overscroll-behavior:contain on the inner scroller blocks unused wheel delta from chaining to #outer (contrast wheel-chain).",
+  "matrix": ["scroll.overflow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    {
+      "op": "dispatch",
+      "events": [
+        { "type": "mouseWheel", "x": 30, "y": 30, "deltaX": 0, "deltaY": 80 }
+      ]
+    },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

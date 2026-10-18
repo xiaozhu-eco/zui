@@ -1,0 +1,17 @@
+{
+  "name": "text-wrap-balance",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "text-wrap: balance evens a short heading. The plain paragraph is the same text at the same width.",
+  "matrix": ["flow.inline"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": true, "advances": true }
+}

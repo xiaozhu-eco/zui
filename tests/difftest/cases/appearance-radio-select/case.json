@@ -1,0 +1,17 @@
+{
+  "name": "appearance-radio-select",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "P1：radio appearance:none 抑制原生圆点，与同色方块 ref 对齐（对照 appearance-checkbox）。原生 radio / 闭合 select 箭头由自检 FormAppearanceRadioSelect 覆盖。",
+  "matrix": ["paint.form-control"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

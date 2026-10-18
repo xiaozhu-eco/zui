@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ZUI Checks</title>
+    <link rel="stylesheet" href="checks.css">
+</head>
+<body>
+    <div class="shell">
+        <header class="topbar">
+            <span class="brand">ZUI Checks</span>
+            <span class="muted">wrap · fallback · translate · radius</span>
+            <button class="action" onclick="on_sheet">Sheet</button>
+        </header>
+        <main class="content">
+            <div class="grid">
+                <section class="panel">
+                    <span class="label">Latin wraps at spaces</span>
+                    <div class="sample">The quick brown fox jumps over the lazy dog near the station.</div>
+                </section>
+                <section class="panel">
+                    <span class="label">nowrap stays one line</span>
+                    <div class="sample nowrap">The quick brown fox jumps over the lazy dog near the station.</div>
+                </section>
+                <section class="panel">
+                    <span class="label">CJK wraps per character</span>
+                    <div class="sample">中文按字折行，定宽容器里每个汉字都可以换到下一行。</div>
+                </section>
+                <section class="panel">
+                    <span class="label">Long word stays intact</span>
+                    <div class="sample">Pack the box. Supercalifragilisticexpialidocious does not split.</div>
+                </section>
+            </div>
+
+            <div class="grid">
+                <section class="panel wide">
+                    <span class="label">sans-serif · Segoe UI, YaHei for missing glyphs</span>
+                    <div class="line">Build 构建 at dawn 黎明</div>
+                </section>
+                <section class="panel wide yahei">
+                    <span class="label">font-family: Microsoft YaHei</span>
+                    <div class="line">Build 构建 at dawn 黎明</div>
+                </section>
+            </div>
+
+            <div class="grid">
+                <section class="panel">
+                    <span class="label">Rounded stroke</span>
+                    <div class="pair">
+                        <div class="swatch stroke"></div>
+                        <div class="swatch stroke square"></div>
+                    </div>
+                </section>
+                <section class="panel">
+                    <span class="label">Rounded clip · corner block</span>
+                    <div class="pair">
+                        <div class="swatch clip">
+                            <div class="corner"></div>
+                        </div>
+                        <div class="swatch clip open">
+                            <div class="corner"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <div id="mask" class="mask">
+        <div class="sheet">
+            <span class="sheet-title">translateY(110%)</span>
+            <span class="sheet-body">The mask starts a full panel below the window. Closing it should leave the page clickable.</span>
+            <button class="action" onclick="on_sheet">Close</button>
+        </div>
+    </div>
+    <script>
+        var sheet = false;
+        function on_sheet() {
+            sheet = !sheet;
+            document.getElementById("mask").classList.toggle("show", sheet);
+        }
+        document.addEventListener("click", function (e) {
+            var el = e.target.closest("[onclick]");
+            if (!el) {
+                return;
+            }
+            var fn = window[el.getAttribute("onclick")];
+            if (typeof fn === "function") {
+                fn(e);
+            }
+        });
+    </script>
+</body>
+</html>

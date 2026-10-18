@@ -1,0 +1,49 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #10141c;
+}
+
+.scroller {
+  direction: rtl;
+  width: 120px;
+  height: 40px;
+  margin: 10px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  background: #161c27;
+}
+
+.wide {
+  width: 240px;
+  height: 40px;
+  position: relative;
+  background: #2a3344;
+}
+
+.wide::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: #e85d4c;
+}
+
+.wide::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: #8fd18a;
+}

@@ -1,0 +1,193 @@
+#box {
+    width: 200px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+#a {
+    height: 20px;
+    margin: 30px 0;
+}
+
+#b {
+    height: 20px;
+    margin: 10px 0;
+}
+
+#outer {
+    width: 200px;
+    border: 1px solid #000;
+}
+
+#inner {
+    margin: 0;
+}
+
+#child {
+    height: 10px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+#gap {
+    width: 200px;
+    border-top: 1px solid #000;
+}
+
+#p1, #p2 {
+    height: 10px;
+    margin: 10px 0;
+}
+
+#empty {
+    margin: 40px 0;
+}
+
+#row {
+    display: flex;
+    flex-direction: row;
+    width: 420px;
+}
+
+#cols {
+    display: grid;
+    width: 600px;
+    grid-template-columns: max-content min-content;
+}
+
+#cssimg {
+    width: 20px;
+    height: auto;
+}
+
+#neg {
+    width: 120px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+#n1 {
+    height: 20px;
+    margin: 0 0 -30px 0;
+}
+
+#n2 {
+    height: 20px;
+    margin: -10px 0 0 0;
+}
+
+#widehost {
+    width: 400px;
+}
+
+#maxw {
+    width: max-content;
+}
+
+#chip {
+    width: 140px;
+    height: 12px;
+}
+
+#minw {
+    width: min-content;
+}
+
+#minchip {
+    width: 90px;
+    height: 8px;
+}
+
+#rel {
+    position: relative;
+    width: 300px;
+    height: 40px;
+}
+
+#fitabs {
+    position: absolute;
+    left: 10px;
+    top: 0;
+}
+
+#fitinner {
+    width: 70px;
+    height: 8px;
+}
+
+#flexmin {
+    display: flex;
+    width: 80px;
+}
+
+#wordin {
+    width: 180px;
+    height: 10px;
+}
+
+#flexclip {
+    display: flex;
+    width: 80px;
+}
+
+#clip {
+    overflow: hidden;
+}
+
+#clipin {
+    width: 180px;
+    height: 10px;
+}
+
+#spang {
+    display: grid;
+    width: 400px;
+    grid-template-columns: min-content min-content;
+}
+
+#sp {
+    grid-column: 1 / 3;
+}
+
+#spchip {
+    width: 100px;
+    height: 14px;
+}
+
+#spang2 {
+    display: grid;
+    width: 280px;
+    grid-template-columns: min-content min-content;
+}
+
+#spw {
+    grid-column: 1 / 3;
+    width: 100px;
+    padding: 6px 8px;
+}
+
+#pics {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#flhost, #frhost, #clhost, #mghost, #hang, #hold, #pair, #drop {
+    width: 180px;
+}
+
+#fl, #fr, #cfl, #mgf, #hf, #holdf, #pa, #pb, #da, #db {
+    width: 60px;
+    height: 28px;
+}
+
+#fl, #cfl, #mgf, #hf, #holdf, #pa, #pb, #da, #db { float: left; }
+#fr { float: right; }
+#flp { margin: 0; }
+#ccl { clear: left; height: 18px; margin-top: 12px; }
+#mga { height: 20px; margin: 0 0 30px 0; }
+#mgb { height: 20px; margin: 10px 0 0 0; }
+#hold, #pair, #drop { overflow: hidden; }
+#drop { width: 80px; }
+#da, #db { width: 50px; height: 16px; }
+#pa, #pb { width: 50px; height: 16px; }

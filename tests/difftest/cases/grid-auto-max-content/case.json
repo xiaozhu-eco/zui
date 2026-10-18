@@ -1,0 +1,16 @@
+{
+  "name": "grid-auto-max-content",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Section 11.6 Maximize Tracks: grow toward the growth limit only as far as the free space allows. The claim is the column widths, so the case compares traces; #g3 carries the doc's max-content flavour, whose text would drag in the known per-glyph pixel gap (README section 12.5).",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

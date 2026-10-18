@@ -1,0 +1,17 @@
+{
+  "name": "text-font-fallback",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "字体回退：第一选择缺失时落到内嵌字体，两端的回退结果必须一致（TESTPLAN 第 6 节）。",
+  "matrix": ["text.font-fallback"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "masked",
+  "text": { "breaks": false, "advances": true }
+}

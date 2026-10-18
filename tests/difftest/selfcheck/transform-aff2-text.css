@@ -1,0 +1,58 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 800px;
+  height: 600px;
+  background: #10141c;
+  font-family: "Zui Test", "Noto Sans", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffe082;
+}
+
+#rot {
+  position: absolute;
+  left: 120px;
+  top: 100px;
+  width: 100px;
+  height: 60px;
+  background-color: #455a64;
+  transform: rotate(45deg);
+  transform-origin: center center;
+  text-align: center;
+  line-height: 60px;
+}
+
+#parent {
+  position: absolute;
+  left: 360px;
+  top: 100px;
+  width: 120px;
+  height: 80px;
+  background-color: #5c6bc0;
+  transform: rotate(-30deg);
+  transform-origin: left top;
+  color: #fff59d;
+  font-size: 22px;
+}
+
+#child {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  width: 70px;
+  height: 40px;
+  background-color: #7e57c2;
+  text-align: center;
+  line-height: 40px;
+}
+
+#img {
+  position: absolute;
+  left: 200px;
+  top: 320px;
+  width: 64px;
+  height: 64px;
+  transform: rotate(40deg);
+  transform-origin: center center;
+}

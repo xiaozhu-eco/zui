@@ -1,0 +1,45 @@
+/* Schema definition: columns, keys, indexes, and CREATE text. */
+
+.structure-body {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 0 16px 28px;
+}
+
+.structure-title {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.block {
+    margin: 0 0 22px;
+}
+
+.block h3 {
+    margin: 0 0 8px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.jump-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.sql-block {
+    margin: 0;
+    padding: 12px 14px;
+    overflow: auto;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--sidebar);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.55;
+    white-space: pre;
+}

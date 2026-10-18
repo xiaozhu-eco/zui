@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #eef1f5;
+}
+
+p {
+  margin: 16px;
+  font-family: "Zui Test";
+  font-size: 16px;
+  line-height: 24px;
+  color: #1a2230;
+}
+
+/* Author colors on the ancestor: the `em` below has no ::selection rule of its own, so its
+   highlight has to inherit this one (css.selection, highlight inheritance). */
+p::selection {
+  background-color: #336699;
+  color: #ffffff;
+}

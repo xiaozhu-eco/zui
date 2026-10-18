@@ -1,0 +1,77 @@
+# ---> C++
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# ---> CMake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+CMakeUserPresets.json
+
+
+# Local build / scratch
+/build/
+/*.log
+/_*.py
+/_status.txt
+
+
+# FreeType build debris if any
+/third_party/freetype/objs/
+
+
+*.bak
+
+# Python bytecode from the differential-test drivers (tests/difftest/*.py)
+__pycache__/
+*.pyc
+
+# Cargo output for bindings/rust
+/bindings/rust/target/
+
+# Reader sample books: each text file is 20 MB of a third-party work, so the repository ships the
+# shelf metadata in books/catalog.json only. Drop your own *.txt into that folder to read them.
+/example/applications/reader/books/*.txt
+
+# zui-pack output: the build tree it configures inside a project, and the
+# packages it writes.
+**/.zui/
+**/dist/
+

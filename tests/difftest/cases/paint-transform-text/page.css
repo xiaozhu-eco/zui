@@ -1,0 +1,89 @@
+/* B3/A6: Aff2 DrawText + DrawImage (soft inverse-map; GPU textured quads).
+   No flex — keep box sizes identical to paint-transform-fill so L2 AABB matches Chrome. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  background: #10141c;
+  font-family: "Zui Test", "Noto Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffe082;
+}
+
+.cell {
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  background-color: #37474f;
+  text-align: center;
+  line-height: 50px;
+}
+
+#plain {
+  left: 40px;
+  top: 40px;
+}
+
+#rot {
+  left: 200px;
+  top: 80px;
+  background-color: #455a64;
+  transform: rotate(35deg);
+  transform-origin: center center;
+}
+
+#skew {
+  left: 400px;
+  top: 60px;
+  background-color: #546e7a;
+  transform: skewX(25deg);
+  transform-origin: left top;
+}
+
+.stage {
+  position: absolute;
+  left: 80px;
+  top: 280px;
+  width: 120px;
+  height: 80px;
+  background-color: #5c6bc0;
+  transform: rotate(-20deg);
+  transform-origin: left top;
+  color: #fff59d;
+  font-size: 18px;
+}
+
+.child {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  width: 60px;
+  height: 40px;
+  background-color: #7e57c2;
+  text-align: center;
+  line-height: 40px;
+}
+
+#img-rot {
+  position: absolute;
+  left: 520px;
+  top: 200px;
+  width: 64px;
+  height: 64px;
+  transform: rotate(40deg);
+  transform-origin: center center;
+}
+
+#img-skew {
+  position: absolute;
+  left: 640px;
+  top: 220px;
+  width: 48px;
+  height: 48px;
+  transform: skewY(20deg);
+  transform-origin: left top;
+}

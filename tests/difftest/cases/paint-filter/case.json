@@ -1,0 +1,17 @@
+{
+  "name": "paint-filter",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3：filter brightness / opacity 像素必过。blur 由自检 FilterEffectsBasic 覆盖（高斯核与 Blink 对拍另开）。",
+  "matrix": ["paint.filter"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

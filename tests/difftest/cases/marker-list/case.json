@@ -1,0 +1,17 @@
+{
+  "name": "marker-list",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "M3 ::marker inside: decimal markers share the principal box IFC; line summaries exclude generated (::marker/::before/::after); list-style:none drops markers; nested ol resets. Outside placement is M4.",
+  "matrix": ["css.marker"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": true, "advances": false },
+  "style_props": ["display", "list-style-type", "list-style-position", "padding-left"]
+}

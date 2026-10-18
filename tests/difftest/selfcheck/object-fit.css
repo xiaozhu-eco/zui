@@ -1,0 +1,12 @@
+html, body { margin: 0; padding: 0; background: #101418; }
+img {
+  width: 96px;
+  height: 64px;
+  display: block;
+  margin: 8px;
+  background: #203040;
+}
+#fill { object-fit: fill; }
+#contain { object-fit: contain; }
+#cover { object-fit: cover; }
+#none { object-fit: none; object-position: left top; }

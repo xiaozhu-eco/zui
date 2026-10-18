@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>zui box probe</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #101010;
+        }
+
+        iframe {
+            display: block;
+            border: 0;
+        }
+
+        #out {
+            color: #ddd;
+            font: 12px monospace;
+            white-space: pre;
+            margin: 0;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+  Measures a zui page the way a browser lays it out, so the numbers can be diffed
+  against `zui_dump <page> --brief`.
+
+  Open as:  box-probe.html?target=<file-url>&w=1100&h=720
+  Needs --allow-file-access-from-files, otherwise the parent may not read the
+  frame's document. The frame is given the exact client size, so `vh`/`vw` and
+  percentage lengths inside it match what our app sees.
+
+  Rows are emitted as   dom|<tag>|<id>|<class>|<x>|<y>|<w>|<h>
+  in document order, skipping anything the browser does not lay out.
+-->
+    <iframe id="frame" width="1100" height="720"></iframe>
+    <pre id="out">pending</pre>
+    <script>
+        (function () {
+            const params = new URLSearchParams(location.search);
+            const target = params.get('target');
+            const width = Number(params.get('w') || 1100);
+            const height = Number(params.get('h') || 720);
+            const out = document.getElementById('out');
+            const frame = document.getElementById('frame');
+            frame.width = width;
+            frame.height = height;
+
+            function fail(text) {
+                out.textContent = 'ERR|' + text;
+            }
+
+            frame.addEventListener('load', function () {
+                const waitMs = Number(params.get('wait') || 0);
+                const run = function () {
+                let doc = null;
+                try {
+                    doc = frame.contentDocument;
+                } catch (e) {
+                    fail('frame not readable: ' + e.message);
+                    return;
+                }
+                if (!doc || !doc.documentElement) {
+                    fail('empty frame document (missing --allow-file-access-from-files?)');
+                    return;
+                }
+                const win = frame.contentWindow;
+                const rows = [];
+                // document.documentElement first: querySelectorAll alone skips the root element
+                const all = [doc.documentElement].concat(Array.from(doc.documentElement.querySelectorAll('*')));
+                for (const el of all) {
+                    const cs = win.getComputedStyle(el);
+                    if (cs.display === 'none' || cs.visibility === 'hidden') {
+                        continue;
+                    }
+                    const r = el.getBoundingClientRect();
+                    const cls = (el.getAttribute('class') || '').trim().replace(/\s+/g, ' ');
+                    rows.push([
+                        'dom',
+                        el.tagName.toLowerCase(),
+                        el.id || '',
+                        cls,
+                        r.x.toFixed(1),
+                        r.y.toFixed(1),
+                        r.width.toFixed(1),
+                        r.height.toFixed(1)
+                    ].join('|'));
+                }
+                const scroller = doc.scrollingElement || doc.documentElement;
+                rows.push('meta|elements|' + all.length + '|' +
+                    (all.length ? all[0].tagName.toLowerCase() : '-') + '|' +
+                    (all.length ? all[all.length - 1].tagName.toLowerCase() : '-'));
+                rows.push('meta|scroll|' + (win.innerWidth) + '|' + (win.innerHeight) + '|' +
+                    (scroller.scrollHeight) + '|' + (doc.documentElement.clientWidth));
+                out.textContent = rows.join('\n');
+                };
+                if (waitMs > 0) { setTimeout(run, waitMs); } else { run(); }
+            });
+
+            if (!target) {
+                fail('no ?target=');
+            } else {
+                frame.src = target;
+            }
+        })();
+    </script>
+</body>
+
+</html>

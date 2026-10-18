@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { margin: 0; }
+#list, #small, #sheet { height: 200px; overflow: auto; }
+.row { display: block; height: 20px; margin: 0; padding: 0; border: 0; }
+</style>
+</head>
+<body>
+<div id="list">
+<template><div class="row" id="row-{{index}}">{{text}}</div></template>
+</div>
+<div id="small">
+<template><div class="row" id="s-{{index}}">{{text}}</div></template>
+</div>
+<div id="sheet">
+<template><div class="row" id="t-{{index}}">{{text}}</div></template>
+</div>
+<div id="nest">
+<template><div class="row" id="n-{{index}}">{{text}}<div><template><span>{{text}}</span></template></div></div></template>
+</div>
+</body>
+</html>

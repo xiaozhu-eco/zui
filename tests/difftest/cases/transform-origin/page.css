@@ -1,0 +1,20 @@
+/* CSS Transforms 1 section 4: the function list is applied about `transform-origin`, whose initial
+   value is `50% 50%` - the centre is not baked in. `#a` keeps the initial value (control), and the
+   rest move the origin to each corner / edge pair, a percentage, and both `turn` and `grad` for the
+   angle, each with a rectangle whose transformed border box is what the trace compares. */
+
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+
+.cell {
+  width: 100px;
+  height: 60px;
+  margin: 20px;
+  background-color: #7cb7ff;
+}
+
+#a { transform: rotate(30deg); }
+#b { transform: rotate(90deg); transform-origin: left top; }
+#c { transform: rotate(90deg); transform-origin: right bottom; }
+#d { transform: scale(1.5); transform-origin: 0 0; }
+#e { transform: rotate(0.125turn); }
+#f { transform: rotate(100grad); transform-origin: center bottom; }

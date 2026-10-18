@@ -1,0 +1,57 @@
+/* Empty state before a database is open. */
+
+.pane-welcome {
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    padding: 32px 16px;
+    background:
+        radial-gradient(640px 280px at 50% 18%, rgba(44, 107, 78, 0.16), transparent 68%),
+        radial-gradient(420px 200px at 70% 80%, rgba(176, 132, 62, 0.12), transparent 70%),
+        transparent;
+}
+
+.welcome-card {
+    width: min(480px, 100%);
+    padding: 42px 36px 32px;
+    border: 1px solid rgba(255, 253, 248, 0.8);
+    border-radius: 28px;
+    background:
+        linear-gradient(180deg, rgba(255, 253, 248, 0.96), rgba(251, 246, 236, 0.92));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), var(--shadow);
+    text-align: center;
+}
+
+.mark-lg {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    border-radius: 18px;
+    font-size: 30px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 16px 28px rgba(29, 76, 54, 0.28);
+}
+
+.welcome-card h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+}
+
+.welcome-card p {
+    margin: 0;
+    color: var(--ink-soft);
+}
+
+.welcome-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.welcome-error {
+    margin-top: 16px;
+    color: var(--danger);
+    text-align: left;
+}

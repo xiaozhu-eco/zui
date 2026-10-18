@@ -1,0 +1,27 @@
+/* Fallback chains (TESTPLAN section 6): the first family in the list does not exist, so both
+   ends must fall through to the embedded face - and the two elements must agree with each
+   other, which is what catches a fallback that silently drops to a system font. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 短串 + 显式 line-height：字符串越长，两端 shaping 前进量的漂移（约 0.01px/字符）越可能越过
+   L2 的 1/64px 容差；回退链本身用两个字就能看出来（回退错了宽度就变）。 */
+html, body { margin: 0; padding: 0; font-size: 16px; line-height: 20px; }
+
+#row { white-space: nowrap; }
+
+/* inline-block 而不是纯 inline：纯 inline 的矩形两端不是同一个量（Chrome 的
+   getBoundingClientRect 给内容盒、scrollWidth 为 0，引擎给行内盒）。那条差异记在 README 的
+   已知问题里，这里只测回退链本身。 */
+.fallback-a, .fallback-b { display: inline-block; }
+
+/* 缺一个字母都不存在的 family，回退到内嵌字体。 */
+#t1 { font-family: "Zui Missing Family", "Zui Test", sans-serif; }
+
+/* 反过来的顺序：内嵌字体存在，后面的 sans-serif 不该被用到。 */
+#t2 { font-family: "Zui Test", "Zui Missing Family", sans-serif; }

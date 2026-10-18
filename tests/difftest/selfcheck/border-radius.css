@@ -1,0 +1,32 @@
+html, body { margin: 0; padding: 8px; background: #101418; }
+
+#single {
+  width: 80px;
+  height: 50px;
+  background: #7cb7ff;
+  border-radius: 12px;
+}
+
+#per {
+  width: 80px;
+  height: 50px;
+  margin-top: 8px;
+  background: #3d8f6e;
+  border-radius: 2px 16px 8px 4px;
+}
+
+#slash {
+  width: 100px;
+  height: 50px;
+  margin-top: 8px;
+  background: #c9a227;
+  border-radius: 40px / 20px;
+}
+
+#pct {
+  width: 60px;
+  height: 60px;
+  margin-top: 8px;
+  background: #b06ea8;
+  border-radius: 50%;
+}

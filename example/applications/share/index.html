@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="share">
+  <title>小竹分享</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/browse.css">
+  <link rel="stylesheet" href="css/xfer.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body onkeydown="on_accel">
+  <input id="theme-dark" class="hid" type="checkbox">
+  <!-- One document, seven screens. The screen is a class on #app (`screen-name`, `screen-browse`,
+       …); `incoming` is an independent class for the receive overlay. zui switches them with
+       add_class / remove_class, the browser build swaps the same class from js/view.js. -->
+  <div class="app screen-name" id="app" onpointerdown="on_gesture_down" onpointerup="on_gesture_up" onpointercancel="on_gesture_cancel">
+    <label class="theme-float" for="theme-dark"><span class="when-light">深色</span><span class="when-dark">浅色</span></label>
+
+    <!-- 01 · first run · name -->
+    <section class="screen screen-name">
+      <div class="name-body">
+        <div class="glow">
+          <img class="app-icon" src="icon.png" alt="">
+        </div>
+        <h1 class="name-title">小竹分享</h1>
+        <p class="muted name-lead">局域网里传文件，不走公网，不用注册</p>
+        <div class="card name-card">
+          <label class="field">
+            <span class="field-label">给自己起个名字</span>
+            <input id="name-input" class="input" type="text" placeholder="例如：客厅电脑"
+                   oninput="on_name" onkeydown="on_name_key" value="阿竹">
+          </label>
+          <p class="muted field-note">局域网里的其他人会看到它</p>
+          <button type="button" class="btn btn-primary btn-block" id="start" onclick="on_start">开始</button>
+          <p class="muted name-foot">同一 Wi-Fi 下打开即可互相发现。路由器请关闭 AP 隔离。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 / 03 / 11 / 14 · main · file browse -->
+    <section class="screen screen-browse">
+      <header class="topbar">
+        <div class="brand">
+          <span class="avatar avatar-sm">竹</span>
+          <span class="brand-text">
+            <span class="brand-title">小竹分享</span>
+            <span class="brand-sub" id="me-name">阿竹</span>
+          </span>
+        </div>
+        <button type="button" class="btn btn-ghost" id="settings" onclick="on_settings">设置</button>
+      </header>
+
+      <div class="browse-body">
+        <!-- narrow: the device strip sits on top -->
+        <div class="peers-strip">
+          <div class="peers-head">
+            <span class="muted">局域网设备</span>
+            <span class="accent" id="peer-count">2 台在线</span>
+          </div>
+          <div class="chips" id="peer-chips">
+            <template>
+              <span class="chip" id="chip-{{id}}" data-id="{{id}}" onclick="on_peer"><span class="dot"></span>{{name}}</span>
+            </template>
+          </div>
+          <p class="muted peers-empty" id="peers-empty" hidden>扫描中… 同一 Wi-Fi 下打开小竹分享即可被发现</p>
+        </div>
+
+        <!-- wide: the devices sit in the left column -->
+        <aside class="sidebar">
+          <div class="peers-head">
+            <span class="muted">局域网设备</span>
+            <span class="accent" id="peer-count-side">2 在线</span>
+          </div>
+          <div class="peer-list" id="peer-side">
+            <template>
+              <div class="card peer-card" id="peer-{{id}}" data-id="{{id}}" onclick="on_peer">
+                <span class="avatar avatar-md">{{initial}}</span>
+                <span class="peer-text">
+                  <span class="peer-name">{{name}}</span>
+                  <span class="muted peer-ip">{{ip}}</span>
+                </span>
+                <span class="dot dot-corner"></span>
+              </div>
+            </template>
+          </div>
+          <div class="card peer-hint">
+            <p>扫描中也会显示在这里</p>
+            <p class="muted">同一局域网即可发现</p>
+          </div>
+        </aside>
+
+        <main class="files" onpointerdown="on_gesture_files_down" onpointerup="on_gesture_up" onpointercancel="on_gesture_cancel">
+          <div class="toolbar">
+            <button type="button" class="btn btn-ghost" id="up" onclick="on_up">上级</button>
+            <button type="button" class="btn btn-ghost" id="refresh" onclick="on_refresh">刷新</button>
+            <div class="path-wrap">
+              <input id="path" class="input path" type="text" value="~/Downloads" onchange="on_path">
+            </div>
+          </div>
+          <div class="file-head">
+            <span class="col-name">名称</span>
+            <span class="col-size">大小</span>
+            <span class="col-kind">类型</span>
+          </div>
+          <div class="file-list" id="file-list">
+            <template>
+              <div class="frow {{cls}}" id="row-{{id}}" data-path="{{path}}" data-kind="{{kind}}" onclick="on_row">
+                <span class="check"></span>
+                <span class="gl gl-{{kind}}"></span>
+                <span class="fname">{{name}}</span>
+                <span class="fsize">{{size}}</span>
+                <span class="fkind">{{type}}</span>
+              </div>
+            </template>
+          </div>
+          <div class="bottombar">
+            <div class="sel-row">
+              <span class="sel-label" id="sel-label">已选 0 项</span>
+              <button type="button" class="btn btn-ghost" id="clear" onclick="on_clear" hidden>清除</button>
+            </div>
+            <button type="button" class="btn btn-primary btn-share" id="share" onclick="on_share" disabled>分享</button>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- 04 · pick a device -->
+    <section class="screen screen-pick">
+      <header class="subhead">
+        <button type="button" class="btn-back" id="pick-back" onclick="on_back" aria-label="返回"><span class="chev">‹</span></button>
+        <h2 class="subhead-title">发送到</h2>
+      </header>
+      <div class="pick-body">
+        <p class="muted" id="pick-sum">已选 0 项</p>
+        <p class="muted">点选一台在线设备，对方确认后开始传输</p>
+        <div class="pick-list" id="pick-list">
+          <template>
+            <div class="card peer-row">
+              <span class="avatar avatar-lg">{{initial}}</span>
+              <span class="peer-text">
+                <span class="peer-name">{{name}}</span>
+                <span class="muted peer-ip">{{ip}}</span>
+              </span>
+              <button type="button" class="btn btn-primary" id="send-{{id}}" data-id="{{id}}" onclick="on_pick">发送</button>
+            </div>
+          </template>
+        </div>
+        <div class="card pick-empty" id="pick-empty" hidden>
+          当前没有发现其他设备。确认对方已打开小竹分享，并且两台设备在同一局域网。
+        </div>
+        <div class="card hint-card">
+          <p class="hint-title">没有看到对方？</p>
+          <p class="muted">确认同一 Wi-Fi，且路由器未开 AP 隔离</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · waiting for the peer to accept -->
+    <section class="screen screen-wait">
+      <div class="center-body">
+        <div class="pulse">
+          <span class="ring ring-1"></span>
+          <span class="ring ring-2"></span>
+          <span class="ring ring-3"></span>
+          <span class="avatar avatar-xl" id="wait-avatar">厅</span>
+        </div>
+        <h2 class="wait-title" id="wait-title">等待「客厅电脑」接受…</h2>
+        <p class="muted" id="wait-hint">同一批文件支持断点续传，中断后再次发送会接着传。</p>
+        <div class="card sum-card">
+          <p class="sum-count" id="wait-count">3 个项目</p>
+          <p class="muted" id="wait-size">共 189.6 MB</p>
+        </div>
+        <button type="button" class="btn btn-ghost btn-wide" id="wait-cancel" onclick="on_wait_cancel">取消</button>
+      </div>
+    </section>
+
+    <!-- 09 · the peer refused -->
+    <section class="screen screen-fail">
+      <div class="center-body">
+        <div class="mark mark-bad"><span class="mark-x">✕</span></div>
+        <h2 class="fail-title" id="fail-title">「客厅电脑」拒绝了这次分享</h2>
+        <p class="muted" id="fail-sub">对方没有接受这批文件</p>
+        <button type="button" class="btn btn-primary btn-wide" id="fail-retry" onclick="on_fail_retry">再试一次</button>
+        <button type="button" class="btn btn-ghost btn-wide" id="fail-back" onclick="on_back">返回</button>
+      </div>
+    </section>
+
+    <!-- 07 / 13 · transferring -->
+    <section class="screen screen-transfer">
+      <div class="xfer-body">
+        <p class="xfer-kicker" id="xfer-kicker">正在发送</p>
+        <h2 class="xfer-peer" id="xfer-peer">客厅电脑</h2>
+        <p class="muted" id="xfer-ip">192.168.1.8</p>
+        <div class="card xfer-card">
+          <p class="xfer-pct" id="xfer-pct">42%</p>
+          <!-- Width comes from the model: set_model fills {{pct}} inside the style attribute
+               (there is no set_style in the A-tier surface). -->
+          <div class="bar" id="xfer-bar">
+            <template><span class="bar-fill" style="width:{{pct}}%"></span></template>
+          </div>
+          <p class="xfer-bytes" id="xfer-bytes">86.4 MB  /  189.6 MB</p>
+          <p class="muted" id="xfer-rate">42.1 MB/s  ·  剩余约 3 秒</p>
+          <p class="muted" id="xfer-resume">同批文件可断点续传。</p>
+          <div class="current">
+            <p class="muted">当前文件</p>
+            <p class="current-name" id="xfer-file">假期视频.mp4</p>
+          </div>
+          <div class="done-list" id="done-list">
+            <template>
+              <div class="done-row"><span>{{name}}</span><span class="accent">已完成</span></div>
+            </template>
+          </div>
+        </div>
+        <button type="button" class="btn btn-ghost btn-wide" id="xfer-cancel" onclick="on_xfer_cancel">取消</button>
+      </div>
+    </section>
+
+    <!-- 08 · transfer done -->
+    <section class="screen screen-done">
+      <div class="xfer-body">
+        <div class="mark mark-ok"><span class="mark-check">✓</span></div>
+        <h2 class="title-accent">传输完成</h2>
+        <p class="muted" id="done-sub">已发送到「客厅电脑」</p>
+        <div class="card stat-card">
+          <div class="kv"><span class="muted">大小</span><span id="done-size">189.6 MB</span></div>
+          <div class="kv"><span class="muted">用时</span><span id="done-time">4 秒</span></div>
+          <div class="kv"><span class="muted">均速</span><span id="done-rate">42.1 MB/s</span></div>
+        </div>
+        <button type="button" class="btn btn-ghost btn-wide" id="done-open" onclick="on_done_open">打开接收文件夹</button>
+        <button type="button" class="btn btn-primary btn-wide" id="done-ok" onclick="on_done">完成</button>
+      </div>
+    </section>
+
+    <!-- 10 · settings -->
+    <section class="screen screen-settings">
+      <header class="subhead">
+        <button type="button" class="btn-back" id="settings-back" onclick="on_back" aria-label="返回"><span class="chev">‹</span></button>
+        <h2 class="subhead-title">设置</h2>
+      </header>
+      <div class="settings-body">
+        <p class="section-label">身份</p>
+        <div class="card block">
+          <p class="muted">名字</p>
+          <input id="set-name" class="input" type="text" value="阿竹" oninput="on_name">
+          <button type="button" class="btn btn-primary btn-block" id="save-name" onclick="on_save_name">保存名字</button>
+        </div>
+
+        <p class="section-label">接收目录</p>
+        <div class="card block">
+          <p class="muted">接收文件保存到</p>
+          <input id="set-dir" class="input" type="text" value="~/Downloads/小竹分享">
+          <button type="button" class="btn btn-primary btn-block" id="save-dir" onclick="on_save_dir">保存目录</button>
+          <button type="button" class="btn btn-ghost btn-block" id="pick-dir"
+                  onclick="on_pick_save_dir">选择目录</button>
+          <button type="button" class="btn btn-ghost btn-block" id="use-cwd" onclick="on_use_cwd">使用当前浏览目录</button>
+          <p class="muted field-note" id="set-dir-note" hidden>安卓默认可用系统下载目录下的「小竹分享」；也可选择其他内部存储文件夹。</p>
+        </div>
+
+        <p class="section-label">存储权限</p>
+        <div class="card block">
+          <p class="muted" id="storage-perm-status">—</p>
+          <button type="button" class="btn btn-primary btn-block" id="request-storage"
+                  onclick="on_request_storage">去授权</button>
+        </div>
+
+        <p class="section-label">关于</p>
+        <div class="card block about">
+          <div class="kv"><span class="muted">传输</span><span>局域网 TCP，最多 8 条并行</span></div>
+          <div class="kv"><span class="muted">分块</span><span>每块 1 MB，支持断点续传</span></div>
+          <div class="kv"><span class="muted">发现</span><span>UDP 广播 / 组播</span></div>
+          <div class="kv"><span class="muted">账号</span><span>不需要，不走公网</span></div>
+        </div>
+        <p class="muted settings-foot">小竹分享 · 局域网文件传输</p>
+      </div>
+    </section>
+
+    <!-- App-level error line (name empty, port busy, nothing to send, ...). -->
+    <p class="app-error" id="app-error" hidden></p>
+
+    <!-- 06 / 12 · incoming share -->
+    <section class="screen screen-incoming" onpointerdown="on_gesture_incoming_down" onpointerup="on_gesture_up" onpointercancel="on_gesture_cancel">
+      <div class="scrim" onclick="on_reject"></div>
+      <div class="inc-card">
+        <span class="sheet-grab"></span>
+        <p class="muted inc-cap">收到分享</p>
+        <span class="avatar avatar-xl" id="inc-avatar">厅</span>
+        <p class="inc-line">
+          <span class="inc-name" id="inc-name">客厅电脑</span>
+          <span class="muted inc-want">想要向你发送文件</span>
+        </p>
+        <div class="inc-meta">
+          <p id="inc-line1">12 个项目  ·  1.24 GB</p>
+          <p class="muted" id="inc-line2">将保存到  Download / 小竹分享</p>
+        </div>
+        <div class="inc-actions">
+          <button type="button" class="btn btn-danger" id="reject" onclick="on_reject">拒绝</button>
+          <button type="button" class="btn btn-primary" id="accept" onclick="on_accept">接受</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <p class="file-notice" id="file-notice" hidden>此页使用模块脚本，用文件地址打开不会运行。在这个目录执行 <code>python -m http.server</code>，再用浏览器打开给出的地址。</p>
+  <script>
+  (function () {
+    if (location.protocol === "file:") {
+      var note = document.getElementById("file-notice");
+      if (note) note.hidden = false;
+    }
+  })();
+  </script>
+  <script type="module" src="js/boot.js"></script>
+</body>
+</html>

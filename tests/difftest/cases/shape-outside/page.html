@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="page.css"></head>
+<body>
+  <!-- Line boxes wrap the float area. Shape-outside shrinks that area; a fixed-size
+       inline-block probe on the first line reports where the shortened line starts. -->
+  <div class="host" id="rect-host">
+    <div class="fl" id="fl-rect"></div>
+    <p id="p-rect"><span class="probe" id="probe-rect"></span></p>
+  </div>
+
+  <div class="host" id="circle-host">
+    <div class="fl circle" id="fl-circle"></div>
+    <p id="p-circle"><span class="probe" id="probe-circle"></span></p>
+  </div>
+
+  <div class="host" id="ellipse-host">
+    <div class="fl ellipse" id="fl-ellipse"></div>
+    <p id="p-ellipse"><span class="probe" id="probe-ellipse"></span></p>
+  </div>
+
+  <div class="host" id="inset-host">
+    <div class="fl inset" id="fl-inset"></div>
+    <p id="p-inset"><span class="probe" id="probe-inset"></span></p>
+  </div>
+</body>
+</html>

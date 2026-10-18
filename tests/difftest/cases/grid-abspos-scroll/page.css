@@ -1,0 +1,41 @@
+/* An absolutely-positioned child that is placed far below an `overflow: auto` grid container must
+   still extend `scrollHeight`: the scrollable overflow of a scroll container is the union of its
+   client box and its out-of-flow descendants, not just the in-flow content (LAYOUT.md section 9).
+   The 5px border and padding make the frame explicit - the child is placed against the padding box,
+   so a stray border shift in the engine shows up here. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #fff; font-family: "Zui Test", sans-serif; font-size: 16px; }
+
+#grid {
+  position: relative;
+  display: grid;
+  box-sizing: border-box;
+  width: 200px;
+  height: 100px;
+  overflow: auto;
+  border: 5px solid #333333;
+  padding: 5px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px 60px;
+  background: #f4f4f4;
+}
+
+#flow { background: #cce4ff; }
+
+/* The containing block is the grid's padding box, so `top: 180px` lands 180px below the client box
+   origin; with a 30px height the bottom edge is at 210px and the trailing padding adds 5. */
+#abs {
+  position: absolute;
+  top: 180px;
+  left: 10px;
+  width: 40px;
+  height: 30px;
+  background: #ff8888;
+}

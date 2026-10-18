@@ -1,0 +1,9 @@
+#hex8, #hsl {
+  width: 40px;
+  height: 24px;
+  transition: background-color 200ms linear;
+}
+#hex8 { background-color: #00000000; }
+#hex8.on { background-color: #ff0000ff; }
+#hsl { background-color: hsl(0, 0%, 0%); }
+#hsl.on { background-color: hsl(0, 100%, 50%); }

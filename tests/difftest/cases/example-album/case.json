@@ -1,0 +1,427 @@
+{
+  "name": "example-album",
+  "page": "page.html",
+  "source": "../../../../example/applications/album/index.html",
+  "viewport": [
+    1100,
+    720
+  ],
+  "scripts": false,
+  "_comment": "小竹相册去掉页面脚本后的静态壳。空态提示、铺满相册栏与网格、顶部按钮 hover/按下（命中与焦点读回）、相册栏滚轮、Tab/Escape，最后撤掉 #lightbox 的 hidden 看灯箱版式。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 1100,
+      "h": 720
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_text",
+          "target": "#album-title",
+          "text": "海边"
+        },
+        {
+          "do": "remove_attr",
+          "target": "#empty",
+          "name": "hidden"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_attr",
+          "target": "#empty",
+          "name": "hidden",
+          "value": ""
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "海边",
+          "class": "album-btn on"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "山径",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "旧城",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "冬港",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "春溪",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "夏夜",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "秋原",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "灯下",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "渡口",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "旧书",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "远山",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "长街",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "雨巷",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "晨雾",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "砂丘",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "浮岛",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "礁石",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "松林",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "河谷",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#albums",
+          "tag": "button",
+          "text": "巷口",
+          "class": "album-btn"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 01",
+          "class": "tile"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 02",
+          "class": "tile"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 03",
+          "class": "tile"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 04",
+          "class": "tile"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 05",
+          "class": "tile"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 06",
+          "class": "tile"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 07",
+          "class": "tile"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 08",
+          "class": "tile"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 09",
+          "class": "tile"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 10",
+          "class": "tile"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 11",
+          "class": "tile"
+        },
+        {
+          "do": "insert",
+          "target": "#grid",
+          "tag": "button",
+          "text": "海边 12",
+          "class": "tile"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "dispatch",
+      "events": [
+        {
+          "type": "mouseMoved",
+          "x": 951,
+          "y": 27
+        },
+        {
+          "type": "mousePressed",
+          "x": 951,
+          "y": 27,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseReleased",
+          "x": 951,
+          "y": 27,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseWheel",
+          "x": 110,
+          "y": 300,
+          "deltaX": 0,
+          "deltaY": 240
+        },
+        {
+          "type": "keyDown",
+          "key": "Tab"
+        },
+        {
+          "type": "keyUp",
+          "key": "Tab"
+        },
+        {
+          "type": "keyDown",
+          "key": "Escape"
+        },
+        {
+          "type": "keyUp",
+          "key": "Escape"
+        }
+      ],
+      "hits": [
+        {
+          "x": 951,
+          "y": 27
+        },
+        {
+          "x": 110,
+          "y": 300
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "remove_attr",
+          "target": "#lightbox",
+          "name": "hidden"
+        }
+      ]
+    },
+    {
+      "op": "freeze",
+      "t": 400
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "style_props": [
+    "display",
+    "position",
+    "box-sizing",
+    "width",
+    "height",
+    "min-width",
+    "min-height",
+    "max-width",
+    "max-height",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+    "border-top-width",
+    "border-right-width",
+    "border-bottom-width",
+    "border-left-width",
+    "overflow-x",
+    "overflow-y",
+    "visibility",
+    "z-index",
+    "flex-direction",
+    "flex-wrap",
+    "flex-grow",
+    "flex-shrink",
+    "flex-basis",
+    "justify-content",
+    "align-items",
+    "align-content",
+    "align-self",
+    "order",
+    "row-gap",
+    "column-gap",
+    "font-family",
+    "font-size",
+    "font-weight",
+    "font-style",
+    "line-height",
+    "letter-spacing",
+    "word-spacing",
+    "text-align",
+    "text-indent",
+    "text-overflow",
+    "white-space",
+    "word-break",
+    "overflow-wrap",
+    "vertical-align"
+  ],
+  "text": {
+    "breaks": true,
+    "advances": false
+  }
+}

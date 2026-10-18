@@ -1,0 +1,20 @@
+html, body { margin: 0; padding: 0; }
+
+.host {
+  container-type: inline-size;
+  height: 40px;
+  margin: 8px;
+}
+
+#narrow { width: 100px; }
+#wide { width: 200px; }
+
+.card {
+  width: 40px;
+  height: 24px;
+  background: #cccccc;
+}
+
+@container (min-width: 150px) {
+  .card { width: 120px; }
+}

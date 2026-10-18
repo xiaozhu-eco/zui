@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="writer">
+  <meta name="zui-window" content="1100x720">
+  <title>小竹写作</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/workspace.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+  <input id="theme-dark" class="hid" type="checkbox">
+  <div class="app" id="app">
+    <div id="stage"></div>
+    <footer class="status-bar" id="status-bar">
+      <button type="button" id="tree-toggle" onclick="on_tree_toggle">目录</button>
+      <div id="dock"></div>
+      <nav class="modes" id="modes" aria-label="页面">
+        <button type="button" id="view-tree" class="is-on" onclick="on_view_tree">文稿</button>
+        <button type="button" id="view-calendar" onclick="on_view_calendar">月历</button>
+        <button type="button" id="view-history" onclick="on_view_history">历史</button>
+        <button type="button" id="mode-edit" class="is-on" onclick="on_mode_edit">编辑</button>
+        <button type="button" id="mode-read" onclick="on_mode_read">阅读</button>
+        <label class="theme-toggle" for="theme-dark"><span class="when-light">深色</span><span class="when-dark">浅色</span></label>
+      </nav>
+    </footer>
+  </div>
+  <p class="file-notice" id="file-notice" hidden>此页使用模块脚本，用文件地址打开不会运行。在这个目录执行 <code>python -m http.server</code>，再用浏览器打开给出的地址。</p>
+  <script>
+  (function () {
+    if (location.protocol === "file:") {
+      var note = document.getElementById("file-notice");
+      if (note) note.hidden = false;
+    }
+  })();
+  </script>
+  <script type="module" src="js/boot.js"></script>
+</body>
+</html>

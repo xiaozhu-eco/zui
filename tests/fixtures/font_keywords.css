@@ -1,0 +1,14 @@
+body { margin: 0; }
+#parent { font-size: 32px; }
+#medium { font-size: medium; }
+#small { font-size: small; }
+#large { font-size: large; }
+#smaller { font-size: smaller; }
+#larger { font-size: larger; }
+#root-large { font-size: large; }
+#med { font-size: medium; }
+#med-larger { font-size: larger; }
+#med-smaller { font-size: smaller; }
+#init { font-size: initial; }
+#init-larger { font-size: larger; }
+#init-smaller { font-size: smaller; }

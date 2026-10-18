@@ -1,0 +1,39 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 6px;
+    margin: 0;
+}
+
+td {
+    width: 40px;
+    height: 20px;
+    background-color: #3d8f6e;
+    border: 2px solid #7cb7ff;
+    /* Nothing in this case is about text: the strut is switched off so the row height comes from
+       the declared 20px and not from a font's line metrics. */
+    font-family: "Zui Test";
+    font-size: 16px;
+    line-height: 0;
+    vertical-align: top;
+}
+
+/* An in-flow child is content, whatever its size. */
+.inner {
+    display: block;
+    width: 10px;
+    height: 4px;
+    background-color: #e0a050;
+}
+
+/* CSS 2.1 section 17.6.1: with `hide`, a cell that has no in-flow content paints neither its
+   background nor its border, but still takes its place in the row. */
+#hide {
+    empty-cells: hide;
+}

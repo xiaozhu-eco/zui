@@ -1,0 +1,17 @@
+{
+  "name": "at-supports-selector",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "@supports selector() enables a rule when the selector parses and disables it for an unknown pseudo or a broken selector. Width 160 and green means the branch applied; width 48 and red means it did not. Same matrix tag as at-supports.",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

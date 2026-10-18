@@ -1,0 +1,42 @@
+/* `grid-template` and `grid` (CSS Grid section 7.4).
+
+   `grid-template` takes the areas form `[ <line-names>? <string> <track-size>? ]+ / <tracks>`,
+   which sets the areas, the rows (an unsized row stays `auto`) and the columns at once.
+   `grid` additionally resets the implicit axis and the auto flow; `auto-flow` names the implicit
+   axis: on the left it means `grid-auto-flow: row` with the columns from the right side, on the
+   right it means `grid-auto-flow: column` with the rows from the left side. */
+
+html, body { margin: 0; padding: 0; }
+
+#areas {
+  display: grid;
+  width: 300px;
+  height: 60px;
+  grid-template:
+    "head head side" 30px
+    "main main side" 30px
+    / 100px 100px 100px;
+  background: #f4f4f4;
+}
+#head { grid-area: head; background: #cccccc; }
+#main { grid-area: main; background: #bbbbbb; }
+#side { grid-area: side; background: #aaaaaa; }
+
+#explicit {
+  display: grid;
+  width: 300px;
+  height: 30px;
+  grid: 30px / 100px 100px 100px;
+}
+#p { background: #cccccc; }
+#q { background: #bbbbbb; }
+
+#column {
+  display: grid;
+  width: 300px;
+  height: 30px;
+  grid: 30px / auto-flow dense 100px;
+  background: #f4f4f4;
+}
+#c1 { background: #cccccc; }
+#c2 { background: #bbbbbb; }

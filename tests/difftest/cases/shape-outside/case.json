@@ -1,0 +1,16 @@
+{
+  "name": "shape-outside",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2：shape-outside 子集 circle()/ellipse()/inset() 按轮廓缩短浮动排除区；对照矩形浮动。探针为 overflow:hidden BFC，几何读 border_box.x/width。",
+  "matrix": ["flow.normal", "float"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "grid-shorthands",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "grid-template / grid 简写：字符串区域形式、显式 rows / columns 形式，以及 auto-flow 的隐式轴。",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

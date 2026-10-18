@@ -1,0 +1,20 @@
+{
+  "name": "paint-bg-layers",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "CSS Backgrounds 3 §2.1 / §3.11. Two image layers (longhands and the background shorthand), per-layer background-clip, background-attachment:fixed against the viewport, and local versus scroll after a 24px scroll. Solid gradient stops so the pixels are flat colours. pixel_tolerance 1 absorbs the same Blink gradient dither as paint-gradient.",
+  "matrix": ["css.background"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "scroll", "target": "#local", "x": 0, "y": 24 },
+    { "op": "scroll", "target": "#stuck", "x": 0, "y": 24 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": false }
+}

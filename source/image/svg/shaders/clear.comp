@@ -1,0 +1,26 @@
+#version 450
+layout(local_size_x = 8, local_size_y = 8) in;
+
+#ifdef ZUI_PUSH
+layout(push_constant) uniform ParamsBlock {
+#else
+layout(std140, binding = 0) uniform ParamsBlock {
+#endif
+    ivec4 viewport;
+    vec4 rect;
+    vec4 extra;
+} zui_params;
+
+layout(std430, binding = 5) buffer PixelBlock { uint pixels[]; };
+
+void main() {
+    if (gl_GlobalInvocationID.x >= uint(zui_params.rect.z) || gl_GlobalInvocationID.y >= uint(zui_params.rect.w)) {
+        return;
+    }
+    int x = int(zui_params.rect.x) + int(gl_GlobalInvocationID.x);
+    int y = int(zui_params.rect.y) + int(gl_GlobalInvocationID.y);
+    int layer = int(zui_params.extra.w + 0.5);
+    uint index = uint(layer) * uint(zui_params.viewport.x) * uint(zui_params.viewport.y) +
+                 uint(y) * uint(zui_params.viewport.x) + uint(x);
+    pixels[index] = 0u;
+}

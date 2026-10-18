@@ -1,0 +1,48 @@
+/*
+  宿主样式表：预览沙箱原本提供的那些页面级规则。
+  原型的样式表一字未改，缺的是"页面"这一层，所以单独放这里。
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #fafafb;
+  font-family: ui-sans-serif, system-ui, "Segoe UI", "Microsoft YaHei UI", sans-serif;
+  overflow: hidden;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+/* 预览沙箱给图标定的尺寸钩子：原型各处的 --icon-size 靠它生效 */
+svg.lucide {
+  display: block;
+  width: var(--icon-size, 16px) !important;
+  height: var(--icon-size, 16px) !important;
+  flex: none;
+}

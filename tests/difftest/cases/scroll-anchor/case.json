@@ -1,0 +1,27 @@
+{
+  "name": "scroll-anchor",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2 scroll anchoring: scroll so #anchor is selected, insert above it, assert scrollTop absorbs the growth (eval.insert DSL).",
+  "matrix": ["scroll.overflow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "scroll", "target": "#scroller", "x": 0, "y": 120 },
+    { "op": "trace" },
+    {
+      "op": "eval",
+      "readback": true,
+      "target": "#scroller",
+      "actions": [
+        { "do": "insert", "target": "#scroller", "tag": "div", "id": "spacer",
+          "before": "#anchor", "props": { "height": "40px", "background": "#d0d0d0" } }
+      ]
+    },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

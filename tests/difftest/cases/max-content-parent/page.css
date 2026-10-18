@@ -1,0 +1,40 @@
+/* Isolates one thing: once a parent's width is resolved from an intrinsic keyword, its block
+   children still fill that resolved width. A block with width: auto never shrink-to-fits. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Zui Test", sans-serif;
+  font-size: 14px;
+}
+
+#wrap {
+  width: max-content;
+  max-width: 320px;
+  padding: 12px;
+  background-color: #eeeeee;
+}
+
+#child {
+  background-color: #dddddd;
+}
+
+/* Same keyword, but the content is far narrower than max-width, so "the keyword was honoured"
+   and "the keyword was ignored and max-width clamped it" give different answers. */
+#narrow {
+  width: max-content;
+  max-width: 320px;
+  padding: 12px;
+  background-color: #eeeeee;
+}
+
+#short {
+  background-color: #dddddd;
+}

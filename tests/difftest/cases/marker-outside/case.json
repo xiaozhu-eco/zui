@@ -1,0 +1,17 @@
+{
+  "name": "marker-outside",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "M4 ::marker outside: text keeps padding-left gutter; marker hangs with inline-end at content start; hanging ink must not grow scrollWidth. required:false — selfcheck owns the constants; L4 disc pixels are not a pass gate.",
+  "matrix": ["css.marker"],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "off",
+  "text": { "breaks": false, "advances": false },
+  "style_props": ["display", "list-style-type", "list-style-position", "padding-left"]
+}

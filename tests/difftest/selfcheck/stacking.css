@@ -1,0 +1,139 @@
+/* One element per line of LAYOUT.md section 11's stacking-context list. The check reads
+   `stacking_info` off each of them, so this file is the list's machine-readable form. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  width: 20px;
+  height: 10px;
+}
+
+#relative {
+  position: relative;
+}
+
+#relative-z {
+  position: relative;
+  z-index: 3;
+}
+
+#absolute-neg {
+  position: absolute;
+  z-index: -2;
+}
+
+#fixed {
+  position: fixed;
+}
+
+#sticky {
+  position: sticky;
+}
+
+#faded {
+  opacity: 0.5;
+}
+
+#transformed {
+  transform: translate(4px, 4px);
+}
+
+#filtered {
+  filter: blur(1px);
+}
+
+#blended {
+  mix-blend-mode: multiply;
+}
+
+#isolated {
+  isolation: isolate;
+}
+
+#will-change {
+  will-change: opacity;
+}
+
+#contain-paint {
+  contain: paint;
+}
+
+#contain-layout {
+  contain: layout;
+}
+
+#static-z {
+  z-index: 4;
+}
+
+/* Far below its containing block, so `body`'s ink rectangle has to reach it: an out-of-flow child
+   is a direct child of the collecting box and belongs in that box's ink (LAYOUT.md section 4). */
+#abs-far {
+  position: absolute;
+  left: 300px;
+  top: 900px;
+  width: 40px;
+  height: 20px;
+}
+
+#flex-order,
+#flex-z {
+  display: flex;
+  width: 60px;
+  height: 10px;
+}
+
+/* flex-z must be a stacking context so its non-auto z-index items participate here (not lifted). */
+#flex-z {
+  isolation: isolate;
+}
+
+#order-first {
+  order: 1;
+}
+
+#order-second {
+  order: -1;
+}
+
+/* A flex item with a non-auto `z-index` is a stacking context even without `position`. */
+#flex-z-pos {
+  z-index: 2;
+}
+
+#flex-z-neg {
+  z-index: -1;
+}
+
+/* Appendix E flatten: isolation builds the ancestor context; positioned z-auto mid is not a
+   context, so its negative-z absolute paints in auto-host's step 2 (ahead of in-flow siblings). */
+#auto-host {
+  isolation: isolate;
+  position: relative;
+  width: 60px;
+  height: 40px;
+}
+
+#auto-flow {
+  width: 40px;
+  height: 20px;
+}
+
+#auto-mid {
+  position: relative;
+  z-index: auto;
+  width: 40px;
+  height: 20px;
+}
+
+#auto-lifted {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 10px;
+  z-index: -1;
+}

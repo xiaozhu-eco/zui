@@ -1,0 +1,42 @@
+# Sign one executable, or report that this step did not sign.
+#   cmake -DEXE=<path> -DCERT=<thumbprint> -P cmake/zui_sign.cmake
+# An empty CERT (or no CERT) still succeeds and prints "did not sign".
+if(NOT DEFINED EXE OR EXE STREQUAL "")
+    if(DEFINED ENV{ZUI_SIGN_EXE})
+        set(EXE "$ENV{ZUI_SIGN_EXE}")
+    endif()
+endif()
+if(NOT DEFINED CERT)
+    if(DEFINED ENV{ZUI_SIGN_CERT})
+        set(CERT "$ENV{ZUI_SIGN_CERT}")
+    else()
+        set(CERT "")
+    endif()
+endif()
+if(NOT DEFINED EXE OR EXE STREQUAL "")
+    message(FATAL_ERROR "zui sign: EXE is required")
+endif()
+if(CERT STREQUAL "")
+    message(NOTICE "zui sign: did not sign")
+    return()
+endif()
+find_program(ZUI_SIGNTOOL signtool)
+if(NOT ZUI_SIGNTOOL AND WIN32)
+    file(GLOB _zui_signtool_candidates
+        "C:/Program Files (x86)/Windows Kits/10/bin/*/x64/signtool.exe")
+    if(_zui_signtool_candidates)
+        list(SORT _zui_signtool_candidates)
+        list(GET _zui_signtool_candidates -1 ZUI_SIGNTOOL)
+    endif()
+endif()
+if(NOT ZUI_SIGNTOOL)
+    message(FATAL_ERROR "zui sign: signtool not found")
+endif()
+execute_process(
+    COMMAND "${ZUI_SIGNTOOL}" sign /fd SHA256 /sha1 "${CERT}" "${EXE}"
+    RESULT_VARIABLE zui_sign_rc
+)
+if(NOT zui_sign_rc EQUAL 0)
+    message(FATAL_ERROR "zui sign: signtool failed (${zui_sign_rc})")
+endif()
+message(NOTICE "zui sign: signed ${EXE}")

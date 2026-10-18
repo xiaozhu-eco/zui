@@ -1,0 +1,351 @@
+{
+  "name": "example-contacts",
+  "page": "page.html",
+  "source": "../../../../example/applications/contacts/index.html",
+  "viewport": [
+    1100,
+    720
+  ],
+  "scripts": false,
+  "_comment": "小竹通讯录去掉页面脚本后的静态壳。名单条目、只显示星标（:checked 兄弟选择器）、顶部「新建」的 hover/按下、名单滚轮、Tab/Escape，最后撤掉 #editor 的 hidden。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 1100,
+      "h": 720
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_text",
+          "target": "#d-name",
+          "text": "沈青禾"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "沈青禾 设计师",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "林岸 后端",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "周未 产品",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "许一 运维",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "陈默 前端",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "苏晚 测试",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "何宁 数据",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "于归 运营",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "白露 法务",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "郑南 商务",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "秦朗 硬件",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "吴桐 编辑",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "卓然 客服",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "柳岸 摄影",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "范青 声乐",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "康乐 行政",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "钟原 财务",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "桑榆 采购",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "孔嘉 培训",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "聂川 后勤",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "关月 编辑",
+          "class": "person"
+        },
+        {
+          "do": "insert",
+          "target": "#list",
+          "tag": "button",
+          "text": "黎夏 设计",
+          "class": "person"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_checked",
+          "target": "#star-only",
+          "value": true
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "dispatch",
+      "events": [
+        {
+          "type": "mouseMoved",
+          "x": 1060,
+          "y": 29
+        },
+        {
+          "type": "mousePressed",
+          "x": 1060,
+          "y": 29,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseReleased",
+          "x": 1060,
+          "y": 29,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseWheel",
+          "x": 160,
+          "y": 400,
+          "deltaX": 0,
+          "deltaY": 200
+        },
+        {
+          "type": "keyDown",
+          "key": "Tab"
+        },
+        {
+          "type": "keyUp",
+          "key": "Tab"
+        },
+        {
+          "type": "keyDown",
+          "key": "Escape"
+        },
+        {
+          "type": "keyUp",
+          "key": "Escape"
+        }
+      ],
+      "hits": [
+        {
+          "x": 1060,
+          "y": 29
+        },
+        {
+          "x": 160,
+          "y": 400
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "remove_attr",
+          "target": "#editor",
+          "name": "hidden"
+        }
+      ]
+    },
+    {
+      "op": "freeze",
+      "t": 400
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "style_props": [
+    "display",
+    "position",
+    "box-sizing",
+    "width",
+    "height",
+    "min-width",
+    "min-height",
+    "max-width",
+    "max-height",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+    "border-top-width",
+    "border-right-width",
+    "border-bottom-width",
+    "border-left-width",
+    "overflow-x",
+    "overflow-y",
+    "visibility",
+    "z-index",
+    "flex-direction",
+    "flex-wrap",
+    "flex-grow",
+    "flex-shrink",
+    "flex-basis",
+    "justify-content",
+    "align-items",
+    "align-content",
+    "align-self",
+    "order",
+    "row-gap",
+    "column-gap",
+    "font-family",
+    "font-size",
+    "font-weight",
+    "font-style",
+    "line-height",
+    "letter-spacing",
+    "word-spacing",
+    "text-align",
+    "text-indent",
+    "text-overflow",
+    "white-space",
+    "word-break",
+    "overflow-wrap",
+    "vertical-align"
+  ],
+  "text": {
+    "breaks": true,
+    "advances": false
+  }
+}

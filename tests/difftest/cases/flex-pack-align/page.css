@@ -1,0 +1,32 @@
+html, body { margin: 0; padding: 0; background-color: #101418; }
+
+.row {
+  display: flex;
+  width: 240px;
+  height: 40px;
+  margin: 12px;
+  background-color: #222831;
+}
+
+#around { justify-content: space-around; }
+#evenly { justify-content: space-evenly; }
+
+#content {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  width: 120px;
+  height: 120px;
+  margin: 12px;
+  background-color: #222831;
+}
+
+.cell {
+  width: 32px;
+  height: 24px;
+  flex: 0 0 auto;
+}
+
+.a { background-color: #7cb7ff; }
+.b { background-color: #3d8f6e; }
+.c { background-color: #e85d4c; }

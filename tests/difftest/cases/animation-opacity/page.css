@@ -1,0 +1,16 @@
+/* Animation interpolation (TESTPLAN section 5): freeze the animation at a sample point and
+   compare the *used* value in style space - opacity here, so the case does not depend on the
+   matrix serialization. Specified values never move (LAYOUT section 1: layout reads computed
+   style; the animation is an overlay). */
+
+html, body { margin: 0; padding: 0; }
+
+#box {
+  width: 100px;
+  height: 40px;
+  background: #cccccc;
+  opacity: 1;
+  transition: opacity 200ms linear;
+}
+
+.faded { opacity: 0.25; }

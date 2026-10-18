@@ -1,0 +1,83 @@
+html, body {
+  margin: 0;
+  background: #101418;
+}
+
+div {
+  position: absolute;
+  width: 160px;
+  height: 140px;
+}
+
+#srgb40 {
+  left: 24px;
+  top: 24px;
+  background-color: color-mix(in srgb, rgb(255 0 0) 40%, rgb(0 0 255));
+}
+
+#srgb50 {
+  left: 208px;
+  top: 24px;
+  background-color: color-mix(in srgb, rgb(255 0 0) 50%, rgb(0 0 255) 50%);
+}
+
+#under {
+  left: 392px;
+  top: 24px;
+  background-color: color-mix(in srgb, rgb(255 0 0) 40%, rgb(0 0 255) 40%);
+}
+
+#fade {
+  left: 576px;
+  top: 24px;
+  background-color: color-mix(in srgb, rgb(255 0 0) 50%, transparent);
+}
+
+#hwb {
+  left: 24px;
+  top: 188px;
+  background-color: hwb(120 20% 10%);
+}
+
+#fn {
+  left: 208px;
+  top: 188px;
+  background-color: color(srgb 0.2 0.4 0.8);
+}
+
+#lin {
+  left: 392px;
+  top: 188px;
+  background-color: color(srgb-linear 0.25 0.05 0.01);
+}
+
+#oklch {
+  left: 576px;
+  top: 188px;
+  background-color: oklch(0.72 0.04 200);
+}
+
+#oklab {
+  left: 24px;
+  top: 352px;
+  background-color: oklab(0.68 -0.02 0.03);
+}
+
+#p3 {
+  left: 208px;
+  top: 352px;
+  background-color: color(display-p3 0.3 0.22 0.18);
+}
+
+#lab {
+  left: 392px;
+  top: 352px;
+  background-color: lab(60 8 12);
+}
+
+#tint {
+  left: 576px;
+  top: 352px;
+  color: rgb(20 180 40);
+  background-color: color-mix(in srgb, currentcolor 20%, white);
+}

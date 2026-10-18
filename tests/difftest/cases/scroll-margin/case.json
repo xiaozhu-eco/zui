@@ -1,0 +1,17 @@
+{
+  "name": "scroll-margin",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "scrollIntoView start aligns #mark using scroll-margin-top and the scroller's scroll-padding-top.",
+  "matrix": ["scroll.overflow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "scroll_into_view", "target": "#mark", "block": "start" },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict"
+}

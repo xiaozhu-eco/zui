@@ -1,0 +1,66 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+}
+
+.sw {
+  width: 120px;
+  height: 90px;
+}
+
+/* Stretch a solid red bitmap to the origin box. */
+#stretch {
+  background-color: #203040;
+  background-image: url("red8.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Tile a green 4×4 scaled to 20×20. */
+#tile {
+  background-color: #102030;
+  background-image: url(green4.png);
+  background-repeat: repeat;
+  background-size: 20px 20px;
+}
+
+/* Positioned no-repeat tile at the bottom-right. */
+#corner {
+  background-color: #304050;
+  background-image: url("red8.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 32px 32px;
+}
+
+/* cover keeps aspect and fills the shorter axis. */
+#cover {
+  background-color: #405060;
+  background-image: url(red8.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* contain fits inside the origin box; letterbox shows the bg colour. */
+#contain {
+  background-color: #506070;
+  background-image: url("red8.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+/* Control: solid colour, no image. */
+#solid {
+  background-color: #3c516c;
+}

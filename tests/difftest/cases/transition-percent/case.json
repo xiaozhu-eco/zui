@@ -1,0 +1,25 @@
+{
+  "name": "transition-percent",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1: width/padding % length transitions. Mid/end via freeze; interpolate-size auto covered by CssTransition.LengthProps + TransitionPercentAutoLayout.",
+  "matrix": ["animation.interpolation"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "eval", "actions": [
+      { "do": "add_class", "target": "#pct", "name": "on" },
+      { "do": "add_class", "target": "#pad", "name": "on" }
+    ]},
+    { "op": "freeze", "t": 100 },
+    { "op": "trace" },
+    { "op": "freeze", "t": 200 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,98 @@
+* {
+    box-sizing: content-box;
+}
+
+body {
+    margin: 0;
+    font-size: 16px;
+}
+
+#cb {
+    width: 1000px;
+    background: #eeeeee;
+}
+
+/* padding: <length-percentage> + math function (CSS Box 4 section 4).
+   Expected left/right = max(20, (1000 - 400) / 2) = 300. */
+#pad_math {
+    padding-left: max(20px, calc((100% - 400px) / 2));
+    padding-right: max(20px, calc((100% - 400px) / 2));
+}
+
+/* Expected left = 1000 - 900 = 100. */
+#pad_calc {
+    padding-left: calc(100% - 900px);
+}
+
+/* Expected left = max(10, (1000 - 800) / 2) = 100. */
+#mar_math {
+    margin-left: max(10px, calc((100% - 800px) / 2));
+}
+
+/* Expected min-width = min(300, 1000) = 300. */
+#min_math {
+    min-width: min(300px, 100%);
+}
+
+/* Expected max-width = min(400, 1000) = 400. */
+#max_math {
+    max-width: min(400px, 100%);
+}
+
+/* Expected top = calc(100% - 500px) with a 1000x500 basis = 0 ... use a percentage of
+   the containing block's block size instead: 300 - 100 = 200. */
+#inset_math {
+    position: relative;
+    top: 0;
+    height: calc(100% - 100px);
+}
+
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Expected used width = min(400, available). */
+#flex_math {
+    width: min(400px, 100%);
+}
+
+#grid_math {
+    width: min(400px, 100%);
+}
+
+/* The reader's page-mode margin, on a containing block wider than 50rem (800px): the used value
+   is (1200 - 800) / 2 = 200. */
+#cb_large {
+    width: 1200px;
+    background: #eeeeee;
+}
+
+#pad_large {
+    padding-left: max(16px, calc((100% - 50rem) / 2));
+}
+
+/* The same declaration where the `max` floor wins: (700 - 800) / 2 is negative, so 16. */
+#cb_narrow {
+    width: 700px;
+    background: #eeeeee;
+}
+
+#pad_narrow {
+    padding-left: max(16px, calc((100% - 50rem) / 2));
+}
+
+/* A plain percentage keeps its own lane: 10% of the 1000px containing block, no math involved. */
+#pad_plain {
+    padding-left: 10%;
+}
+
+/* `min-width` only shows up in a box that would otherwise be narrower than it. */
+#min_fit {
+    display: inline-block;
+    min-width: min(300px, 100%);
+}

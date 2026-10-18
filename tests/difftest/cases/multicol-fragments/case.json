@@ -1,0 +1,16 @@
+{
+  "name": "multicol-fragments",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "多栏里的 grid / table / 列 flex：容器在行边界（flex 是项边界）产生断点，多栏消费它们。",
+  "matrix": ["multicol", "fragmentation"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

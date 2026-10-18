@@ -1,0 +1,23 @@
+/* `align-items: baseline` gives the whole row one baseline: every item that asks for it is offset
+   so that its own first baseline lands on the row's, which is the largest of the items'
+   baselines (CSS Grid section 12 / CSS Box Alignment section 9).
+
+   The heights are explicit so the case measures the baseline offset, not the text metrics: the
+   two items share one row and the taller (larger) item's baseline wins. */
+
+html, body { margin: 0; padding: 0; }
+
+#g {
+  display: grid;
+  width: 200px;
+  grid-template-columns: 100px 100px;
+  align-items: baseline;
+  background: #f4f4f4;
+}
+
+/* The glyphs are hidden so the case compares layout, not rasterisation: the line box (and with it
+   the item's baseline) is unchanged, but nothing is painted. The block-sized span keeps its own
+   rectangle a fixed width, so the trace does not compare a text advance. */
+.ghost { display: block; visibility: hidden; width: 100%; }
+#a { font-size: 30px; height: 60px; background: #cccccc; }
+#b { font-size: 12px; height: 40px; background: #bbbbbb; }

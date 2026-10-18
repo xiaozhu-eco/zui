@@ -1,0 +1,35 @@
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+.box {
+  margin: 16px 0 0 20px;
+  background-color: #d7dee8;
+  background-image: linear-gradient(to right, #c4554a 0% 50%, #3d9a6a 50% 100%);
+  background-position: left top;
+}
+
+/* 40px tiles. 180px shows four full tiles and a 20px red remainder. */
+#repeat {
+  width: 180px;
+  height: 56px;
+  background-size: 40px 56px;
+  background-repeat: repeat;
+}
+
+/* Four 40px tiles, three 8px gaps. The gaps show the box colour. */
+#space {
+  width: 184px;
+  height: 56px;
+  background-size: 40px 56px;
+  background-repeat: space;
+}
+
+/* 160/100 rounds to 2, so each stripe tile is drawn 80px wide. */
+#round {
+  width: 160px;
+  height: 64px;
+  background-size: 100px 64px;
+  background-repeat: round;
+}

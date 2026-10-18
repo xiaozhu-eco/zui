@@ -1,0 +1,19 @@
+html, body { margin: 0; padding: 0; }
+
+#row, #first {
+  display: grid;
+  box-sizing: border-box;
+  width: 200px;
+  height: 100px;
+  grid-template-columns: 100px 100px;
+  grid-template-rows: 100px;
+  margin: 8px;
+  background: #f4f4f4;
+}
+
+#row { align-items: last baseline; justify-items: start; }
+#first { align-items: baseline; justify-items: start; }
+
+.ghost { display: block; visibility: hidden; width: 100%; }
+#a, #fa { font-size: 30px; height: 60px; width: 80px; background: #cccccc; }
+#b, #fb { font-size: 12px; height: 40px; width: 50px; background: #bbbbbb; }

@@ -1,0 +1,17 @@
+{
+  "name": "max-content-parent",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "最小复现：父级用 max-content 定宽之后，width: auto 的块子级必须填满解析出来的宽度。example/tests/flow/flow.html 的 .case/.k 就是这个形态，引擎侧把 .k 缩成了自己的文字宽度，导致文字多折了 2-8 行。",
+  "matrix": ["flow.normal", "flow.inline"],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "text-aa",
+  "text": { "breaks": false, "advances": false }
+}

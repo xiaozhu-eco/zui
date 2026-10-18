@@ -1,0 +1,52 @@
+/* Narrow shelf: a calc flex-basis must wrap the search onto its own row, a flex
+   button's calc width must fill the row, and auto-fill must count columns from
+   that same definite width. */
+html, body { margin: 0; height: 100%; }
+.shelf {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.topbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+}
+.brand { order: 1; flex: 1 1 auto; min-width: 144px; height: 28px; }
+.menu { order: 2; width: 36px; height: 28px; flex-shrink: 0; }
+.finder {
+    order: 3;
+    flex: 1 1 calc(100% - 64px);
+    max-width: none;
+    min-width: 0;
+    height: 28px;
+}
+.sort { order: 4; width: 40px; height: 28px; flex-shrink: 0; }
+.view { order: 5; width: 72px; height: 28px; flex-shrink: 0; }
+.theme { order: 6; width: 88px; height: 28px; flex-shrink: 0; }
+.shelf-body { flex: 1; min-height: 0; overflow: auto; }
+.resume {
+    display: flex;
+    width: calc(100% - 32px);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 40px;
+}
+.books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+    gap: 22px 14px;
+    padding: 20px 16px 48px;
+}
+.card-wrap { display: flex; flex-direction: column; min-width: 0; }
+.card {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.cover { display: block; aspect-ratio: 3 / 4; }

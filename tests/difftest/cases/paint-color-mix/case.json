@@ -1,0 +1,18 @@
+{
+  "name": "paint-color-mix",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "color-mix and in-gamut modern colors as flat fills. pixel_tolerance 2 covers an 8-bit rounding step on a wide-gamut conversion. A wrong interpolation space still paints a whole panel off by far more than 2 and fails the zone rule.",
+  "matrix": ["css.color"],
+  "required": true,
+  "pixel_tolerance": 2,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

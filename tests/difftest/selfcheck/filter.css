@@ -1,0 +1,19 @@
+html, body { margin: 0; padding: 8px; background: #101418; }
+#bright, #blur, #fade, #plain {
+  width: 60px;
+  height: 40px;
+  margin-bottom: 8px;
+  background: #7cb7ff;
+}
+#bright { filter: brightness(1.5); }
+#blur { filter: blur(4px); }
+#fade { filter: opacity(0.5); }
+#drop, #ink, #rgba {
+  width: 60px;
+  height: 40px;
+  margin-bottom: 8px;
+  background: #2c63d2;
+}
+#drop { filter: drop-shadow(10px 12px 4px #102040); }
+#ink { color: #cc3344; filter: drop-shadow(3px 4px); }
+#rgba { filter: drop-shadow(2px 2px 1px rgba(16, 32, 64, 0.5)); }

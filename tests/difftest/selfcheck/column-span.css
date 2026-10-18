@@ -1,0 +1,23 @@
+html, body { margin: 0; padding: 0; background: #10141c; }
+#cols {
+  width: 420px;
+  column-count: 3;
+  column-gap: 20px;
+  background-color: #161c27;
+  padding: 8px;
+}
+.blk {
+  height: 48px;
+  margin: 0;
+  break-inside: avoid;
+  background-color: #243044;
+}
+#b1 { background-color: #7cb7ff; }
+#c1 { background-color: #8fd18a; }
+#a2 { background-color: #243044; }
+.span {
+  column-span: all;
+  height: 32px;
+  margin: 0;
+  background-color: #ffcc00;
+}

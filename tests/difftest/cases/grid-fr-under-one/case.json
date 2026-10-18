@@ -1,0 +1,17 @@
+{
+  "name": "grid-fr-under-one",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "CSS Grid 11.7.1: the flex-factor sum is clamped to 1, both with no frozen track and after one freezes.",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

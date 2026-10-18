@@ -1,0 +1,29 @@
+/* Sharp 6px outlines. The ring is outside the border box, so the row gap
+   has to clear two rings (6+6) plus a little air. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #eef1f5;
+}
+
+.row {
+  display: flex;
+  gap: 28px;
+  padding: 24px;
+}
+
+.sw {
+  box-sizing: border-box;
+  width: 100px;
+  height: 70px;
+  background-color: #dce3ec;
+}
+
+#dashed { outline: 6px dashed #1a4f8c; }
+#dotted { outline: 6px dotted #1a4f8c; }
+#double { outline: 6px double #1a4f8c; }
+#groove { outline: 6px groove #6b4c9a; }
+#ridge  { outline: 6px ridge  #6b4c9a; }
+#inset  { outline: 6px inset  #6b4c9a; }
+#outset { outline: 6px outset #6b4c9a; }

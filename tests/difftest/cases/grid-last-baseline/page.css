@@ -1,0 +1,34 @@
+/* B2/A4: grid align-items / align-self last baseline — share max(block−last) from the
+   area end (CSS Box Alignment §9). Fixed 100px rows make last differ from first baseline.
+   justify-items:last baseline stays end on the inline axis (Chrome parity). */
+
+html, body { margin: 0; padding: 0; }
+
+#row, #self, #inline {
+  display: grid;
+  box-sizing: border-box;
+  width: 200px;
+  height: 100px;
+  grid-template-columns: 100px 100px;
+  grid-template-rows: 100px;
+  margin: 8px;
+  background: #f4f4f4;
+}
+
+#row { align-items: last baseline; justify-items: start; }
+
+#self { align-items: start; justify-items: start; }
+#c, #d { align-self: last baseline; }
+
+#inline {
+  height: 60px;
+  grid-template-rows: 60px;
+  align-items: start;
+  justify-items: last baseline;
+}
+
+.ghost { display: block; visibility: hidden; width: 100%; }
+#a, #c { font-size: 30px; height: 60px; width: 80px; background: #cccccc; }
+#b, #d { font-size: 12px; height: 40px; width: 50px; background: #bbbbbb; }
+#ia { font-size: 30px; height: 40px; width: 80px; background: #7cb7ff; }
+#ib { font-size: 12px; height: 24px; width: 50px; background: #3d8f6e; }

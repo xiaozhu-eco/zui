@@ -1,0 +1,16 @@
+{
+  "name": "content-url",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1：content:url() 本地位图进 ::before/::after 替换盒。L2 几何（固有宽高）；自检 ContentUrlImage。",
+  "matrix": ["css.marker"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

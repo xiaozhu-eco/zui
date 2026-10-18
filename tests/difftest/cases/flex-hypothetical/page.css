@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font: 16px/20px "Zui Test", sans-serif;
+  background: #ffffff;
+  color: #000000;
+}
+#row {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  height: 40px;
+  margin: 8px;
+  background: #eeeeee;
+}
+#item {
+  flex: 1 1 40px;
+  min-width: 100px;
+  max-width: 180px;
+  overflow: hidden;
+  background: #3366cc;
+  color: #ffffff;
+}

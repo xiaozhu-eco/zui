@@ -1,0 +1,11 @@
+name: HarfBuzz
+version: 8.5.0
+source: https://github.com/harfbuzz/harfbuzz
+tag: 8.5.0
+artifact: https://github.com/harfbuzz/harfbuzz/archive/refs/tags/8.5.0.zip
+license: MIT / Old MIT (see COPYING)
+note: Source tree vendored for static lib via cmake/deps.cmake (no FetchContent/CPM/system
+      package). FreeType stays FT_DISABLE_HARFBUZZ=ON; zui calls hb_shape through hb-ft for
+      layout advances/kerning. Bulky test/CI/docs/perf trees were dropped from the zip; src/,
+      CMakeLists.txt, configure.ac, util/Makefile.sources (read by upstream CMake), and license
+      files remain.

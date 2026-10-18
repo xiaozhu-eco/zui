@@ -1,0 +1,19 @@
+{
+  "name": "scroll-snap",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2: scroll-snap-type mandatory/proximity + scroll-snap-align start/center. Assert snapped scroll offsets (not mid-scroll dynamics).",
+  "matrix": ["scroll.smooth"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "scroll", "target": "#mandatory", "x": 0, "y": 60 },
+    { "op": "scroll", "target": "#proximity", "x": 0, "y": 10 },
+    { "op": "scroll", "target": "#center", "x": 0, "y": 50 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

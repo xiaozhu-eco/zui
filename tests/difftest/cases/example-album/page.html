@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="album">
+  <title>小竹相册</title>
+  <link rel="stylesheet" href="../../../../example/applications/album/css/tokens.css">
+  <link rel="stylesheet" href="../../../../example/applications/album/css/shell.css">
+  <link rel="stylesheet" href="../../../../example/applications/album/css/gallery.css">
+</head>
+<body onkeydown="on_accel">
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">竹</span>
+        <h1 class="brand-name">小竹相册</h1>
+      </div>
+      <div class="top-actions">
+        <p class="status" id="status" role="status"></p>
+        <button type="button" class="btn" id="restore" onclick="on_restore">恢复示例</button>
+        <button type="button" class="btn" id="add-album" onclick="on_add_album">新建相册</button>
+        <label class="btn btn-primary" for="file" onclick="on_import">导入照片</label>
+      </div>
+    </header>
+    <div class="workspace">
+      <nav class="albums" id="albums" aria-label="相册">
+        <template>
+          <button type="button" class="album-btn {{on}}" onclick="on_album" data-id="{{id}}">
+            <span class="album-label">{{name}}</span>
+            <span class="album-count">{{count}}</span>
+          </button>
+        </template>
+      </nav>
+      <main class="gallery">
+        <div class="gallery-bar">
+          <h2 class="album-title" id="album-title"></h2>
+          <input class="album-name" id="album-name" hidden aria-label="相册名称" autocomplete="off" oninput="on_album_name">
+          <span class="photo-count" id="album-count"></span>
+          <button type="button" class="btn btn-danger" id="delete-album" hidden onclick="on_delete_album">删除相册</button>
+        </div>
+        <div class="grid-wrap">
+          <div class="grid" id="grid" aria-label="照片">
+            <template>
+              <button type="button" class="tile" onclick="on_photo" data-id="{{id}}">
+                <img src="../../../../example/applications/album/{{src}}" alt="{{name}}">
+                <span class="tile-name">{{name}}</span>
+              </button>
+            </template>
+          </div>
+          <p class="empty" id="empty" hidden>这个相册还没有照片。用「导入照片」加进来。</p>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <input class="sr" id="file" type="file" accept="image/*,.svg" multiple>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="照片">
+    <div class="light-bar">
+      <button type="button" class="btn" id="light-close" onclick="on_light_close">关闭</button>
+      <p class="light-name" id="light-name"></p>
+      <span class="light-pos" id="light-pos"></span>
+      <span class="spacer"></span>
+      <button type="button" class="btn" id="zoom-out" onclick="on_zoom_out">缩小</button>
+      <span class="zoom-label" id="zoom-label"></span>
+      <button type="button" class="btn" id="zoom-in" onclick="on_zoom_in">放大</button>
+    </div>
+    <div class="light-body">
+      <button type="button" class="nav-btn" id="light-prev" aria-label="上一张" onclick="on_prev">‹</button>
+      <div class="stage" id="stage" onwheel="on_wheel">
+        <div class="frame" id="frame">
+          <img id="light-img" alt="" draggable="false">
+        </div>
+      </div>
+      <button type="button" class="nav-btn" id="light-next" aria-label="下一张" onclick="on_next">›</button>
+    </div>
+    <form class="light-foot" id="light-form">
+      <label class="light-note">说明
+        <textarea id="light-note" oninput="on_note" onkeydown="on_note_key"></textarea>
+      </label>
+      <label class="light-album" id="album-field">相册
+        <select id="light-album"></select>
+      </label>
+      <div class="light-album" id="album-picks">相册
+        <div class="picks" id="album-pick-list">
+          <template>
+            <button type="button" class="chip {{on}}" onclick="on_pick_album" data-id="{{id}}">{{name}}</button>
+          </template>
+        </div>
+      </div>
+      <button type="button" class="btn btn-danger" id="light-delete" onclick="on_light_delete">删除这张</button>
+    </form>
+  </div>
+
+  <div class="back" id="album-dialog" hidden>
+    <form class="dialog" id="album-form" role="dialog" aria-modal="true" aria-labelledby="album-dialog-title">
+      <h2 id="album-dialog-title">新建相册</h2>
+      <label class="field"><span>名称</span><input id="album-form-name" autocomplete="off"></label>
+      <p class="form-error" id="album-form-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="album-form-cancel" onclick="on_album_cancel">取消</button>
+        <button type="submit" class="btn btn-primary" onclick="on_album_save">创建</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="back" id="confirm" hidden>
+    <div class="dialog dialog-confirm" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <h2 id="confirm-title">确认</h2>
+      <p id="confirm-body"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="confirm-cancel" onclick="on_confirm_cancel">取消</button>
+        <button type="button" class="btn btn-danger" id="confirm-ok" onclick="on_confirm_ok">确定</button>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+</html>

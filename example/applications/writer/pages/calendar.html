@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<body>
+  <section id="calendar-view" hidden>
+    <header class="page-head">
+      <h2 id="cal-title"> </h2>
+      <p class="lead">这一月写下的文稿标在对应的日期上。</p>
+    </header>
+    <div class="weekdays" aria-hidden="true">
+      <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+    </div>
+    <div id="cal-grid" class="cal-grid">
+      <template>
+        <div class="cal-day {{mark}}">{{label}}</div>
+      </template>
+    </div>
+  </section>
+</body>
+</html>

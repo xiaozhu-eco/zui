@@ -1,0 +1,18 @@
+{
+  "name": "paint-underline-offset",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "text-underline-offset pushes a 4px underline below the line box, where the text mask does not cover it. The glyph colour matches the page so antialiasing is not the signal.",
+  "matrix": ["paint.decoration"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": false }
+}

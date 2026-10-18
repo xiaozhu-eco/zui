@@ -1,0 +1,16 @@
+{
+  "name": "multicol-column-rule",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2: solid column-rule geometry via L2 (Chrome). Rule ink asserted by selfcheck ColumnRuleSolid (glyph AA vs Blink not required here).",
+  "matrix": ["multicol"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

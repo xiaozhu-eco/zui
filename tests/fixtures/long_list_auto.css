@@ -1,0 +1,32 @@
+/* A long list of one-line items inside a scroll container that asks for `content-visibility: auto`
+   and `contain-intrinsic-size` - standard CSS, and the fixture for what the engine promises about
+   the two (M8). The item box mirrors the reader's chapter button: same padding, font and
+   line-height, so a laid-out row measures 20.3 + 9 + 9 = 38.3px.
+
+   The placeholder number is the *content* height, not the row's 38.3: `contain-intrinsic-size`
+   supplies an "explicit intrinsic inner size" (CSS Sizing 4 section 5.2) which stands in for what
+   the contents would have contributed - the padding is still added around it. `14px * 1.45 =
+   20.3px` is therefore the number that makes a skipped row measure the same 38.3px a laid-out one
+   does; `38.3` here would have made every skipped row 56.3px and grown the list's scroll extent by
+   18px per skipped item (which is what the first draft of this fixture did).
+   It is **not** the reader's stylesheet and does not stand in for one - `reader.css` is the
+   reference content and is not edited. See the plan's section 4.5. */
+#scroller {
+    overflow: auto;
+    height: 400px;
+}
+
+.ch {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 9px 10px 9px 12px;
+    border: 0;
+    background: transparent;
+    font-family: serif;
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: left;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 20.3px;
+}

@@ -1,0 +1,16 @@
+html, body { margin: 0; padding: 8px; background: #eef1f5; }
+#dashed, #dotted, #double, #groove, #ridge, #inset, #outset, #solid {
+  width: 80px;
+  height: 40px;
+  margin-bottom: 8px;
+  background: #dce3ec;
+  box-sizing: border-box;
+}
+#dashed { border: 6px dashed #1a4f8c; }
+#dotted { border: 6px dotted #1a4f8c; }
+#double { border: 6px double #1a4f8c; }
+#groove { border: 8px groove #6b4c9a; }
+#ridge  { border: 8px ridge  #6b4c9a; }
+#inset  { border: 8px inset  #6b4c9a; }
+#outset { border: 8px outset #6b4c9a; }
+#solid  { border: 6px solid  #1a4f8c; }

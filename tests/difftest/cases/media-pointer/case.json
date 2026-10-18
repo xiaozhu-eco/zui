@@ -1,0 +1,16 @@
+{
+  "name": "media-pointer",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1 MQ：pointer / hover / any-hover / prefers-color-scheme。真值是钉死 flag 下的 headless 浏览器。回放用 env.json engine.host_media（hover none，pointer coarse，color-scheme light）。",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

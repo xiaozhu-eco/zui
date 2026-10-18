@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="drag-drop.css">
+</head>
+<body ondragstart="on_start" ondrag="on_drag" ondragend="on_end">
+  <div id="source" draggable="true" data-id="item-1" onclick="on_source">Alpha</div>
+  <div id="target" ondragenter="on_enter" ondragover="on_over" ondragleave="on_leave" ondrop="on_drop">Drop</div>
+  <div id="reject" ondragover="on_reject" ondrop="on_reject_drop">No</div>
+  <a id="link" href="https://example.test/a">Example</a>
+  <input id="field" value="Hi">
+</body>
+</html>

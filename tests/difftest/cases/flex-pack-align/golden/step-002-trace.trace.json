@@ -1,0 +1,699 @@
+{
+  "schema": "zui.difftest.trace/2",
+  "engine": "chromium",
+  "engine_version": "Edg/154.0.4258.37",
+  "viewport": [
+    800,
+    600
+  ],
+  "scroll": [
+    0,
+    0
+  ],
+  "elements": [
+    {
+      "path": "0",
+      "tag": "html",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        248
+      ],
+      "scroll_size": [
+        800,
+        600
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          248
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0",
+      "tag": "head",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0/0",
+      "tag": "link",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1",
+      "tag": "body",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        12,
+        800,
+        224
+      ],
+      "scroll_size": [
+        800,
+        224
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        12,
+        800,
+        224
+      ],
+      "client_rects": [
+        [
+          0,
+          12,
+          800,
+          224
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0",
+      "tag": "div",
+      "id": "around",
+      "classes": "row",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        12,
+        12,
+        240,
+        40
+      ],
+      "scroll_size": [
+        240,
+        40
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        12,
+        12,
+        240,
+        40
+      ],
+      "client_rects": [
+        [
+          12,
+          12,
+          240,
+          40
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/0",
+      "tag": "div",
+      "id": "",
+      "classes": "cell a",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        36,
+        12,
+        32,
+        24
+      ],
+      "scroll_size": [
+        32,
+        24
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        36,
+        12,
+        32,
+        24
+      ],
+      "client_rects": [
+        [
+          36,
+          12,
+          32,
+          24
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1",
+      "tag": "div",
+      "id": "",
+      "classes": "cell b",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        116,
+        12,
+        32,
+        24
+      ],
+      "scroll_size": [
+        32,
+        24
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        116,
+        12,
+        32,
+        24
+      ],
+      "client_rects": [
+        [
+          116,
+          12,
+          32,
+          24
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/2",
+      "tag": "div",
+      "id": "",
+      "classes": "cell c",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        196,
+        12,
+        32,
+        24
+      ],
+      "scroll_size": [
+        32,
+        24
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        196,
+        12,
+        32,
+        24
+      ],
+      "client_rects": [
+        [
+          196,
+          12,
+          32,
+          24
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1",
+      "tag": "div",
+      "id": "evenly",
+      "classes": "row",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        12,
+        64,
+        240,
+        40
+      ],
+      "scroll_size": [
+        240,
+        40
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        12,
+        64,
+        240,
+        40
+      ],
+      "client_rects": [
+        [
+          12,
+          64,
+          240,
+          40
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1/0",
+      "tag": "div",
+      "id": "",
+      "classes": "cell a",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        48,
+        64,
+        32,
+        24
+      ],
+      "scroll_size": [
+        32,
+        24
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        48,
+        64,
+        32,
+        24
+      ],
+      "client_rects": [
+        [
+          48,
+          64,
+          32,
+          24
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1/1",
+      "tag": "div",
+      "id": "",
+      "classes": "cell b",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        116,
+        64,
+        32,
+        24
+      ],
+      "scroll_size": [
+        32,
+        24
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        116,
+        64,
+        32,
+        24
+      ],
+      "client_rects": [
+        [
+          116,
+          64,
+          32,
+          24
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1/2",
+      "tag": "div",
+      "id": "",
+      "classes": "cell c",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        184,
+        64,
+        32,
+        24
+      ],
+      "scroll_size": [
+        32,
+        24
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        184,
+        64,
+        32,
+        24
+      ],
+      "client_rects": [
+        [
+          184,
+          64,
+          32,
+          24
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/2",
+      "tag": "div",
+      "id": "content",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        12,
+        116,
+        120,
+        120
+      ],
+      "scroll_size": [
+        120,
+        120
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        12,
+        116,
+        120,
+        120
+      ],
+      "client_rects": [
+        [
+          12,
+          116,
+          120,
+          120
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/2/0",
+      "tag": "div",
+      "id": "",
+      "classes": "cell a",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        12,
+        116,
+        32,
+        24
+      ],
+      "scroll_size": [
+        32,
+        24
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        12,
+        116,
+        32,
+        24
+      ],
+      "client_rects": [
+        [
+          12,
+          116,
+          32,
+          24
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/2/1",
+      "tag": "div",
+      "id": "",
+      "classes": "cell b",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        44,
+        116,
+        32,
+        24
+      ],
+      "scroll_size": [
+        32,
+        24
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        44,
+        116,
+        32,
+        24
+      ],
+      "client_rects": [
+        [
+          44,
+          116,
+          32,
+          24
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/2/2",
+      "tag": "div",
+      "id": "",
+      "classes": "cell c",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        76,
+        116,
+        32,
+        24
+      ],
+      "scroll_size": [
+        32,
+        24
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        76,
+        116,
+        32,
+        24
+      ],
+      "client_rects": [
+        [
+          76,
+          116,
+          32,
+          24
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/2/3",
+      "tag": "div",
+      "id": "",
+      "classes": "cell a",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        12,
+        212,
+        32,
+        24
+      ],
+      "scroll_size": [
+        32,
+        24
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        12,
+        212,
+        32,
+        24
+      ],
+      "client_rects": [
+        [
+          12,
+          212,
+          32,
+          24
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    }
+  ],
+  "extras": null
+}

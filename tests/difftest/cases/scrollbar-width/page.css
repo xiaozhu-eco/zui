@@ -1,0 +1,17 @@
+body { margin: 0; }
+
+#auto, #thin, #none {
+  width: 160px;
+  height: 80px;
+  margin: 8px;
+  overflow: auto;
+  background: #d8d2c4;
+}
+
+#thin { scrollbar-width: thin; }
+#none { scrollbar-width: none; }
+
+#auto-child, #thin-child, #none-child {
+  height: 200px;
+  background: #2c6b4e;
+}

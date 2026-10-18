@@ -1,0 +1,16 @@
+/* In-flow boxes. Absolute-only children leave the body at scroll height 0 in the browser
+   and a transformed overflow height in the engine. Margins keep each transformed fill
+   off its neighbour: a 90deg turn of this 80x36 box hangs 44px below its border box. */
+html, body { margin: 0; background: #eef1f5; }
+div {
+  width: 80px;
+  height: 36px;
+  margin: 32px 0 120px 80px;
+  background: #c4554a;
+}
+#move { translate: 48px 28px; }
+#spin { rotate: 90deg; transform-origin: left top; }
+#grow { scale: 2 1; transform-origin: left top; }
+#pct { translate: 50% 16px; }
+#combo { translate: 24px 0; rotate: 90deg; transform-origin: left top; }
+#withfn { translate: 16px 12px; transform: rotate(90deg); transform-origin: left top; }

@@ -1,0 +1,18 @@
+{
+  "name": "paint-transform-radius",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3/A6: rounded Aff2 FillRect (rotate/skew/nested/overflow clip). Soft-raster inverse-maps SDF through Aff2; GPU rounded Aff2 + BeginTransform Aff2 blit + Aff2 clip landed (rev 54). Text/image Aff2: see paint-transform-text.",
+  "matrix": ["transform", "paint.transform", "paint.radius"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 2,
+  "text": { "breaks": false, "advances": false }
+}

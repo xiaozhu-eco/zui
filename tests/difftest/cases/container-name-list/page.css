@@ -1,0 +1,50 @@
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+/* Two names on one size container. Either query must see this 400px box. */
+#outer {
+  container: cards aside / size;
+  width: 400px;
+  height: 160px;
+  margin: 16px 0 0 20px;
+  background: #d7dee8;
+}
+
+/* Nearer unnamed size container. A named query must skip it. */
+#inner {
+  container: none / size;
+  width: 120px;
+  height: 140px;
+  margin: 8px 0 0 8px;
+  background: #c5ced8;
+}
+
+#named, #aside, #near {
+  width: 24px;
+  height: 28px;
+  margin: 8px 0 0 8px;
+  background: #8d97a3;
+}
+
+@container (max-width: 200px) {
+  #near {
+    width: 72px;
+    background: #3d9a6a;
+  }
+}
+
+@container cards (min-width: 300px) {
+  #named {
+    width: 96px;
+    background: #c4554a;
+  }
+}
+
+@container aside (min-width: 300px) {
+  #aside {
+    width: 80px;
+    background: #3a6fbf;
+  }
+}

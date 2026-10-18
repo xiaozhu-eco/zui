@@ -1,0 +1,17 @@
+{
+  "name": "flex-last-baseline",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A3: align-items/align-self last baseline packs to the end of a 100px flex line so last baselines coincide (distinct from first-baseline at the start).",
+  "matrix": ["flow.flex"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

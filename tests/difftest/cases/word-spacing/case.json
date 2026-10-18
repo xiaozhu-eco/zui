@@ -1,0 +1,16 @@
+{
+  "name": "word-spacing",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2：word-spacing 正负长度加在词间空格前进量上，改变 max-content 条宽（L2）。无 capture：字形 AA 另议。",
+  "matrix": ["text.opentype"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

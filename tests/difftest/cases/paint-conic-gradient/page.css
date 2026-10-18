@@ -1,0 +1,36 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+}
+
+.sw {
+  width: 140px;
+  height: 100px;
+}
+
+#soft {
+  background-image: conic-gradient(#e23d3d, #f0c040, #2f6fe0);
+}
+
+#from {
+  background-image: conic-gradient(from 90deg at 36px 28px, #ffffff, #101418);
+}
+
+#wedge {
+  background-image: conic-gradient(#e23d3d 0% 25%, #2f6fe0 25% 50%, #3c9a4a 50% 75%, #f0c040 75% 100%);
+}
+
+#reprad {
+  background-image: repeating-radial-gradient(circle, #7cb7ff 0, #7cb7ff 10px, #2b5f9e 10px, #2b5f9e 20px);
+}
+
+#repconic {
+  background-image: repeating-conic-gradient(#1c1c1c 0% 8%, #e7e1d6 8% 16%);
+}

@@ -1,0 +1,22 @@
+/* `repeat(auto-fill|auto-fit, ...)` (CSS Grid section 7.2.3.1). A 400px container with
+   `minmax(80px, 1fr)` fits five repetitions.
+
+   auto-fill: five tracks stay, the two items sit in the first two -> 80px each.
+   auto-fit: the three repetitions no item spans collapse, so the two remaining `1fr` tracks
+   share the whole width -> 200px each. That difference is the case. */
+
+html, body { margin: 0; padding: 0; }
+
+#fill, #fit {
+  display: grid;
+  width: 400px;
+  height: 40px;
+  margin-bottom: 8px;
+  background: #f4f4f4;
+}
+
+#fill { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+#fit { grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); }
+
+.cell { background: #cccccc; }
+#f2, #t2 { background: #dddddd; }

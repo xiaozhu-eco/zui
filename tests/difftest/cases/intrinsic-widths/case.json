@@ -1,0 +1,17 @@
+{
+  "name": "intrinsic-widths",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "width: min-content / max-content / fit-content（CSS Sizing 第 5 节）：用自身内在尺寸而不是可用宽度。",
+  "matrix": [],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

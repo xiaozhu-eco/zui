@@ -1,0 +1,11 @@
+html, body { margin: 0; padding: 0; background: #fff; }
+#scroller, #optout {
+  width: 200px;
+  height: 100px;
+  overflow: auto;
+  background: #f4f4f4;
+}
+#optout { overflow-anchor: none; margin-top: 20px; }
+.pad { height: 120px; background: #e0e0e0; }
+#anchor, #oanchor { height: 30px; background: #cccccc; }
+#spacer, #ospacer { height: 40px; background: #d0d0d0; }

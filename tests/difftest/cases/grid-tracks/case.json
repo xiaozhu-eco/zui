@@ -1,0 +1,17 @@
+{
+  "name": "grid-tracks",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "flow.grid 的第一条 golden：显式/隐式轨道、gap、跨行、自动放置与 self 对齐。",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

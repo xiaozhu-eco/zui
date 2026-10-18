@@ -1,0 +1,18 @@
+{
+  "name": "paint-column-rule",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Empty columns, page-coloured boxes, so only the column rules are ink. dashed, dotted, and double must match the border stroke. A solid rule would fill the gaps and fail. pixel_tolerance 2 covers the dotted circle rim, the same one-step antialias borders already allow.",
+  "matrix": ["multicol"],
+  "required": true,
+  "pixel_tolerance": 2,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

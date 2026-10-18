@@ -1,0 +1,14 @@
+#sample {
+  font-family: monospace;
+  font-size: 16px;
+  color: rgb(0, 0, 255);
+}
+#sample::selection {
+  background-color: rgb(0, 128, 0);
+  color: rgb(0, 0, 0);
+}
+#plain {
+  font-family: monospace;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}

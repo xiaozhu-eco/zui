@@ -1,0 +1,16 @@
+{
+  "name": "env-vars",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1：env() — safe-area/titlebar 已知名→0；未知名走 fallback；已知名忽略 fallback。宽 40/40/80/40。",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

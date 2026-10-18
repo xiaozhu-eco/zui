@@ -1,0 +1,6 @@
+html, body { margin: 0; padding: 8px; }
+.chapter { counter-increment: chapter; }
+.chapter::before { content: counter(chapter) ". "; }
+.nest { counter-reset: section; counter-increment: section; }
+.nest .nest { counter-increment: section; }
+#inner::before { content: counters(section, "."); }

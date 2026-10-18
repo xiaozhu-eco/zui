@@ -1,0 +1,43 @@
+html, body {
+  margin: 0;
+  background: #101418;
+}
+
+#red {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+  height: 280px;
+  background: #d23b3b;
+}
+
+#blue {
+  position: absolute;
+  left: 400px;
+  top: 0;
+  width: 400px;
+  height: 280px;
+  background: #2c63d2;
+}
+
+#frost {
+  position: absolute;
+  left: 320px;
+  top: 40px;
+  width: 160px;
+  height: 160px;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+#round {
+  position: absolute;
+  left: 80px;
+  top: 320px;
+  width: 140px;
+  height: 80px;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.28);
+}

@@ -1,0 +1,14 @@
+html, body { margin: 0; background: #eef1f5; }
+.box {
+  width: 160px;
+  height: 100px;
+  margin: 12px 0 12px 48px;
+  background-color: #243044;
+  background-image: url("red8.png");
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+}
+#four { background-position: right 16px bottom 12px; }
+#three { background-position: left 20px center; }
+#swap { background-position: bottom 8px right 24px; }
+#pair { background-position: right bottom; }

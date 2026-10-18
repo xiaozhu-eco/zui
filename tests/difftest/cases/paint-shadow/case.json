@@ -1,0 +1,36 @@
+{
+    "name": "paint-shadow",
+    "page": "page.html",
+    "viewport": [
+        800,
+        600
+    ],
+    "_comment": "B3：单层外 box-shadow。覆盖 blur+alpha、硬边偏移、纯 spread 环、blur+spread、跟随 border-radius；同色无阴影控制盒。inset / 多层另开。 pixel_tolerance 2 吸收高斯核与 Blink/Skia 模糊实现的通道级差（同类于 paint-gradient 的抖动容差）。",
+    "matrix": [
+        "paint.shadow"
+    ],
+    "required": true,
+    "steps": [
+        {
+            "op": "load"
+        },
+        {
+            "op": "resize",
+            "w": 800,
+            "h": 600
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        }
+    ],
+    "expect": "golden/",
+    "pixels": "strict",
+    "text": {
+        "breaks": false,
+        "advances": false
+    },
+    "pixel_tolerance": 2
+}

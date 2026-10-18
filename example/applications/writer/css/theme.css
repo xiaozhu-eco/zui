@@ -1,0 +1,47 @@
+/* Dark page. #theme-dark sits before .app and flips tokens without :has(). */
+
+#theme-dark {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.theme-toggle .when-dark { display: none; }
+
+#theme-dark:checked ~ .app .when-light { display: none; }
+#theme-dark:checked ~ .app .when-dark { display: inline; }
+
+#theme-dark:checked ~ .app {
+  --paper: #141414;
+  --raised: #1c1c1c;
+  --ink: #f3f3f0;
+  --muted: #a3a39c;
+  --line: rgba(255, 255, 255, 0.1);
+  --accent: #3ee08f;
+  --accent-ink: #042117;
+  --sidebar: #181818;
+  --today: #173528;
+  color-scheme: dark;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+#theme-dark:checked ~ .app .twig:hover {
+  background: rgba(62, 224, 143, 0.12);
+}

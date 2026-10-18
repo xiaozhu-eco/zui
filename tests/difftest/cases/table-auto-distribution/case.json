@@ -1,0 +1,41 @@
+{
+    "name": "table-auto-distribution",
+    "page": "page.html",
+    "viewport": [
+        800,
+        600
+    ],
+    "_comment": "CSS 2.1 section 17.5.2.2: the auto table layout. Chrome's answer for the excess (`width: 100%` over the columns' max-content), a declared length, a declared percentage, percentages that add up to more than 100%, a table between the columns' min-content and max-content, a table narrower than the columns' asked widths, `max-width` on a cell, and columns that ask for nothing at all. The engine reproduces it in 1/64px units because that is what the browser's table layout uses.",
+    "matrix": [
+        "flow.table"
+    ],
+    "required": true,
+    "steps": [
+        {
+            "op": "load"
+        },
+        {
+            "op": "resize",
+            "w": 800,
+            "h": 600
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        }
+    ],
+    "expect": "golden/",
+    "pixels": "strict",
+    "style_props": [
+        "display",
+        "width",
+        "height",
+        "max-width"
+    ],
+    "text": {
+        "breaks": true,
+        "advances": false
+    }
+}

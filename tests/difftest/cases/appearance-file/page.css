@@ -1,0 +1,27 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+}
+
+#file-none,
+#ref {
+  width: 160px;
+  height: 28px;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #7cb7ff;
+  border: 0;
+  padding: 0;
+}
+
+#file-none {
+  appearance: none;
+}

@@ -1,0 +1,19 @@
+html, body { margin: 0; padding: 0; background-color: #101418; }
+#host {
+  writing-mode: vertical-rl;
+  box-sizing: border-box;
+  width: 120px;
+  height: 200px;
+  margin: 8px;
+  background-color: #1a222c;
+  position: relative;
+}
+#rel {
+  position: relative;
+  box-sizing: border-box;
+  width: 40px;
+  height: 48px;
+  background-color: #7cb7ff;
+  top: 24px;
+  left: 16px;
+}

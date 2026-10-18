@@ -1,0 +1,17 @@
+{
+  "name": "table-col-visibility-collapse",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A4: col/colgroup visibility:collapse zeros those tracks and their spacing slots (CSS 2.1 17.5.5).",
+  "matrix": ["flow.table"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

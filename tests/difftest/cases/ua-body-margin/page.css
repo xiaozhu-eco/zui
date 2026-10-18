@@ -1,0 +1,7 @@
+/* No html/body margin reset: UA must match Chromium (body 8px only, not html+body). */
+#probe {
+  box-sizing: border-box;
+  width: 40px;
+  height: 24px;
+  background-color: #7cb7ff;
+}

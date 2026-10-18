@@ -1,0 +1,12 @@
+.ch {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 9px 10px 9px 12px;
+    border: 0;
+    background: transparent;
+    font-family: serif;
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: left;
+}

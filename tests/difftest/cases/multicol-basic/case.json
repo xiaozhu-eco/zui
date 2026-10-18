@@ -1,0 +1,33 @@
+{
+  "name": "multicol-basic",
+  "page": "page.html",
+  "viewport": [
+    800,
+    600
+  ],
+  "_comment": "多栏：column-count / column-width / column-gap / 平衡 / 定高（CSS Multi-column 第 3、7 节）。",
+  "matrix": [
+    "multicol",
+    "fragmentation"
+  ],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 800,
+      "h": 600
+    },
+    {
+      "op": "trace"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": {
+    "breaks": false,
+    "advances": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "paint-border-image",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "border-image replaces the magenta border stroke. Gradient slices, fill, outset, a percentage slice, a radial remap, a url 9-slice, repeat, and space. A later border-image-slice longhand overrides the shorthand. No text, so the pixel diff is the slices themselves. pixel_tolerance 2 absorbs gradient and bilinear rounding.",
+  "matrix": ["css.background"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 2,
+  "text": { "breaks": false, "advances": false }
+}

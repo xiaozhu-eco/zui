@@ -1,0 +1,18 @@
+{
+  "name": "paint-gradient-range",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "CSS Images 3 two-position color stops. Reading only the last length of '#e23b3b 0% 50%, #2f6fed 50% 100%' blends the bottom half instead of a hard edge at 50%. The flat bands are wide enough that a blend fails the pixel compare. pixel_tolerance 1 absorbs the same boundary dither as paint-gradient.",
+  "matrix": ["paint.gradient"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": false }
+}

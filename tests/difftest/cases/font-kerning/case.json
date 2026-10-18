@@ -1,0 +1,16 @@
+{
+  "name": "font-kerning",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "kerning 只看 font-kerning，不看 lang：内嵌字体下三种 lang 与 none 的对照（CSS Text 3 / LAYOUT 第 5 节）。",
+  "matrix": ["text.opentype"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

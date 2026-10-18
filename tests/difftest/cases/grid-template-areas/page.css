@@ -1,0 +1,24 @@
+/* `grid-template-areas` names a rectangle of cells per area and, for each area, adds
+   `<name>-start` / `<name>-end` to the lines at its edges (CSS Grid sections 7.3 and 8.3).
+   `grid-area: <name>` is a shorthand for the four `<grid-line>` longhands, so the bare name has
+   to resolve to those lines. `.` is a null cell. */
+
+html, body { margin: 0; padding: 0; }
+
+#g {
+  display: grid;
+  width: 300px;
+  height: 90px;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 30px 30px 30px;
+  grid-template-areas:
+    "head head side"
+    "main main side"
+    ".    .    foot";
+  background: #f4f4f4;
+}
+
+#head { grid-area: head; background: #cccccc; }
+#main { grid-area: main; background: #bbbbbb; }
+#side { grid-area: side; background: #aaaaaa; }
+#foot { grid-area: foot; background: #999999; }

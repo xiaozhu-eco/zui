@@ -1,0 +1,31 @@
+/* B2: object-fit / object-position for replaced <img>. Fixed content boxes; bitmap is 8×8 or 4×4. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #101418;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  align-items: flex-start;
+}
+
+img {
+  width: 96px;
+  height: 64px;
+  background: #203040;
+  display: block;
+}
+
+#fill { object-fit: fill; }
+#contain { object-fit: contain; }
+#cover { object-fit: cover; }
+#none { object-fit: none; object-position: left top; }
+#scale-down { object-fit: scale-down; }
+#pos {
+  object-fit: none;
+  object-position: right bottom;
+}

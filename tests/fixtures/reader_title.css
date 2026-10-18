@@ -1,0 +1,80 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: serif;
+    color: #2b2b2b;
+}
+
+.flow-wrap {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+}
+
+.flow {
+    width: min(41rem, 100%);
+    margin: 0 auto;
+    padding: 40px 28px 72px;
+    font-family: serif;
+    font-size: 19px;
+    line-height: 1.88;
+}
+
+.chapter-title {
+    margin: 0 0 1.5em;
+    font-family: serif;
+    font-size: 1.28em;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.14em;
+    text-align: center;
+}
+
+.chapter-title::after {
+    content: "";
+    display: block;
+    width: 2.6em;
+    height: 1px;
+    margin: 0.85em auto 0;
+    background: currentColor;
+    opacity: 0.22;
+}
+
+.chapter.is-follow .chapter-title {
+    margin-top: 3.6em;
+}
+
+.para {
+    margin: 0;
+    text-indent: 2em;
+    text-align: justify;
+}
+
+.chapter-next {
+    display: block;
+    width: 100%;
+    margin: 3.2em 0 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #3f7d5a;
+    font: inherit;
+    font-size: 0.8em;
+    letter-spacing: 0.24em;
+    text-align: center;
+}
+
+.chapter-next::before {
+    content: "";
+    display: block;
+    width: 3em;
+    height: 1px;
+    margin: 0 auto 1.15em;
+    background: currentColor;
+    opacity: 0.28;
+}

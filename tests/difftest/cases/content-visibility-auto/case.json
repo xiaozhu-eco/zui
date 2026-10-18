@@ -1,0 +1,24 @@
+{
+  "name": "content-visibility-auto",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Section 9 step C: off-screen `content-visibility: auto` items lay out their contain-intrinsic-size placeholder; changing one item to `visible` makes it precise and invalidates it. The claim is the item heights and the document scroll height, so the case compares traces.",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "eval", "actions": [{ "do": "add_class", "target": "#i40", "name": "noskip" }] },
+    { "op": "trace" },
+    { "op": "scroll", "target": "window", "x": 0, "y": 2400 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "scroll", "target": "window", "x": 0, "y": 6400 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

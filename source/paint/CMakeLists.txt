@@ -1,0 +1,35 @@
+zui_add_interface_sources(zui_src_paint
+  color.cpp
+  color_common.cpp
+  color_linear.cpp
+  color_radial.cpp
+  color_conic.cpp
+  color_sample.cpp
+  display_list.cpp
+  painter.cpp
+  style_effects.cpp
+  style_filter.cpp
+  box_geometry.cpp
+  background.cpp
+  background_position.cpp
+  background_image.cpp
+  shadows.cpp
+  text_decoration.cpp
+  text_decoration_ink.cpp
+  text_emphasis.cpp
+  overflow_clip.cpp
+  walk.cpp
+  walk_contents.cpp
+  decorations.cpp
+  decorations_stroke.cpp
+  decorations_edge.cpp
+  decorations_border.cpp
+  decorations_outline.cpp
+  decorations_rule.cpp
+  text_mask.cpp
+  border_image.cpp
+  text_runs.cpp
+  retained.cpp
+  widgets.cpp
+  replaced_content.cpp
+)

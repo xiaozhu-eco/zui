@@ -1,0 +1,15 @@
+/* A float taller than the column: Chrome fragments it across columns. */
+html, body { margin: 0; padding: 0; background: #fff; }
+.box {
+  width: 420px;
+  height: 100px;
+  margin: 0;
+  padding: 10px;
+  column-count: 2;
+  column-gap: 20px;
+  column-fill: auto;
+  background: #eee;
+}
+.inner { background: #ddd; }
+.fl { float: left; width: 60px; height: 240px; background: #7cb7ff; }
+p { margin: 0; font-size: 12px; line-height: 20px; }

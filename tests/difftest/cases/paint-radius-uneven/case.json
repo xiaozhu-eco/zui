@@ -1,0 +1,18 @@
+{
+  "name": "paint-radius-uneven",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A5：圆角 + 非均匀边框。#uneven 同色不等宽、#mixed 混色、#open-side 一边 none（读 border-*-style）。外弧不得退回轴对齐条带。透明底 ring / 椭圆弦 AA 由自检 BorderRadiusUnevenWidths 覆盖。pixel_tolerance 2 吸收软 AA 与 Blink 角归属差。",
+  "matrix": ["paint.radius"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 2,
+  "text": { "breaks": false, "advances": false }
+}

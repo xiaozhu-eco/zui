@@ -1,0 +1,35 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+#ua-important-probe,
+#ua-important-vs-author-important,
+#author-important-wins {
+  box-sizing: border-box;
+  height: 24px;
+  margin: 8px;
+}
+
+/* Author normal must lose to UA !important on #ua-important-probe (Cascade 5). */
+#ua-important-probe {
+  width: 40px;
+  background-color: #3a4450;
+}
+
+/* Author !important must lose to UA !important. */
+#ua-important-vs-author-important {
+  width: 40px !important;
+  background-color: #3a4450 !important;
+}
+
+/* Author !important still beats author normal. */
+.box {
+  width: 40px;
+  background-color: #3a4450;
+}
+#author-important-wins {
+  width: 120px !important;
+  background-color: #7cb7ff !important;
+}

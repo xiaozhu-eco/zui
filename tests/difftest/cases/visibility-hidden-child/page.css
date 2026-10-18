@@ -1,0 +1,24 @@
+html, body { margin: 0; padding: 0; background-color: #101418; }
+
+#hidden {
+  visibility: hidden;
+  width: 120px;
+  height: 80px;
+  background-color: #e85d4c;
+  margin: 16px;
+}
+
+#child {
+  visibility: visible;
+  width: 48px;
+  height: 32px;
+  background-color: #7cb7ff;
+  margin: 12px;
+}
+
+#ref {
+  width: 48px;
+  height: 32px;
+  background-color: #3d8f6e;
+  margin: 16px;
+}

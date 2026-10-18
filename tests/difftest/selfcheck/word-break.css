@@ -1,0 +1,9 @@
+html, body { margin: 0; padding: 8px; }
+#normal, #breakall {
+  width: 48px;
+  margin: 0 0 8px 0;
+  padding: 4px;
+  font: 400 16px/20px sans-serif;
+  word-break: normal;
+}
+#breakall { word-break: break-all; }

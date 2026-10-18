@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="page.css">
+</head>
+<body>
+  <div class="row">
+    <img id="density" src="blue64.png" srcset="green64.png 1x, blue64.png 2x" alt="">
+    <img id="widths" src="blue64.png" srcset="blue64.png 400w, green64.png 800w" sizes="100vw" alt="">
+    <img id="sizes" src="blue64.png" srcset="green64.png 200w, blue64.png 800w"
+         sizes="(min-width: 700px) 200px, 100vw" alt="">
+  </div>
+  <div class="row">
+    <picture>
+      <source media="(max-width: 400px)" srcset="blue64.png">
+      <source media="(min-width: 700px)" srcset="green64.png">
+      <img id="picture" src="blue64.png" alt="">
+    </picture>
+    <picture>
+      <source type="image/x-zui-nope" srcset="blue64.png">
+      <img id="type" src="green64.png" alt="">
+    </picture>
+    <img id="fallback" src="green64.png" srcset="blue64.png 2x" alt="">
+  </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+/* The base width sits in the first layer, so a later layer or an unlayered rule can beat it. A
+   plain `.box { width: 4px }` would be unlayered and would therefore outrank *every* layered rule
+   regardless of specificity, which would make half of the probes below untestable. */
+@layer base {
+    .box {
+        display: block;
+        height: 8px;
+        width: 4px;
+        background-color: #3a4450;
+    }
+}
+
+/* Unlayered normal declarations beat layered ones (#p1 = 22), whatever their specificity. */
+@layer a { #p1 { width: 11px; } }
+#p1 { width: 22px; }
+@layer b { #p1 { width: 33px; } }
+
+/* `@layer c, d;` fixes the order: `d` is later, so it wins (#p2 = 11). */
+@layer c, d;
+@layer d { #p2 { width: 11px; } }
+@layer c { #p2 { width: 22px; } }
+
+/* Important declarations reverse the layer order: the earlier layer wins (#p3 = 11) ... */
+@layer e { #p3 { width: 11px !important; } }
+@layer f { #p3 { width: 22px !important; } }
+
+/* ... and unlayered important loses to layered important (#p4 = 11). */
+@layer g { #p4 { width: 11px !important; } }
+#p4 { width: 22px !important; }
+
+/* Importance still beats layers in the other direction (#p5 = 11). */
+@layer h { #p5 { width: 11px !important; } }
+#p5 { width: 22px; }
+
+/* A layer's own declarations sit after its sub-layers (#p6 = 22), in either declaration order. */
+@layer i.j { #p6 { width: 11px; } }
+@layer i { #p6 { width: 22px; } }
+
+/* Two anonymous layers are still ordered by appearance (#p7 = 22). */
+@layer { #p7 { width: 11px; } }
+@layer { #p7 { width: 22px; } }
+
+/* Nested block and dotted name are the same layer (#p8 = 22). */
+@layer k { @layer m { #p8 { width: 11px; } } }
+@layer k { #p8 { width: 22px; } }
+
+/* A layer opened inside an applying @media joins the top-level order (#p9 = 22). */
+@media screen { @layer n { #p9 { width: 11px; } } }
+@layer n { #p9 { width: 22px; } }
+
+/* Element-attached styles beat rules of the same origin and importance (#s1 = 11) ... */
+@layer z { #s1 { width: 22px; } }
+#s1 { width: 33px; }
+
+/* ... and an important rule still beats a normal style attribute (#s2 = 22). */
+@layer z { #s2 { width: 22px !important; } }
+
+/* An important style attribute beats a normal rule (#s3 = 11), a layered important rule (#s4 = 11)
+   and an unlayered important rule. */
+@layer z { #s3 { width: 22px; } }
+#s3 { width: 33px; }
+@layer y { #s4 { width: 22px !important; } }
+#s4 { width: 33px !important; }
+
+/* Unlayered beats layered before specificity is consulted (#t1 = 33). */
+@layer t { .hi { width: 22px; } }
+#t1 { width: 33px; }
+
+/* The style attribute is element-attached, so it wins before specificity too (#t2 = 11). */
+.hi { width: 22px; }

@@ -1,0 +1,40 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #102030;
+}
+#group {
+  position: relative;
+  width: 140px;
+  height: 90px;
+  margin: 16px;
+  opacity: 0.5;
+}
+#a, #b {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background-color: #ff4020;
+}
+#a { left: 0; top: 0; }
+#b { left: 50px; top: 0; }
+#single {
+  margin: 16px;
+  width: 90px;
+  height: 90px;
+  background-color: #ff4020;
+  opacity: 0.5;
+}
+#nested {
+  margin: 16px;
+  width: 120px;
+  height: 70px;
+  background-color: #40a0ff;
+  opacity: 0.5;
+}
+#child {
+  width: 60px;
+  height: 70px;
+  background-color: #ffe080;
+  opacity: 0.5;
+}

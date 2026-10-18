@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#host { width: 200px; interpolate-size: allow-keywords; }
+#pct {
+  width: 40px; height: 40px; background: #336699;
+  transition: width 200ms linear;
+}
+#pct.on { width: 50%; }
+#open {
+  width: 80px; height: 0px; overflow: hidden; background: #993366;
+  transition: height 200ms linear;
+}
+#open.on { height: auto; }
+#open .inner { height: 40px; }
+</style>
+</head>
+<body>
+  <div id="host">
+    <div id="pct"></div>
+    <div id="open"><div class="inner"></div></div>
+  </div>
+</body>
+</html>

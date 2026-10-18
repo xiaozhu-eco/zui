@@ -1,0 +1,31 @@
+html, body {
+  margin: 0;
+  padding: 8px;
+  background: #101418;
+  color: #e8edf5;
+  font: 400 16px/20px sans-serif;
+}
+
+.chapter {
+  counter-increment: chapter;
+  margin: 4px 0;
+}
+
+.chapter .num::before {
+  content: counter(chapter);
+}
+
+.nest {
+  counter-reset: section;
+  counter-increment: section;
+  margin: 8px 0;
+  padding-left: 12px;
+}
+
+.nest .nest {
+  counter-increment: section;
+}
+
+.path::before {
+  content: counters(section, ".");
+}

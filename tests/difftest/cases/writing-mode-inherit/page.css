@@ -1,0 +1,35 @@
+/* Vertical writing: `writing-mode` is an inherited property, so the children are vertical too
+   and their block-axis margins (physical right / left) are the ones that collapse. Fixed px
+   only, no text: the case is about the axes, not about shaping.
+
+   The matrix calls vertical writing a behaviour assertion, so this case is not in the must-pass
+   set; it is here because a missing `writing-mode` in the cascade's inherit list used to lay
+   every child out horizontally, and that is exactly what it catches. */
+
+html, body { margin: 0; padding: 0; }
+
+/* Fixed-size host: the case is about the vertical box's own axes, not about how an orthogonal
+   child contributes back to a horizontal parent - that mapping is still open (LAYOUT section 3
+   and 14). */
+#host {
+  width: 400px;
+  height: 300px;
+}
+
+#parent {
+  writing-mode: vertical-rl;
+  width: 140px;
+  height: 120px;
+  padding: 10px;
+  background: #f4f4f4;
+}
+
+.child {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background: #cccccc;
+}
+
+#two { background: #dddddd; }

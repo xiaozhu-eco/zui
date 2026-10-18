@@ -1,0 +1,18 @@
+{
+  "name": "paint-border-styles",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3：border-style 非 solid。尖角 6px 盒：dashed / dotted / double / groove / ridge / inset / outset（solid 对照）。圆角非 solid 回退 solid stroke 另开。pixel_tolerance 2 吸收圆点 AA 与 Blink 描边通道差。",
+  "matrix": ["paint.border-style"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 2,
+  "text": { "breaks": false, "advances": false }
+}

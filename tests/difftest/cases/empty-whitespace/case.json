@@ -1,0 +1,17 @@
+{
+  "name": "empty-whitespace",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A1: :empty rejects whitespace-only children; #truly-empty is 120px, #space-only stays 40px (Node::whitespace_child + ShareKey kBitEmpty).",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

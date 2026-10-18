@@ -1,0 +1,16 @@
+{
+  "name": "harfbuzz-shape",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2 HarfBuzz: embedded-face kerning pairs via hb_shape (liga off). Geometry only.",
+  "matrix": ["text.opentype"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "off",
+  "text": { "breaks": false, "advances": false }
+}

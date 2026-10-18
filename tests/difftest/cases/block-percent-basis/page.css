@@ -1,0 +1,17 @@
+html, body { margin: 0; padding: 0; }
+#p { width: 280px; box-sizing: border-box; padding: 16px; height: 40px; }
+#s { width: 100%; height: 20px; }
+#q { width: 280px; padding: 16px; height: 40px; }
+#t { width: 50%; padding-left: 10%; height: 20px; }
+/* Overflowing content: does Chrome's scrollHeight include the container's padding-bottom? */
+#r { width: 100px; height: 40px; padding: 10px; margin-top: 8px; overflow: auto; }
+#u { width: 50px; height: 100px; }
+/* child taller than the content box but inside the padding box */
+#v { width: 100px; height: 40px; box-sizing: border-box; padding: 10px; margin-top: 8px; }
+#w { width: 50px; height: 30px; }
+/* child overflowing the padding box a little */
+#x { width: 100px; height: 40px; box-sizing: border-box; padding: 10px; margin-top: 8px; }
+#y { width: 50px; height: 50px; }
+/* a scroll container whose content just reaches the padding box */
+#z { width: 100px; height: 40px; box-sizing: border-box; padding: 10px; margin-top: 8px; overflow: auto; }
+#za { width: 50px; height: 40px; }

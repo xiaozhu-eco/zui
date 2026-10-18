@@ -1,0 +1,26 @@
+/* CSS Backgrounds 3 section 4: `border-*-style: none` and `hidden` both make the used border width
+   zero, so the side neither paints nor takes room. The control keeps its border; `#none` and
+   `#hidden` have no border at all, `#sides-none` loses eight pixels of width and `#rows-hidden`
+   eight of height. Each box's insets stay equal per axis: the passline reads a border box that is
+   wider than its client box on one side only as a scrollbar slot, and that is not what this case
+   is about. */
+
+html, body { margin: 0; padding: 0; background: #10141c; }
+
+.box {
+  box-sizing: content-box;
+  width: 100px;
+  height: 20px;
+  margin: 0 0 10px 0;
+  background-color: #7cb7ff;
+}
+
+#solid { border: 4px solid #e85d4c; }
+#none { border: 4px none #e85d4c; }
+#hidden { border: 4px hidden #e85d4c; }
+#sides-none { border: 4px solid #e85d4c; border-left-style: none; border-right-style: none; }
+#rows-hidden {
+  border: 4px solid #e85d4c;
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}

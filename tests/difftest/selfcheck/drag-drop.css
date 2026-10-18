@@ -1,0 +1,20 @@
+#source, #link, #field {
+  position: absolute;
+  left: 10px;
+  width: 120px;
+  height: 36px;
+}
+
+#source { top: 10px; }
+#link { top: 60px; }
+#field { top: 110px; width: 160px; }
+
+#target, #reject {
+  position: absolute;
+  left: 240px;
+  width: 160px;
+  height: 70px;
+}
+
+#target { top: 10px; }
+#reject { top: 100px; }

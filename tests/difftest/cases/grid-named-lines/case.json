@@ -1,0 +1,17 @@
+{
+  "name": "grid-named-lines",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "命名线：mid / right、left / mid，以及 left / span right（跨到第一处 right，宽 300px）。",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

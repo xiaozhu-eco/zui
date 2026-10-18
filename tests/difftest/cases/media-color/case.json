@@ -1,0 +1,17 @@
+{
+  "name": "media-color",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Color screen: (color), (color: 8), (min-color: 4), (color >= 8), (monochrome: 0), (scripting) and (scripting: enabled) apply. (max-color: 4), (monochrome), and (scripting: none) do not. No script element; Edge still reports scripting enabled.",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

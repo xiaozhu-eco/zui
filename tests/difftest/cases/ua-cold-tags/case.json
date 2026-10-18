@@ -1,0 +1,44 @@
+{
+  "name": "ua-cold-tags",
+  "page": "page.html",
+  "viewport": [
+    800,
+    600
+  ],
+  "_comment": "B1 UA cold tags / form residual (Chromium html.css long tail). Engine oracle (browser replaced chrome differs). Selfcheck UaColdTagsFormResidual covers legend/optgroup/unicode-bidi/meter size.",
+  "matrix": [
+    "css.cascade"
+  ],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 800,
+      "h": 600
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 2,
+  "text": {
+    "breaks": false,
+    "advances": false
+  },
+  "style_props": [
+    "display",
+    "border-top-style",
+    "border-top-width",
+    "margin-left",
+    "object-fit",
+    "text-decoration"
+  ]
+}

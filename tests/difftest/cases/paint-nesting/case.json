@@ -1,0 +1,17 @@
+{
+  "name": "paint-nesting",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Nested selectors stay inside their parent. A rule that leaked to every .title or .c would paint the outside panels.",
+  "matrix": ["css.nesting"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,8 @@
+#sample {
+  width: 10px;
+  height: 10px;
+  orphans: 3;
+  widows: 4;
+  break-inside: avoid;
+  break-before: column;
+}

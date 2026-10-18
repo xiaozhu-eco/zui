@@ -1,0 +1,60 @@
+/* L0 probe page: deliberately overflows vertically so a classic scrollbar has to appear,
+   and holds one line of text whose advance both ends measure.
+
+   The family is the embedded face both ends load (TESTPLAN section 6): the browser through
+   @font-face, the engine through fonts.embedded in env.json. Measuring a system font here
+   would make L0 report the two shaping stacks instead of the environment. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #ffffff;
+}
+
+#tall {
+  height: 2000px;
+  background-color: #e8e8e8;
+}
+
+#advance {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: "Zui Test", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+/* The same measurement with spaces in the string. A single-word probe cannot see a difference
+   in how the two shaping stacks advance a space, and that difference moves every line break in
+   a paragraph. */
+#advance-spaces {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  font-family: "Zui Test", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  white-space: pre;
+}
+
+/* A string whose width is mostly kerning. `Hamburgefonstiv` has no kern pairs, so an engine that
+   ignores GPOS measures it correctly and still lays every real paragraph out wider than the
+   browser; this line makes that gap an L0 failure instead of a per-case surprise. */
+#advance-kern {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  font-family: "Zui Test", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  white-space: pre;
+}

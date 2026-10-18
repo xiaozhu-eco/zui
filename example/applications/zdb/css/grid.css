@@ -1,0 +1,268 @@
+/* Data grid, pager, and the cell inspector under the grid. */
+
+.grid-title,
+.structure-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    padding: 12px 16px 8px;
+}
+
+.grid-title h2,
+.structure-title h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sheet-wrap {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+}
+
+.sheet {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: max-content;
+    min-width: 100%;
+    font-size: 13px;
+}
+
+.sheet th,
+.sheet td {
+    max-width: 360px;
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.sheet thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--sidebar);
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.sheet td,
+.sheet tbody th {
+    font-family: var(--mono);
+}
+
+.sheet .rownum {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    width: 1%;
+    max-width: none;
+    background: var(--raised);
+    color: var(--muted);
+    font-family: var(--sans);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.sheet thead .rownum {
+    z-index: 2;
+    background: var(--sidebar);
+}
+
+.sheet tbody tr:hover td,
+.sheet tbody tr:hover th {
+    background: var(--tint);
+}
+
+.sheet td {
+    cursor: pointer;
+}
+
+.sheet td.is-picked {
+    box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.cell-number {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.cell-null,
+.cell-empty {
+    color: var(--muted);
+    font-family: var(--sans);
+    font-style: italic;
+}
+
+.cell-blob {
+    color: var(--accent);
+}
+
+.sort {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    max-width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-weight: 600;
+}
+
+.sort-mark {
+    color: var(--accent);
+}
+
+.pager {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 8px 16px;
+    border-top: 1px solid var(--line);
+    background: var(--raised);
+}
+
+.pager-range {
+    margin-right: auto;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+
+.pager select {
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--paper);
+}
+
+.cell-detail {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    max-height: 30%;
+    border-top: 1px solid var(--line);
+    background: var(--sidebar);
+}
+
+.cell-detail-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 6px 16px;
+}
+
+.cell-detail-bar span {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--ink-soft);
+    font-size: 12px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cell-detail pre {
+    margin: 0;
+    padding: 0 16px 10px;
+    overflow: auto;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Native grids are display:table divs. set_model can repeat a row, not a real <table> with a new column set. */
+.ztable {
+    display: table;
+    width: max-content;
+    min-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+}
+
+.zgroup {
+    display: table-row-group;
+}
+
+.zrow {
+    display: table-row;
+}
+
+.ztd {
+    display: table-cell;
+    max-width: 360px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    background: var(--paper);
+}
+
+.zhead .ztd {
+    position: sticky;
+    top: 0;
+    background: var(--sidebar);
+}
+
+.zhead-btn,
+.zcell {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    padding: 6px 10px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.zhead-btn {
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.zcell {
+    font-family: var(--mono);
+    cursor: pointer;
+}
+
+/* Native cells are buttons, so the later .zcell { text-align: left } wins over .cell-number.
+   td is not .zcell; the table rules above stay the ones the browser sheet already uses. */
+.zcell.cell-number {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.zcell.is-picked {
+    box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.zhead-btn.is-active {
+    color: var(--accent);
+}
+
+.zgroup .zrow:hover .ztd {
+    background: var(--tint);
+}
+
+.pager .is-on {
+    border-color: var(--accent);
+    color: var(--accent);
+}

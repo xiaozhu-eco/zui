@@ -1,0 +1,1 @@
+.row::before { content: attr(data-label, "FALLBACK"); }

@@ -1,0 +1,16 @@
+{
+  "name": "viewport-units",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "视口单位（CSS Values 第 5.1 节）：vw / vh / vmin / vmax 与 d/s 变体在计算值阶段按初始包含块解析。",
+  "matrix": ["flow.normal"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

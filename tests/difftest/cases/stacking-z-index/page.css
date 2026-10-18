@@ -1,0 +1,115 @@
+/* Stacking order (LAYOUT.md section 11, CSS 2.1 appendix E). Every scene is `position: relative;
+   z-index: 0`, so it is a stacking context of its own and the scenes cannot interact: whatever a
+   scene gets wrong stays inside that scene's rectangle. Nothing here carries text, so no glyph
+   metric can move the result. */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+.scene {
+    position: relative;
+    z-index: 0;
+    width: 220px;
+    height: 100px;
+    margin: 8px;
+    /* Chosen so the scene-4 blend below lands on whole 8-bit values: a half-transparent
+       #e85d4c over this backdrop is 129/66/63 in both engines, while an odd channel
+       elsewhere would expose each engine's own rounding of a .5 result. */
+    background-color: #1a2732;
+}
+
+/* 1. A negative z-index box is painted before the in-flow content of its context. If the order
+      were the DOM order, the red box would cover the blue one instead of showing around it. */
+.neg {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    width: 204px;
+    height: 84px;
+    background-color: #e85d4c;
+    z-index: -1;
+}
+
+.front {
+    margin: 30px 0 0 30px;
+    width: 140px;
+    height: 50px;
+    background-color: #7cb7ff;
+}
+
+/* 2. Positive z-indexes sort among themselves, not by DOM order: `.pos1` (z-index 1) is written
+      second but painted first, so `.pos2` (z-index 2) is the one on top. */
+.pos2 {
+    position: absolute;
+    left: 16px;
+    top: 14px;
+    width: 120px;
+    height: 70px;
+    background-color: #3d8f6e;
+    z-index: 2;
+}
+
+.pos1 {
+    position: absolute;
+    left: 56px;
+    top: 30px;
+    width: 120px;
+    height: 70px;
+    background-color: #e0a050;
+    z-index: 1;
+}
+
+/* 3. `z-index: 5` on a `position: static` box has no effect, so the box stays in step 3 and the
+      absolutely positioned sibling with `z-index: auto` (step 6) paints above it even though it
+      comes first in the DOM. */
+.auto-abs {
+    position: absolute;
+    left: 60px;
+    top: 30px;
+    width: 120px;
+    height: 50px;
+    background-color: #e85d4c;
+}
+
+.late-static {
+    margin: 8px;
+    width: 204px;
+    height: 84px;
+    background-color: #7cb7ff;
+    z-index: 5;
+}
+
+/* 4. `opacity` below 1 builds a stacking context, which belongs to step 6: the faded box paints
+      above the static sibling that follows it, so the overlap is the blend, not the solid blue. */
+.faded {
+    opacity: 0.5;
+    margin: 8px;
+    width: 120px;
+    height: 70px;
+    background-color: #e85d4c;
+}
+
+.solid {
+    margin: -60px 0 0 60px;
+    width: 120px;
+    height: 70px;
+    background-color: #7cb7ff;
+}
+
+/* 5. `transform` builds a stacking context the same way. */
+.moved {
+    transform: translate(40px, 16px);
+    width: 120px;
+    height: 70px;
+    background-color: #3d8f6e;
+}
+
+.solid2 {
+    margin: -56px 0 0 60px;
+    width: 120px;
+    height: 70px;
+    background-color: #e0a050;
+}

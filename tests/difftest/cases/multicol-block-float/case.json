@@ -1,0 +1,16 @@
+{
+  "name": "multicol-block-float",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "多栏里一个块级子容器的浮动与 clear（栏高定值，填满一栏再进下一栏）：浮动缩短同一栏里后面的行、下一栏不受它影响，clear 把后一个块推到浮动下边（CSS 2.1 第 9.5 节 + CSS Multi-column 第 7 节）。",
+  "matrix": ["multicol", "flow.normal", "fragmentation"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

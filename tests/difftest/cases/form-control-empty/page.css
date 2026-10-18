@@ -1,0 +1,42 @@
+/* An empty text control still has an inner editor, and Chromium sizes it to the editor's line
+   boxes: one `line-height` for a text-entry `<input>`, `rows` of them for a `<textarea>`
+   (default 2). The placeholder attribute renders whenever it is set - it is not tied to an
+   author `::placeholder` rule - and its default colour is rgb(117, 117, 117).
+
+   #empty: no value, no placeholder - the case the engine used to report as a thin strip.
+   #placeholder: the attribute alone has to produce a run (and a line).
+   #value: a control with a value, the already-working path.
+   #tall: `line-height: 40px` - the editor line follows the used line-height.
+   #h-fixed: a definite height still wins over the editor line.
+   #area / #area-rows: 2 and 3 rows. */
+
+@font-face {
+    font-family: "Zui Test";
+    src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+input, textarea {
+    display: block;
+    font-family: "Zui Test", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #e8edf5;
+    background-color: #161c27;
+    border: 1px solid #3a4657;
+    padding: 4px 6px;
+    margin: 0 0 10px;
+}
+
+/* Pin the width: a `<textarea>`'s intrinsic `cols` width is a separate question from the editor
+   line box this case is about. */
+input, textarea { width: 200px; }
+
+#tall { line-height: 40px; }
+
+#h-fixed { height: 12px; }

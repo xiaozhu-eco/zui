@@ -1,0 +1,12 @@
+name: Perfetto Tracing SDK (amalgamated client)
+version: v58.2
+source: https://github.com/google/perfetto
+tag: v58.2
+artifact: perfetto-cpp-sdk-src.zip
+url: https://github.com/google/perfetto/releases/download/v58.2/perfetto-cpp-sdk-src.zip
+sha256: e56126ff81f0f914d35fe03c72419d147acf2890f36fbda7d4558fd5b84c4b09
+license: Apache-2.0
+note: the two amalgamated files taken verbatim from the release zip (perfetto.h, perfetto.cc),
+      generated upstream by tools/gen_amalgamated. Nothing edited here. Only the in-process
+      backend is used; the client is engaged solely when ZUI_TRACE names a file, so a build that
+      never asks for a trace never starts the SDK's service thread.

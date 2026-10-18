@@ -1,0 +1,205 @@
+/* Baseline rules for atomic inline boxes - see tests/fixtures/atomic_baseline.html. */
+body {
+            margin: 0;
+            background: #ffffff;
+            font-family: sans-serif;
+            font-size: 15px;
+            line-height: 20px;
+        }
+
+        /* Every case is one block with one line: `height` is the line box, and the box's own top
+           minus the parent's top says where the baseline put it. No border, no padding, no margin
+           on the parents so both numbers are directly comparable with the browser. */
+        .p {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            width: 320px;
+        }
+
+        .tag {
+            color: #888;
+        }
+
+        /* Sits on the same line as the box under test and carries the line's baseline: its own
+           rect top is that baseline minus the font ascent of its size (read from a canvas). */
+        .ref {
+            color: #c00;
+        }
+
+        .box {
+            background: #d8e8de;
+        }
+
+        /* The calendar's date circle: an inline-grid with one centred text item. */
+        .num {
+            display: inline-grid;
+            place-items: center;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 4px;
+            font-size: 12px;
+            background: #2c6b4e;
+            color: #fbf6ec;
+        }
+
+        /* An inline-grid with two auto rows: the first row's item owns the baseline. */
+        .grid2 {
+            display: inline-grid;
+            grid-auto-rows: 14px;
+            font-size: 12px;
+            line-height: 14px;
+            background: #cfe3d6;
+        }
+
+        /* An inline-grid with no items at all. */
+        .grid-empty {
+            display: inline-grid;
+            height: 22px;
+            background: #cfe3d6;
+        }
+
+        /* An inline-grid whose only item has no line box: synthesis has to reach the item. */
+        .grid-blank-item {
+            display: inline-grid;
+            height: 22px;
+            background: #cfe3d6;
+        }
+
+        .blank {
+            height: 12px;
+            background: #b9d3c3;
+        }
+
+        /* An inline-block with two lines: CSS 2.1 section 10.8.3 takes the *last* line box. */
+        .ib2 {
+            display: inline-block;
+            width: 60px;
+            font-size: 12px;
+            line-height: 14px;
+            background: #efe2c8;
+        }
+
+        /* An inline-block with no line box, with a block-end margin: border edge or margin edge? */
+        .ib-empty {
+            display: inline-block;
+            width: 40px;
+            height: 16px;
+            margin-bottom: 6px;
+            background: #efe2c8;
+        }
+
+        /* `overflow` other than visible drops the baseline and uses the bottom margin edge. */
+        .ib-clip {
+            display: inline-block;
+            width: 60px;
+            overflow: hidden;
+            font-size: 12px;
+            line-height: 14px;
+            background: #efe2c8;
+        }
+
+        /* A shrink-to-fit inline-block that wraps: the last line is the second one. */
+        .ib-wrap {
+            display: inline-block;
+            width: 40px;
+            font-size: 12px;
+            line-height: 14px;
+            background: #efe2c8;
+        }
+
+        .iflex {
+            display: inline-flex;
+            align-items: flex-start;
+            height: 22px;
+            font-size: 12px;
+            line-height: 14px;
+            background: #dfe3f2;
+        }
+
+        .iflex-wrap {
+            display: inline-flex;
+            flex-wrap: wrap;
+            width: 40px;
+            font-size: 12px;
+            line-height: 14px;
+            background: #dfe3f2;
+        }
+
+        .itab {
+            display: inline-table;
+            font-size: 12px;
+            line-height: 14px;
+            background: #eadfe8;
+        }
+
+
+        /* Two items in the first row, with different baselines: max or first? */
+        .grid-row {
+            display: inline-grid;
+            grid-auto-flow: column;
+            background: #cfe3d6;
+        }
+
+        .low {
+            font-size: 12px;
+            line-height: 14px;
+        }
+
+        .high {
+            font-size: 20px;
+            line-height: 22px;
+        }
+
+        /* `overflow` other than visible *and* a block-end margin: which edge wins? */
+        .ib-clip-margin {
+            display: inline-block;
+            width: 60px;
+            margin-bottom: 6px;
+            overflow: hidden;
+            font-size: 12px;
+            line-height: 14px;
+            background: #efe2c8;
+        }
+
+        .ib-margin-top {
+            display: inline-block;
+            width: 40px;
+            margin-top: 4px;
+            font-size: 12px;
+            line-height: 14px;
+            background: #efe2c8;
+        }
+
+        .replaced-margin {
+            margin-bottom: 6px;
+            vertical-align: baseline;
+        }
+
+        .grid-clip {
+            display: inline-grid;
+            grid-auto-rows: 14px;
+            overflow: hidden;
+            font-size: 12px;
+            line-height: 14px;
+            background: #cfe3d6;
+        }
+
+        .iflex-narrow {
+            display: inline-flex;
+            flex-wrap: wrap;
+            width: 8px;
+            font-size: 12px;
+            line-height: 14px;
+            background: #dfe3f2;
+        }
+
+
+        .num-lh {
+            line-height: 20px;
+        }
+
+        .itab td {
+            padding: 0;
+            background: #eadfe8;
+        }

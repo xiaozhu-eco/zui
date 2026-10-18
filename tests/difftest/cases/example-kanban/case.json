@@ -1,0 +1,431 @@
+{
+  "name": "example-kanban",
+  "page": "page.html",
+  "source": "../../../../example/applications/kanban/index.html",
+  "viewport": [
+    1100,
+    720
+  ],
+  "scripts": false,
+  "_comment": "小竹看板去掉页面脚本后的静态壳：看板是脚本铺的，这里用动作插六列十七条卡片。交互：顶部「新建列」的 hover/按下、看板横向滚轮、Tab/Escape，最后撤掉 #editor 的 hidden。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 1100,
+      "h": 720
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "insert",
+          "target": "#board",
+          "tag": "div",
+          "text": "",
+          "class": "column",
+          "id": "col-todo"
+        },
+        {
+          "do": "insert",
+          "target": "#board",
+          "tag": "div",
+          "text": "",
+          "class": "column",
+          "id": "col-doing"
+        },
+        {
+          "do": "insert",
+          "target": "#board",
+          "tag": "div",
+          "text": "",
+          "class": "column",
+          "id": "col-done"
+        },
+        {
+          "do": "insert",
+          "target": "#board",
+          "tag": "div",
+          "text": "",
+          "class": "column",
+          "id": "col-backlog"
+        },
+        {
+          "do": "insert",
+          "target": "#board",
+          "tag": "div",
+          "text": "",
+          "class": "column",
+          "id": "col-review"
+        },
+        {
+          "do": "insert",
+          "target": "#board",
+          "tag": "div",
+          "text": "",
+          "class": "column",
+          "id": "col-blocked"
+        },
+        {
+          "do": "insert",
+          "target": "#col-todo",
+          "tag": "div",
+          "text": "待办",
+          "class": "col-head"
+        },
+        {
+          "do": "insert",
+          "target": "#col-doing",
+          "tag": "div",
+          "text": "进行中",
+          "class": "col-head"
+        },
+        {
+          "do": "insert",
+          "target": "#col-done",
+          "tag": "div",
+          "text": "已完成",
+          "class": "col-head"
+        },
+        {
+          "do": "insert",
+          "target": "#col-backlog",
+          "tag": "div",
+          "text": "积压",
+          "class": "col-head"
+        },
+        {
+          "do": "insert",
+          "target": "#col-review",
+          "tag": "div",
+          "text": "待评审",
+          "class": "col-head"
+        },
+        {
+          "do": "insert",
+          "target": "#col-blocked",
+          "tag": "div",
+          "text": "阻塞",
+          "class": "col-head"
+        },
+        {
+          "do": "insert",
+          "target": "#col-todo",
+          "tag": "div",
+          "text": "",
+          "class": "cards",
+          "id": "cards-todo"
+        },
+        {
+          "do": "insert",
+          "target": "#col-doing",
+          "tag": "div",
+          "text": "",
+          "class": "cards",
+          "id": "cards-doing"
+        },
+        {
+          "do": "insert",
+          "target": "#col-done",
+          "tag": "div",
+          "text": "",
+          "class": "cards",
+          "id": "cards-done"
+        },
+        {
+          "do": "insert",
+          "target": "#col-backlog",
+          "tag": "div",
+          "text": "",
+          "class": "cards",
+          "id": "cards-backlog"
+        },
+        {
+          "do": "insert",
+          "target": "#col-review",
+          "tag": "div",
+          "text": "",
+          "class": "cards",
+          "id": "cards-review"
+        },
+        {
+          "do": "insert",
+          "target": "#col-blocked",
+          "tag": "div",
+          "text": "",
+          "class": "cards",
+          "id": "cards-blocked"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-todo",
+          "tag": "button",
+          "text": "对照测试加用例",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-todo",
+          "tag": "button",
+          "text": "滚动条两趟",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-todo",
+          "tag": "button",
+          "text": "多栏碎片化",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-todo",
+          "tag": "button",
+          "text": "文本抗锯齿",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-doing",
+          "tag": "button",
+          "text": "表格折叠边框",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-doing",
+          "tag": "button",
+          "text": "flex 百分比基准",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-doing",
+          "tag": "button",
+          "text": "文字前进量取整",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-done",
+          "tag": "button",
+          "text": "字距走 GPOS",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-done",
+          "tag": "button",
+          "text": "描边按格子分段",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-done",
+          "tag": "button",
+          "text": "绘制用布局字宽",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-backlog",
+          "tag": "button",
+          "text": "缓存键重算",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-backlog",
+          "tag": "button",
+          "text": "容器查询重入",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-backlog",
+          "tag": "button",
+          "text": "sticky 偏移",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-review",
+          "tag": "button",
+          "text": "代理对断行",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-review",
+          "tag": "button",
+          "text": "字重 500",
+          "class": "card"
+        },
+        {
+          "do": "insert",
+          "target": "#cards-blocked",
+          "tag": "button",
+          "text": "等字体就位",
+          "class": "card"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "dispatch",
+      "events": [
+        {
+          "type": "mouseMoved",
+          "x": 1052,
+          "y": 27
+        },
+        {
+          "type": "mousePressed",
+          "x": 1052,
+          "y": 27,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseReleased",
+          "x": 1052,
+          "y": 27,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseWheel",
+          "x": 500,
+          "y": 400,
+          "deltaX": 180,
+          "deltaY": 0
+        },
+        {
+          "type": "keyDown",
+          "key": "Tab"
+        },
+        {
+          "type": "keyUp",
+          "key": "Tab"
+        },
+        {
+          "type": "keyDown",
+          "key": "Escape"
+        },
+        {
+          "type": "keyUp",
+          "key": "Escape"
+        }
+      ],
+      "hits": [
+        {
+          "x": 1052,
+          "y": 27
+        },
+        {
+          "x": 500,
+          "y": 400
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "remove_attr",
+          "target": "#editor",
+          "name": "hidden"
+        },
+        {
+          "do": "set_text",
+          "target": "#f-title",
+          "text": "对照测试加用例"
+        }
+      ]
+    },
+    {
+      "op": "freeze",
+      "t": 400
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "style_props": [
+    "display",
+    "position",
+    "box-sizing",
+    "width",
+    "height",
+    "min-width",
+    "min-height",
+    "max-width",
+    "max-height",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+    "border-top-width",
+    "border-right-width",
+    "border-bottom-width",
+    "border-left-width",
+    "overflow-x",
+    "overflow-y",
+    "visibility",
+    "z-index",
+    "flex-direction",
+    "flex-wrap",
+    "flex-grow",
+    "flex-shrink",
+    "flex-basis",
+    "justify-content",
+    "align-items",
+    "align-content",
+    "align-self",
+    "order",
+    "row-gap",
+    "column-gap",
+    "font-family",
+    "font-size",
+    "font-weight",
+    "font-style",
+    "line-height",
+    "letter-spacing",
+    "word-spacing",
+    "text-align",
+    "text-indent",
+    "text-overflow",
+    "white-space",
+    "word-break",
+    "overflow-wrap",
+    "vertical-align"
+  ],
+  "text": {
+    "breaks": true,
+    "advances": false
+  }
+}

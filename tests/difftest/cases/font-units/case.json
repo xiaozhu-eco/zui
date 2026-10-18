@@ -1,0 +1,16 @@
+{
+  "name": "font-units",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1：CSS Values 字体相对单位 ch（0 字宽）/ ex（x-height）/ lh（used line-height），含 calc(5ch+10px)。钉 Zui Test。",
+  "matrix": ["flow.normal"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

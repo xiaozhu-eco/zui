@@ -1,0 +1,16 @@
+{
+  "name": "block-percent-basis",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "流入子级的百分比（width / padding）相对父级的内容盒解析；scrollWidth / scrollHeight 的边界（含滚动条槽与 padding 的计入规则）。",
+  "matrix": ["flow.normal"],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="events.css">
+</head>
+<body onkeydown="on_global" onbeforeunload="on_guard" data-scope="window">
+  <div id="card" class="card" data-id="card-7" onclick="on_card">
+    <button id="pick" class="pick" onclick="on_pick" data-id="row-3" data-kind="tile" value="v-9">Pick</button>
+  </div>
+  <div id="plain" class="card">
+    <button id="pick2" class="pick" onclick="on_pick" data-id="row-4">Pick2</button>
+  </div>
+  <input id="flag" type="checkbox" onclick="on_shared" onchange="on_shared">
+  <textarea id="draft" class="field" onkeydown="on_draft">ab</textarea>
+  <input id="line" class="field" onkeydown="on_line">
+  <div id="texted" onclick="on_text">Hello</div>
+  <div id="ignored" onclick="on_card" onfoo="on_unknown">Ignored</div>
+  <div id="zone_wrap" class="zone-wrap"
+       onmouseenter="on_wrap_enter" onmouseleave="on_wrap_leave">
+    <div id="zone_a" class="zone"
+         onmouseenter="on_enter_a" onmouseleave="on_leave_a"
+         onpointerenter="on_penter_a" onpointerleave="on_pleave_a"
+         onmouseover="on_over_a" onmouseout="on_out_a">A</div>
+    <div id="zone_b" class="zone"
+         onmouseenter="on_enter_b" onmouseleave="on_leave_b">B</div>
+  </div>
+  <div id="dbl" class="pick" onclick="on_once" ondblclick="on_dbl">Dbl</div>
+  <div id="keys" class="field" onkeydown="on_down" onkeyup="on_up">keys</div>
+</body>
+</html>

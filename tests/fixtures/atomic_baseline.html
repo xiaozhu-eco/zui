@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Atomic inline boxes and the baseline they put on their line. Every case is one block with one
+     line, so the parent's height is the line box and the box's top offset inside it is where the
+     baseline put it; `tests/layout_flow.cpp` pins both against Chrome. The `.ref` span on each
+     line is how the browser measurement reads the baseline (its rect top is the baseline minus the
+     font ascent of its size) and does not change the line box. -->
+<head>
+    <meta charset="utf-8">
+    <title>atomic inline baselines</title>
+    <link rel="stylesheet" href="atomic_baseline.css">
+</head>
+
+<body>
+
+
+
+
+
+    <!-- 23: inline-flex, tall item first. -->
+    <div class="p" id="p23"><span class="iflex" id="b23"><i class="high">2</i><i class="low">1</i></span><span
+            class="ref">x</span></div>
+
+    <!-- 24: inline-flex whose first item has no baseline. -->
+    <div class="p" id="p24"><span class="iflex" id="b24"><i style="height: 8px; width: 4px; background: #b9d3c3"></i><i
+                class="low">1</i></span><span class="ref">x</span></div>
+
+    <!-- 25: inline-table, two cells with different baselines. -->
+    <div class="p" id="p25"><span class="itab" id="b25"><span style="display: table-row"><span
+                    style="display: table-cell" class="high">2</span><span style="display: table-cell"
+                    class="low">1</span></span></span><span class="ref">x</span></div>
+
+    <!-- 21: the first row's first item has no baseline and a block-end margin: which edge? -->
+    <div class="p" id="p21"><span class="grid-row" id="b21"><i
+                style="height: 8px; width: 4px; margin-bottom: 6px; background: #b9d3c3"></i><i
+                class="low">1</i></span><span class="ref">x</span></div>
+
+    <!-- 22: inline-grid with no items and a block-end margin. -->
+    <div class="p" id="p22"><span class="grid-empty" id="b22" style="margin-bottom: 6px"></span><span
+            class="ref">x</span></div>
+
+
+    <!-- 26: the `.num` shape with an element item instead of bare text. -->
+    <div class="p" id="p26"><span class="num" id="b26"><i>1</i></span><span class="ref">x</span></div>
+
+    <!-- 27: the `.num` shape with `line-height: 20px` declared on the container itself. -->
+    <div class="p" id="p27"><span class="num num-lh" id="b27">1</span><span class="ref">x</span></div>
+
+    <!-- 28: the `.num` shape with the text wrapped in a block of its own. -->
+    <div class="p" id="p28"><span class="num" id="b28"><span style="display: block">1</span></span><span class="ref">x</span></div>
+
+
+    <!-- 29: a real replaced box (image) with a block-end margin. -->
+    <div class="p" id="p29"><img id="b29" class="replaced-margin" width="12" height="10"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs="><span class="ref">x</span></div>
+
+    <!-- 30: a select with a block-end margin. -->
+    <div class="p" id="p30"><select id="b30" class="replaced-margin"><option>1</option></select><span class="ref">x</span></div>
+
+    <!-- 19: the tall item first - order dependent, or always the largest baseline? -->
+    <div class="p" id="p19"><span class="grid-row" id="b19"><i class="high">2</i><i class="low">1</i></span><span
+            class="ref">x</span></div>
+
+    <!-- 20: the first item has no baseline at all. -->
+    <div class="p" id="p20"><span class="grid-row" id="b20"><i
+                style="height: 8px; width: 4px; background: #b9d3c3"></i><i class="low">1</i></span><span
+            class="ref">x</span></div>
+
+    <!-- 12: two items in the first row with different baselines. -->
+    <div class="p" id="p12"><span class="grid-row" id="b12"><i class="low">1</i><i class="high">2</i></span><span
+            class="ref">x</span></div>
+
+    <!-- 13: inline-block with overflow:hidden and a block-end margin. -->
+    <div class="p" id="p13"><span class="ib-clip-margin" id="b13">a<br>b</span><span class="ref">x</span></div>
+
+    <!-- 14: a replaced box with a block-end margin. -->
+    <div class="p" id="p14"><input type="checkbox" class="replaced-margin" id="b14"><span class="ref">x</span></div>
+
+    <!-- 15: inline-grid with overflow:hidden. -->
+    <div class="p" id="p15"><span class="grid-clip" id="b15"><i>1</i><i>2</i></span><span class="ref">x</span></div>
+
+    <!-- 16: inline-flex that really wraps to two lines. -->
+    <div class="p" id="p16"><span class="iflex-narrow" id="b16"><i>1</i><i>2</i></span><span class="ref">x</span></div>
+
+    <!-- 17: inline-block with overflow:hidden, no lines, with a block-end margin. -->
+    <div class="p" id="p17"><span class="ib-clip-margin" id="b17" style="height: 16px"></span><span class="ref">x</span>
+    </div>
+
+    <!-- 18: inline-block with a block-start margin. -->
+    <div class="p" id="p18"><span class="ib-margin-top" id="b18">a</span><span class="ref">x</span></div>
+
+    <!-- 0: control. A plain text line. `b0` is the font box of one 15px character. -->
+    <div class="p" id="p0"><span id="b0" class="tag">x</span></div>
+
+    <!-- 1: the calendar's `.num`. -->
+    <div class="p" id="p1"><span class="num" id="b1">1</span><span class="ref">x</span></div>
+
+    <!-- 2: inline-grid, two rows. -->
+    <div class="p" id="p2"><span class="grid2" id="b2"><i>1</i><i>2</i></span><span class="ref">x</span></div>
+
+    <!-- 3: empty inline-grid. -->
+    <div class="p" id="p3"><span class="grid-empty" id="b3"></span><span class="ref">x</span></div>
+
+    <!-- 4: inline-grid whose only item is blank (no line box). -->
+    <div class="p" id="p4"><span class="grid-blank-item" id="b4"><span class="blank"></span></span><span
+            class="ref">x</span></div>
+
+    <!-- 5: inline-block, two lines. -->
+    <div class="p" id="p5"><span class="ib2" id="b5">a<br>b</span><span class="ref">x</span></div>
+
+    <!-- 6: empty inline-block with a block-end margin. -->
+    <div class="p" id="p6"><span class="ib-empty" id="b6"></span><span class="ref">x</span></div>
+
+    <!-- 7: inline-block with overflow:hidden, two lines. -->
+    <div class="p" id="p7"><span class="ib-clip" id="b7">a<br>b</span><span class="ref">x</span></div>
+
+    <!-- 8: inline-block that wraps to two lines. -->
+    <div class="p" id="p8"><span class="ib-wrap" id="b8">aa bb</span><span class="ref">x</span></div>
+
+    <!-- 9: inline-flex, one item. -->
+    <div class="p" id="p9"><span class="iflex" id="b9"><i>1</i></span><span class="ref">x</span></div>
+
+    <!-- 10: inline-flex that wraps to two lines. -->
+    <div class="p" id="p10"><span class="iflex-wrap" id="b10"><i>1</i><i>2</i></span><span class="ref">x</span></div>
+
+    <!-- 11: inline-table with one row. -->
+    <div class="p" id="p11"><span class="itab" id="b11"><span style="display: table-row"><span
+                    style="display: table-cell">1</span></span></span><span class="ref">x</span></div>
+</body>
+
+</html>

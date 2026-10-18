@@ -1,0 +1,18 @@
+/* `content-visibility: auto` (LAYOUT.md section 9 step C): a box the user cannot see lays out only
+   its `contain-intrinsic-size` placeholder, and the real layout happens when it comes near the
+   viewport. The items are empty and carry their size in padding-bottom, so the two states differ
+   without any child box or text: a laid-out item is 90px (its padding), a skipped one is 120px
+   (30px of placeholder content on top of the same padding). The list is long enough that most
+   items sit far below the 600px viewport. `#i40` is changed to `content-visibility: visible` in
+   the second step, and has to stop being skipped at once. */
+
+html, body { margin: 0; padding: 0; background: #fff; }
+
+.item {
+  content-visibility: auto;
+  contain-intrinsic-size: 30px 30px;
+  padding-bottom: 90px;
+  background: #eef2f6;
+}
+
+.item.noskip { content-visibility: visible; }

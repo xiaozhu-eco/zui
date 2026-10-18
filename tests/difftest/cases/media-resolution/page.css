@@ -1,0 +1,46 @@
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+.box {
+  width: 40px;
+  height: 28px;
+  margin: 12px 0 0 20px;
+  background: #c4554a;
+}
+
+@media (resolution: 1dppx) {
+  #one {
+    width: 180px;
+    background: #2e6eee;
+  }
+}
+
+@media (min-resolution: 2dppx) {
+  #retina {
+    width: 180px;
+    background: #2e6eee;
+  }
+}
+
+@media (max-resolution: 192dpi) {
+  #max {
+    width: 180px;
+    background: #3d9a6a;
+  }
+}
+
+@media (resolution >= 2x) {
+  #hi {
+    width: 180px;
+    background: #2e6eee;
+  }
+}
+
+@media (1dppx <= resolution <= 2x) {
+  #span {
+    width: 180px;
+    background: #3d9a6a;
+  }
+}

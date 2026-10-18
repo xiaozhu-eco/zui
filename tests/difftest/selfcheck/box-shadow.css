@@ -1,0 +1,58 @@
+html, body { margin: 0; padding: 0; background: #eef1f5; }
+
+#hard {
+  width: 40px;
+  height: 30px;
+  margin: 16px;
+  background: #1a2230;
+  box-shadow: 6px 6px 0 #7cb7ff;
+}
+
+#ring {
+  width: 40px;
+  height: 30px;
+  margin: 16px;
+  background: #1a2230;
+  box-shadow: 0 0 0 3px #3d8f6e;
+}
+
+#soft {
+  width: 40px;
+  height: 30px;
+  margin: 16px;
+  background: #1a2230;
+  box-shadow: 0 8px 16px rgba(20, 30, 45, 0.4);
+}
+
+#rounded {
+  width: 40px;
+  height: 30px;
+  margin: 16px;
+  border-radius: 10px;
+  background: #1a2230;
+  box-shadow: 0 6px 12px rgba(20, 30, 45, 0.35);
+}
+
+#multi {
+  width: 40px;
+  height: 30px;
+  margin: 16px;
+  background: #1a2230;
+  box-shadow: 6px 6px 0 #7cb7ff, -4px -4px 0 #3d8f6e;
+}
+
+#inset {
+  width: 40px;
+  height: 30px;
+  margin: 16px;
+  background: #1a2230;
+  box-shadow: inset 0 0 0 6px #7cb7ff;
+}
+
+#inset-soft {
+  width: 40px;
+  height: 30px;
+  margin: 16px;
+  background: #1a2230;
+  box-shadow: inset 0 6px 14px rgba(20, 30, 45, 0.55);
+}

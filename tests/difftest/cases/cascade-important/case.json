@@ -1,0 +1,17 @@
+{
+  "name": "cascade-important",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A1 Cascade 5: UA !important beats author normal/important; author !important beats author normal. UA probes use zui UA sheet ids — golden pinned from engine (Chrome has no those UA rules).",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

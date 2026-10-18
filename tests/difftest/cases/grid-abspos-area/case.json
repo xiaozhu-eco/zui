@@ -1,0 +1,17 @@
+{
+  "name": "grid-abspos-area",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "绝对定位子项：定位到网格区域时以区域为包含块，没有定位时以容器 padding box 为包含块。",
+  "matrix": ["position.out-of-flow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "multicol-block-split",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "多栏里一个块级子容器的段落跨栏：装得下的行留在本栏，剩下的行在下一栏从栏顶继续（CSS Fragmentation 第 4 节）。栏高定值、列填 auto，两栏都恰好填满，所以量的就是断点本身。",
+  "matrix": ["multicol", "flow.normal", "fragmentation"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,13 @@
+name: zlib
+version: 1.3.2
+source: https://github.com/madler/zlib
+tag: v1.3.2
+artifact: https://zlib.net/zlib-1.3.2.tar.gz
+license: zlib (see LICENSE)
+
+The git snapshot gitignores /zconf.h because ./configure writes it. The
+release tarball ships zconf.h as a byte-for-byte copy of zconf.h.in; zlib's
+CMakeLists.txt file(READ)s that path at configure time. zui keeps the tarball
+copy in-tree so add_subdirectory(third_party/zlib) works without running
+./configure. Makefile from the tarball is still gitignored (Unix configure
+output; CMake does not use it).

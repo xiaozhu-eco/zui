@@ -1,0 +1,260 @@
+/* Folder and file rows, icon grid, and the list columns. */
+
+.cols {
+    display: none;
+    grid-template-columns: 40px minmax(0, 1fr) 88px 104px;
+    column-gap: 10px;
+    margin: 0 8px;
+    padding: 10px 8px 2px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.files {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+    gap: 12px;
+    padding: 16px;
+}
+
+.entry {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 8px 10px;
+    border-radius: 16px;
+    color: inherit;
+    text-align: center;
+    user-select: none;
+    background: #fffdf8;
+    border: 1px solid rgba(72, 54, 32, 0.06);
+    box-shadow: 0 8px 18px rgba(43, 38, 31, 0.06);
+}
+
+.entry:hover {
+    background: #fffdf8;
+    box-shadow: var(--shadow-sm);
+}
+
+.entry:has(:checked) {
+    background: #fffdf8;
+    box-shadow: inset 0 0 0 1px rgba(44, 107, 78, 0.35), var(--shadow-sm);
+}
+
+.entry:has(:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+}
+
+.icon-slot {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+}
+
+.name {
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 1.35;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.meta,
+.date {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.date {
+    display: none;
+}
+
+.g-file {
+    position: relative;
+    width: 44px;
+    height: 52px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 7px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.g-file::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 12px 12px 0;
+    border-color: transparent rgba(255, 255, 255, 0.72) transparent transparent;
+}
+
+.g-txt { background: #5d7284; }
+.g-md { background: #2c6b4e; }
+.g-csv { background: #3e7a4d; }
+.g-json { background: #b86a2c; }
+.g-svg { background: #3d6f86; }
+.g-html { background: #c45c36; }
+.g-css { background: #3d5a8a; }
+.g-xml { background: #6a5a86; }
+
+.g-folder {
+    position: relative;
+    width: 50px;
+    height: 36px;
+    margin-top: 8px;
+    border-radius: 4px 9px 7px 7px;
+    background: linear-gradient(#f2c56a, #e0a12a);
+    box-shadow: inset 0 -8px 0 rgba(140, 84, 8, 0.12);
+}
+
+.g-folder::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -8px;
+    width: 22px;
+    height: 10px;
+    border-radius: 4px 4px 0 0;
+    background: #f2c56a;
+}
+
+.app:has(#view-list:checked) .cols {
+    display: grid;
+}
+
+.app:has(#view-list:checked) .files {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4px 8px 28px;
+}
+
+.app:has(#view-list:checked) .entry {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) 88px 104px;
+    column-gap: 10px;
+    align-items: center;
+    min-height: 44px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.app:has(#view-list:checked) .name {
+    font-size: 14px;
+}
+
+.app:has(#view-list:checked) .date {
+    display: block;
+}
+
+.app:has(#view-list:checked) .icon-slot {
+    width: 40px;
+    height: 36px;
+}
+
+.app:has(#view-list:checked) .g-file {
+    width: 34px;
+    height: 36px;
+    padding-bottom: 5px;
+    border-radius: 4px;
+    font-size: 8px;
+    letter-spacing: -0.04em;
+}
+
+.app:has(#view-list:checked) .g-file::after {
+    border-width: 0 8px 8px 0;
+}
+
+.app:has(#view-list:checked) .g-folder {
+    width: 30px;
+    height: 22px;
+    margin-top: 4px;
+    border-radius: 3px 6px 5px 5px;
+    box-shadow: inset 0 -5px 0 rgba(140, 84, 8, 0.12);
+}
+
+.app:has(#view-list:checked) .g-folder::before {
+    top: -5px;
+    width: 14px;
+    height: 6px;
+}
+
+.meta {
+    display: none;
+}
+
+.app:has(#view-list:checked) .meta,
+.app:has(#view-details:checked) .meta,
+.app:has(#view-details:checked) .date {
+    display: block;
+}
+
+.app:has(#view-details:checked) .cols {
+    display: grid;
+}
+
+.app:has(#view-details:checked) .files {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 8px 28px;
+}
+
+.app:has(#view-details:checked) .entry {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) 88px 104px;
+    column-gap: 10px;
+    align-items: center;
+    min-height: 36px;
+    padding: 2px 8px;
+    border-radius: 0;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+}
+
+.app:has(#view-details:checked) .entry:nth-child(even) {
+    background: rgba(44, 107, 78, 0.04);
+}
+
+.app:has(#view-details:checked) .name {
+    font-size: 13px;
+}
+
+.app:has(#view-details:checked) .icon-slot {
+    width: 40px;
+    height: 28px;
+}
+
+.app:has(#view-details:checked) .g-file {
+    width: 28px;
+    height: 28px;
+    padding-bottom: 4px;
+    border-radius: 3px;
+    font-size: 8px;
+}
+
+.app:has(#view-details:checked) .g-folder {
+    width: 26px;
+    height: 18px;
+    margin-top: 4px;
+}

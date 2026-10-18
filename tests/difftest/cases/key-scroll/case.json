@@ -1,0 +1,53 @@
+{
+  "name": "key-scroll",
+  "page": "page.html",
+  "viewport": [
+    800,
+    600
+  ],
+  "_comment": "Arrow and PageDown scroll. Expected offset is the browser readback.",
+  "matrix": [
+    "scroll.overflow"
+  ],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 800,
+      "h": 600
+    },
+    {
+      "op": "dispatch",
+      "events": [
+        {
+          "type": "keyDown",
+          "key": "ArrowDown"
+        },
+        {
+          "type": "keyUp",
+          "key": "ArrowDown"
+        },
+        {
+          "type": "keyDown",
+          "key": "PageDown"
+        },
+        {
+          "type": "keyUp",
+          "key": "PageDown"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": {
+    "breaks": false,
+    "advances": false
+  }
+}

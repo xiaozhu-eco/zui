@@ -1,0 +1,18 @@
+{
+  "name": "paint-column-rule-3d",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Same column geometry as paint-column-rule, so the blocks land in the columns the browser uses. Empty page-coloured boxes, so only the rules are ink. The 16px rule splits into 8px halves. groove is dark on the left and light on the right; ridge is the reverse. inset paints as ridge and outset as groove, the collapsing-border treatment Edge uses for a column rule. A solid fill of #6b4c9a would fail. pixel_tolerance 2 matches paint-border-styles.",
+  "matrix": ["multicol"],
+  "required": true,
+  "pixel_tolerance": 2,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

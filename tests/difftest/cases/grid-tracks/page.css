@@ -1,0 +1,25 @@
+/* Grid track sizing, auto placement, spans and alignment, all in fixed px so the case does
+   not depend on font metrics (TESTPLAN section 2: grid is an「一致」feature). */
+html, body { margin: 0; padding: 0; }
+
+#grid {
+  display: grid;
+  width: 400px;
+  height: 200px;
+  grid-template-columns: 100px 1fr 1fr;
+  grid-template-rows: 40px 40px;
+  gap: 8px;
+  background: #f4f4f4;
+}
+
+.cell { background: #dddddd; }
+
+#a { grid-column: 1; grid-row: 1 / 3; background: #cccccc; }
+
+#d {
+  justify-self: end;
+  align-self: center;
+  width: 40px;
+  height: 20px;
+  background: #bbbbbb;
+}

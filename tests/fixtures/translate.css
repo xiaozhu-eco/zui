@@ -1,0 +1,22 @@
+#pct {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100px;
+    transform: translateX(50%) translateY(110%);
+}
+
+#kid {
+    width: 40px;
+    height: 20px;
+}
+
+#px {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    width: 40px;
+    height: 30px;
+    transform: translate(8px, -4px);
+}

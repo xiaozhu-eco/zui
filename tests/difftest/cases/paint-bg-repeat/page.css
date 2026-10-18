@@ -1,0 +1,50 @@
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+.box {
+  margin: 16px 0 0 20px;
+  background-color: #d7dee8;
+}
+
+/* 184 / 40 = 4 copies, leftover 24px split into three 8px gaps. One row (56/56). */
+#space {
+  width: 184px;
+  height: 56px;
+  background-image: url("red8.png");
+  background-repeat: space;
+  background-size: 40px 56px;
+  background-position: left top;
+}
+
+/* 160/100 rounds to 2, so each tile is drawn 80px wide.
+   tile.png is red/green/red so both edges match and a repeat of the 100px size would not. */
+#round {
+  width: 160px;
+  height: 64px;
+  background-image: url("tile.png");
+  background-repeat: round;
+  background-size: 100px 64px;
+  background-position: left top;
+}
+
+/* One copy is larger than the positioning area, so space uses background-position. */
+#one {
+  width: 100px;
+  height: 40px;
+  background-image: url("red8.png");
+  background-repeat: space;
+  background-size: 60px 40px;
+  background-position: right center;
+}
+
+/* Two copies on each axis. Position is ignored; gaps are 20px. */
+#both {
+  width: 100px;
+  height: 100px;
+  background-image: url("red8.png");
+  background-repeat: space;
+  background-size: 40px 40px;
+  background-position: right bottom;
+}

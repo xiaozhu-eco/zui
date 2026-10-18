@@ -1,0 +1,23 @@
+{
+  "name": "animation-opacity",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "动画插值：加类后把时钟冻结在 100ms / 200ms，比 opacity 的使用值（0.625 / 0.25）。",
+  "matrix": ["animation.interpolation"],
+  "required": true,
+  "style_props": ["opacity"],
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "eval", "actions": [{ "do": "add_class", "target": "#box", "name": "faded" }] },
+    { "op": "freeze", "t": 100 },
+    { "op": "trace" },
+    { "op": "freeze", "t": 200 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

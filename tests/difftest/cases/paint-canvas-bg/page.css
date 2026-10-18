@@ -1,0 +1,20 @@
+/* A5: root/body background propagation to the canvas beyond solid color.
+   Body linear-gradient must cover the viewport canvas; body box itself stays short. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: linear-gradient(to right, #2f6fbd, #e0a050);
+  background-color: #101418;
+  height: 40px;
+}
+
+#probe {
+  width: 80px;
+  height: 24px;
+  margin: 8px;
+  background: #ffffff;
+}

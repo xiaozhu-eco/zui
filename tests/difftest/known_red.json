@@ -1,0 +1,244 @@
+{
+  "entries": [
+    {
+      "case": "example-album",
+      "channel": "paint",
+      "reason": "pixels=36; edge run 36 on button#zoom-out and form#light-form (step-014). Frames 004/007/010 are clean. Gutter content is 0."
+    },
+    {
+      "case": "example-calendar",
+      "channel": "geometry",
+      "reason": "counts.geometry=34; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-calendar",
+      "channel": "l1",
+      "reason": "counts.l1=7; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-calendar",
+      "channel": "paint",
+      "reason": "pixels=68328 (paint); required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-chat",
+      "channel": "l1",
+      "reason": "counts.l1=1; button#remove's auto margin-left is a used length (Chrome 630px) and the export reports 0 for a flex item"
+    },
+    {
+      "case": "example-chat",
+      "channel": "paint",
+      "reason": "pixels=41714 (paint); required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-contacts",
+      "channel": "geometry",
+      "reason": "counts.geometry=3; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-contacts",
+      "channel": "l1",
+      "reason": "counts.l1=1; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-contacts",
+      "channel": "paint",
+      "reason": "pixels=45174 (paint); owners input#q, div.card, div.editor, select#f-group on the same app revision as the geometry and l1 entries"
+    },
+    {
+      "case": "example-file-explorer",
+      "channel": "geometry",
+      "reason": "counts.geometry=21; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-file-explorer",
+      "channel": "l5",
+      "reason": "counts.l5=1; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-file-explorer",
+      "channel": "paint",
+      "reason": "pixels=14776 (paint); required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-flow",
+      "channel": "geometry",
+      "reason": "div.tag rel_x 109 vs 109.03125 (2/64) on each trace; flex two-round ceiling still sets converged=false"
+    },
+    {
+      "case": "example-flow",
+      "channel": "mechanism",
+      "reason": "counts.mechanism=3; one differing pixel per capture on the div.blk edge (the 193x9 rgba band now matches)"
+    },
+    {
+      "case": "example-kanban",
+      "channel": "geometry",
+      "reason": "counts.geometry=13; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-kanban",
+      "channel": "l1",
+      "reason": "counts.l1=3; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-kanban",
+      "channel": "paint",
+      "reason": "pixels=33963 (paint); required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-reader",
+      "channel": "geometry",
+      "reason": "counts.geometry=74; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-reader",
+      "channel": "mechanism",
+      "reason": "counts.mechanism=10; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-reader",
+      "channel": "paint",
+      "reason": "pixels=123111 (paint); required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-table",
+      "channel": "geometry",
+      "reason": "counts.geometry=36"
+    },
+    {
+      "case": "example-table",
+      "channel": "paint",
+      "reason": "pixels.classification paint"
+    },
+    {
+      "case": "example-transition",
+      "channel": "geometry",
+      "reason": "counts.geometry=50"
+    },
+    {
+      "case": "example-transition",
+      "channel": "mechanism",
+      "reason": "counts.mechanism=4"
+    },
+    {
+      "case": "example-transition",
+      "channel": "paint",
+      "reason": "pixels.classification paint"
+    },
+    {
+      "case": "example-transition-mask",
+      "channel": "geometry",
+      "reason": "counts.geometry=50"
+    },
+    {
+      "case": "example-transition-mask",
+      "channel": "mechanism",
+      "reason": "counts.mechanism=4"
+    },
+    {
+      "case": "example-transition-mask",
+      "channel": "paint",
+      "reason": "pixels.classification paint"
+    },
+    {
+      "case": "example-zdb",
+      "channel": "geometry",
+      "reason": "counts.geometry=17; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-zdb",
+      "channel": "mechanism",
+      "reason": "counts.mechanism=4 (synced 2026-10-03 full-apps run)"
+    },
+    {
+      "case": "example-zdb",
+      "channel": "paint",
+      "reason": "pixels=32 (paint); required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-zmd",
+      "channel": "geometry",
+      "reason": "counts.geometry=134; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-zmd",
+      "channel": "l1",
+      "reason": "counts.l1=35; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-zmd",
+      "channel": "missing",
+      "reason": "counts.missing=1; required app case introduced 2026-10-03"
+    },
+    {
+      "case": "example-zmd",
+      "channel": "paint",
+      "reason": "pixels=8728 (paint); required app case introduced 2026-10-03"
+    },
+    {
+      "case": "flow-page",
+      "channel": "geometry",
+      "reason": "same div.tag rel_x 109 vs 109.03125 (2/64); flex two-round ceiling still sets converged=false"
+    },
+    {
+      "case": "flow-page",
+      "channel": "mechanism",
+      "reason": "counts.mechanism=1; the same single differing pixel on div.blk as example-flow"
+    },
+    {
+      "case": "font-generic",
+      "channel": "geometry",
+      "reason": "counts.geometry=3"
+    },
+    {
+      "case": "font-sans-resolution",
+      "channel": "geometry",
+      "reason": "counts.geometry=4"
+    },
+    {
+      "case": "paint-transform-text",
+      "channel": "geometry",
+      "reason": "counts.geometry=4 (synced 2026-10-03 full-apps run)"
+    },
+    {
+      "case": "reader-states",
+      "channel": "geometry",
+      "reason": "counts.geometry=114"
+    },
+    {
+      "case": "reader-states",
+      "channel": "mechanism",
+      "reason": "counts.mechanism=10"
+    },
+    {
+      "case": "reader-states",
+      "channel": "paint",
+      "reason": "pixels.classification paint"
+    },
+    {
+      "case": "writing-mode-sideways",
+      "channel": "geometry",
+      "reason": "counts.geometry=11 (synced 2026-10-03 full-apps run)"
+    },
+    {
+      "case": "writing-mode-sideways",
+      "channel": "paint",
+      "reason": "pixels.classification paint (synced 2026-10-03 full-apps run)"
+    },
+    {
+      "case": "writing-mode-vertical-scroll",
+      "channel": "geometry",
+      "reason": "counts.geometry=13 (synced 2026-10-03 full-apps run)"
+    },
+    {
+      "case": "writing-mode-vertical-scroll",
+      "channel": "paint",
+      "reason": "pixels.classification paint (synced 2026-10-03 full-apps run)"
+    },
+    {
+      "case": "paint-contain-ink",
+      "channel": "mechanism",
+      "reason": "counts.mechanism=1; pixels=1 lands on a mechanism edge (engine-only corpus, 2026-10-05; identical with ZUI_PERF_DAMAGE=0)"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "at-layer",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1：@layer 的排序（CSS Cascade 5 §6.4.4）。宽度编码「哪一条胜出」，基准宽 4px 放在最先声明的 base 层里（无层的基准会盖掉所有有层声明，让一半探针失去区分度）：#p1 无层胜有层（22）、#p2 `@layer c, d;` 先声明的层序 d 胜（11）、#p3 important 反向层序取先声明的 e（11）、#p4 有层 important 胜无层 important（11）、#p5 important 胜层（11）、#p6 层自身声明排在子层之后（22）、#p7 匿名层按出现序（22）、#p8 嵌套块与点号名是同一层（22）、#p9 @media 内的层进顶层序（22）、#s1/#s3/#s4 style 属性胜有层规则（11）、#s2 有层 important 胜普通 style 属性（22）、#t1 无层先于特异性（33）、#t2 style 属性先于特异性（11）。期望值全部按钉死浏览器实测填写。",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

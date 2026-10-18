@@ -1,0 +1,43 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #c8d0d8;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+
+.sw {
+  width: 100px;
+  height: 70px;
+  background-color: #7cb7ff;
+}
+
+/* Gradient mask: opaque at top → transparent at bottom. */
+#mask-grad {
+  background-color: #e85d4c;
+  mask-image: linear-gradient(#000000, transparent);
+}
+
+/* Bitmap mask stretched over the box. */
+#mask-url {
+  background-color: #3d8f6e;
+  mask-image: url("green4.png");
+}
+
+#multiply {
+  background-color: #ff8080;
+  mix-blend-mode: multiply;
+}
+
+#screen {
+  background-color: #4060a0;
+  mix-blend-mode: screen;
+}
+
+#plain {
+  background-color: #7cb7ff;
+}

@@ -1,0 +1,50 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eef1f5;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px;
+}
+
+.sw {
+    width: 90px;
+    height: 60px;
+    background-color: #1a2230;
+}
+
+/* Offset + blur + colour alpha. */
+#soft {
+    box-shadow: 0 10px 24px rgba(48, 32, 16, 0.16);
+}
+
+/* No blur: a hard offset copy. */
+#hard {
+    box-shadow: 6px 6px 0 #7cb7ff;
+}
+
+/* No blur, spread: a ring around the border box. */
+#ring {
+    box-shadow: 0 0 0 3px #3d8f6e;
+}
+
+/* Blur + spread together. */
+#spread {
+    box-shadow: 4px 4px 10px 6px rgba(20, 30, 45, 0.35);
+}
+
+/* Shadow follows the border radius. */
+#rounded {
+    border-radius: 16px;
+    box-shadow: 0 8px 18px rgba(20, 30, 45, 0.4);
+}
+
+/* Control: same box, no shadow. */
+#plain {
+    background-color: #1a2230;
+}

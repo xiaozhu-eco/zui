@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="page.css"></head>
+<body>
+  <!-- #a seeds prev_tag=div for the next two siblings. -->
+  <div class="card" id="a"><span class="badge"></span></div>
+  <!-- Same ShareKey shell as #c (tag/class/prev_tag/parent) but :has(.badge) is false. -->
+  <div class="card" id="b"></div>
+  <!-- Must not reuse #b's computed style through ShareCache. -->
+  <div class="card" id="c"><span class="badge"></span></div>
+</body>
+</html>

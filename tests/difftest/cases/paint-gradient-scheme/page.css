@@ -1,0 +1,31 @@
+html, body {
+  margin: 0;
+  background: #101418;
+}
+
+div {
+  position: absolute;
+  width: 160px;
+  height: 96px;
+}
+
+#light {
+  left: 40px;
+  top: 48px;
+  color-scheme: light;
+  background-image: linear-gradient(90deg, light-dark(#c4554a, #2244aa), light-dark(#3d8f6e, #e8c36a));
+}
+
+#dark {
+  left: 220px;
+  top: 48px;
+  color-scheme: dark;
+  background-image: linear-gradient(90deg, light-dark(#c4554a, #2244aa), light-dark(#3d8f6e, #e8c36a));
+}
+
+#ink {
+  left: 400px;
+  top: 48px;
+  color: #e8c36a;
+  background-image: linear-gradient(90deg, currentColor, #3d6ad4);
+}

@@ -1,0 +1,24 @@
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+
+.box {
+  width: 600px;
+  margin: 0 0 20px 0;
+  padding: 10px;
+  background-color: #161c27;
+}
+
+.blk {
+  height: 40px;
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.a { background-color: #243044; }
+.b { background-color: #7cb7ff; }
+.c { background-color: #8fd18a; }
+
+#count3 { column-count: 3; column-gap: 20px; }
+#width100 { column-width: 100px; column-gap: 20px; }
+#fixed_height { column-count: 2; column-gap: 20px; height: 100px; }
+#fill_auto { column-count: 2; column-gap: 20px; height: 100px; column-fill: auto; }

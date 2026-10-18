@@ -1,0 +1,39 @@
+* {
+    box-sizing: content-box;
+}
+
+body {
+    margin: 0;
+    font-size: 16px;
+}
+
+#rel {
+    position: relative;
+    width: 1000px;
+    height: 300px;
+    background: #eeeeee;
+}
+
+/* Expected: left = 500 - 100 = 400, top = 150 - 50 = 100. */
+#abs_math {
+    position: absolute;
+    left: calc(50% - 100px);
+    top: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+}
+
+.flex {
+    display: flex;
+}
+
+/* Expected gap = 10 + 2% of the 1000px container = 30. */
+#gap_math {
+    gap: calc(10px + 2%);
+}
+
+#gap_a,
+#gap_b {
+    width: 100px;
+    height: 20px;
+}

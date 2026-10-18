@@ -1,0 +1,101 @@
+# layout_algo is the subset compiled by zui_layout_inline / zui_layout_cache
+# (no box tree, engine, scrollbars, or world_placement). The full module
+# adds those files. Work-unit notes go through zui_src_perf, pulled in by
+# html (full layout tests) or listed explicitly (layout_algo-only tests).
+
+zui_add_interface_sources(zui_src_layout_algo
+  box.cpp
+  intern_style.cpp
+  intern_style_as.cpp
+  read_style.cpp
+  read_flex.cpp
+  read_table_intrinsic.cpp
+  intern_grid.cpp
+  style_table.cpp
+  freetype_text_metrics.cpp
+  clip_path.cpp
+  stacking.cpp
+  cache/exclusion_space.cpp
+  cache/constraint_space.cpp
+  cache/layout_key.cpp
+  cache/box_cache.cpp
+  cache/out_of_flow.cpp
+  cache/layout_context.cpp
+  cache/layout_context_store.cpp
+  cache/layout_context_text.cpp
+  cache/ask_fuse.cpp
+  cache/in_flow.cpp
+  cache/layout_invalidation.cpp
+  flow/flow.cpp
+  flow/shrink.cpp
+  flow/finish.cpp
+  flow/plain_block.cpp
+  flow/special.cpp
+  flow/margins.cpp
+  flow/widget_size.cpp
+  flow/used_values.cpp
+  flow/exclusion.cpp
+  flow/atomic.cpp
+  flow/pieces.cpp
+  flow/sticky.cpp
+  flow/lines.cpp
+  flow/line_wrap.cpp
+  flow/line_wrap_finish.cpp
+  flow/inline_pieces.cpp
+  flow/inline_content.cpp
+  flow/blocks.cpp
+  flow/fragmentation.cpp
+  inline/script.cpp
+  inline/bidi.cpp
+  inline/shape.cpp
+  flex/flex.cpp
+  flex/pass.cpp
+  flex/container.cpp
+  flex/items.cpp
+  flex/lines.cpp
+  flex/pack.cpp
+  flex/placement.cpp
+  flex/finish.cpp
+  flex/detail.cpp
+  grid/grid.cpp
+  grid/measure.cpp
+  grid/measure_area.cpp
+  grid/geometry.cpp
+  grid/tracks.cpp
+  grid/placement.cpp
+  grid/templates.cpp
+  multicol/multicol.cpp
+  multicol/multicol_columns.cpp
+  table/table.cpp
+  table/place.cpp
+  table/model.cpp
+  table/geometry.cpp
+  paint_map.cpp
+  paint_map_place.cpp
+  paint_map_frames.cpp
+  world_hit.cpp
+  paint_transform.cpp
+)
+
+zui_add_interface_sources(zui_src_layout
+  caret/caret_service.cpp
+  caret/caret_hit.cpp
+  caret/caret_map.cpp
+  caret/caret_rect.cpp
+  box_tree/tree.cpp
+  box_tree/builder.cpp
+  box_tree/srcset.cpp
+  box_tree/sync.cpp
+  box_tree/match.cpp
+  box_tree/table.cpp
+  world_placement.cpp
+  hit_tester.cpp
+  scrollbar_v.cpp
+  scrollbar_h.cpp
+  overflow_clip.cpp
+  engine.cpp
+  refill_runs.cpp
+)
+target_link_libraries(zui_src_layout INTERFACE
+  zui_src_layout_algo
+)

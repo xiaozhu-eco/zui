@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="contacts">
+  <title>小竹通讯录</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/people.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body onkeydown="on_accel">
+  <input id="theme-dark" class="hid" type="checkbox">
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">竹</span>
+        <h1 class="brand-name">小竹通讯录</h1>
+      </div>
+      <label class="search">
+        <span class="sr">搜索</span>
+        <input id="q" type="search" placeholder="搜索姓名、电话、单位" autocomplete="off" oninput="on_query">
+      </label>
+      <div class="top-actions">
+        <label class="theme-toggle" for="theme-dark"><span class="when-light">深色</span><span class="when-dark">浅色</span></label>
+        <div class="menu-wrap">
+          <input id="sample-menu" class="hid sample-toggle" type="checkbox">
+          <label class="menu-btn" id="sample-open" for="sample-menu">更多</label>
+          <div class="menu" role="menu">
+            <button type="button" id="restore" onclick="on_restore">恢复示例</button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="create" onclick="on_create">新建</button>
+      </div>
+    </header>
+    <div class="workspace">
+      <aside class="list-pane">
+        <div class="filters" id="filters" role="toolbar" aria-label="分组">
+          <template>
+            <button type="button" class="chip {{on}}" onclick="on_filter" data-id="{{id}}">{{label}}</button>
+          </template>
+        </div>
+        <label class="star-only"><input type="checkbox" id="star-only" onchange="on_star"> 只看标星</label>
+        <p class="empty" id="list-empty" hidden></p>
+        <div class="list" id="list" aria-label="联系人">
+          <template>
+            <button type="button" class="person {{on}}" onclick="on_person" data-id="{{id}}">
+              <span class="avatar">{{initial}}</span>
+              <span class="who">
+                <span class="name">{{name}}<span class="star">{{star}}</span></span>
+                <span class="meta">{{meta}}</span>
+              </span>
+            </button>
+          </template>
+        </div>
+        <p class="status" id="status" role="status"></p>
+      </aside>
+      <main class="detail" id="detail">
+        <div class="detail-empty" id="detail-empty" hidden>
+          <h2>没有选中的人</h2>
+          <p>新建一位，或恢复示例名单。</p>
+          <div class="detail-actions">
+            <button type="button" class="btn btn-primary" onclick="on_create">新建</button>
+            <button type="button" class="btn" onclick="on_restore">恢复示例</button>
+          </div>
+        </div>
+        <div id="detail-body">
+          <div class="detail-head">
+            <span class="avatar avatar-lg" id="d-avatar"></span>
+            <div>
+              <h2 class="detail-name" id="d-name"></h2>
+              <p class="detail-sub" id="d-sub"></p>
+            </div>
+          </div>
+          <div class="detail-actions">
+            <button type="button" class="btn btn-primary" onclick="on_edit">编辑</button>
+            <button type="button" class="btn btn-danger" onclick="on_delete">删除</button>
+          </div>
+          <div class="detail-tabs" role="tablist" aria-label="联系人内容">
+            <input id="tab-card" class="hid" type="radio" name="detail-tab" checked>
+            <label class="tab" for="tab-card">资料</label>
+            <input id="tab-note" class="hid" type="radio" name="detail-tab">
+            <label class="tab" for="tab-note">备注</label>
+          </div>
+          <div class="card">
+            <div class="card-facts">
+              <div class="line"><span class="k">分组</span><span class="v" id="d-group"></span></div>
+              <div class="line"><span class="k">电话</span><a class="v" id="d-phone" href="" onclick="on_open_uri"></a></div>
+              <div class="line"><span class="k">邮箱</span><a class="v" id="d-email" href="" onclick="on_open_uri"></a></div>
+              <div class="line"><span class="k">城市</span><span class="v" id="d-city"></span></div>
+            </div>
+            <div class="card-note">
+              <div class="line"><span class="k">备注</span><span class="v" id="d-note"></span></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="back" id="editor" hidden>
+    <form class="dialog" id="editor-form" role="dialog" aria-modal="true" aria-labelledby="editor-title">
+      <h2 id="editor-title"></h2>
+      <div class="form-grid">
+        <label class="field"><span>姓名</span><input id="f-name" required autocomplete="name"></label>
+        <label class="field" id="group-field"><span>分组</span>
+          <select id="f-group">
+            <option value="work">同事</option>
+            <option value="family">家人</option>
+            <option value="friend">朋友</option>
+            <option value="other">其他</option>
+          </select>
+        </label>
+        <div class="field" id="group-picks">
+          <span>分组</span>
+          <div class="picks">
+            <button type="button" class="chip" id="g-work" onclick="on_group" data-id="work">同事</button>
+            <button type="button" class="chip" id="g-family" onclick="on_group" data-id="family">家人</button>
+            <button type="button" class="chip" id="g-friend" onclick="on_group" data-id="friend">朋友</button>
+            <button type="button" class="chip" id="g-other" onclick="on_group" data-id="other">其他</button>
+          </div>
+        </div>
+        <label class="field"><span>单位</span><input id="f-org" autocomplete="organization"></label>
+        <label class="field"><span>职务</span><input id="f-title" autocomplete="organization-title"></label>
+        <label class="field"><span>电话</span><input id="f-phone" type="tel" autocomplete="tel"></label>
+        <label class="field"><span>邮箱</span><input id="f-email" type="email" autocomplete="email"></label>
+        <label class="field"><span>城市</span><input id="f-city" autocomplete="address-level2"></label>
+        <label class="check"><input id="f-star" type="checkbox"> 标星</label>
+        <label class="field wide"><span>备注</span><textarea id="f-note"></textarea></label>
+      </div>
+      <p class="form-error" id="editor-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="editor-cancel" onclick="on_editor_cancel">取消</button>
+        <button type="submit" class="btn btn-primary" onclick="on_save">保存</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="back" id="confirm" hidden>
+    <div class="dialog dialog-confirm" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <h2 id="confirm-title">确认</h2>
+      <p id="confirm-body"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="confirm-cancel" onclick="on_confirm_cancel">取消</button>
+        <button type="button" class="btn btn-danger" id="confirm-ok" onclick="on_confirm_ok">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="file-notice" id="file-notice" hidden>此页使用模块脚本，用文件地址打开不会运行。在这个目录执行 <code>python -m http.server</code>，再用浏览器打开给出的地址。</p>
+  <script>
+  (function () {
+    if (location.protocol === "file:") {
+      var note = document.getElementById("file-notice");
+      if (note) note.hidden = false;
+    }
+  })();
+  </script>
+  <script type="module" src="js/boot.js"></script>
+</body>
+</html>

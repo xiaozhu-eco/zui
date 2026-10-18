@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+  font-family: "Zui Test", sans-serif;
+}
+
+p {
+  margin: 0;
+  padding: 6px 10px;
+  font-size: 18px;
+  line-height: 26px;
+  color: #e8edf5;
+}
+
+#u {
+  text-decoration: underline;
+}
+
+#line-through {
+  text-decoration: line-through;
+}
+
+#wavy {
+  text-decoration: underline wavy #e85d4c;
+}
+
+#thick {
+  text-decoration: underline 3px #7cb7ff;
+}
+
+#dashed {
+  text-decoration: underline dashed #7cb7ff;
+}
+
+#overline {
+  text-decoration: overline;
+}
+
+/* Control: identical box, no decoration. Rows must not shift between them. */
+#plain {
+  color: #e8edf5;
+}

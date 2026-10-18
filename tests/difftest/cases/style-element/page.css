@@ -1,0 +1,23 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+.box {
+    display: block;
+    width: 40px;
+    height: 20px;
+    background-color: #3a4450;
+}
+
+/* Same specificity as the head `<style>`'s `#a`, later in document order: this one wins. */
+#a {
+    width: 40px;
+}
+
+#c {
+    width: 120px;
+    background-color: #3d8f6e;
+}

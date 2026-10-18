@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>布局四步</title>
+  <link rel="stylesheet" href="flow.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">布局四步</div>
+      <div class="muted">同一份页面可在浏览器里对照。每张卡片下面是预期。</div>
+    </header>
+    <div class="page">
+
+      <section class="sec">
+        <h2>相邻垂直 margin</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">兄弟，30 与 10</div>
+            <div class="expect">间距是 30。两条 margin 相加会是 40。</div>
+            <div class="stage box">
+              <div class="blk a m30">A</div>
+              <div class="blk b m10">B</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">三个兄弟</div>
+            <div class="expect">8 与 20 折成 20，20 与 8 再折成 20。</div>
+            <div class="stage box">
+              <div class="blk a" style="margin: 8px 0">A</div>
+              <div class="blk b" style="margin: 20px 0">B</div>
+              <div class="blk c" style="margin: 8px 0">C</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">负数叠在一起</div>
+            <div class="expect">下 -30 与上 -10 折成 -30，B 压进 A。</div>
+            <div class="stage box">
+              <div class="blk down">A</div>
+              <div class="blk up">B</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">一正一负</div>
+            <div class="expect">正 20 抵掉负 8，间距是 12。</div>
+            <div class="stage box">
+              <div class="blk a" style="margin: 0 0 -8px 0">A</div>
+              <div class="blk b" style="margin: 20px 0 0 0">B</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">空盒穿过去</div>
+            <div class="expect">空盒的 24 和两边的 8 折成 24，空盒不占高度。</div>
+            <div class="stage box">
+              <div class="blk a" style="margin: 8px 0">A</div>
+              <div class="hole"></div>
+              <div class="blk b" style="margin: 8px 0">B</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">子 margin 折出父盒</div>
+            <div class="expect">父没有 padding 和边框，子的 16 在父边框外面。</div>
+            <div class="stage">
+              <div style="border: 1px solid #7cb7ff">
+                <div class="blk c" style="margin: 16px 0">子</div>
+              </div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">padding 把折叠隔开</div>
+            <div class="expect">父有 padding，子的 16 留在边框里面。</div>
+            <div class="stage box pad">
+              <div class="blk c" style="margin: 16px 0">子</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">overflow 建立 BFC</div>
+            <div class="expect">hidden 不让子 margin 折出去，16 在边框内。</div>
+            <div class="stage clip">
+              <div class="blk d" style="margin: 16px 0">子</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">flex 子项不折叠</div>
+            <div class="expect">两项各 20，中间是 40。块里同样两项只会是 20。</div>
+            <div class="col">
+              <div class="blk a m20">A</div>
+              <div class="blk b m20">B</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>固有宽度</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">width: auto</div>
+            <div class="expect">拉满 220px，句子折行。</div>
+            <div class="stretch sentence">hello world from a long sentence</div>
+          </div>
+          <div class="case">
+            <div class="k">width: max-content</div>
+            <div class="expect">整句一行，盒子跟着变宽。</div>
+            <div class="sentence maxline">hello world from a long sentence</div>
+          </div>
+          <div class="case">
+            <div class="k">width: min-content</div>
+            <div class="expect">宽等于最长的词，其余折行。</div>
+            <div class="sentence minline">hello world from a long sentence</div>
+          </div>
+          <div class="case">
+            <div class="k">width: fit-content</div>
+            <div class="expect">在 160px 里被夹住，短句则缩回文字。</div>
+            <div class="fitbox">
+              <div class="sentence">hello world from a long sentence</div>
+              <div class="sentence">short</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">中文按字断开</div>
+            <div class="expect">min-content 每个字一行，max-content 整句一行。</div>
+            <div class="row">
+              <div class="sentence minline">布局引擎固有尺寸</div>
+              <div class="sentence maxline">布局引擎固有尺寸</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>flex 用内容宽度</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">三个短项</div>
+            <div class="expect">按文字宽度靠左，不各占满一行。</div>
+            <div class="flex">
+              <div class="tag">书架</div>
+              <div class="tag">目录</div>
+              <div class="tag">刷新</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">可折行的一句</div>
+            <div class="expect">基准是整句，再缩进 280px，不比容器更宽。</div>
+            <div class="flex">
+              <div class="para">one two three four five six</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">长词是最小尺寸</div>
+            <div class="expect">80px 容不下这个词，项保持词的宽度并溢出。</div>
+            <div class="flex narrow">
+              <div class="para">Supercalifragilistic</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">flex-shrink: 0</div>
+            <div class="expect">不收缩，整句留在一行并溢出。</div>
+            <div class="flex">
+              <div class="para keep">one two three four five six</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">overflow: hidden</div>
+            <div class="expect">自动最小尺寸是 0，句子缩进容器里。</div>
+            <div class="flex narrow">
+              <div class="para hide">Supercalifragilistic</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">列向高度来自内容</div>
+            <div class="expect">两项叠起来，高度是内容，不把列拉满页面。</div>
+            <div class="col">
+              <div class="tag">上</div>
+              <div class="tag">下边这一项更高一些</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>grid 轨道</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">max-content | min-content</div>
+            <div class="expect">左列整句一行，右列宽等于最长的词。</div>
+            <div class="grid2">
+              <div class="cell">hello world</div>
+              <div class="cell">hello world</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">跨两列 min-content</div>
+            <div class="expect">100px 的块被两条轨道平分，总宽仍是 100。</div>
+            <div class="span2">
+              <div class="across cell" style="width: 100px">跨列</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">minmax</div>
+            <div class="expect">左列不超过 120，右列至少 40、并跟整句走。</div>
+            <div class="mm">
+              <div class="cell">hello world again</div>
+              <div class="cell">hello world again</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">auto 列分剩余</div>
+            <div class="expect">三列把 280px 平分，不按文字收缩。</div>
+            <div class="grid3">
+              <div class="cell">甲</div>
+              <div class="cell">乙</div>
+              <div class="cell">丙</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>绝对定位</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">只设 left</div>
+            <div class="expect">宽度缩到文字，不拉到包含块右边。</div>
+            <div class="rel">
+              <div class="float-a">标签</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">left 和 right 都设</div>
+            <div class="expect">宽度拉满两条 inset 之间。</div>
+            <div class="rel">
+              <div class="float-b">拉满</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">长段 fit-content</div>
+            <div class="expect">在剩余宽度里折行，不按整句撑出包含块。</div>
+            <div class="rel" style="height: 120px">
+              <div class="float-c">hello world from a long sentence</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>浮动</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">float: left</div>
+            <div class="expect">贴左，文字从旁边绕，块本身仍是全宽。</div>
+            <div class="flhost">
+              <div class="flchip left">左</div>
+              <p class="beside">hello world from a long sentence beside the float</p>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">float: right</div>
+            <div class="expect">贴右，左边的行让开。</div>
+            <div class="flhost">
+              <div class="flchip right">右</div>
+              <p class="beside">hello world from a long sentence beside the float</p>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">clear: left</div>
+            <div class="expect">块从上边框落到浮动盒子下面，上 margin 不再往前折叠。</div>
+            <div class="flhost">
+              <div class="flchip left tall">浮</div>
+              <div class="cleared">下面</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>图片</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">固有尺寸</div>
+            <div class="expect">80×40，左橙右蓝。</div>
+            <img src="mark.png" alt="">
+          </div>
+          <div class="case">
+            <div class="k">只设宽</div>
+            <div class="expect">160 宽，高按 2:1 变成 80。</div>
+            <img class="w160" src="mark.png" alt="">
+          </div>
+          <div class="case">
+            <div class="k">只设高</div>
+            <div class="expect">高 20，宽按比例变成 40。</div>
+            <img class="h20" src="mark.png" alt="">
+          </div>
+          <div class="case">
+            <div class="k">宽高都指定</div>
+            <div class="expect">50×50，比例被拉开。</div>
+            <img class="sq" src="mark.png" alt="">
+          </div>
+          <div class="case">
+            <div class="k">和文字并排</div>
+            <div class="expect">图保持 80×40，不跟着文字行被拉高。</div>
+            <div class="pics">
+              <img src="mark.png" alt="">
+              <div id="cap">旁边的说明<br>第二行</div>
+            </div>
+          </div>
+          <div class="case">
+            <div class="k">HTML 属性</div>
+            <div class="expect">width="120" 推出高 60。没有 src 的图不占位。</div>
+            <div class="pics">
+              <img src="mark.png" width="120" alt="">
+              <img src="missing.png" alt="">
+              <div class="tag">后一个是缺图</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</body>
+</html>

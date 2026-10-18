@@ -1,0 +1,64 @@
+/* B3/A6: rounded Aff2 FillRect — soft-raster inverse-maps SDF through Aff2.
+   Nested child proves composed paint Aff2 with radii. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  background: #10141c;
+}
+
+.cell {
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  background-color: #7cb7ff;
+  border-radius: 16px;
+}
+
+#plain {
+  left: 40px;
+  top: 40px;
+}
+
+#rot {
+  left: 200px;
+  top: 80px;
+  background-color: #ff8a65;
+  border-radius: 20px;
+  transform: rotate(35deg);
+  transform-origin: center center;
+}
+
+#skew {
+  left: 400px;
+  top: 60px;
+  background-color: #81c784;
+  border-radius: 12px / 20px;
+  transform: skewX(25deg);
+  transform-origin: left top;
+}
+
+.stage {
+  position: absolute;
+  left: 80px;
+  top: 280px;
+  width: 120px;
+  height: 80px;
+  background-color: #9575cd;
+  border-radius: 18px;
+  transform: rotate(-20deg);
+  transform-origin: left top;
+}
+
+.child {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  width: 60px;
+  height: 40px;
+  background-color: #ffd54f;
+  border-radius: 10px;
+}

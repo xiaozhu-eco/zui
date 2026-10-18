@@ -1,0 +1,17 @@
+{
+  "name": "css-revert",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "revert drops the author origin (mark returns to the UA yellow; a layered blue does not survive). revert-layer stops at the previous layer. all:revert clears a magenta fill. Flat panels, no text.",
+  "matrix": ["css.revert"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

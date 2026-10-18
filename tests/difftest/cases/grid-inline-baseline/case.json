@@ -1,0 +1,17 @@
+{
+  "name": "grid-inline-baseline",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A4: Grid justify-items:baseline on the inline axis; Chrome falls back to start (pin that parity).",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

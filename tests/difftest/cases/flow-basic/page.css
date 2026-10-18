@@ -1,0 +1,56 @@
+/* flow-basic: pure boxes, no text.
+   Every length is a fixed px value so the case is font-independent: it isolates L1 (cascade)
+   and L2 (block layout, margin, borders, flex distribution) from text metrics. Text cases live
+   in the sibling case and carry an explicit line-height for the same reason. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #ffffff;
+}
+
+#page {
+  width: 600px;
+  margin: 24px;
+  padding: 20px;
+  border: 1px solid #203040;
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+}
+
+.box {
+  height: 40px;
+  margin-bottom: 12px;
+  padding: 8px;
+  border: 1px solid #808080;
+  box-sizing: border-box;
+  background-color: #cccccc;
+}
+
+.box.tall {
+  height: 96px;
+  margin-bottom: 0;
+  background-color: #bbbbbb;
+}
+
+#row {
+  display: flex;
+  height: 60px;
+  margin-top: 12px;
+  border: 1px solid #404040;
+  box-sizing: border-box;
+  background-color: #dddddd;
+}
+
+.cell {
+  width: 100px;
+  height: 58px;
+  background-color: #bbbbbb;
+}
+
+.cell.grow {
+  flex-grow: 1;
+  flex-basis: 0;
+  background-color: #aaaaaa;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "position-relative-vertical",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A2: relative top/left under vertical-rl map via writing-mode (#rel at 104,32 matches Chrome). Golden pinned from engine (body scroll_size harness noise).",
+  "matrix": ["position.out-of-flow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

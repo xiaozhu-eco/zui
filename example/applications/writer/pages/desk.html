@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<body>
+  <div id="workspace" class="workspace">
+    <div class="edge" id="edge-docs">
+      <aside id="tree-pane">
+        <div class="tree-head">
+          <p class="card-label">文稿</p>
+          <div class="tree-actions" id="tree-actions">
+            <button type="button" id="new-folder" onclick="on_new_folder">新建文件夹</button>
+            <button type="button" id="new-piece" onclick="on_new_piece">新建文稿</button>
+          </div>
+        </div>
+        <div id="tree" class="tree" aria-label="文稿树">
+          <template>
+            <button type="button" class="twig {{kind}} {{depth}} {{on}}" id="node-{{id}}" onclick="on_open" data-id="{{id}}">{{name}}</button>
+          </template>
+        </div>
+        <div class="tree-rename" id="doc-tools" hidden>
+          <h2 id="doc-title">未选择</h2>
+          <input id="rename-name" type="text" aria-label="名称" autocomplete="off">
+          <button type="button" id="rename-apply" onclick="on_rename">重命名</button>
+          <button type="button" id="delete-doc" onclick="on_delete">删除</button>
+        </div>
+        <p id="status" class="status"> </p>
+      </aside>
+    </div>
+    <div class="edge edge-right" id="edge-outline">
+      <aside id="outline-pane">
+        <p class="card-label">目录</p>
+        <div id="outline-body" class="outline-body"> </div>
+      </aside>
+    </div>
+    <section id="doc-pane">
+      <div class="sheet">
+        <textarea id="editor" aria-label="正文" oninput="on_editor" onwheel="on_text_wheel" placeholder="在这里写"></textarea>
+        <div id="reader" class="reader" hidden onwheel="on_text_wheel"> </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

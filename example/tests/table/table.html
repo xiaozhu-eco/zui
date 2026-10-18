@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>表格</title>
+  <link rel="stylesheet" href="table.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">表格</div>
+      <div class="muted">自动列宽 · 固定布局 · 跨格 · 边框合并 · 标题</div>
+    </header>
+    <main class="content">
+
+      <section class="sec">
+        <h2>自动列宽</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">内容决定列宽</div>
+            <div class="expect">第一列跟“名字”走，第二列放下整句。</div>
+            <table class="auto">
+              <tr><th>名字</th><th>说明</th></tr>
+              <tr><td>甲</td><td>hello world</td></tr>
+              <tr><td>乙</td><td>短</td></tr>
+            </table>
+          </div>
+          <div class="case">
+            <div class="k">行组与空单元格</div>
+            <div class="expect">空单元格仍占位，列宽不塌。</div>
+            <table class="auto">
+              <thead><tr><th>左</th><th>右</th></tr></thead>
+              <tbody>
+                <tr><td></td><td>有内容的一格</td></tr>
+                <tr><td>甲</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>固定布局</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">table-layout: fixed</div>
+            <div class="expect">列宽只看首行：240 平分两列，后面内容再长也不撑开。</div>
+            <table class="fixed">
+              <tr><td class="c1">甲</td><td class="c2">这一格的内容很长很长很长也不会把列撑开</td></tr>
+              <tr><td>乙</td><td>短</td></tr>
+            </table>
+          </div>
+          <div class="case">
+            <div class="k">col 指定宽度</div>
+            <div class="expect">第一列 60，其余两列平分剩下的宽度。</div>
+            <table class="cols">
+              <colgroup>
+                <col class="w60">
+                <col>
+                <col>
+              </colgroup>
+              <tr><td>甲</td><td>乙</td><td>丙</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>跨格</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">colspan</div>
+            <div class="expect">第二行的两格并成一格，宽度是两列加间距。</div>
+            <table class="auto grid">
+              <tr><td>甲</td><td>乙</td><td>丙</td></tr>
+              <tr><td colspan="2">甲乙合并</td><td>丙</td></tr>
+            </table>
+          </div>
+          <div class="case">
+            <div class="k">rowspan</div>
+            <div class="expect">第一列的高格跨两行，右侧两行各自排。</div>
+            <table class="auto grid">
+              <tr><td rowspan="2">竖跨</td><td>右上</td></tr>
+              <tr><td>右下</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>边框与间距</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">border-collapse: collapse</div>
+            <div class="expect">相邻边框合成一条，不叠成两像素。</div>
+            <table class="auto collapse">
+              <tr><td>甲</td><td>乙</td></tr>
+              <tr><td>丙</td><td class="bold">丁</td></tr>
+            </table>
+          </div>
+          <div class="case">
+            <div class="k">border-spacing</div>
+            <div class="expect">分离模式：格与格之间留 6px，边缘也留。</div>
+            <table class="auto spaced">
+              <tr><td>甲</td><td>乙</td></tr>
+              <tr><td>丙</td><td>丁</td></tr>
+            </table>
+          </div>
+          <div class="case">
+            <div class="k">单元格内边距与对齐</div>
+            <div class="expect">高格把短格的文字垂直居中。</div>
+            <table class="auto padded">
+              <tr><td class="tall">高</td><td class="mid">居中</td></tr>
+            </table>
+          </div>
+          <div class="case">
+            <div class="k">visibility: collapse 的行</div>
+            <div class="expect">第二行那一轴当 0，上下两行贴在一起。</div>
+            <table class="auto auto2">
+              <tr><td>第一行</td><td>甲</td></tr>
+              <tr class="gone"><td>折叠行</td><td>乙</td></tr>
+              <tr><td>第三行</td><td>丙</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <h2>标题与匿名表盒</h2>
+        <div class="row">
+          <div class="case">
+            <div class="k">caption 在上</div>
+            <div class="expect">标题占满表格宽度，表格本身从标题下面开始。</div>
+            <table class="auto cap">
+              <caption>上标题</caption>
+              <tr><td>甲</td><td>乙</td></tr>
+            </table>
+          </div>
+          <div class="case">
+            <div class="k">caption 在下</div>
+            <div class="expect">caption-side: bottom 把标题放到表格下面。</div>
+            <table class="auto cap bottom">
+              <caption>下标题</caption>
+              <tr><td>甲</td><td>乙</td></tr>
+            </table>
+          </div>
+          <div class="case">
+            <div class="k">只写 td</div>
+            <div class="expect">td 没有 tr 包着时，浏览器补一个匿名行，仍是一行两格。</div>
+            <table class="auto">
+              <td>甲</td>
+              <td>乙</td>
+            </table>
+          </div>
+          <div class="case">
+            <div class="k">display 自己写</div>
+            <div class="expect">div 用 display: table / table-row / table-cell 也能成表。</div>
+            <div class="dtable">
+              <div class="drow"><div class="dcell">甲</div><div class="dcell">乙</div></div>
+              <div class="drow"><div class="dcell">丙</div><div class="dcell">丁</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>

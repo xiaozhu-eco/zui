@@ -1,0 +1,16 @@
+{
+  "name": "multicol-column-span",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2: column-span:all breaks the column run; content before the spanner balances, content after restarts.",
+  "matrix": ["multicol"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

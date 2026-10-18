@@ -1,0 +1,52 @@
+{
+  "_comment": "通过线与验收声明（TESTPLAN 第 15 节）。没有通过线，CI 只能输出 diff 报告，输出不了判决。数字是初值，调整走本节修订，不走现场豁免。",
+  "schema": "zui.difftest.passline/1",
+
+  "layers": {
+    "L0": { "rule": "probe_all_green", "note": "探针用例全过" },
+    "L1": { "rule": "exact", "note": "归一化后精确相等，全绿" },
+    "L2": { "rule": "structure_exact_length_tolerance", "note": "结构字段精确相等 + 长度 1/64 px，必过集全绿" },
+    "L3": { "rule": "all_green", "note": "状态序列必过集全绿" },
+    "L4": { "rule": "zones", "note": "文字区每通道 36；滚动条槽内皮肤豁免、内容墨水失败；其余区域面积 400 且短边 8，或沿边 8px" },
+    "L5": { "rule": "declared_reactions_green", "note": "用例声明的可观测反应序列全绿" },
+    "L6": { "rule": "self_check_all_green", "note": "自检断言全过" },
+    "L7": { "rule": "external_ruler", "note": "WPT css/ 子集在矩阵「一致」范围内通过率达标；fuzz 每千用例未分类分歧不超标；flake 率达标" }
+  },
+
+  "tolerance": {
+    "length_px": 0.015625,
+    "_comment_length": "1/64 px。只吸收同一结构下的舍入，不吸收拓扑差异：断行数、行盒数、滚动高度差一点也是几何错。",
+    "structure": 0,
+    "l1_numeric_px": 0.01,
+    "pixel_text_aa": 36,
+    "pixel_zone_area": 400,
+    "pixel_zone_short_side": 8,
+    "pixel_zone_edge_run": 8,
+    "_comment_pixel": "分区初值（TESTPLAN 第 9、15 节）。旧的 pixel_nontext: 0 整帧判决已退出。文字区仍是每通道 36。滚动条皮肤不进验收。槽内内容墨水和超阈值色块仍然失败。"
+  },
+
+  "thresholds": {
+    "wpt_css_pass_rate": 0.95,
+    "fuzz_unclassified_per_1000": 1,
+    "flake_rate": 0.005
+  },
+
+  "required_set": {
+    "_comment": "必过集：矩阵「一致」范围每个特性至少一条 golden 用例 + 全部回归用例。清单在 cases/*/case.json 的 required 标记里维护，CI 只认这份清单。",
+    "min_cases_per_feature": 1,
+    "enforce_regressions": true
+  },
+
+  "declaration": {
+    "_comment": "验收声明（引用进 CONTRACT.md）。Chrome 版本与 flag 集从 env.json 读；未录制时为 null，声明不出。",
+    "enabled": false,
+    "engine_version": "0.1.0",
+    "statement": "本引擎的布局与样式，与 Chrome（版本 {browser_version}、flag 集见 env.json、内嵌字体清单见 env.json）在支持矩阵「一致」范围内一致；判据是第 15 节通过线全绿，持续跑在 CI。「行为断言」与「不支持」项不在声明内。"
+  },
+
+  "flake": {
+    "rerun_on_failure": 2,
+    "isolate_after_consecutive": 3,
+    "silent_retry_counts_as_pass": false
+  }
+}

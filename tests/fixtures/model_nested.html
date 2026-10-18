@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <!-- A board: one row per column, and each column row stamps its own card list into the
+       `<ul class="cards">` that owns the row's inner <template> (RFC_MODEL.md Q1). -->
+  <div id="board">
+    <template>
+      <section class="col" id="col-{{name}}">
+        <h3>{{name}}</h3>
+        <ul class="cards">
+          <template>
+            <li class="card">{{text}}</li>
+          </template>
+        </ul>
+      </section>
+    </template>
+  </div>
+  <!-- One cell per column: the single-cell template repeats for every column. -->
+  <div id="one-cell">
+    <template>
+      <div class="row">
+        <template>
+          <span class="{{class}}">{{text}}</span>
+        </template>
+      </div>
+    </template>
+  </div>
+  <!-- The template already has its own cells: the count must equal column_count. -->
+  <div id="two-cells">
+    <template>
+      <div class="row2">
+        <template>
+          <span class="c1">{{a}}</span>
+          <span class="c2">{{b}}</span>
+        </template>
+      </div>
+    </template>
+  </div>
+  <div id="three-cells">
+    <template>
+      <div class="row3">
+        <template>
+          <span class="c1">{{a}}</span>
+          <span class="c2">{{b}}</span>
+          <span class="c3">{{c}}</span>
+        </template>
+      </div>
+    </template>
+  </div>
+  <!-- A parent row whose child model is itself a TableModel: `.slot` is the nested host, and the
+       table's own row template lives inside it, so the column stamp runs one level down. -->
+  <div id="sheets">
+    <template>
+      <section class="sheet">
+        <h4>{{name}}</h4>
+        <div class="slot">
+          <template>
+            <div class="row">
+              <template>
+                <span class="{{class}}">{{text}}</span>
+              </template>
+            </div>
+          </template>
+        </div>
+      </section>
+    </template>
+  </div>
+  <!-- Twelve levels of the same shape, for the depth limit: #deep's row owns `.slot`, whose row
+       owns the next `.slot`, and so on. The leaf sits inside the innermost template. -->
+  <div id="deep">
+    <template>
+      <div class="lvl"><div class="slot"><template>
+      <div class="lvl"><div class="slot"><template>
+      <div class="lvl"><div class="slot"><template>
+      <div class="lvl"><div class="slot"><template>
+      <div class="lvl"><div class="slot"><template>
+      <div class="lvl"><div class="slot"><template>
+      <div class="lvl"><div class="slot"><template>
+      <div class="lvl"><div class="slot"><template>
+      <div class="lvl"><div class="slot"><template>
+      <div class="lvl"><div class="slot"><template>
+      <div class="lvl"><div class="slot"><template>
+      <div class="lvl"><div class="slot"><template>
+        <span class="leaf">{{text}}</span>
+      </template></div></div>
+      </template></div></div>
+      </template></div></div>
+      </template></div></div>
+      </template></div></div>
+      </template></div></div>
+      </template></div></div>
+      </template></div></div>
+      </template></div></div>
+      </template></div></div>
+      </template></div></div>
+      </template></div></div>
+    </template>
+  </div>
+</body>
+</html>

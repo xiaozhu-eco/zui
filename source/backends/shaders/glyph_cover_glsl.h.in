@@ -1,0 +1,8 @@
+#pragma once
+namespace zui {
+namespace backends {
+inline constexpr char kGlyphCoverGlsl[] = R"zui(
+@ZUI_GLYPH_COVER_GLSL@
+)zui";
+}  // namespace backends
+}  // namespace zui

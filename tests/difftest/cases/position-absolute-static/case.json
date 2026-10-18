@@ -1,0 +1,17 @@
+{
+  "name": "position-absolute-static",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A2: absolute static position (after spacer), dual-inset stretch, end-only, over-constrained LTR, shrink-to-fit measure replay, dual-inset clamp to 0.",
+  "matrix": ["position.out-of-flow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

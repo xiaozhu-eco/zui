@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#box {
+  box-sizing: content-box;
+  width: 40px;
+  height: 20px;
+  background: #336699;
+  transition: width 200ms linear, height 200ms linear;
+}
+#box.on {
+  width: 80px;
+  height: 60px;
+}
+#pad {
+  box-sizing: content-box;
+  width: 40px;
+  height: 20px;
+  padding: 4px;
+  background: #993366;
+  transition: padding-left 200ms linear;
+}
+#pad.on {
+  padding-left: 24px;
+}
+</style>
+</head>
+<body>
+  <div id="box"></div>
+  <div id="pad"></div>
+</body>
+</html>

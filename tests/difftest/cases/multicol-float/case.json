@@ -1,0 +1,16 @@
+{
+  "name": "multicol-float",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "多栏里的浮动：浮动在它落到的栏里缩短后面的行（CSS 2.1 第 9.5 节 + CSS Multi-column 第 7 节），装不下的浮动开到下一栏，断栏后代的内容不受上一栏浮动影响。",
+  "matrix": ["multicol", "flow.normal"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button id="outside" type="button">Out</button>
+  <button id="open-modal" type="button" command="show-modal" commandfor="dlg">Open</button>
+  <button id="open-cancel" type="button" command="show-modal" commandfor="dlg" onclick="on_cancel_open">Nope</button>
+  <dialog id="dlg">
+    <button id="first" type="button">First</button>
+    <button id="hold" type="button" onkeydown="on_hold">Hold</button>
+    <button id="last" type="button" autofocus>Last</button>
+    <button id="close-dlg" type="button" command="close" commandfor="dlg">Close</button>
+  </dialog>
+  <dialog id="plain" open>
+    <button id="plain-in" type="button">Plain</button>
+  </dialog>
+  <button id="after" type="button">After</button>
+</body>
+</html>

@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#host {
+    width: 400px;
+}
+
+#row {
+    display: flex;
+    width: 400px;
+}
+
+/* The zdb shape: grids are `display: table` divs. A cell carries a fixed preferred width and no
+   text, so the capture has no glyphs in it - the case pins the clamp, not the rasterizer's AA.
+   `font-size: 0` and `line-height: 0` keep the empty cell's strut out of the row height, which is
+   a different part of the layout. */
+.ztable {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+.zrow {
+    display: table-row;
+}
+
+.ztd {
+    display: table-cell;
+    width: 20px;
+    height: 20px;
+    background: #335566;
+}
+
+#cap .ztd {
+    width: 200px;
+}
+
+#pct {
+    width: max-content;
+    min-width: 100%;
+}
+
+#pct-half {
+    width: max-content;
+    min-width: 50%;
+}
+
+/* No clamp: a `max-content` table is as wide as its columns, so this one keeps its content width. */
+#free {
+    width: max-content;
+}
+
+#fill {
+    width: 100%;
+}
+
+#cap {
+    width: 100%;
+    max-width: 120px;
+}
+
+/* A flex item reads a percentage against the flex container, not against its own content. */
+#item {
+    width: max-content;
+    min-width: 100%;
+}

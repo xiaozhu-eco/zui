@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="page.css"></head>
+<body>
+  <!-- Two nesting levels of block containers between the multicol and the
+       fixed-height children. Without deeper fragmentation the outer block
+       would push the whole inner block to the next column. -->
+  <div class="box" id="deep">
+    <div class="level1" id="level1">
+      <div class="level2" id="level2">
+        <div class="cell" id="a">a</div>
+        <div class="cell" id="b">b</div>
+        <div class="cell" id="c">c</div>
+        <div class="cell" id="d">d</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

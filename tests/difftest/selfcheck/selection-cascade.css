@@ -1,0 +1,42 @@
+/* Author both sides on #both */
+#both::selection {
+  background-color: yellow;
+  color: #000;
+}
+
+/* Green text + red bg: universal colour on the outer subtree does not break bg inheritance. */
+#outer::selection {
+  background-color: red;
+}
+#outer::selection,
+#outer *::selection {
+  color: green;
+}
+
+/* Bg-only: each element fills fg from its own currentColor (no author colour on the chain). */
+#blue-p {
+  color: #0000ff;
+}
+#red-em {
+  color: #ff0000;
+}
+#blue-p::selection {
+  background-color: rgba(0, 128, 0, 0.4);
+}
+
+/* Unsupported props on ::selection must not affect element layout. */
+#layout-probe {
+  margin-left: 0;
+  width: 100px;
+}
+#layout-probe::selection {
+  margin-left: 40px;
+  width: 200px;
+  display: none;
+  color: #111;
+}
+
+/* No author ::selection → UA-pair sentinel (null / flags 0). */
+#plain {
+  color: #333;
+}

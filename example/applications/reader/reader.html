@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e6dfd0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="小竹阅读">
+  <title>小竹阅读</title>
+  <link rel="icon" href="icon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="reader.css">
+</head>
+
+<body onkeydown="on_accel">
+  <div class="app">
+    <section id="shelf" class="shelf is-booting">
+      <header class="topbar">
+        <div class="brand">
+          <span class="mark" aria-hidden="true">竹</span>
+          <span class="brand-name">小竹阅读</span>
+        </div>
+        <label class="finder">
+          <span class="hid">搜索书架</span>
+          <input id="shelf_query" type="search" placeholder="搜索书名或作者" autocomplete="off" enterkeyhint="search"
+            onkeydown="on_type_key">
+        </label>
+        <button type="button" id="sort_btn" class="text-btn sort-btn" onclick="on_sort" aria-pressed="true">最近</button>
+        <div class="view-toggle" role="group" aria-label="书架排列">
+          <input id="shelf_grid" class="hid" type="radio" name="shelf-layout" checked>
+          <label class="text-btn" for="shelf_grid">封面</label>
+          <input id="shelf_list" class="hid" type="radio" name="shelf-layout">
+          <label class="text-btn" for="shelf_list">列表</label>
+        </div>
+        <div class="theme-pair" role="group" aria-label="主题">
+          <label class="text-btn" for="theme_paper">浅色</label>
+          <label class="text-btn" for="theme_ink">深色</label>
+        </div>
+        <div class="menu-wrap">
+          <input id="shelf_menu" class="hid" type="checkbox">
+          <label class="plus" for="shelf_menu" aria-label="书架菜单"><span class="plus-icon"
+              aria-hidden="true"></span></label>
+          <label class="menu-scrim" for="shelf_menu" aria-hidden="true"></label>
+          <div id="menu" class="menu" role="menu">
+            <button type="button" role="menuitem" onclick="on_import">导入书籍</button>
+            <button type="button" id="clear_btn" class="danger" role="menuitem" onclick="on_clear">清空书架</button>
+          </div>
+        </div>
+      </header>
+      <div class="shelf-body">
+        <button type="button" id="resume" class="resume" onclick="on_resume" hidden>
+          <span class="resume-kicker">继续阅读</span>
+          <span class="resume-main">
+            <span id="resume_title" class="resume-title"></span>
+            <span id="resume_where" class="resume-where"></span>
+          </span>
+        </button>
+        <div class="empty">
+          <p id="empty_title" class="empty-title">书架还空着</p>
+          <p id="empty_hint" class="empty-hint">点右上角加号，导入一本 txt 小说。也可以把文件拖进来。</p>
+        </div>
+        <div id="books" class="books">
+          <template>
+            <div id="book{{index}}" class="card-wrap" data-index="{{index}}">
+              <button type="button" id="open{{index}}" class="card tone-{{tone}}" onclick="on_open">
+                <span class="cover">
+                  <span class="cover-title">{{title}}</span>
+                  <span class="cover-author">{{author}}</span>
+                </span>
+                <span class="card-meta">{{meta}}</span>
+                <span class="card-track"><span class="card-fill {{fill}}"></span></span>
+                <span class="card-where">{{where}}</span>
+              </button>
+              <button type="button" id="remove{{index}}" class="card-remove" onclick="on_remove">移出</button>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section id="reader" class="reader">
+      <input id="settings_open" class="hid" type="checkbox">
+      <label class="scrim" for="settings_open" aria-hidden="true"></label>
+      <div class="sheet">
+        <header id="toolbar" class="toolbar toc-hidden">
+          <button type="button" id="toc_toggle" class="text-btn toc-toggle toc-hidden" onclick="on_toc"
+            aria-expanded="true">目录</button>
+          <button type="button" class="text-btn back-btn" onclick="on_back">书架</button>
+          <h1 id="book_title" class="book-title"></h1>
+          <button type="button" class="text-btn settings-btn" onclick="on_settings" aria-expanded="false">Aa</button>
+        </header>
+        <aside id="toc_panel" class="toc toc-hidden" aria-label="阅读侧栏">
+          <div class="toc-head">
+            <span>目录</span>
+            <button type="button" class="text-btn toc-collapse" onclick="on_toc">收起</button>
+          </div>
+          <input id="side_toc" class="hid" type="radio" name="side" checked>
+          <input id="side_find" class="hid" type="radio" name="side">
+          <input id="side_marks" class="hid" type="radio" name="side">
+          <div class="side-tabs" role="tablist">
+            <label class="chip" for="side_toc">目录</label>
+            <label class="chip" for="side_find">搜索</label>
+            <label class="chip" for="side_marks">书签</label>
+          </div>
+          <label class="toc-finder">
+            <span class="hid">筛选章节</span>
+            <input id="toc_query" type="search" placeholder="筛选章节" autocomplete="off" enterkeyhint="search"
+              onkeydown="on_type_key">
+          </label>
+          <div id="chapters" class="chapters">
+            <template>
+              <button type="button" id="ch{{index}}" class="ch" data-index="{{index}}"
+                onclick="on_chapter">{{title}}</button>
+            </template>
+          </div>
+          <div id="find_panel" class="side-panel">
+            <form id="find_form" class="find-form" role="search">
+              <input id="find_query" type="search" placeholder="查找正文" autocomplete="off" enterkeyhint="search"
+                onkeydown="on_type_key">
+              <button type="submit" class="text-btn find-go">查找</button>
+            </form>
+            <p id="find_count" class="find-count">输入词语，查找这一本的正文。</p>
+            <div id="find_hits" class="find-hits"></div>
+          </div>
+          <div id="marks_panel" class="side-panel">
+            <button type="button" id="bookmark_btn" class="text-btn mark-btn" onclick="on_bookmark"
+              aria-pressed="false">添加书签</button>
+            <p id="marks_empty" class="panel-empty">还没有书签。读到想记的地方，点上面的按钮。</p>
+            <div id="marks" class="marks"></div>
+          </div>
+        </aside>
+        <div class="settings">
+          <div class="grabber" aria-hidden="true"></div>
+          <div class="settings-head">
+            <span>阅读设置</span>
+            <label class="text-btn settings-close" for="settings_open">完成</label>
+          </div>
+          <div class="setting">
+            <span class="setting-label">字号</span>
+            <div class="seg" role="radiogroup" aria-label="字号">
+              <input id="size_s" class="hid" type="radio" name="size">
+              <label class="chip" for="size_s">小</label>
+              <input id="size_m" class="hid" type="radio" name="size" checked>
+              <label class="chip" for="size_m">中</label>
+              <input id="size_l" class="hid" type="radio" name="size">
+              <label class="chip" for="size_l">大</label>
+            </div>
+          </div>
+          <div class="setting">
+            <span class="setting-label">行距</span>
+            <div class="seg" role="radiogroup" aria-label="行距">
+              <input id="lead_s" class="hid" type="radio" name="lead">
+              <label class="chip" for="lead_s">紧</label>
+              <input id="lead_m" class="hid" type="radio" name="lead" checked>
+              <label class="chip" for="lead_m">适中</label>
+              <input id="lead_l" class="hid" type="radio" name="lead">
+              <label class="chip" for="lead_l">松</label>
+            </div>
+          </div>
+          <div class="setting">
+            <span class="setting-label">字体</span>
+            <div class="seg" role="radiogroup" aria-label="字体">
+              <input id="font_serif" class="hid" type="radio" name="font" checked>
+              <label class="chip" for="font_serif">宋体</label>
+              <input id="font_sans" class="hid" type="radio" name="font">
+              <label class="chip" for="font_sans">黑体</label>
+            </div>
+          </div>
+          <div class="setting">
+            <span class="setting-label">主题</span>
+            <div class="seg" role="radiogroup" aria-label="主题">
+              <input id="theme_paper" class="hid" type="radio" name="theme" checked>
+              <label class="chip" for="theme_paper">纸</label>
+              <input id="theme_eye" class="hid" type="radio" name="theme">
+              <label class="chip" for="theme_eye">护眼</label>
+              <input id="theme_dusk" class="hid" type="radio" name="theme">
+              <label class="chip" for="theme_dusk">暮</label>
+              <input id="theme_ink" class="hid" type="radio" name="theme">
+              <label class="chip" for="theme_ink">夜</label>
+            </div>
+          </div>
+          <div class="setting setting-mode">
+            <span class="setting-label">翻页</span>
+            <div class="seg" role="radiogroup" aria-label="阅读方式">
+              <input id="mode_scroll" class="hid" type="radio" name="mode" checked>
+              <label class="chip" for="mode_scroll">滚动</label>
+              <input id="mode_page" class="hid" type="radio" name="mode">
+              <label class="chip" for="mode_page">翻页</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p id="read_hint" class="read-hint">轻点屏幕中间，打开阅读设置</p>
+      <div id="tray_scrim" class="tray-scrim toc-hidden" onclick="on_tray_scrim" aria-hidden="true"></div>
+      <div id="flow_wrap" class="flow-wrap" onclick="on_reading_tap" onscroll="on_flow_scroll">
+        <div id="pdf_host" class="pdf-host" hidden>
+          <div id="pdf_page_body" class="pdf-page-body"></div>
+        </div>
+        <div id="flow" class="flow">
+          <p id="opening" class="chapter-end" hidden></p>
+          <div id="chapter_page" class="chapter-page" hidden>
+            <article id="chapter_a" class="chapter">
+              <h2 id="chapter_title" class="chapter-title"></h2>
+              <div id="chapter_host" class="chapter-host" hidden></div>
+              <div id="paras">
+                <template>
+                  <p class="para" id="pa{{index}}" data-pi="{{index}}">{{text}}</p>
+                </template>
+              </div>
+            </article>
+            <article id="chapter_b" class="chapter is-follow" hidden>
+              <h2 id="chapter_title_b" class="chapter-title"></h2>
+              <div id="paras_b">
+                <template>
+                  <p class="para" id="pb{{index}}" data-pi="{{index}}">{{text}}</p>
+                </template>
+              </div>
+            </article>
+            <button type="button" id="chapter_next" class="chapter-next" onclick="on_next"></button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="page-edge page-prev" onclick="on_prev" aria-label="上一页"></button>
+      <button type="button" class="page-edge page-next" onclick="on_next" aria-label="下一页"></button>
+      <div id="status" class="status">
+        <span id="status_chapter" class="status-chapter"></span>
+        <span id="status_progress" class="status-progress"></span>
+      </div>
+      <div class="status-track" aria-hidden="true"><span id="status_fill" class="status-fill"></span></div>
+    </section>
+  </div>
+
+  <input id="open_file" class="hid" type="file" accept=".txt,.text,text/plain" multiple>
+  <div id="toast" class="toast" role="status"></div>
+
+  <noscript>
+    <p class="empty-title">请允许脚本后刷新。</p>
+  </noscript>
+
+
+  <script type="text/plain" id="book-lantern">书名：灯塔
+作者：岸边
+
+第1章 第一次点灯
+
+海风把盐粒吹到窗台上，刮得玻璃细细地响。老人划亮火柴，灯芯慢慢站直，光从玻璃罩里铺开，一直铺到看不见的水面上。
+
+小岛只有这一座塔。白天它是白的，晚上它才说话。老人把值夜的椅子拖到栏杆边，听得见自己的呼吸，也听得见潮水一下一下撞着礁石。
+
+女孩是黄昏时划船来的。船头捆着两桶煤油，桶沿磕出旧漆。她把绳子扔上来，喊了一声爷爷，声音被风撕得只剩半截。
+
+老人没有下去接。他在塔顶把绞盘摇稳，等桶沿碰到铁门，才探出身子，把绳子扣死。女孩爬上来的时候，头发全贴在额上，像刚从海里捞出来。
+
+他们没有说多少话。灯已经点着，该做的只是看着它，别让风从罩缝里钻进去。女孩把湿外套挂在铁梯上，水顺着梯级往下滴，滴进黑暗里，听不见落点。
+
+远处有一星渔火，忽明忽暗，像有人在试着对塔说话。老人数那明灭的次数，数到七，火就稳了。他在日志上写：西北风，能见度差，一船通过。
+
+女孩问那船看不看得见他们。老人说看得见。只要这盏灯还在，船就知道礁石在哪一侧，人就知道自己还没有靠岸。
+
+夜深以后，塔身开始轻轻晃。不是要倒，是风把整座石头推着走，又推不走。女孩靠着墙睡着了，手里还攥着那盒用了一半的火柴。
+
+第2章 灯灭的时候
+
+后半夜煤油尽了。灯不是一下子灭的，是先矮下去，火舌贴着灯芯发抖，然后像被人吹熄。塔顶突然只剩下风声。
+
+老人骂了一句很轻的话。第二桶油在铁门边，他摸下去的时候踩空了一级梯子，膝盖磕在角铁上，疼得眼前金星乱冒。女孩醒了，摸黑去拉他的袖子。
+
+他们把新桶抬上来，油嘴却冻住了。老人用火柴烘，火苗刚靠近，风就从门缝里灌进来，连烘了三次都灭。女孩用身体挡住门，外套被掀起来，像一面漏风的帆。
+
+油终于流进灯盏。火重新站住的那一刻，两个人都没有出声。光一回来，栏杆、油桶、女孩脸上的盐霜就都回到了原处，好像刚才那一段黑只是眨眼。
+
+海上那星渔火还在，比先前近了一些。它没有乱闪。老人说，他们在等。等灯重新亮起来，才敢把船头偏开那排看不见的牙。
+
+日志上原来那一行被油手印糊住了。老人另起一行，写：灯灭过一次，已复。字迹比平时大，因为手还在抖。
+
+女孩把剩下的火柴数了一遍，还够三夜。她说明天再来，如果风允许。老人点头，没有说谢谢。灯塔上的人很少把道谢说出口，光亮着，就算说过了。
+
+第3章 有人应答
+
+天亮前渔火变成了一整条船的轮廓。船没有靠岛，只在安全的那一侧慢慢驶过，桅灯朝塔顶晃了三下。那是旧的说法：看见了，谢谢，我们过去了。
+
+老人也把遮光板抬起三次。一明一暗之间，两盏灯像在海上握手。女孩站在他旁边，第一次觉得这工作不是把黑夜点亮，是让别人知道有人醒着。
+
+太阳出来以后，塔又变回白色。盐粒留在窗台上，像谁撒了一把没化开的雪。女孩把空桶捆回船头，绳子还是湿的，结却打得很紧。
+
+她问今晚还来不来。老人看着海平线，说煤油如果够，就不用来。女孩笑了一下，说她还是会来，顺便看看日志有没有写错字。
+
+船离开礁石区的时候，老人已经把灯罩擦完了。玻璃上能照见他的脸，也能照见塔顶那一小块刚亮起来的天。他在新的一页写下：风弱，一船应答，灯未再灭。
+
+女孩的船变成一个小点。老人没有挥手。他知道她回头就能看见这座塔，白天靠白，晚上靠光。只要塔还在，岛和船之间就还有一句话没说完。
+</script>
+  <script type="text/plain" id="book-ferry">书名：渡口
+作者：岸边
+
+第1章 只在黄昏开船
+
+渡口没有牌子。一根歪桩，一条缆绳，船就停在缆绳尽头。撑船的人姓沈，镇上的人叫他老沈，过河的人叫他船家。他只在太阳挨着对岸柳树的时候解缆。
+
+白天的河不值钱。光太亮，影子太短，人站在船上会把目的地看得太清楚。老沈说，看得太清楚的路，就不需要渡了。所以他睡觉，补网，把铜铃擦亮，一直等到风从西边凉下来。
+
+这天来的是个拿布包的女人。包很轻，她却抱得很紧。她问末班还在不在。老沈说他没有班次，只有黄昏。女人看了看天，天正好是他要的那种颜色，于是她上了船。
+
+河心比岸边安静。桨入水的声音像有人在翻一本很薄的书。女人问对岸有没有灯。老沈说有一盏，不高，只够照见码头上的两级石阶。再往里走，得靠自己记得路。
+
+船靠上石阶时，铃响了一下。不是老沈摇的，是缆绳碰着桩。女人付了一枚旧铜板，铜板的边已经磨圆。老沈没有马上放进口袋。他等她走上第二级石阶，确认那盏灯还亮着，才把船头掉过来。
+
+第2章 回程的空位
+
+回程通常是空的。老沈喜欢空船。空船吃水浅，桨轻，河把自己的声音还给他。可这天石阶上又站着一个人，就是去时那个女人，布包不见了，手里只剩一根没点的蜡烛。
+
+她说灯还在，路也还在，可她想在天完全黑以前回来。老沈没有问包落在谁家里。他侧过身，让出船尾那块干一点的板。女人坐下，把蜡烛横在膝上，像横着一把没有开刃的刀。
+
+河面已经分不清水和天。只有渡口那侧，歪桩还剩一个更深的影子。老沈数桨。去时四十七下，回来少了两下，因为顺水。他没有把这个差别说出来。有些账只在船家自己心里平。
+
+靠岸时铜铃又响了一下。女人把蜡烛留在座板上，说算加付的船资。老沈要推回去，她已经走上泥岸，脚步很稳，像一条走过许多次的路。蜡烛后来被风吹进河里。老沈没有去捞。他知道明天黄昏，桩边还会有人等那条只在天色对的时候才开的船。
+</script>
+
+  <script src="reader.js"></script>
+</body>
+
+</html>

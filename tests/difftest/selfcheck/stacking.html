@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="stacking.css">
+</head>
+
+<body>
+  <div id="plain"></div>
+  <div id="relative"></div>
+  <div id="relative-z"></div>
+  <div id="absolute-neg"></div>
+  <div id="fixed"></div>
+  <div id="sticky"></div>
+  <div id="faded"></div>
+  <div id="transformed"></div>
+  <div id="filtered"></div>
+  <div id="blended"></div>
+  <div id="isolated"></div>
+  <div id="will-change"></div>
+  <div id="contain-paint"></div>
+  <div id="contain-layout"></div>
+  <div id="static-z"></div>
+  <div id="abs-far"></div>
+  <div id="flex-order">
+    <div id="order-first"></div>
+    <div id="order-second"></div>
+  </div>
+  <div id="flex-z">
+    <div id="flex-z-pos"></div>
+    <div id="flex-z-neg"></div>
+  </div>
+  <!-- z-index:auto mid does not trap a negative-z absolute: the ancestor context lifts it. -->
+  <div id="auto-host">
+    <div id="auto-flow"></div>
+    <div id="auto-mid">
+      <div id="auto-lifted"></div>
+    </div>
+  </div>
+</body>
+
+</html>

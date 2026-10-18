@@ -1,0 +1,57 @@
+/* LAYOUT.md section 9 step D: a scroll container keeps its display list, and the self-check paints
+   the same frame twice - once replaying that listing, once walking - to compare the pixels. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #101418;
+}
+
+#pane {
+  width: 240px;
+  height: 120px;
+  overflow: auto;
+  background: #1b2733;
+}
+
+.row {
+  height: 24px;
+  background: #22303c;
+}
+
+.row.alt {
+  background: #3d8f6e;
+}
+
+/* Only a paint property: the class change below it must not lay anything out, which is exactly the
+   change a naive listing would replay stale. */
+.row.hot {
+  background: #7cb7ff;
+}
+
+#pane2 {
+  width: 200px;
+  height: 100px;
+  overflow: auto;
+  background: #2a2f38;
+}
+
+.cell {
+  height: 18px;
+  background: #7cb7ff;
+}
+
+#deep-tail {
+  height: 200px;
+  background: #feedcc;
+}
+
+#label {
+  height: 20px;
+  color: #ffffff;
+}
+
+#tail {
+  height: 1200px;
+  background: #101418;
+}

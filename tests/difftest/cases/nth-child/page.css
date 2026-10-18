@@ -1,0 +1,90 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 4px;
+}
+
+.row > * {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #3a4450;
+}
+
+/* Each rule widens exactly the items its An+B term names. The x offsets in the trace are what
+   fail when a term is mis-parsed (`2n` read as `n+2`, `-n+2` read as the first two by accident). */
+#odd > :nth-child(odd) {
+    width: 40px;
+    background-color: #7cb7ff;
+}
+
+#even > :nth-child(even) {
+    width: 40px;
+    background-color: #3d8f6e;
+}
+
+#step > :nth-child(3n+1) {
+    width: 40px;
+    background-color: #e0a050;
+}
+
+#last > :nth-last-child(1) {
+    width: 40px;
+    background-color: #e85d4c;
+}
+
+#neg > :nth-child(-n+2) {
+    width: 40px;
+    background-color: #8c4030;
+}
+
+/* `of-type` counts siblings of the same type only: the second `b` is the fourth child. */
+#type > b:nth-of-type(2) {
+    width: 40px;
+    background-color: #2f6fbd;
+}
+
+/* `last-of-type` has to name the last `i` and the last `b` in one declaration. */
+#type > :nth-last-of-type(1) {
+    width: 40px;
+    background-color: #3d8f6e;
+}
+
+#only > b:only-of-type {
+    width: 40px;
+    background-color: #e0a050;
+}
+
+/* The `of S` clause counts only the siblings matching `.x`: the second one is the third child. */
+#of > :nth-child(2 of .x) {
+    width: 40px;
+    background-color: #7cb7ff;
+}
+
+/* Non-element nodes do not take part in the count: the comments between the inline-blocks leave
+   the second `i` as the second element child. */
+#text-skip {
+    padding: 4px;
+    font-size: 12px;
+    color: #e8edf5;
+}
+
+#text-skip i {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #3a4450;
+}
+
+#text-skip i:nth-child(2) {
+    width: 40px;
+    background-color: #2c6b4e;
+}

@@ -1,0 +1,15 @@
+.card {
+  background-color: #34495e;
+  .title { background-color: #d23b3b; }
+  .title.extra { background-color: #2c63d2; }
+  &:hover { background-color: #000000; }
+  &.on { background-color: #2ecc71; }
+  > .direct { background-color: #f1c40f; }
+  @media (min-width: 1px) {
+    .media { background-color: #9b59b6; }
+  }
+}
+
+.a, .b {
+  .c { background-color: #e67e22; }
+}

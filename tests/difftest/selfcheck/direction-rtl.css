@@ -1,0 +1,12 @@
+#scroller {
+  direction: rtl;
+  width: 120px;
+  height: 40px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+#wide {
+  width: 240px;
+  height: 40px;
+  background: #2a3344;
+}

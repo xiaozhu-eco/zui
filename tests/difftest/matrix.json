@@ -1,0 +1,276 @@
+{
+  "_comment": "支持矩阵（TESTPLAN 第 2 节）的机器可读副本。文档是正本，这里是供 CI 与用例标记引用的同一份数据的投影；两者不一致时以 TESTPLAN.md 第 2 节为准，并修这里。",
+  "schema": "zui.difftest.matrix/1",
+  "levels": {
+    "aligned": "一致：进必过集，差异按第 11 节分类处理",
+    "behavior": "行为断言：只断用例声明的最小反应集，不追像素、不追中间帧",
+    "unsupported": "不支持：不建用例、不进必过集；fuzz 生成了先归档，不判错"
+  },
+  "entries": [
+    {
+      "id": "flow.normal",
+      "level": "aligned",
+      "stage": 1,
+      "note": "普通流：块布局、margin collapse、浮动、BFC、clearance"
+    },
+    {
+      "id": "flow.inline",
+      "level": "aligned",
+      "stage": 1,
+      "note": "行内：断行、基线、vertical-align、行盒（Latin / CJK）"
+    },
+    {
+      "id": "flow.flex",
+      "level": "aligned",
+      "stage": 1,
+      "note": "flex"
+    },
+    {
+      "id": "flow.grid",
+      "level": "aligned",
+      "stage": 1,
+      "note": "grid。subgrid 的列/行采用父网格已解出的轨道（间距随父级，作者非 0 gap 仍用自己的）。必过 grid-subgrid；自检 GridSubgridTracks"
+    },
+    {
+      "id": "replaced.size",
+      "level": "aligned",
+      "stage": 1,
+      "note": "替换元素尺寸与 object-fit"
+    },
+    {
+      "id": "position.out-of-flow",
+      "level": "aligned",
+      "stage": 1,
+      "note": "绝对 / 固定 / sticky 定位；sticky 解析偏移由 rect 差分推导"
+    },
+    {
+      "id": "scroll.overflow",
+      "level": "aligned",
+      "stage": 1,
+      "note": "overflow、scrollbar-gutter（flex/grid 的 stable 与 both-edges 也留槽）、scroll anchoring、滚动条两趟；事件次数与时序除外"
+    },
+    {
+      "id": "animation.interpolation",
+      "level": "aligned",
+      "stage": 2,
+      "note": "transform / opacity / 长度 / 颜色插值，冻结采样。独立属性 translate / rotate / scale 排在 transform 函数表外侧（点先看到函数，再 scale，再 rotate，再 translate），绕 transform-origin。绕 x/y 的 rotate 与非零 Z 在二维里不画。必过 paint-individual-transform。"
+    },
+    {
+      "id": "container.query",
+      "level": "aligned",
+      "stage": 3,
+      "note": "容器查询；重入保险丝两轮"
+    },
+    {
+      "id": "text.font-load",
+      "level": "aligned",
+      "stage": 2,
+      "note": "本地 @font-face url()（ttf/otf；woff2 跳过）在首次排版前注册。必过 font-face-local；自检 FontFaceLocalFile。font-display 的 FOIT/FOUT 时序仍不做"
+    },
+    {
+      "id": "text.font-fallback",
+      "level": "aligned",
+      "stage": 2,
+      "note": "字体回退；用例显式声明回退链，禁碰系统字体"
+    },
+    {
+      "id": "text.opentype",
+      "level": "aligned",
+      "stage": 0,
+      "note": "连字、kerning、OpenType 特性，内嵌字体下；阶段 0 探针页校验"
+    },
+    {
+      "id": "text.complex-script",
+      "level": "behavior",
+      "stage": 4,
+      "note": "复杂 script、bidi、纵向书写、合成粗斜体"
+    },
+    {
+      "id": "scroll.smooth",
+      "level": "behavior",
+      "stage": 4,
+      "note": "scroll-behavior: smooth / scroll-snap 中间动力学；只断起点、终点、snap 落点"
+    },
+    {
+      "id": "scroll.events",
+      "level": "behavior",
+      "stage": 4,
+      "note": "scroll / scrollend 事件次数与时序"
+    },
+    {
+      "id": "animation.raf",
+      "level": "behavior",
+      "stage": 4,
+      "note": "rAF 驱动的 JS 动画；虚拟帧时钟"
+    },
+    {
+      "id": "table",
+      "level": "unsupported",
+      "stage": null,
+      "note": "二期前不建用例；出现分歧先查是否越界"
+    },
+    {
+      "id": "multicol",
+      "level": "aligned",
+      "stage": 2,
+      "note": "多栏（CSS Multi-column 第 3、7 节）：column-count / column-width / column-gap / column-fill、按栏平衡与跨栏分片；column-rule 的 solid/dashed/dotted/double/groove/ridge 与竖向边框同一笔法（groove 左暗右亮，ridge 左亮右暗）。inset 按塌缩边框画成 ridge，outset 画成 groove；column-span:all 已接。必过 multicol-column-rule、paint-column-rule、paint-column-rule-3d。"
+    },
+    {
+      "id": "fragmentation",
+      "level": "aligned",
+      "stage": 2,
+      "note": "碎片化（CSS Fragmentation）：块按子级边界、行内按行边界产生断点，多栏按文档子集消费；flex / grid / 表的断点还没接（docs/ROADMAP2.md 第 6 节的子集清单）"
+    },
+    {
+      "id": "form-internals",
+      "level": "unsupported",
+      "stage": null,
+      "note": "表单控件内部"
+    },
+    {
+      "id": "paint.gradient",
+      "level": "aligned",
+      "stage": 3,
+      "note": "背景渐变：linear / repeating-linear / radial / repeating-radial / conic / repeating-conic（from、at、角度色标）。色标可写两个位置（#e23 0% 50% 展开成同色两个色标，硬边色带）。paint-gradient、paint-radial-gradient、paint-conic-gradient、paint-gradient-range 必过（pixel_tolerance 1）。自检 RadialAndRepeatingGradients；计算锁 PaintRound.ConicAndRepeatingRadialGradients、LinearGradientTwoPositionStops。插值提示（red, 20%, blue）按 Blink 九个色标展开幂权重曲线（预乘 sRGB）。验收 paint-gradient-hint。`in <space>`（srgb、srgb-linear、display-p3、lab、lch、oklab、oklch、hsl、hwb、xyz）和 shorter/longer/increasing/decreasing hue 把色标过渡改到那个空间，缺省仍是预乘 sRGB。验收 paint-gradient-space。圆锥渐变的提示同样按九个色标展开。验收 paint-conic-hint。a98-rgb / prophoto-rgb / rec2020 另开。Vulkan 仍只画 linear"
+    },
+    {
+      "id": "paint.clip-path",
+      "level": "aligned",
+      "stage": 3,
+      "note": "clip-path：inset / circle / ellipse（含 inset round）与 polygon()（nonzero / evenodd，px 与 %，GL 片元覆盖，绘制最多 16 个顶点）。必过 paint-clip-path、paint-clip-polygon；自检 ClipPathBasicShapes。path() 另开。Vulkan 的 polygon 仍只按包围盒剪裁"
+    },
+    {
+      "id": "paint.filter",
+      "level": "aligned",
+      "stage": 3,
+      "note": "filter：brightness / opacity（BeginFilter 离屏层）；元素 blur() 与 drop-shadow() 的模糊半径都是高斯标准差。drop-shadow 取元素 alpha 轮廓，画在元素下方。必过 paint-filter、paint-filter-blur（pixel_tolerance 4）、paint-backdrop。自检 FilterEffectsBasic、FilterDropShadow、BackdropFilterBlur"
+    },
+    {
+      "id": "paint.mask",
+      "level": "aligned",
+      "stage": 3,
+      "note": "mask-image：单层 linear/radial-gradient 或 url()（亮度/alpha 作遮罩）。必过 paint-mask-blend；自检 MaskAndMixBlend"
+    },
+    {
+      "id": "paint.blend",
+      "level": "aligned",
+      "stage": 3,
+      "note": "mix-blend-mode：multiply/screen/overlay/darken/lighten/color-dodge/color-burn/hard-light/soft-light/difference/exclusion。必过 paint-mask-blend；自检 MaskAndMixBlend。GPU 另开"
+    },
+    {
+      "id": "paint.border-style",
+      "level": "aligned",
+      "stage": 3,
+      "note": "border-style 非 solid：dashed/dotted/double/groove/ridge/inset/outset（尖角盒 FillRect 条带）；圆角非 solid 回退 solid stroke。必过 paint-border-styles（pixel_tolerance 2）；自检 BorderStylesNonSolid。none/hidden used 宽另见 border-style-none"
+    },
+    {
+      "id": "paint.radius",
+      "level": "aligned",
+      "stage": 3,
+      "note": "四角+椭圆 border-radius（含 / 与 %）；不等宽圆角边 paint-radius-sides / paint-radius-uneven 必过绿（tol 2；punch 或 stroke_ring）。paint-radius L2/L4 必过绿（透明边+background-clip:padding-box 内收软 AA；弦上亚阈值 AA 残差不进判决）。自检 BorderRadiusCornersAndEllipse / BorderRadiusUnevenWidths"
+    },
+    {
+      "id": "paint.shadow",
+      "level": "aligned",
+      "stage": 3,
+      "note": "单层外 box-shadow：offset / blur / spread / color，跟随 border-radius；尖角+spread 保持直角。必过 paint-shadow（pixel_tolerance 2 吸收高斯核与 Blink 模糊通道差）；自检 BoxShadowOuter。子集：inset / 多层 / GPU 软模糊另开"
+    },
+    {
+      "id": "paint.text-shadow",
+      "level": "aligned",
+      "stage": 3,
+      "note": "text-shadow：逗号多层（先列在上）、offset/blur/color；blur=0 硬边，blur>0 对整段 run 做高斯。必过 paint-text-shadow（L2 布局不变，无 capture：字形 AA 另议）；自检 TextShadowLayers"
+    },
+    {
+      "id": "paint.pseudo",
+      "level": "unsupported",
+      "stage": 3,
+      "note": "伪元素：::before / ::after 的 content 与盒生成。验收用例 paint-pseudo 已建；docs/PIPELINE.md 目前把伪元素列在 P0 之外"
+    },
+    {
+      "id": "css.marker",
+      "level": "aligned",
+      "stage": 3,
+      "note": "::marker / list-item：inside 进流、outside 贴边（不进 scrollable）、list-item 计数、ol reversed（start / li value）、list-style-image url()。必过 marker-list、marker-image-reversed；可选 marker-outside；自检 MarkerOutsidePlacement、MarkerReversedAndImage。渐变标记仍不做"
+    },
+    {
+      "id": "css.selection",
+      "level": "aligned",
+      "stage": 3,
+      "note": "::selection：高亮继承 + 成对 UA 默认 + 单节点选区 overlay（path b：shaped.text==node->text）。L6 SelectionCascade / SelectionPaint；Chrome 注入选区对拍后置"
+    },
+    {
+      "id": "css.background",
+      "level": "aligned",
+      "stage": 3,
+      "note": "background 简写：§2.10 重置 8 长手，多层各自回初始再按层拼接。paint 按层绘制（先底后顶），消费每层 clip/origin/position/size/repeat，以及 background-attachment scroll/fixed/local。background-blend-mode 在元素自己的背景组里混合（透明底色不吃到元素背后的像素），可分模式 multiply/screen/overlay/darken/lighten/color-dodge/color-burn/hard-light/soft-light/difference/exclusion。border-image（slice/width/outset/repeat，含 fill、线性与径向渐变、url 九宫格的 stretch/repeat/space）替换边框描边，border-width 仍占布局。background-clip: text 把不透明纯色或渐变裁到元素自己的水平字形上（直角、无混合、无变换；OpenGL 离屏层，Vulkan 仍画整框）。必过 paint-bg-layers、paint-bg-blend、paint-border-image、paint-bg-clip-text；自检 BackgroundLayersAndAttachment + zui_shorthand 多层展开"
+    },
+    {
+      "id": "paint.bg-url",
+      "level": "aligned",
+      "stage": 3,
+      "note": "background-image:url()：位图层消费 clip/origin/position/size/repeat（含 cover/contain 固有尺寸），可与其它层叠放。background-position / object-position 的三值和四值按边加偏移（right 16px bottom 12px）。验收用例 paint-bg-url、paint-bg-position；多层与 attachment 见 paint-bg-layers。子集：data/远程 URL"
+    },
+
+    {
+      "id": "paint.decoration",
+      "level": "aligned",
+      "stage": 3,
+      "note": "text-decoration：underline/overline/line-through；solid/double/dotted/dashed/wavy；thickness 与 color。text-underline-offset 在自动下划线位置上再平移（正值远离文字，百分比相对 1em）。text-underline-position: under 把自动位置改到字体下沿（descent）再加 offset。text-emphasis 用 50% 字号画 filled/open 的 dot、circle、double-circle、triangle、sesame（或一个字符串），水平 over 挂在 em 盒顶上，空格与标点不画。under 画在 em 盒底，但块高还不跟着长。text-decoration-skip-ink 初始 auto：下划线和上划线让开穿过的字形（每侧外扩 min(线宽, 13px)，CJK 不让开），line-through 仍穿过；none 不让开，all 连删除线也让开并且让开 CJK。必过 paint-decoration、paint-underline-offset、paint-underline-position、paint-text-emphasis、paint-skip-ink（over，L2 布局不变）；自检 TextDecorationLines"
+    },
+    {
+      "id": "paint.aspect-ratio",
+      "level": "unsupported",
+      "stage": 3,
+      "note": "宽高比：aspect-ratio 的正反推导（宽度定高 / 高度定宽）。验收用例 paint-aspect-ratio 已建"
+    },
+    {
+      "id": "paint.form-control",
+      "level": "aligned",
+      "stage": 3,
+      "note": "表单控件 UA 盒 + 外观：text input size 固有宽（paint-form）；checkbox 原生勾（appearance-checkbox）；radio 圆点 + 闭合 select 箭头（appearance-radio-select）；appearance:none 抑制原生肤。自检 FormAppearanceRadioSelect"
+    },
+    {
+      "id": "paint.flex-basis",
+      "level": "unsupported",
+      "stage": 3,
+      "note": "弹性项的 flex-basis 解析：flex:1 的 0% 基线与 width 声明同时存在时的主轴尺寸。验收用例 paint-flex-basis 已建（reader 顶栏 .mark 宽 20 对 36 的根因）"
+    },
+    {
+      "id": "paint.z-index",
+      "level": "aligned",
+      "stage": 3,
+      "note": "层叠顺序（LAYOUT.md 第 11 节 / CSS 2.1 附录 E）：上下文判据逐条独立（不复用 cb_for_*）、同层按 z-index 与 order / DOM 序排、绘制与命中共用同一顺序。验收用例 stacking-z-index 已绿（含命中点）。子集：排序发生在同一个上下文的孩子之间，被非上下文祖先包住的后代上下文不再提升到最近的上下文（附录 E 的 flattening），这一条还没做"
+    },
+    {
+      "id": "paint.outline",
+      "level": "aligned",
+      "stage": 3,
+      "note": "轮廓（CSS UI 4 第 2 节）：outline-width（含 thin/medium/thick）、outline-style、outline-color（缺省 currentColor）、outline-offset（正负都行），环跟随 border-radius，且不参与布局。尖角盒的 dashed/dotted/double/groove/ridge/inset/outset 与同宽边框同一套条带。圆角非 solid 仍回退 solid stroke。必过 outline、paint-outline-style（pixel_tolerance 2）。outline-style: auto 按 none 处理"
+    },
+    {
+      "id": "text.transform",
+      "level": "aligned",
+      "stage": 3,
+      "note": "文本变换（CSS Text 3 第 2 节）：uppercase / lowercase / capitalize 在 shaping 前换码点，字形、前进量与绘制一起变；capitalize 按分隔符记词首，数字打头不外溢。验收用例 text-transform 已绿（max-content 条量前进量 + 单字形可见墨对像素）。子集：简单映射只覆盖 ASCII / Latin-1 / Latin Ext-A / 希腊 / 西里尔，full-width、full-size-kana 按 none 处理"
+    },
+    {
+      "id": "css.color",
+      "level": "aligned",
+      "stage": 3,
+      "note": "CSS Color 4/5：hwb、lab、lch、oklab、oklch、color()（srgb、srgb-linear、display-p3、xyz、xyz-d65、xyz-d50）与 color-mix()（矩形分量预乘、色相不预乘、百分比和不足 100% 时缩放 alpha，currentcolor 在绘制时替换一次）。light-dark() 按元素的 color-scheme 取第一或第二色（列出 light 时用浅色，否则列出 dark 时用深色；缺省与 normal 为浅色）。渐变色标里的 light-dark() 和 currentcolor 在绘制背景、画布和 border-image 时走同一条解析（mask-image 仍不按元素）。必过 paint-color-mix、paint-light-dark、paint-gradient-scheme（pixel_tolerance 2，只覆盖 8-bit 舍入）。a98-rgb / prophoto-rgb / rec2020、相对颜色语法另开"
+    },
+    {
+      "id": "css.nesting",
+      "level": "aligned",
+      "stage": 3,
+      "note": "CSS Nesting：`&` 换成 :is(父选择器)，没有 & 的嵌套选择器是后代，前导组合符仍挂在父选择器上；@media / @supports / @container / @layer 包住嵌套规则时仍包在外面。验收用例 paint-nesting。嵌套 @scope 另开"
+    },
+    {
+      "id": "css.revert",
+      "level": "aligned",
+      "stage": 3,
+      "note": "revert 丢掉整个作者原点（含 !important 与普通声明，回到 UA）；revert-layer 丢掉当前层，并丢掉排在该层 important 与 normal 之间的后续层。all 先展开再回退。验收用例 css-revert。没有用户样式表，也没有动画原点"
+    }
+  ]
+}

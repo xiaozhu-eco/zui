@@ -1,0 +1,24 @@
+/* Scroll anchoring mid-sequence (TESTPLAN section 4): scroll far enough that #top is fully
+   clipped and #anchor is the selected scroll-anchoring node, insert a box above it, then
+   trace. The anchor's screen position must not move; the scroll offset absorbs the
+   insertion. Fixed px only. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; font-family: "Zui Test", sans-serif; }
+
+#scroller {
+  width: 200px;
+  height: 100px;
+  overflow: auto;
+  background: #f4f4f4;
+}
+
+.pad { height: 120px; background: #e0e0e0; }
+
+#anchor { height: 30px; background: #cccccc; }

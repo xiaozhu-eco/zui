@@ -1,0 +1,177 @@
+/* Light chrome around a dark stage. #theme-dark flips the chrome only.
+   Dots are not transitioned: an in-flight move would walk idle paint. */
+
+#theme-dark {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+body {
+  background: #8fbfae;
+}
+
+.app {
+  --bg: transparent;
+  --panel: #ffffff;
+  --ink: #101814;
+  --muted: #5d7368;
+  --line: rgba(16, 24, 20, 0.1);
+  --accent: #0c9a60;
+  --dot: #f2c14e;
+  --log: #101814;
+  --chrome: rgba(255, 255, 255, 0.92);
+  --chip: rgba(16, 24, 20, 0.06);
+  --shadow: 0 1px 2px rgba(12, 28, 20, 0.06), 0 22px 48px rgba(8, 32, 22, 0.16);
+  --shadow-sm: 0 8px 22px rgba(8, 32, 22, 0.1);
+  gap: 12px;
+  padding: 14px;
+  color: var(--ink);
+  background:
+    radial-gradient(880px 360px at -8% -18%, rgba(12, 154, 96, 0.4), transparent 56%),
+    radial-gradient(640px 300px at 110% -10%, rgba(36, 126, 196, 0.24), transparent 52%),
+    linear-gradient(165deg, #e9f6f0 0%, #b7d4c6 60%, #8fbfae 100%);
+}
+
+.topbar {
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 20px;
+  background: var(--chrome);
+  box-shadow: var(--shadow-sm);
+  align-items: center;
+}
+
+.topbar h1 {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+#effects,
+#params,
+#center {
+  border-radius: 22px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+#effects,
+#params {
+  padding: 14px;
+}
+
+#center {
+  padding: 12px;
+  gap: 12px;
+}
+
+.effect,
+button,
+.theme-toggle {
+  border: 0;
+  border-radius: 12px;
+  background: var(--chip);
+  color: var(--ink);
+}
+
+button.is-on,
+.effect.is-on {
+  background: linear-gradient(180deg, #3ee898 0%, #0a9a5c 100%);
+  color: #042117;
+  border-color: transparent;
+  box-shadow: 0 8px 18px rgba(12, 154, 96, 0.32);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.theme-toggle .when-dark {
+  display: none;
+}
+
+#theme-dark:checked ~ .app .when-light {
+  display: none;
+}
+
+#theme-dark:checked ~ .app .when-dark {
+  display: inline;
+}
+
+.split {
+  background: transparent;
+}
+
+#stage {
+  border-radius: 18px;
+  background:
+    radial-gradient(420px 180px at 50% 100%, rgba(242, 193, 78, 0.2), transparent 62%),
+    #0c1016;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+#console {
+  border: 0;
+  border-radius: 14px;
+  background: var(--log);
+  color: #d5e6dc;
+}
+
+#params input,
+#shader-source {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.file-notice {
+  background: #123528;
+  color: #e8f6ee;
+}
+
+#theme-dark:checked ~ .app {
+  --panel: #1b2621;
+  --ink: #e8f4ee;
+  --muted: #93aa9f;
+  --line: rgba(232, 244, 238, 0.12);
+  --accent: #3ee08f;
+  --log: #0a100e;
+  --chrome: rgba(18, 28, 24, 0.92);
+  --chip: rgba(232, 244, 238, 0.08);
+  --paper: #121a16;
+  --shadow: 0 18px 48px rgba(0, 0, 0, 0.46);
+  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.36);
+  color-scheme: dark;
+  color: var(--ink);
+  background:
+    radial-gradient(880px 360px at -8% -18%, rgba(62, 224, 143, 0.16), transparent 55%),
+    radial-gradient(640px 300px at 110% -10%, rgba(70, 150, 230, 0.14), transparent 50%),
+    linear-gradient(165deg, #15201b 0%, #070c0a 100%);
+}
+
+#theme-dark:checked ~ .app .topbar {
+  border-color: rgba(232, 244, 238, 0.08);
+}
+
+#theme-dark:checked ~ .app button.is-on,
+#theme-dark:checked ~ .app .effect.is-on {
+  background: linear-gradient(180deg, #6af3b4 0%, #14b56e 100%);
+  color: #042117;
+}

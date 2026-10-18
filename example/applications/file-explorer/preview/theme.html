@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>主题</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/preview.css">
+</head>
+<body>
+  <article class="doc">
+    <h1>主题</h1>
+    <p class="lead">五枚颜色，给样本页共用。</p>
+    <div class="swatches">
+      <div class="swatch"><i class="paper"></i><span>--paper</span></div>
+      <div class="swatch"><i class="ink"></i><span>--ink</span></div>
+      <div class="swatch"><i class="accent"></i><span>--accent</span></div>
+      <div class="swatch"><i class="sea"></i><span>--sea</span></div>
+      <div class="swatch"><i class="sand"></i><span>--sand</span></div>
+    </div>
+    <p class="sample">纸色上的正文，<span class="as-link">链接用强调色</span>，<span class="sea-word">海水是另一支笔</span>。</p>
+    <details class="raw" open>
+      <summary>源文件</summary>
+      <pre>/* 小竹样本用的一组颜色。预览页会把这些色块画出来。 */
+
+:root {
+    --paper: #fbf6ec;
+    --ink: #2b261f;
+    --accent: #2c6b4e;
+    --sea: #3d6f86;
+    --sand: #e6dfd0;
+}
+
+body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+a {
+    color: var(--accent);
+}</pre>
+    </details>
+    <p class="origin">files/主题.css</p>
+  </article>
+</body>
+</html>

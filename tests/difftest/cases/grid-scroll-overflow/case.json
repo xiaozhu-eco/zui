@@ -1,0 +1,17 @@
+{
+  "name": "grid-scroll-overflow",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A grid container with overflow:auto whose rows are taller than it is. The browser recording pins scrollHeight (and the clamped scroll offset) for the scrollable overflow.",
+  "matrix": ["flow.grid", "scroll.overflow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "scroll", "target": "#grid", "x": 0, "y": 5000 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

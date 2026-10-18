@@ -1,0 +1,16 @@
+{
+  "name": "at-supports",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1：@supports (prop:value) / not / and / or；已知属性启用、未知属性禁用；自定义属性 --* 启用。宽 120=命中、40=未命中。",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,13 @@
+[package]
+name = "zui"
+version = "0.1.0"
+edition = "2021"
+description = "Safe Rust bindings for zui. App is main-thread only."
+publish = false
+
+[dependencies]
+zui-sys = { path = "../zui-sys" }
+
+[[example]]
+name = "hello"
+path = "examples/hello.rs"

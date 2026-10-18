@@ -1,0 +1,31 @@
+/* Fragmentation inside a fragmentainer: a grid breaks between its rows, a table between its rows
+   and a column flex container between its items (CSS Fragmentation section 4, CSS Multi-column
+   section 7). Each container is a direct child of the multi-column container, so the container
+   asks it with a fragmentainer and keeps the fragment that comes back. */
+
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+
+.box {
+  width: 600px;
+  margin: 0 0 20px 0;
+  padding: 10px;
+  background-color: #161c27;
+  column-count: 2;
+  column-gap: 20px;
+}
+
+.inner { font-size: 12px; line-height: 20px; }
+
+#grid .inner { display: grid; grid-template-columns: 1fr; }
+#flex .inner { display: flex; flex-direction: column; }
+
+/* The padding is stated rather than left to the UA sheet: this engine's UA style only supplies the
+   default `display` (LAYOUT.md section 7), so leaning on Chrome's `td { padding: 1px }` would
+   compare two different starting points. The margin stays: it spaces the grid rows and the flex
+   items, and CSS 2.1 section 17.5.1 drops it on the table cells, which is part of what this case
+   measures. */
+.cell { height: 40px; margin: 0 0 10px 0; padding: 0; background-color: #243044; }
+.r2, .r5 { background-color: #7cb7ff; }
+.r3, .r6 { background-color: #8fd18a; }
+
+#table .inner { border-spacing: 0; border-collapse: separate; width: 100%; }

@@ -1,0 +1,17 @@
+{
+  "name": "vertical-align-noinherit",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Phase1: vertical-align does not inherit — #child stays baseline while #parent/#ref-top are top (L1 + geometry).",
+  "matrix": ["flow.inline"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "style_props": ["vertical-align"],
+  "text": { "breaks": false, "advances": false }
+}

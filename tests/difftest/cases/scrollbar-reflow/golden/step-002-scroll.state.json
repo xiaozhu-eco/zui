@@ -1,0 +1,24 @@
+{
+  "schema": "zui.difftest.state/1",
+  "op": "scroll",
+  "target": "0/1/0",
+  "scroll": [
+    0,
+    0
+  ],
+  "client_box": [
+    225,
+    120
+  ],
+  "hit": null,
+  "hits": [],
+  "scrollers": [
+    {
+      "path": "0/1/0",
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "focus": null,
+  "checked": []
+}

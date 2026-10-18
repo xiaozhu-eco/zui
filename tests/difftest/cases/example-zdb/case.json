@@ -1,0 +1,764 @@
+{
+  "name": "example-zdb",
+  "page": "page.html",
+  "source": "../../../../example/applications/zdb/index.html",
+  "viewport": [
+    1100,
+    720
+  ],
+  "scripts": false,
+  "_comment": "小竹数据库去掉页面脚本后的静态壳：欢迎页、对象栏、数据窗格。交互：撤掉 hidden 打开对象栏与数据表、插十六行数据、顶部「载入示例库」的 hover/按下、数据区滚轮、Tab/Escape，最后打开单元格详情。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 1100,
+      "h": 720
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_attr",
+          "target": "#pane-welcome",
+          "name": "hidden",
+          "value": ""
+        },
+        {
+          "do": "remove_attr",
+          "target": "#modebar",
+          "name": "hidden"
+        },
+        {
+          "do": "remove_attr",
+          "target": "#pane-data",
+          "name": "hidden"
+        },
+        {
+          "do": "remove_attr",
+          "target": "#grid-title-row",
+          "name": "hidden"
+        },
+        {
+          "do": "remove_attr",
+          "target": "#grid-table",
+          "name": "hidden"
+        },
+        {
+          "do": "remove_attr",
+          "target": "#pager",
+          "name": "hidden"
+        },
+        {
+          "do": "set_text",
+          "target": "#grid-title",
+          "text": "users"
+        },
+        {
+          "do": "set_text",
+          "target": "#grid-kind",
+          "text": "表"
+        },
+        {
+          "do": "set_text",
+          "target": "#grid-total",
+          "text": "16 行"
+        },
+        {
+          "do": "set_text",
+          "target": "#page-range",
+          "text": "1–16 / 16"
+        },
+        {
+          "do": "set_text",
+          "target": "#status-text",
+          "text": "已打开 sample.db"
+        },
+        {
+          "do": "set_text",
+          "target": "#file-name",
+          "text": "sample.db"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "insert",
+          "target": "#object-list",
+          "tag": "button",
+          "text": "users 表 16",
+          "class": "obj is-selected"
+        },
+        {
+          "do": "insert",
+          "target": "#object-list",
+          "tag": "button",
+          "text": "orders 表 12",
+          "class": "obj"
+        },
+        {
+          "do": "insert",
+          "target": "#object-list",
+          "tag": "button",
+          "text": "活跃用户 视图",
+          "class": "obj"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-head",
+          "tag": "div",
+          "text": "id",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-head",
+          "tag": "div",
+          "text": "name",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-head",
+          "tag": "div",
+          "text": "city",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-1"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-2"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-3"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-4"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-5"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-6"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-7"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-8"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-9"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-10"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-11"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-12"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-13"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-14"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-15"
+        },
+        {
+          "do": "insert",
+          "target": "#grid-body",
+          "tag": "div",
+          "text": "",
+          "class": "zrow",
+          "id": "row-16"
+        },
+        {
+          "do": "insert",
+          "target": "#row-1",
+          "tag": "div",
+          "text": "1",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-1",
+          "tag": "div",
+          "text": "沈青禾",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-1",
+          "tag": "div",
+          "text": "杭州",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-2",
+          "tag": "div",
+          "text": "2",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-2",
+          "tag": "div",
+          "text": "林岸",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-2",
+          "tag": "div",
+          "text": "成都",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-3",
+          "tag": "div",
+          "text": "3",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-3",
+          "tag": "div",
+          "text": "周未",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-3",
+          "tag": "div",
+          "text": "北京",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-4",
+          "tag": "div",
+          "text": "4",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-4",
+          "tag": "div",
+          "text": "许一",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-4",
+          "tag": "div",
+          "text": "上海",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-5",
+          "tag": "div",
+          "text": "5",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-5",
+          "tag": "div",
+          "text": "陈默",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-5",
+          "tag": "div",
+          "text": "广州",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-6",
+          "tag": "div",
+          "text": "6",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-6",
+          "tag": "div",
+          "text": "苏晚",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-6",
+          "tag": "div",
+          "text": "西安",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-7",
+          "tag": "div",
+          "text": "7",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-7",
+          "tag": "div",
+          "text": "何宁",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-7",
+          "tag": "div",
+          "text": "南京",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-8",
+          "tag": "div",
+          "text": "8",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-8",
+          "tag": "div",
+          "text": "于归",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-8",
+          "tag": "div",
+          "text": "天津",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-9",
+          "tag": "div",
+          "text": "9",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-9",
+          "tag": "div",
+          "text": "白露",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-9",
+          "tag": "div",
+          "text": "重庆",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-10",
+          "tag": "div",
+          "text": "10",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-10",
+          "tag": "div",
+          "text": "郑南",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-10",
+          "tag": "div",
+          "text": "长沙",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-11",
+          "tag": "div",
+          "text": "11",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-11",
+          "tag": "div",
+          "text": "秦朗",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-11",
+          "tag": "div",
+          "text": "苏州",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-12",
+          "tag": "div",
+          "text": "12",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-12",
+          "tag": "div",
+          "text": "吴桐",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-12",
+          "tag": "div",
+          "text": "青岛",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-13",
+          "tag": "div",
+          "text": "13",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-13",
+          "tag": "div",
+          "text": "卓然",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-13",
+          "tag": "div",
+          "text": "厦门",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-14",
+          "tag": "div",
+          "text": "14",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-14",
+          "tag": "div",
+          "text": "柳岸",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-14",
+          "tag": "div",
+          "text": "昆明",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-15",
+          "tag": "div",
+          "text": "15",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-15",
+          "tag": "div",
+          "text": "范青",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-15",
+          "tag": "div",
+          "text": "合肥",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-16",
+          "tag": "div",
+          "text": "16",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-16",
+          "tag": "div",
+          "text": "康乐",
+          "class": "ztd"
+        },
+        {
+          "do": "insert",
+          "target": "#row-16",
+          "tag": "div",
+          "text": "福州",
+          "class": "ztd"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "dispatch",
+      "events": [
+        {
+          "type": "mouseMoved",
+          "x": 984,
+          "y": 27
+        },
+        {
+          "type": "mousePressed",
+          "x": 984,
+          "y": 27,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseReleased",
+          "x": 984,
+          "y": 27,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseWheel",
+          "x": 600,
+          "y": 400,
+          "deltaX": 0,
+          "deltaY": 120
+        },
+        {
+          "type": "keyDown",
+          "key": "Tab"
+        },
+        {
+          "type": "keyUp",
+          "key": "Tab"
+        },
+        {
+          "type": "keyDown",
+          "key": "Escape"
+        },
+        {
+          "type": "keyUp",
+          "key": "Escape"
+        }
+      ],
+      "hits": [
+        {
+          "x": 984,
+          "y": 27
+        },
+        {
+          "x": 600,
+          "y": 400
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "remove_attr",
+          "target": "#cell-detail",
+          "name": "hidden"
+        },
+        {
+          "do": "set_text",
+          "target": "#detail-label",
+          "text": "users.city"
+        },
+        {
+          "do": "set_text",
+          "target": "#detail-value",
+          "text": "杭州"
+        }
+      ]
+    },
+    {
+      "op": "freeze",
+      "t": 400
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "style_props": [
+    "display",
+    "position",
+    "box-sizing",
+    "width",
+    "height",
+    "min-width",
+    "min-height",
+    "max-width",
+    "max-height",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+    "border-top-width",
+    "border-right-width",
+    "border-bottom-width",
+    "border-left-width",
+    "overflow-x",
+    "overflow-y",
+    "visibility",
+    "z-index",
+    "flex-direction",
+    "flex-wrap",
+    "flex-grow",
+    "flex-shrink",
+    "flex-basis",
+    "justify-content",
+    "align-items",
+    "align-content",
+    "align-self",
+    "order",
+    "row-gap",
+    "column-gap",
+    "font-family",
+    "font-size",
+    "font-weight",
+    "font-style",
+    "line-height",
+    "letter-spacing",
+    "word-spacing",
+    "text-align",
+    "text-indent",
+    "text-overflow",
+    "white-space",
+    "word-break",
+    "overflow-wrap",
+    "vertical-align"
+  ],
+  "text": {
+    "breaks": true,
+    "advances": false
+  }
+}

@@ -1,0 +1,35 @@
+{
+    "name": "table-min-max-width",
+    "page": "page.html",
+    "viewport": [
+        800,
+        600
+    ],
+    "_comment": "CSS Sizing 5: min-width/max-width clamp a table's used inline size. The table resolves its own inline size, so the clamp has to land before the column algorithm, which then distributes the extra width over the columns (CSS 2.1 17.5.2.2). Measured against Chrome: min-width:100% of a 400px containing block is 400px, min-width:50% is 200px, width:max-content with no clamp keeps its content width, and max-width caps a width:100% table at 100px.",
+    "matrix": [
+        "flow.table"
+    ],
+    "required": true,
+    "steps": [
+        {
+            "op": "load"
+        },
+        {
+            "op": "resize",
+            "w": 800,
+            "h": 600
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        }
+    ],
+    "expect": "golden/",
+    "pixels": "strict",
+    "text": {
+        "breaks": false,
+        "advances": false
+    }
+}

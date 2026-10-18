@@ -1,0 +1,17 @@
+{
+  "name": "flex-shorthand-basis",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "`flex: <number>` 的 flex-basis 是 0%，不是 0px（CSS Flexbox 7.1）。列向 flex 容器的块轴主轴不定时，百分比基准退回内容尺寸，而 0 长度不会。",
+  "matrix": ["flow.flex"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

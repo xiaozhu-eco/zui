@@ -1,0 +1,16 @@
+html, body { margin: 0; padding: 8px; background: #eef1f5; font-size: 24px; }
+
+#hard {
+  color: #1a2230;
+  text-shadow: 4px 3px 0 #7cb7ff;
+}
+
+#multi {
+  color: #1a2230;
+  text-shadow: 2px 2px 0 #e85d4c, 0 5px 8px rgba(20, 30, 45, 0.4);
+}
+
+#soft {
+  color: #1a2230;
+  text-shadow: 0 3px 6px rgba(20, 30, 45, 0.5);
+}

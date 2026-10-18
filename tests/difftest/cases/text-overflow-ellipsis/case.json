@@ -1,0 +1,16 @@
+{
+  "name": "text-overflow-ellipsis",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2：text-overflow:ellipsis（nowrap + overflow:hidden）。L2 布局；无 capture（裁切点与字形 AA 另议）。自检 TextOverflowEllipsis 证明画出 U+2026。",
+  "matrix": ["text.opentype"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

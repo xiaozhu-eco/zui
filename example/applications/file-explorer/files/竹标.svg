@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="竹标">
+  <rect width="128" height="128" rx="28" fill="#2c6b4e"/>
+  <g fill="none" stroke="#fbf6ec" stroke-width="6" stroke-linecap="round">
+    <path d="M46 100 V36"/>
+    <path d="M46 54 H64"/>
+    <path d="M82 102 V28"/>
+    <path d="M68 48 H82"/>
+    <path d="M68 70 H82"/>
+  </g>
+  <g fill="none" stroke="#d5ebda" stroke-width="4" stroke-linecap="round">
+    <path d="M34 44c7 9 14 9 20 0"/>
+    <path d="M34 66c7 9 14 9 20 0"/>
+    <path d="M68 40c7 9 14 9 20 0"/>
+    <path d="M68 62c7 9 14 9 20 0"/>
+  </g>
+</svg>

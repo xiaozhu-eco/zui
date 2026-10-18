@@ -1,0 +1,142 @@
+[
+    /* Test count: 20 */
+    /* 1 */
+    {
+        "data": "wor\x9Fld",
+        "tokens": [
+            {"type": "ident", "value": "wor\uFFFDld", "length": 6}
+        ]
+    },
+    {
+        "data": "wor\xED\xA0\x80ld",
+        "tokens": [
+            {"type": "ident", "value": "wor\uFFFD\uFFFD\uFFFDld", "length": 8}
+        ]
+    },
+    /* 3 */
+    {
+        "data": "wor\xED\xAF\xBFld",
+        "tokens": [
+            {"type": "ident", "value": "wor\uFFFD\uFFFD\uFFFDld", "length": 8}
+        ]
+    },
+    /* 4 */
+    {
+        "data": "wor\xED\xB0\x80ld",
+        "tokens": [
+            {"type": "ident", "value": "wor\uFFFD\uFFFD\uFFFDld", "length": 8}
+        ]
+    },
+    /* 5 */
+    {
+        "data": "wor\xED\xBF\xBFld",
+        "tokens": [
+            {"type": "ident", "value": "wor\uFFFD\uFFFD\uFFFDld", "length": 8}
+        ]
+    },
+    /* 6 */
+    {
+        "data": "wor\uD7FFld",
+        "tokens": [
+            {"type": "ident", "value": "wor\uD7FFld", "length": 8}
+        ]
+    },
+    /* 7 */
+    {
+        "data": "wor\uC000ld",
+        "tokens": [
+            {"type": "ident", "value": "wor\uC000ld", "length": 8}
+        ]
+    },
+    /* 8 */
+    {
+        "data": "\"wor\xED\xA0\x80ld\"",
+        "tokens": [
+            {"type": "string", "value": "\"wor\uFFFD\uFFFD\uFFFDld\"", "length": 10}
+        ]
+    },
+    /* 9 */
+    {
+        "data": "\"wor\xA0\x80ld\"",
+        "tokens": [
+            {"type": "string", "value": "\"wor\uFFFD\uFFFDld\"", "length": 9}
+        ]
+    },
+    /* 10 */
+    {
+        "data": "\"wor\xED\xA0ld\"",
+        "tokens": [
+            {"type": "string", "value": "\"wor\uFFFD\uFFFDld\"", "length": 9}
+        ]
+    },
+    /* 11 */
+    {
+        "data": "\"wor\xED\xA0",
+        "tokens": [
+            {"type": "string", "value": "\"wor\uFFFD\uFFFD\"", "length": 6}
+        ]
+    },
+    /* 12 */
+    {
+        "data": "wor\xED\xA0",
+        "tokens": [
+            {"type": "ident", "value": "wor\uFFFD\uFFFD", "length": 5}
+        ]
+    },
+    /* 13 */
+    {
+        "data": "wor\xED\xA0ld",
+        "tokens": [
+            {"type": "ident", "value": "wor\uFFFD\uFFFDld", "length": 7}
+        ]
+    },
+    /* 14 */
+    {
+        "data": "µ",
+        "tokens": [
+            {"type": "delim", "value": "µ", "length": 2}
+        ]
+    },
+    /* 15 */
+    {
+        "data": "wor\xE2\x8Cld",
+        "tokens": [
+            {"type": "ident", "value": "wor\uFFFDld", "length": 7}
+        ]
+    },
+    /* 16 */
+    {
+        "data": "wor\xE2\x8C",
+        "tokens": [
+            {"type": "ident", "value": "wor\uFFFD", "length": 5}
+        ]
+    },
+    /* 17 */
+    {
+        "data": "\"wor\xE2\x8Cld\"",
+        "tokens": [
+            {"type": "string", "value": "\"wor\uFFFDld\"", "length": 9}
+        ]
+    },
+    /* 18 */
+    {
+        "data": "wor\xF0\x9F\x98ld",
+        "tokens": [
+            {"type": "ident", "value": "wor\uFFFDld", "length": 8}
+        ]
+    },
+    /* 19 */
+    {
+        "data": "wor\xE0\x80ld",
+        "tokens": [
+            {"type": "ident", "value": "wor\uFFFD\uFFFDld", "length": 7}
+        ]
+    },
+    /* 20 */
+    {
+        "data": "\xED\xA0\x80ld",
+        "tokens": [
+            {"type": "ident", "value": "\uFFFD\uFFFD\uFFFDld", "length": 5}
+        ]
+    }
+]

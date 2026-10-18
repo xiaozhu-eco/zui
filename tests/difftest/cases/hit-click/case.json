@@ -1,0 +1,65 @@
+{
+  "name": "hit-click",
+  "page": "page.html",
+  "viewport": [
+    800,
+    600
+  ],
+  "_comment": "Click a button and a checkbox. Read back the hit path, checked, and focus.",
+  "matrix": [
+    "flow.normal"
+  ],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 800,
+      "h": 600
+    },
+    {
+      "op": "dispatch",
+      "events": [
+        {
+          "type": "mousePressed",
+          "x": 30,
+          "y": 24,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseReleased",
+          "x": 30,
+          "y": 24,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mousePressed",
+          "x": 24,
+          "y": 56,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseReleased",
+          "x": 24,
+          "y": 56,
+          "button": "left",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": {
+    "breaks": false,
+    "advances": false
+  }
+}

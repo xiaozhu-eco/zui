@@ -1,0 +1,17 @@
+{
+  "name": "sharekey-has",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A1: subject-compound :has() fingerprints ShareKey so #b (40x40) and #c (120x40) keep distinct used sizes despite identical tag/class/prev_tag.",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

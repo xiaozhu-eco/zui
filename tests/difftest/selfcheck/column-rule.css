@@ -1,0 +1,14 @@
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+#rules {
+  width: 420px;
+  column-count: 3;
+  column-gap: 24px;
+  column-rule: 4px solid #ffcc00;
+  background-color: #161c27;
+  padding: 8px;
+}
+.blk {
+  height: 36px;
+  margin: 0 0 8px 0;
+  background-color: #243044;
+}

@@ -1,0 +1,9 @@
+html, body { margin: 0; padding: 8px; background: #101418; color: #e8edf5; font-size: 18px; }
+
+#u { text-decoration: underline; }
+#through { text-decoration: line-through; }
+#wavy { text-decoration: underline wavy #e85d4c; }
+#thick { text-decoration: underline 3px #7cb7ff; }
+#dashed { text-decoration: underline dashed #7cb7ff; }
+#over { text-decoration: overline; }
+#plain { color: #e8edf5; }

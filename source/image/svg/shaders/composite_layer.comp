@@ -1,0 +1,50 @@
+#version 450
+layout(local_size_x = 8, local_size_y = 8) in;
+
+#ifdef ZUI_PUSH
+layout(push_constant) uniform ParamsBlock {
+#else
+layout(std140, binding = 0) uniform ParamsBlock {
+#endif
+    ivec4 viewport;
+    vec4 rect;
+    vec4 extra;
+} zui_params;
+
+layout(std430, binding = 5) buffer PixelBlock { uint pixels[]; };
+
+vec4 zui_unpack(uint packed) {
+    return vec4(float(packed & 255u), float((packed >> 8) & 255u), float((packed >> 16) & 255u),
+                float((packed >> 24) & 255u)) /
+           255.0;
+}
+
+uint zui_pack(vec4 color) {
+    ivec4 v = ivec4(round(clamp(color, 0.0, 1.0) * 255.0));
+    return uint(v.r) | (uint(v.g) << 8) | (uint(v.b) << 16) | (uint(v.a) << 24);
+}
+
+vec4 zui_over(vec4 src, vec4 dst) {
+    float a = src.a + dst.a * (1.0 - src.a);
+    vec3 rgb = a > 1e-5 ? (src.rgb * src.a + dst.rgb * dst.a * (1.0 - src.a)) / a : vec3(0.0);
+    return vec4(rgb, a);
+}
+
+void main() {
+    if (gl_GlobalInvocationID.x >= uint(zui_params.rect.z) || gl_GlobalInvocationID.y >= uint(zui_params.rect.w)) {
+        return;
+    }
+    int x = int(zui_params.rect.x) + int(gl_GlobalInvocationID.x);
+    int y = int(zui_params.rect.y) + int(gl_GlobalInvocationID.y);
+    int child = zui_params.viewport.z;
+    int parent = int(zui_params.extra.w + 0.5);
+    uint stride = uint(zui_params.viewport.x) * uint(zui_params.viewport.y);
+    uint local = uint(y) * uint(zui_params.viewport.x) + uint(x);
+    vec4 src = zui_unpack(pixels[uint(child) * stride + local]);
+    src.a *= zui_params.extra.x;
+    if (src.a <= 0.0) {
+        return;
+    }
+    uint dst = uint(parent) * stride + local;
+    pixels[dst] = zui_pack(zui_over(src, zui_unpack(pixels[dst])));
+}

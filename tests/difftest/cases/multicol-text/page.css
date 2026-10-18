@@ -1,0 +1,33 @@
+/* flow... this is a multicol case: the inline formatting context of a paragraph is split at a
+   line boundary between columns (CSS Multi-column section 7, CSS Fragmentation section 4).
+   The family is the embedded face both ends load, so a fragment boundary is about the line
+   boxes and not about which system font each side happened to pick. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+
+.box {
+  width: 600px;
+  margin: 0 0 20px 0;
+  padding: 10px;
+  background-color: #161c27;
+}
+
+.para {
+  margin: 0 0 10px 0;
+  font-family: "Zui Test", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.short { color: #8fd18a; }
+
+#two { column-count: 2; column-gap: 20px; }
+#three { column-count: 3; column-gap: 20px; }
+#stacked { column-count: 2; column-gap: 20px; }

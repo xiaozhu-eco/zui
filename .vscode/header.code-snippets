@@ -1,0 +1,136 @@
+{
+	// ============================================================================
+	// zui 头文件片段（项目级 snippets）
+	//
+	// 用法：在空白 .h / .hpp 文件中输入前缀后按 Tab 或 Ctrl+Space：
+	//   zhead       -> 头文件模板；两个片段用 include/exclude 互斥，
+	//                  在 include/zui/** 下自动落到 widget 版（ZUI_WIDGET_EXPORT），
+	//                  其它目录（include/core、include/application、source/render/include ...）
+	//                  落到模块版（ZUI_<模块>_<文件>_H / <模块/export.h>）
+	//   zhead-zui / zhead-widget -> 显式指定 widget 版
+	//
+	// 生成规则（与 include/core/event.h 保持一致）：
+	//   保护宏     ZUI_ + 模块名大写 + 文件名大写 + _H     event.h        -> ZUI_CORE_EVENT_H
+	//   模块头文件 <模块名/export.h>                       core           -> <core/export.h>
+	//   导出宏     ZUI_ + 模块名大写 + _EXPORT             core           -> ZUI_CORE_EXPORT
+	//   命名空间   zui::<模块名>
+	//   类名       snake_case 文件名 -> 大驼峰             event_bus.h    -> EventBus
+	//   文件头     文件名 / 类名 / 创建时间 / 简介 / 修改历史 / 版权
+	//
+	// 模块名 / 类名 / 保护宏 / 导出宏全部在插入瞬间自动推导，插入后无需再填：
+	//   类名    ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}       node.h  -> Node
+	//   模块名  所在目录名；若目录名是 include，则取它的上一级
+	//           ...\include\core             -> core
+	//           ...\source\render\include    -> render
+	//
+	// 注意：不要用"占位符 + 大小写 transform"来生成保护宏。占位符上的 transform
+	//       只在离开该 Tab 停靠点时才应用，插入瞬间不会生效（会得到 ZUI_core_XXX_H）。
+	//       所以这里统一用变量 transform（TM_DIRECTORY / TM_FILENAME_BASE），插入即生效。
+	//
+	// 例外：include/zui/** 属于 widget 模块，按现有文件（widget.h、text_metrics.h）
+	//       不带模块段，导出宏固定为 ZUI_WIDGET_EXPORT，头文件为 <zui/export.h>。
+	//       目录名与模块名不一致时要手改（如 core/enums/color.h 需要
+	//       ZUI_CORE_ENUMS_COLOR_H / <core/export.h>），未保存的新文件（无路径）也会取不到值。
+	//
+	// Tab 顺序：本文件简介 -> 版权 -> 文件末尾
+	// ============================================================================
+	"ZUI Header (module)": {
+		"scope": "cpp,c",
+		"prefix": [
+			"zhead",
+			"zheader",
+			"zuiheader"
+		],
+		"exclude": [
+			"**/include/zui/**"
+		],
+		"isFileTemplate": true,
+		"body": [
+			"/**",
+			" * @file    ${TM_FILENAME}",
+			" * @class   ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}",
+			" * @date    ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}",
+			" * @brief   ${1:本文件简介}",
+			" *",
+			" * 修改历史:",
+			" *   ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}  创建文件",
+			" *",
+			" * Copyright (c) ${CURRENT_YEAR} ${2:zui}. All rights reserved.",
+			" */",
+			"",
+			"#ifndef ZUI_${TM_DIRECTORY/.*\\W([\\w.]+)\\Winclude$|.*\\W([\\w.]+)$/${1:/upcase}${2:/upcase}/i}_${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H",
+			"#define ZUI_${TM_DIRECTORY/.*\\W([\\w.]+)\\Winclude$|.*\\W([\\w.]+)$/${1:/upcase}${2:/upcase}/i}_${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H",
+			"",
+			"#include <${TM_DIRECTORY/.*\\W([\\w.]+)\\Winclude$|.*\\W([\\w.]+)$/${1:/downcase}${2:/downcase}/i}/export.h>",
+			"",
+			"namespace zui {",
+			"namespace ${TM_DIRECTORY/.*\\W([\\w.]+)\\Winclude$|.*\\W([\\w.]+)$/${1:/downcase}${2:/downcase}/i} {",
+			"",
+			"class ZUI_${TM_DIRECTORY/.*\\W([\\w.]+)\\Winclude$|.*\\W([\\w.]+)$/${1:/upcase}${2:/upcase}/i}_EXPORT ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+			"public:",
+			"    ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}();",
+			"    ~${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}();",
+			"",
+			"    ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}(const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}&) = delete;",
+			"    ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}& operator=(const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}&) = delete;",
+			"};",
+			"",
+			"}  // namespace ${TM_DIRECTORY/.*\\W([\\w.]+)\\Winclude$|.*\\W([\\w.]+)$/${1:/downcase}${2:/downcase}/i}",
+			"}  // namespace zui",
+			"",
+			"#endif  // ZUI_${TM_DIRECTORY/.*\\W([\\w.]+)\\Winclude$|.*\\W([\\w.]+)$/${1:/upcase}${2:/upcase}/i}_${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H",
+			"$0"
+		],
+		"description": "zui 模块头文件模板：模块名/保护宏/类名由目录名与文件名自动推导（ZUI_<模块>_<文件>_H、<模块/export.h>、zui::<模块>、ZUI_<模块>_EXPORT）"
+	},
+	"ZUI Header (widget / zui module)": {
+		"scope": "cpp,c",
+		"prefix": [
+			"zhead",
+			"zheader",
+			"zhead-zui",
+			"zhead-widget"
+		],
+		"include": [
+			"**/include/zui/**"
+		],
+		"isFileTemplate": true,
+		"body": [
+			"/**",
+			" * @file    ${TM_FILENAME}",
+			" * @class   ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}",
+			" * @date    ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}",
+			" * @brief   ${1:本文件简介}",
+			" *",
+			" * 修改历史:",
+			" *   ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}  创建文件",
+			" *",
+			" * Copyright (c) ${CURRENT_YEAR} ${2:zui}. All rights reserved.",
+			" */",
+			"",
+			"#ifndef ZUI_${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H",
+			"#define ZUI_${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H",
+			"",
+			"#include <zui/export.h>",
+			"",
+			"namespace zui {",
+			"namespace ${3:widget} {",
+			"",
+			"class ZUI_WIDGET_EXPORT ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} {",
+			"public:",
+			"    ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}();",
+			"    ~${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}();",
+			"",
+			"    ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}(const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}&) = delete;",
+			"    ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}& operator=(const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}&) = delete;",
+			"};",
+			"",
+			"}  // namespace ${3:widget}",
+			"}  // namespace zui",
+			"",
+			"#endif  // ZUI_${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H",
+			"$0"
+		],
+		"description": "zui widget 模块（include/zui/**）头文件模板：保护宏 ZUI_<文件>_H + <zui/export.h> + ZUI_WIDGET_EXPORT 类声明"
+	}
+}

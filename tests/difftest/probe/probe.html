@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="probe.css">
+</head>
+<body>
+  <!-- L0 probe page (TESTPLAN 第 8 节).
+       Two environment parameters are read from this page before anything is recorded or
+       replayed: the platform scrollbar thickness, and the advance of one probe string.
+       Both are read the same way on the browser side (clientWidth / Range rect) and the
+       engine side (root padding box / font chain measure). -->
+  <div id="tall"></div>
+  <div id="advance">Hamburgefonstiv</div>
+  <div id="advance-spaces">Hamburge fonstiv a b c d e</div>
+  <div id="advance-kern">AVAVAVAVAVAVA</div>
+</body>
+</html>

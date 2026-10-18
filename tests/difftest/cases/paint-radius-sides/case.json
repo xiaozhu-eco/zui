@@ -1,0 +1,17 @@
+{
+  "name": "paint-radius-sides",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Phase1 A5: rounded + non-uniform border widths (#uneven) and mixed side colours (#mixed-color) must keep outer arcs, not axis-aligned strips.",
+  "matrix": ["paint.radius"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

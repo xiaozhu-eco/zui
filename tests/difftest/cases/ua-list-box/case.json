@@ -1,0 +1,17 @@
+{
+  "name": "ua-list-box",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "HTML lists UA: ul is display:block with padding-inline-start 40px (mapped to padding-left in LTR); li is list-item. Author zeros margins so only the UA padding gutter is measured. list-style:none on #bare clears markers; nested type/margin and rtl mapping covered by selfcheck UaListsLogicalAndNested.",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false },
+  "style_props": ["display", "padding-left", "margin-top", "margin-bottom", "list-style-type", "list-style-position", "list-style-image"]
+}

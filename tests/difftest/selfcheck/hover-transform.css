@@ -1,0 +1,22 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #101418;
+}
+
+.action {
+  position: absolute;
+  left: 40px;
+  top: 80px;
+  width: 120px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: #2f6feb;
+  color: #ffffff;
+}
+
+.action:hover {
+  transform: translateY(-30px);
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.page.from-right { animation: page-right 0.2s ease; }
+.page.from-left { animation: page-left 0.2s ease; }
+@keyframes page-right {
+  from { transform: translateX(28px); opacity: 0.35; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes page-left {
+  from { transform: translateX(-28px); opacity: 0.35; }
+  to { transform: none; opacity: 1; }
+}
+#box { animation: props 1s linear; }
+@keyframes props {
+  from {
+    color: #000000;
+    background-color: #000000;
+    border-top-color: #000000;
+    border-right-color: #000000;
+    border-bottom-color: #000000;
+    border-left-color: #000000;
+    opacity: 0.2;
+    transform: translateX(40px);
+    width: 10px;
+    height: 12px;
+    margin-top: 1px;
+    margin-right: 2px;
+    margin-bottom: 3px;
+    margin-left: 4px;
+    padding-top: 5px;
+    padding-right: 6px;
+    padding-bottom: 7px;
+    padding-left: 8px;
+  }
+  to {
+    color: #ffffff;
+    background-color: #ff0000;
+    border-top-color: #00ff00;
+    border-right-color: #0000ff;
+    border-bottom-color: #ffff00;
+    border-left-color: #ff00ff;
+    opacity: 1;
+    transform: none;
+    width: 80px;
+    height: 90px;
+    margin-top: 11px;
+    margin-right: 12px;
+    margin-bottom: 13px;
+    margin-left: 14px;
+    padding-top: 15px;
+    padding-right: 16px;
+    padding-bottom: 17px;
+    padding-left: 18px;
+  }
+}
+</style>
+</head>
+<body>
+<div id="right" class="page from-right"></div>
+<div id="left" class="page from-left"></div>
+<div id="box"></div>
+</body>
+</html>

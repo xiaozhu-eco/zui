@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<body>
+  <section id="history-view" hidden>
+    <header class="page-head">
+      <h2>历史</h2>
+      <p id="history-note"> </p>
+    </header>
+    <div id="history-list" class="history-list">
+      <template>
+        <button type="button" class="snap" id="snap-{{id}}" onclick="on_snap" data-id="{{id}}">{{label}}</button>
+      </template>
+    </div>
+    <div id="history-body" class="history-body"> </div>
+  </section>
+</body>
+</html>

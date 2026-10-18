@@ -1,0 +1,17 @@
+{
+  "name": "flex-shrink-column",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "最小复现：列向 flex 容器有确定高度，可增长项必须被容器高度约束（收缩到剩余空间并自己滚动），而不是长成内容高度。example/tests/flow/flow.html 的 .page 就是这个形态。",
+  "matrix": ["flow.flex", "scroll.overflow"],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

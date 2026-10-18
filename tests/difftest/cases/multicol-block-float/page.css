@@ -1,0 +1,51 @@
+/* A float inside a block that is the multi-column container's own child: the float shortens the
+   lines that follow it in its column, `clear` drops the next block below it, and the fragments
+   after the break are not shortened by it (CSS 2.1 section 9.5 through CSS Multi-column section 7).
+   The float used to be treated as an in-flow block on the fragmented path, which pushed every line
+   down by its own height instead of shortening them. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #10141c; color: #e8edf5; }
+body { font: 400 12px/20px "Zui Test", sans-serif; }
+p { margin: 0; }
+
+/* A definite column height with `column-fill: auto`: the columns fill in order instead of being
+   balanced (CSS Multi-column section 7). The blocks below the clearance tile the two columns
+   exactly, so the break falls between blocks and what the case measures is the float and the
+   clearance, not the balancer. */
+.box {
+  width: 420px;
+  height: 100px;
+  margin: 0 0 20px 0;
+  padding: 10px;
+  background-color: #161c27;
+  column-count: 2;
+  column-gap: 20px;
+  column-fill: auto;
+}
+
+/* The container the float lives in. Its own box is what the columns are measured against. */
+.inner { background-color: #101820; }
+
+.fl { width: 90px; height: 50px; background-color: #7cb7ff; }
+#left .fl { float: left; }
+#right .fl { float: right; }
+
+/* `clear` pushes this block below the float, so the paragraph after it starts at the column's
+   full width again. */
+.clr { height: 30px; background-color: #8fd18a; }
+#left .clr { clear: left; }
+#right .clr { clear: right; }
+
+/* The first one ends exactly at the column's edge (`p1` 40 + clearance 10 + `clr` 30 + 20), so
+   column 1 holds the float, both paragraphs and this block; the other two are 60 + 40 and fill
+   column 2 exactly. No block spans the break, which keeps the break where both engines put it. */
+.fill { height: 20px; background-color: #2b3a4d; }
+.fill.tall { height: 60px; }
+.fill.short { height: 40px; }

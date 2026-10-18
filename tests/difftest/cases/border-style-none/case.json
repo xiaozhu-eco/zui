@@ -1,0 +1,17 @@
+{
+  "name": "border-style-none",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "border-style: none / hidden 的 used 宽是 0（CSS Backgrounds 3 第 4 节）：既不画，也不占盒子的宽度，所以内容盒和相邻内容都跟着移动。",
+  "matrix": ["paint.border"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

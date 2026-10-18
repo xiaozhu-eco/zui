@@ -1,0 +1,18 @@
+{
+  "name": "paint-radial-gradient",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3：radial-gradient（默认椭圆 / circle / closest-side at）与 repeating-linear-gradient。pixel_tolerance 1 吸收 Blink 抖动（同 paint-gradient）。",
+  "matrix": ["paint.gradient"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": false }
+}

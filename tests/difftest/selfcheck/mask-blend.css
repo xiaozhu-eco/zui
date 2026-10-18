@@ -1,0 +1,13 @@
+html, body { margin: 0; padding: 8px; background: #c8d0d8; }
+#mask, #mul, #scr, #plain {
+  width: 60px;
+  height: 40px;
+  margin-bottom: 8px;
+  background: #7cb7ff;
+}
+#mask {
+  background: #e85d4c;
+  mask-image: linear-gradient(#000000, transparent);
+}
+#mul { mix-blend-mode: multiply; background: #ff8080; }
+#scr { mix-blend-mode: screen; background: #4060a0; }

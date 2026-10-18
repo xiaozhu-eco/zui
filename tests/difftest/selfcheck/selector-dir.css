@@ -1,0 +1,19 @@
+/* An argument that is not one identifier drops this rule only. */
+:dir(ltr, rtl) { padding-bottom: 9px; }
+#keep { margin-left: 70px; }
+
+/* A single identifier other than ltr/rtl parses and matches nothing. */
+:dir(sideways) { padding-bottom: 8px; }
+
+/* Whitespace around the identifier is allowed. */
+:dir( ltr ) { margin-bottom: 74px; }
+
+/* :dir() is a class-level pseudo-class, so this beats the later id rule. */
+#host-rtl:dir(rtl) { padding-right: 72px; }
+#host-rtl { padding-right: 10px; }
+
+.probe:dir(rtl) { padding-top: 83px; }
+.probe:dir(ltr) { padding-top: 84px; }
+
+/* The CSS direction property is not an input to :dir(). */
+#styled { direction: rtl; }

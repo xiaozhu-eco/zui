@@ -1,0 +1,49 @@
+/* Rounded dashed and dotted borders, plus a rounded dashed outline.
+   Gaps are longer than 8px so a solid fallback fails the edge run.
+   The 24px dots make a solid ring a component larger than 400px². */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #e8edf2;
+}
+
+.row {
+  display: flex;
+  gap: 28px;
+  padding: 32px;
+  align-items: flex-start;
+}
+
+.row > div {
+  box-sizing: border-box;
+  background-color: #f4f7fb;
+}
+
+#dashed {
+  width: 220px;
+  height: 120px;
+  border: 12px dashed #123a73;
+  border-radius: 20px;
+}
+
+#dotted {
+  width: 220px;
+  height: 140px;
+  border: 24px dotted #123a73;
+  border-radius: 32px;
+}
+
+#outline {
+  width: 200px;
+  height: 110px;
+  border-radius: 18px;
+  outline: 22px dashed #9a3412;
+}
+
+#tight {
+  width: 180px;
+  height: 100px;
+  border: 12px dashed #123a73;
+  border-radius: 10px;
+}

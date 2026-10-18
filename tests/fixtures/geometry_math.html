@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  html, body { margin: 0; padding: 0; }
+  #wconflict { width: 250px; min-width: 300px; max-width: 200px; height: 10px; }
+  #hconflict { min-height: 300px; max-height: 200px; width: 40px; }
+  #hmin { height: 50px; min-height: 80px; width: 40px; }
+  #hmax { height: 200px; max-height: 80px; width: 40px; }
+  #hmaxchild { height: 100%; }
+  #clampw { width: clamp(300px, 100px, 200px); height: 10px; }
+  #flexhost { display: flex; width: 400px; }
+  #flexmm { flex: 0 0 250px; min-width: 300px; max-width: 200px; height: 10px; }
+  #flexgrowhost { display: flex; width: 500px; }
+  #flexgrow { flex: 1 1 100px; min-width: 300px; max-width: 200px; height: 10px; }
+  #rtlhost { direction: rtl; width: 200px; }
+  #rtlchild { width: 50px; height: 10px; }
+  #rtlpad { direction: rtl; width: 200px; padding-left: 10px; padding-right: 40px; }
+  #rtlpadchild { height: 10px; }
+  #rtlrel { direction: rtl; width: 200px; }
+  #rtlrelchild { position: relative; left: 30px; height: 10px; }
+  #xform {
+    position: absolute; left: 0; top: 0; width: 40px; height: 20px;
+    transform-origin: 0 0;
+    transform: translateX(100px) rotate(90deg);
+  }
+  #padhost { width: 200px; height: 400px; }
+  #pad { padding-top: 10%; height: 0; }
+  #calchost { width: 200px; }
+  #calc { width: calc(100% - 40px); height: 10px; }
+  #centerhost { width: 300px; }
+  #center { width: 100px; margin-left: auto; margin-right: auto; height: 10px; }
+  #flexauto { display: flex; width: 300px; height: 10px; }
+  #flexitem { width: 100px; margin-left: auto; height: 10px; }
+  #grid { display: grid; width: 300px; grid-template-columns: 100px 1fr 1fr; height: 10px; }
+  #hhost { height: 200px; width: 80px; }
+  #hpct { height: 50%; }
+  #gridmm { display: grid; width: 400px; grid-template-columns: max-content; }
+  #griditem { width: 250px; min-width: 300px; max-width: 200px; height: 10px; }
+  #flexclamp { display: flex; width: 250px; min-width: 300px; max-width: 200px; }
+  #flexclampitem { flex: 1 0 0px; height: 10px; }
+  #flexcol { display: flex; flex-direction: column; width: 40px; height: 250px; min-height: 300px; max-height: 200px; }
+  #flexcolitem { flex: 1 0 0px; }
+  #flexshrinkhost { display: flex; width: 400px; }
+  #flexshrink { flex: 0 0 250px; min-width: 300px; max-width: 200px; height: 10px; }
+  #flexsib { flex: 0 1 200px; height: 10px; }
+  #rtlfloat { direction: rtl; width: 200px; }
+  #rtlfloatchild { float: left; width: 40px; height: 10px; margin-left: 0; margin-right: 40px; }
+  #rtlboth { direction: rtl; width: 200px; }
+  #rtlbothchild { position: relative; left: 30px; right: 10px; height: 10px; }
+  #valign { font-size: 16px; line-height: 16px; margin: 0; }
+  #valignsub { vertical-align: sub; }
+</style>
+</head>
+<body>
+  <div id="wconflict"></div>
+  <div id="hconflict"></div>
+  <div id="hmin"></div>
+  <div id="hmax"><div id="hmaxchild"></div></div>
+  <div id="clampw"></div>
+  <div id="flexhost"><div id="flexmm"></div></div>
+  <div id="flexgrowhost"><div id="flexgrow"></div></div>
+  <div id="rtlhost"><div id="rtlchild"></div></div>
+  <div id="rtlpad"><div id="rtlpadchild"></div></div>
+  <div id="rtlrel"><div id="rtlrelchild"></div></div>
+  <div id="xform"></div>
+  <div id="padhost"><div id="pad"></div></div>
+  <div id="calchost"><div id="calc"></div></div>
+  <div id="centerhost"><div id="center"></div></div>
+  <div id="flexauto"><div id="flexitem"></div></div>
+  <div id="grid"><div id="g0"></div><div id="g1"></div><div id="g2"></div></div>
+  <div id="hhost"><div id="hpct"></div></div>
+  <div id="gridmm"><div id="griditem"></div></div>
+  <div id="flexclamp"><div id="flexclampitem"></div></div>
+  <div id="flexcol"><div id="flexcolitem"></div></div>
+  <div id="flexshrinkhost"><div id="flexshrink"></div><div id="flexsib"></div></div>
+  <div id="rtlfloat"><div id="rtlfloatchild"></div></div>
+  <div id="rtlboth"><div id="rtlbothchild"></div></div>
+  <div id="valign"><span id="valignbase">A</span><span id="valignsub">A</span></div>
+</body>
+</html>

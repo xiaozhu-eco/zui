@@ -1,0 +1,18 @@
+{
+  "name": "paint-canvas-bg",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "A5: body gradient propagates to the canvas (full viewport), not only the short body border box. #probe sits on the gradient.",
+  "matrix": ["paint.gradient"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": false }
+}

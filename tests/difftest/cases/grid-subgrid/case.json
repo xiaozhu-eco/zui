@@ -1,0 +1,18 @@
+{
+  "name": "grid-subgrid",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "子网格的列和行采用父网格已经算好的轨道。列：120px 1fr 120px 与 16px 间距。行：36px 36px 与 10px 间距。",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": true, "advances": true }
+}

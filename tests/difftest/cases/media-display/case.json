@@ -1,0 +1,17 @@
+{
+  "name": "media-display",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Screen window: (display-mode: browser), (display-mode), (update: fast), (update), (overflow-block: scroll), (overflow-block), (overflow-inline: scroll), and (grid: 0) apply. (display-mode: standalone), (update: none), (overflow-block: paged), (overflow-inline: none), (grid), and (grid: 1) do not.",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

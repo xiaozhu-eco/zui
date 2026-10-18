@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN" onvisibilitychange="on_visibility">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="zui-app-id" content="zmd">
+  <title>小竹 Markdown</title>
+  <link rel="icon" href="icon.svg">
+  <!-- 宿主提供的那一层（预览沙箱原本给的） -->
+  <link rel="stylesheet" href="css/host.css">
+  <!-- 原型的整张样式表，未改一字 -->
+  <link rel="stylesheet" href="css/app.css">
+  <!-- zmd 自己的那一层，按原型的设计语言写 -->
+  <link rel="stylesheet" href="css/zmd.css">
+</head>
+
+<body id="zmd-page" onkeydown="on_accel" onbeforeunload="on_beforeunload" ondrop="on_drop">
+  <!-- 原型的 #md-editor-mock / mdw-* / data-act。on* 把同一套控件接到原生会话。 -->
+  <div id="md-editor-mock" class="view-live">
+    <div class="mdw mdw-a pal-closed set-closed" id="mdc-a" aria-label="无缝沉浸：正文排版">
+      <div class="mdw-bar mdw-bar-a">
+        <span aria-hidden="true"></span>
+        <span class="mdw-bar-name"><span id="mdc-a-name">极简写作工作流.md</span><span class="mdw-save" id="mdc-a-save"
+            data-state="saved" aria-label="已保存"></span></span>
+        <span class="mdw-wins" aria-hidden="true">
+          <span class="mdw-win"><i data-lucide="minus"></i></span>
+          <span class="mdw-win"><i data-lucide="square"></i></span>
+          <span class="mdw-win mdw-close"><i data-lucide="x"></i></span>
+        </span>
+        <div class="mdw-tools" role="toolbar" aria-label="格式工具栏">
+          <button class="mdw-tbtn" id="zmd-h1" type="button" aria-label="一级标题" onclick="on_format_h1"><img
+              class="mdw-ico-img" src="icons/h1.png" width="15" height="15" alt=""><i data-lucide="heading-1"
+              aria-hidden="true"></i></button>
+          <button class="mdw-tbtn" id="zmd-h2" type="button" aria-label="二级标题" onclick="on_format_h2"><img
+              class="mdw-ico-img" src="icons/h2.png" width="15" height="15" alt=""><i data-lucide="heading-2"
+              aria-hidden="true"></i></button>
+          <button class="mdw-tbtn" id="zmd-quote" type="button" aria-label="引用" onclick="on_format_quote"><img
+              class="mdw-ico-img" src="icons/quote.png" width="15" height="15" alt=""><i data-lucide="quote"
+              aria-hidden="true"></i></button>
+          <button class="mdw-tbtn" id="zmd-ul" type="button" aria-label="无序列表" onclick="on_format_ul"><img
+              class="mdw-ico-img" src="icons/list.png" width="15" height="15" alt=""><i data-lucide="list"
+              aria-hidden="true"></i></button>
+          <button class="mdw-tbtn" id="zmd-ol" type="button" aria-label="有序列表" onclick="on_format_ol"><img
+              class="mdw-ico-img" src="icons/ol.png" width="15" height="15" alt=""><i data-lucide="list-ordered"
+              aria-hidden="true"></i></button>
+          <button class="mdw-tbtn" id="zmd-table" type="button" aria-label="表格" onclick="on_format_table"><img
+              class="mdw-ico-img" src="icons/table.png" width="15" height="15" alt=""><i data-lucide="table"
+              aria-hidden="true"></i></button>
+          <button class="mdw-tbtn" id="zmd-image" type="button" aria-label="插入图片" onclick="on_format_image"><img
+              class="mdw-ico-img" src="icons/image.png" width="15" height="15" alt=""><i data-lucide="image"
+              aria-hidden="true"></i></button>
+          <button class="mdw-tbtn" id="zmd-hr" type="button" aria-label="分割线" onclick="on_format_hr"><img
+              class="mdw-ico-img" src="icons/minus.png" width="15" height="15" alt=""><i data-lucide="minus"
+              aria-hidden="true"></i></button>
+          <span class="mdw-tsep" aria-hidden="true"></span>
+          <button class="mdw-tbtn" id="zmd-bold" type="button" data-fmt="bold" aria-label="加粗"
+            onclick="on_format_bold"><img class="mdw-ico-img" src="icons/bold.png" width="15" height="15" alt=""><i
+              data-lucide="bold" aria-hidden="true"></i></button>
+          <button class="mdw-tbtn" id="zmd-italic" type="button" data-fmt="italic" aria-label="斜体"
+            onclick="on_format_italic"><img class="mdw-ico-img" src="icons/italic.png" width="15" height="15" alt=""><i
+              data-lucide="italic" aria-hidden="true"></i></button>
+          <button class="mdw-tbtn" id="zmd-code" type="button" data-fmt="code" aria-label="行内代码"
+            onclick="on_format_code"><img class="mdw-ico-img" src="icons/code.png" width="15" height="15" alt=""><i
+              data-lucide="code" aria-hidden="true"></i></button>
+          <button class="mdw-tbtn" id="zmd-link" type="button" data-fmt="link" aria-label="链接"
+            onclick="on_format_link"><img class="mdw-ico-img" src="icons/link.png" width="15" height="15" alt=""><i
+              data-lucide="link" aria-hidden="true"></i></button>
+          <span class="mdw-tools-alt">
+            <span class="mdw-tsep" aria-hidden="true"></span>
+            <button class="mdw-tbtn" id="zmd-find-open" type="button" data-act="find-open" aria-label="查找替换"
+              onclick="on_edit_find"><img class="mdw-ico-img" src="icons/search.png" width="15" height="15" alt=""><i
+                data-lucide="search" aria-hidden="true"></i></button>
+            <button class="mdw-tbtn" id="zmd-set-open" type="button" data-act="settings" aria-label="设置"
+              onclick="on_settings_open"><img class="mdw-ico-img" src="icons/settings.png" width="15" height="15"
+                alt=""><i data-lucide="settings" aria-hidden="true"></i></button>
+          </span>
+        </div>
+      </div>
+      <div class="mdw-stage">
+        <div class="mdw-scroll" id="mdc-a-scroll" onscroll="on_doc_scroll">
+          <article class="mdw-doc" id="mdc-a-doc" contenteditable="true" spellcheck="false">
+            <h1>极简写作工作流</h1>
+            <p class="mdw-cur">把想法写下来，剩下的交给格式。光标停在段落上时显示语法标记，光标离开就隐藏。<span class="mdw-caret"></span></p>
+            <blockquote class="mdw-selhost">好的编辑器应该在你写作时消失，<span class="mdw-sel">只在你需要时出现</span>。</blockquote>
+            <h2>一、输入</h2>
+            <ul>
+              <li>全程键盘：<kbd>⌘K</kbd> 唤起命令面板，<kbd>⌘/</kbd> 切换源码</li>
+              <li>粘贴即渲染，拖入图片自动上传并生成引用</li>
+            </ul>
+            <h2>二、结构</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>元素</th>
+                  <th>语法</th>
+                  <th>快捷键</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>标题</td>
+                  <td><code>#</code></td>
+                  <td><kbd>⌘1</kbd> – <kbd>⌘6</kbd></td>
+                </tr>
+                <tr>
+                  <td>引用</td>
+                  <td><code>&gt;</code></td>
+                  <td><kbd>⌘⇧.</kbd></td>
+                </tr>
+                <tr>
+                  <td>表格</td>
+                  <td><code>|</code></td>
+                  <td><kbd>⌘T</kbd></td>
+                </tr>
+              </tbody>
+            </table>
+            <h2>三、导出</h2>
+            <ul>
+              <li>一次性导出 PDF、HTML、Word，样式与预览完全一致</li>
+              <li>图片自动本地化，离线也能正常打开</li>
+            </ul>
+            <ul class="mdw-tasks">
+              <li class="mdw-task"><label><input type="checkbox" checked><span>无干扰的全屏模式</span></label></li>
+              <li class="mdw-task"><label><input type="checkbox"><span>导出 PDF / HTML</span></label></li>
+            </ul>
+            <div class="mdw-bubble" role="toolbar" aria-label="选区格式" contenteditable="false">
+              <button class="mdw-tbtn" type="button" data-fmt="bold" aria-label="加粗"><i data-lucide="bold"
+                  aria-hidden="true"></i></button>
+              <button class="mdw-tbtn" type="button" data-fmt="italic" aria-label="斜体"><i data-lucide="italic"
+                  aria-hidden="true"></i></button>
+              <button class="mdw-tbtn" type="button" data-fmt="code" aria-label="行内代码"><i data-lucide="code"
+                  aria-hidden="true"></i></button>
+              <button class="mdw-tbtn" type="button" data-fmt="mark" aria-label="高亮"><i data-lucide="highlighter"
+                  aria-hidden="true"></i></button>
+              <span class="mdw-tsep" aria-hidden="true"></span>
+              <button class="mdw-tbtn" type="button" data-fmt="link" aria-label="链接"><i data-lucide="link"
+                  aria-hidden="true"></i></button>
+            </div>
+          </article>
+          <!-- 源码与预览放进同一滚动口，目录跳转和分栏才有地方滚。 -->
+          <textarea class="mdw-doc zmd-src" id="mdc-a-source" spellcheck="true" aria-label="Markdown 源码"
+            oninput="on_source" onfocus="on_source_focus" onblur="on_source_blur"></textarea>
+          <article class="mdw-doc" id="mdc-a-preview" aria-label="预览" onclick="on_write_click"
+            onpointerdown="on_write_press" onpointermove="on_write_drag" onpointerup="on_write_release"
+            onpointercancel="on_write_release"></article>
+          <div id="zmd-sel-host"></div>
+        </div>
+
+        <div class="mdw-hot mdw-hot-l" id="zmd-hot-l">
+          <span class="mdw-hot-hint" aria-hidden="true"></span>
+          <aside class="mdw-float mdw-float-l" id="zmd-float-l" aria-label="文件">
+            <div class="mdw-float-hd">
+              <span class="mdw-float-title" id="zmd-folder-title">文件</span>
+              <span class="mdw-grow"></span>
+              <button class="mdw-pin" id="zmd-folder-up" type="button" aria-label="返回上一级" onclick="on_folder_up"><img
+                  class="mdw-ico-img" src="icons/arrow-up.png" width="13" height="13" alt=""><i data-lucide="arrow-up"
+                  aria-hidden="true"></i></button>
+              <button class="mdw-pin" id="zmd-file-new" type="button" data-act="new-file" aria-label="新建文件"
+                onclick="on_file_new"><img class="mdw-ico-img" src="icons/file-plus.png" width="13" height="13"
+                  alt=""><i data-lucide="file-plus" aria-hidden="true"></i></button>
+              <button class="mdw-pin" id="zmd-folder-new" type="button" data-act="new-folder" aria-label="新建文件夹"
+                onclick="on_folder_new"><img class="mdw-ico-img" src="icons/folder-plus.png" width="13" height="13"
+                  alt=""><i data-lucide="folder-plus" aria-hidden="true"></i></button>
+              <button class="mdw-pin" id="zmd-pin-files" type="button" data-act="pin-l" aria-pressed="false"
+                aria-label="固定文件面板" onclick="on_pin_files"><img class="mdw-ico-img" src="icons/pin.png" width="13"
+                  height="13" alt=""><i data-lucide="pin" aria-hidden="true"></i></button>
+            </div>
+            <div class="mdw-tree-list" id="mdc-a-files">
+              <template>
+                <button type="button" class="{{kind}}" id="fl{{index}}" onclick="on_file_pick">{{name}}</button>
+              </template>
+            </div>
+          </aside>
+        </div>
+        <div class="mdw-hot mdw-hot-r" id="zmd-hot-r">
+          <span class="mdw-hot-hint" aria-hidden="true"></span>
+          <aside class="mdw-float mdw-float-r" id="zmd-float-r" aria-label="目录">
+            <div class="mdw-float-hd">
+              <span class="mdw-float-title">目录</span>
+              <span class="mdw-grow"></span>
+              <button class="mdw-pin" id="zmd-pin-outline" type="button" data-act="pin-r" aria-pressed="false"
+                aria-label="固定目录面板" onclick="on_pin_outline"><img class="mdw-ico-img" src="icons/pin.png" width="13"
+                  height="13" alt=""><i data-lucide="pin" aria-hidden="true"></i></button>
+            </div>
+            <div class="mdw-outline-track" aria-hidden="true"><span class="mdw-outline-bar" id="zmd-outline-bar"></span>
+            </div>
+            <div class="mdw-ol-list" id="mdc-a-outline" role="navigation" aria-label="文档目录">
+              <template>
+                <button type="button" class="mdw-ol-item lvl-{{depth}} {{state}}" id="hd{{index}}"
+                  onclick="on_heading">{{text}}</button>
+              </template>
+            </div>
+            <button class="mdw-ol-top" id="zmd-to-top" type="button" data-act="to-top" onclick="on_scroll_top"><img
+                class="mdw-ico-img" src="icons/arrow-up.png" width="13" height="13" alt=""><i data-lucide="arrow-up"
+                aria-hidden="true"></i>回到顶部</button>
+          </aside>
+        </div>
+        <div class="mdw-fade" aria-hidden="true"></div>
+      </div>
+      <!-- zmd：查找条，沿用浮层语言（同 .mdw-tools 的圆角/描边/投影） -->
+      <div class="zmd-find" id="zmd-find" hidden>
+        <input id="zmd-find-q" type="search" placeholder="查找" autocomplete="off" aria-label="查找"
+          oninput="on_find_input">
+        <span class="zmd-find-count" id="zmd-find-count"></span>
+        <button type="button" id="zmd-find-prev" class="mdw-tbtn" data-act="find-prev" aria-label="上一个"
+          onclick="on_find_prev">上一个</button>
+        <button type="button" id="zmd-find-next" class="mdw-tbtn" data-act="find-next" aria-label="下一个"
+          onclick="on_find_next">下一个</button>
+        <button type="button" id="zmd-find-close" class="mdw-tbtn" data-act="find-close" aria-label="关闭"
+          onclick="on_find_close">关闭</button>
+      </div>
+
+      <div class="mdw-status" id="mdc-a-status">
+        <span class="mdw-grow" id="mdc-a-stats">1,204 字 · 128 行</span>
+        <button class="mdw-sbtn" id="zmd-focus" type="button" data-act="focus" aria-pressed="false"
+          onclick="on_view_focus"><img class="mdw-ico-img" src="icons/align-left.png" width="13" height="13" alt=""><i
+            data-lucide="align-left" aria-hidden="true"></i>聚焦模式</button>
+        <button class="mdw-sbtn" id="zmd-view-write" type="button" data-act="view-write" aria-label="写作视图"
+          onclick="on_view_live">写作</button>
+        <button class="mdw-sbtn" id="zmd-view-preview" type="button" data-act="view-preview" aria-label="预览视图"
+          onclick="on_view_preview">预览</button>
+        <button class="mdw-sbtn" id="zmd-pal-open" type="button" data-act="palette" aria-label="命令面板"
+          onclick="on_pal_open"><span class="mdw-kbd">⌘K</span></button>
+        <button class="mdw-sbtn" id="zmd-set-status" type="button" data-act="settings" aria-label="设置"
+          onclick="on_settings_open"><img class="mdw-ico-img" src="icons/settings.png" width="13" height="13" alt=""><i
+            data-lucide="settings" aria-hidden="true"></i></button>
+        <span class="mdw-dot">|</span>
+        <span>Markdown</span>
+      </div>
+      <div class="mdw-set-scrim" id="zmd-scrim" data-act="set-scrim" aria-hidden="true" onclick="on_settings_close">
+      </div>
+      <section class="mdw-set" id="mdc-a-set" role="dialog" aria-label="设置">
+        <nav class="mdw-set-rail" aria-label="设置分类">
+          <div class="mdw-set-rail-title">设置</div>
+          <button class="mdw-set-tab is-active" id="zmd-tab-type" type="button" data-pane="type"
+            onclick="on_set_type">排版</button>
+          <button class="mdw-set-tab" id="zmd-tab-look" type="button" data-pane="look" onclick="on_set_look">外观</button>
+          <button class="mdw-set-tab" id="zmd-tab-file" type="button" data-pane="file" onclick="on_set_file">文件</button>
+          <button class="mdw-set-tab" id="zmd-tab-export" type="button" data-pane="export"
+            onclick="on_set_export">导出</button>
+          <button class="mdw-set-tab" id="zmd-tab-keys" type="button" data-pane="keys"
+            onclick="on_set_keys">快捷键</button>
+        </nav>
+        <div class="mdw-set-body">
+          <div class="mdw-set-pane is-active" id="zmd-pane-type" data-pane="type">
+            <div class="mdw-row">
+              <span class="mdw-row-name">正文字体</span>
+              <span></span>
+              <span class="mdw-seg" role="group" aria-label="正文字体">
+                <button class="mdw-seg-btn" id="zmd-font-sans" type="button" data-set="serif" data-val="false"
+                  onclick="on_view_font_sans">无衬线</button>
+                <button class="mdw-seg-btn" id="zmd-font-serif" type="button" data-set="serif" data-val="true"
+                  onclick="on_view_font_serif">衬线</button>
+              </span>
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">字号</span>
+              <input class="mdw-range" id="zmd-size" type="range" min="14" max="18" step="1" value="16"
+                data-set="fontSize" aria-label="字号" onclick="on_size_slide" oninput="on_size_slide">
+              <span class="mdw-row-val" id="zmd-size-val" data-val-of="fontSize" data-unit=" px">16 px</span>
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">页面宽度</span>
+              <input class="mdw-range" id="zmd-width" type="range" min="520" max="760" step="10" value="660"
+                data-set="width" aria-label="页面宽度" onclick="on_width_slide" oninput="on_width_slide">
+              <span class="mdw-row-val" id="zmd-width-val" data-val-of="width" data-unit=" px">660 px</span>
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">行距</span>
+              <input class="mdw-range" id="zmd-line" type="range" min="1.4" max="2.2" step="0.02" value="1.72"
+                data-set="lineH" aria-label="行距" onclick="on_line_slide" oninput="on_line_slide">
+              <span class="mdw-row-val" id="zmd-line-val" data-val-of="lineH">1.72</span>
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">聚焦模式</span>
+              <span></span>
+              <input class="mdw-switch" id="zmd-focus-sw" type="checkbox" data-set="focus" aria-label="聚焦模式"
+                onclick="on_focus_sw">
+            </div>
+          </div>
+          <div class="mdw-set-pane" id="zmd-pane-look" data-pane="look">
+            <div class="mdw-row">
+              <span class="mdw-row-name">主题</span>
+              <span></span>
+              <span class="mdw-seg" role="group" aria-label="主题">
+                <button class="mdw-seg-btn" id="zmd-theme-light" type="button" data-set="theme" data-val="light"
+                  onclick="on_view_theme_light">浅色</button>
+                <button class="mdw-seg-btn" id="zmd-theme-dark" type="button" data-set="theme" data-val="dark"
+                  onclick="on_view_theme_dark">深色</button>
+                <button class="mdw-seg-btn" id="zmd-theme-system" type="button" data-set="theme" data-val="system"
+                  onclick="on_view_theme_system">跟随系统</button>
+              </span>
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">强调色</span>
+              <span></span>
+              <input class="mdw-color" id="zmd-accent" type="color" data-set="accent" value="#4a6cf7" aria-label="强调色"
+                oninput="on_accent_pick" onchange="on_accent_pick">
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">窗口圆角</span>
+              <input class="mdw-range" id="zmd-radius" type="range" min="0" max="24" step="1" value="12"
+                data-set="radius" aria-label="窗口圆角" onclick="on_radius_slide" oninput="on_radius_slide">
+              <span class="mdw-row-val" id="zmd-radius-val" data-val-of="radius" data-unit=" px">12 px</span>
+            </div>
+          </div>
+          <div class="mdw-set-pane" id="zmd-pane-file" data-pane="file">
+            <div class="mdw-row">
+              <span class="mdw-row-name">工作目录</span>
+              <input class="mdw-text" id="zmd-ws" type="text" data-set="workspace" aria-label="工作目录"
+                oninput="on_ws_edit">
+              <span class="mdw-row-val">根目录</span>
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">新建位置</span>
+              <span></span>
+              <span class="mdw-seg" role="group" aria-label="新建文件位置">
+                <button class="mdw-seg-btn" id="zmd-new-root" type="button" data-set="newInRoot" data-val="true"
+                  onclick="on_new_in_root">工作目录根</button>
+                <button class="mdw-seg-btn" id="zmd-new-here" type="button" data-set="newInRoot" data-val="false"
+                  onclick="on_new_in_here">当前文件夹</button>
+              </span>
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">图片存放</span>
+              <input class="mdw-text" id="zmd-assets" type="text" data-set="assets" aria-label="图片存放目录"
+                oninput="on_assets_edit">
+              <span class="mdw-row-val">相对路径</span>
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">自动保存</span>
+              <span></span>
+              <input class="mdw-switch" id="zmd-autosave" type="checkbox" data-set="autoSave" aria-label="自动保存"
+                onclick="on_autosave_toggle">
+            </div>
+          </div>
+          <div class="mdw-set-pane" id="zmd-pane-export" data-pane="export">
+            <div class="mdw-row">
+              <span class="mdw-row-name">导出为</span>
+              <span></span>
+              <span class="mdw-setbtns">
+                <button class="mdw-setbtn" type="button">PDF</button>
+                <button class="mdw-setbtn" id="zmd-export-html" type="button"
+                  onclick="on_file_export_html">HTML</button>
+                <button class="mdw-setbtn" type="button">Word</button>
+              </span>
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">导出目录</span>
+              <span></span>
+              <span class="mdw-row-val">~/Documents</span>
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">图片本地化</span>
+              <span></span>
+              <input class="mdw-switch" type="checkbox" checked aria-label="图片本地化">
+            </div>
+            <div class="mdw-row">
+              <span class="mdw-row-name">样式跟随预览</span>
+              <span></span>
+              <input class="mdw-switch" type="checkbox" checked aria-label="样式跟随预览">
+            </div>
+          </div>
+          <div class="mdw-set-pane" id="zmd-pane-keys" data-pane="keys">
+            <div class="mdw-row"><span class="mdw-row-name">加粗</span><span class="mdw-row-key">Ctrl B</span></div>
+            <div class="mdw-row"><span class="mdw-row-name">斜体</span><span class="mdw-row-key">Ctrl I</span></div>
+            <div class="mdw-row"><span class="mdw-row-name">行内代码</span><span class="mdw-row-key">Ctrl ⇧ C</span></div>
+            <div class="mdw-row"><span class="mdw-row-name">链接</span><span class="mdw-row-key">Ctrl ⇧ K</span></div>
+            <div class="mdw-row"><span class="mdw-row-name">命令面板</span><span class="mdw-row-key">Ctrl K</span></div>
+            <div class="mdw-row"><span class="mdw-row-name">打开文档</span><span class="mdw-row-key">Ctrl O</span></div>
+            <div class="mdw-row"><span class="mdw-row-name">文件面板</span><span class="mdw-row-key">Ctrl P</span></div>
+            <div class="mdw-row"><span class="mdw-row-name">查找</span><span class="mdw-row-key">Ctrl F</span></div>
+            <div class="mdw-row"><span class="mdw-row-name">设置</span><span class="mdw-row-key">Ctrl ,</span></div>
+          </div>
+        </div>
+      </section>
+      <div class="mdw-scrim" id="zmd-pal-scrim" data-act="pal-scrim" aria-hidden="true" onclick="on_pal_close"></div>
+      <section class="mdw-pal" role="dialog" aria-label="命令面板">
+        <div class="mdw-pal-hd">
+          <i data-lucide="search" aria-hidden="true"></i>
+          <input id="mdc-a-pal-input" type="text" placeholder="输入命令…" aria-label="搜索命令" oninput="on_pal_input">
+          <span class="mdw-kbd">Esc</span>
+        </div>
+        <ul class="mdw-pal-list" id="mdc-a-pal-list" aria-label="命令列表">
+          <template>
+            <li><button type="button" class="mdw-pal-row {{state}}" id="cm{{index}}"
+                onclick="on_pal_pick">{{label}}</button></li>
+          </template>
+        </ul>
+        <p class="mdw-pal-empty" id="zmd-pal-empty" hidden>没有匹配的项</p>
+      </section>
+
+      <input id="zmd-open-file" class="zmd-hid" type="file" accept=".md,.markdown,.txt,text/markdown,text/plain">
+      <input id="zmd-image-file" class="zmd-hid" type="file" accept="image/*">
+
+      <div class="mdw-set zmd-sheet" id="zmd-dlg-unsaved" hidden role="dialog" aria-label="尚未保存">
+        <div class="mdw-set-body">
+          <div class="mdw-row"><span class="mdw-row-name">尚未保存</span></div>
+          <div class="mdw-setbtns">
+            <button type="button" id="zmd-unsaved-cancel" class="mdw-setbtn" data-act="dlg-cancel"
+              onclick="on_dialog_cancel">取消</button>
+            <button type="button" id="zmd-unsaved-discard" class="mdw-setbtn" data-act="dlg-discard"
+              onclick="on_dialog_discard">不保存</button>
+            <button type="button" id="zmd-unsaved-save" class="mdw-setbtn" data-act="dlg-save"
+              onclick="on_dialog_save">保存</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mdw-set zmd-sheet" id="zmd-dlg-link" hidden role="dialog" aria-label="插入链接">
+        <div class="mdw-set-body">
+          <div class="mdw-row"><span class="mdw-row-name">文字</span>
+            <input class="mdw-text" id="zmd-link-text" type="text" placeholder="显示文字">
+          </div>
+          <div class="mdw-row"><span class="mdw-row-name">地址</span>
+            <input class="mdw-text" id="zmd-link-url" type="text" placeholder="https://">
+          </div>
+          <div class="mdw-setbtns">
+            <button type="button" id="zmd-link-cancel" class="mdw-setbtn" data-act="dlg-cancel"
+              onclick="on_dialog_close">取消</button>
+            <button type="button" id="zmd-link-apply" class="mdw-setbtn" data-act="link-apply"
+              onclick="on_format_apply_link">插入</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mdw-set zmd-sheet" id="zmd-dlg-image" hidden role="dialog" aria-label="插入图片">
+        <div class="mdw-set-body">
+          <div class="mdw-row"><span class="mdw-row-name">说明</span>
+            <input class="mdw-text" id="zmd-image-alt" type="text" placeholder="替代文字">
+          </div>
+          <div class="mdw-row"><span class="mdw-row-name">地址</span>
+            <input class="mdw-text" id="zmd-image-url" type="text" placeholder="路径或网址">
+          </div>
+          <div class="mdw-setbtns">
+            <button type="button" id="zmd-image-pick" class="mdw-setbtn" data-act="image-pick"
+              onclick="on_format_pick_image">选择文件</button>
+            <button type="button" id="zmd-image-cancel" class="mdw-setbtn" data-act="dlg-cancel"
+              onclick="on_dialog_close">取消</button>
+            <button type="button" id="zmd-image-apply" class="mdw-setbtn" data-act="image-apply"
+              onclick="on_format_apply_image">插入</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 宿主缺的部分单独补：原型里的 <i data-lucide> 由预览沙箱注入，这里用同名的 lucide shim 顶上 -->
+  <script src="js/icons.js"></script>
+  <!-- 原型的脚本，未改一字 -->
+  <script src="js/app.js"></script>
+  <!-- zmd 自己那一层：视图 / 查找 / 对话框 / 文件读写（按原型的设计语言写） -->
+  <script src="js/zmd.js"></script>
+</body>
+
+</html>

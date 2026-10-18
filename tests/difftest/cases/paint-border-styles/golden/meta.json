@@ -1,0 +1,32 @@
+{
+  "schema": "zui.difftest.golden-meta/1",
+  "case": "paint-border-styles",
+  "browser": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+  "browser_version": "Edg/154.0.4258.37",
+  "flags": [
+    "--headless=new",
+    "--disable-gpu",
+    "--force-device-scale-factor=1",
+    "--force-color-profile=srgb",
+    "--disable-lcd-text",
+    "--disable-font-subpixel-positioning",
+    "--disable-smooth-scrolling",
+    "--disable-features=FluentOverlayScrollbar,OverlayScrollbar",
+    "--allow-file-access-from-files",
+    "--no-first-run",
+    "--no-default-browser-check",
+    "--disable-extensions",
+    "--disable-background-networking",
+    "--disable-sync"
+  ],
+  "fonts": [
+    {
+      "family": "Zui Test",
+      "file": "tests/difftest/fonts/NotoSans-Regular.ttf",
+      "license": "tests/difftest/fonts/OFL.txt",
+      "source": "Noto Sans Regular, SIL Open Font License 1.1"
+    }
+  ],
+  "scrollbar_thickness_px": 15,
+  "recorded": true
+}

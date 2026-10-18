@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #10141c; }
+body { font: 400 12px/20px "Zui Test", sans-serif; }
+
+/* Local baseline: without the remote sheet #probe stays 40×20. */
+#probe {
+  width: 40px;
+  height: 20px;
+  background-color: #f0a050;
+}
+
+#ctrl {
+  width: 40px;
+  height: 20px;
+  background-color: #88c070;
+}

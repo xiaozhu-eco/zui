@@ -1,0 +1,36 @@
+/* Isolates one thing: a column flex item with flex-grow and min-height: 0 must be sized by the
+   container's remaining space, not by its own content. */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: arial;
+  font-size: 14px;
+}
+
+#host {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 300px;
+  background-color: #f0f0f0;
+}
+
+#fixed {
+  height: 40px;
+  flex-shrink: 0;
+  background-color: #cccccc;
+}
+
+#grow {
+  flex-grow: 1;
+  min-height: 0;
+  overflow: auto;
+  background-color: #dddddd;
+}
+
+#tall {
+  width: 200px;
+  height: 900px;
+  background-color: #bbbbbb;
+}

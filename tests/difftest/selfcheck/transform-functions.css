@@ -1,0 +1,33 @@
+/* B1: transform function subset — matrix / matrix3d (2D) / skew* / perspective no-op /
+   transform-origin 3-value. Trace compares transformed border-box AABB. */
+
+html, body { margin: 0; padding: 0; background: #10141c; }
+
+.cell {
+  width: 80px;
+  height: 40px;
+  margin: 24px;
+  background-color: #7cb7ff;
+}
+
+/* matrix(a,b,c,d,e,f) = translate(40px, 10px) */
+#matrix { transform: matrix(1, 0, 0, 1, 40, 10); }
+
+/* matrix3d 2D slice: same translation via m41/m42 */
+#matrix3d { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 40, 10, 0, 1); }
+
+/* skewX shears the box; origin left top keeps the left edge fixed */
+#skewx { transform: skewX(20deg); transform-origin: left top; }
+
+#skewy { transform: skewY(15deg); transform-origin: left top; }
+
+#skew { transform: skew(10deg, 5deg); transform-origin: left top; }
+
+/* perspective is a 2D no-op — box stays where translate puts it */
+#perspective { transform: perspective(200px) translate(20px, 0); }
+
+/* 3-value origin: z ignored; same as `left top` for rotate(90deg) */
+#origin3 {
+  transform: rotate(90deg);
+  transform-origin: left top 10px;
+}

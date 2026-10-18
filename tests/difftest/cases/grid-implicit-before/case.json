@@ -1,0 +1,17 @@
+{
+  "name": "grid-implicit-before",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "负线号数到显式网格之前时产生的隐式轨道（grid-auto-columns / grid-auto-rows 在起点前的接法）。",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

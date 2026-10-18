@@ -1,0 +1,25 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#clipper,
+#plain {
+    width: 100px;
+    height: 60px;
+    padding: 10px;
+    border: 6px solid #6b7a8c;
+    background-color: #22303c;
+}
+
+#clipper {
+    contain: paint;
+}
+
+#spill,
+#spill2 {
+    width: 200px;
+    height: 120px;
+    background-color: #e85d4c;
+}

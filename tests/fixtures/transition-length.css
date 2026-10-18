@@ -1,0 +1,81 @@
+#host {
+  width: 200px;
+  interpolate-size: allow-keywords;
+}
+#box, #pad, #mg, #shorthand, #pct, #em, #auto-h {
+  box-sizing: content-box;
+  background: #336699;
+}
+#box {
+  width: 40px;
+  height: 20px;
+  transition: width 200ms linear, height 200ms linear;
+}
+#box.on {
+  width: 80px;
+  height: 60px;
+}
+#pad {
+  width: 40px;
+  height: 20px;
+  padding-top: 4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  transition: padding-left 200ms linear;
+}
+#pad.on {
+  padding-left: 24px;
+}
+#mg {
+  width: 40px;
+  height: 20px;
+  margin-top: 0px;
+  transition: margin-top 200ms linear;
+}
+#mg.on {
+  margin-top: 20px;
+}
+#shorthand {
+  width: 40px;
+  height: 20px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  transition: margin 200ms linear;
+}
+#shorthand.on {
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+#pct {
+  width: 40px;
+  height: 20px;
+  transition: width 200ms linear;
+}
+#pct.on {
+  width: 50%;
+}
+#em {
+  font-size: 10px;
+  width: 2em;
+  height: 10px;
+  transition: width 200ms linear;
+}
+#em.on {
+  width: 4em;
+}
+#auto-h {
+  width: 40px;
+  height: 0px;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 16px;
+  transition: height 200ms linear;
+}
+#auto-h.on {
+  height: auto;
+}

@@ -1,0 +1,38 @@
+/* Specificity-safe probe width (rev 7). Must beat .flow.page { width:auto }. */
+.flow.page.page-probe {
+  box-sizing: border-box;
+  width: 41rem;
+  max-width: none;
+  margin: 0;
+  padding: 28px 0 48px;
+}
+
+:root:has(#size_s:checked) .page-probe {
+  width: 35rem;
+}
+
+:root:has(#size_l:checked) .page-probe {
+  width: 50rem;
+}
+
+/* Park off-screen but keep a real containing block for line boxes. */
+#measure_probe.page-probe {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translateX(-120%);
+  pointer-events: none;
+  height: auto;
+  overflow: visible;
+  z-index: 0;
+  opacity: 1;
+}
+
+#measure_probe .para {
+  margin: 0 0 0.85em;
+  text-indent: 2em;
+}
+
+#measure_probe .chapter-title {
+  margin: 0 0 1em;
+}

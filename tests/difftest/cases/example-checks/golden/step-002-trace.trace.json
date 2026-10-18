@@ -1,0 +1,2507 @@
+{
+  "schema": "zui.difftest.trace/2",
+  "engine": "chromium",
+  "engine_version": "Edg/153.0.4234.48",
+  "viewport": [
+    800,
+    600
+  ],
+  "scroll": [
+    0,
+    0
+  ],
+  "elements": [
+    {
+      "path": "0",
+      "tag": "html",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "scroll_size": [
+        800,
+        600
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          600
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0",
+      "tag": "head",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0/0",
+      "tag": "title",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/0/1",
+      "tag": "link",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1",
+      "tag": "body",
+      "id": "",
+      "classes": "",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "scroll_size": [
+        800,
+        600
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          600
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0",
+      "tag": "div",
+      "id": "",
+      "classes": "shell",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "scroll_size": [
+        800,
+        600
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        600
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          600
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/0",
+      "tag": "header",
+      "id": "",
+      "classes": "topbar",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        800,
+        52
+      ],
+      "scroll_size": [
+        800,
+        52
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        800,
+        52
+      ],
+      "client_rects": [
+        [
+          0,
+          0,
+          800,
+          52
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/0/0",
+      "tag": "span",
+      "id": "",
+      "classes": "brand",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        20,
+        13,
+        92.8125,
+        26
+      ],
+      "scroll_size": [
+        93,
+        26
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        20,
+        13,
+        93,
+        26
+      ],
+      "client_rects": [
+        [
+          20,
+          13,
+          92.8125,
+          26
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          13
+        ],
+        "heights": [
+          26
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/0/1",
+      "tag": "span",
+      "id": "",
+      "classes": "muted",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        124.8125,
+        16.5,
+        578.34375,
+        19
+      ],
+      "scroll_size": [
+        578,
+        19
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        124.8125,
+        16.5,
+        578,
+        19
+      ],
+      "client_rects": [
+        [
+          124.8125,
+          16.5,
+          578.34375,
+          19
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          16.5
+        ],
+        "heights": [
+          19
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/0/2",
+      "tag": "button",
+      "id": "",
+      "classes": "action",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        715.15625,
+        9.5,
+        64.84375,
+        33
+      ],
+      "scroll_size": [
+        63,
+        31
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        716.15625,
+        10.5,
+        63,
+        31
+      ],
+      "client_rects": [
+        [
+          715.15625,
+          9.5,
+          64.84375,
+          33
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          18.5
+        ],
+        "heights": [
+          15
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1",
+      "tag": "main",
+      "id": "",
+      "classes": "content",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        0,
+        52,
+        800,
+        548
+      ],
+      "scroll_size": [
+        785,
+        788
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        52,
+        785,
+        548
+      ],
+      "client_rects": [
+        [
+          0,
+          52,
+          800,
+          548
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          785,
+          788
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/0",
+      "tag": "div",
+      "id": "",
+      "classes": "grid",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        24,
+        76,
+        737,
+        297.9375
+      ],
+      "scroll_size": [
+        737,
+        298
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        24,
+        76,
+        737,
+        298
+      ],
+      "client_rects": [
+        [
+          24,
+          76,
+          737,
+          297.9375
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/0/0",
+      "tag": "section",
+      "id": "",
+      "classes": "panel",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        24,
+        76,
+        320,
+        129.375
+      ],
+      "scroll_size": [
+        320,
+        129
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        24,
+        76,
+        320,
+        129
+      ],
+      "client_rects": [
+        [
+          24,
+          76,
+          320,
+          129.375
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/0/0/0",
+      "tag": "span",
+      "id": "",
+      "classes": "label",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        92,
+        288,
+        17
+      ],
+      "scroll_size": [
+        288,
+        17
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        92,
+        288,
+        17
+      ],
+      "client_rects": [
+        [
+          40,
+          92,
+          288,
+          17
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          92
+        ],
+        "heights": [
+          17
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/0/0/1",
+      "tag": "div",
+      "id": "",
+      "classes": "sample",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        119,
+        288,
+        70.375
+      ],
+      "scroll_size": [
+        288,
+        70
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        119,
+        288,
+        70
+      ],
+      "client_rects": [
+        [
+          40,
+          119,
+          288,
+          70.375
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 2,
+        "line_count": 2,
+        "tops": [
+          130,
+          153.1875
+        ],
+        "heights": [
+          24,
+          24
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0,
+          31
+        ],
+        "advances": [],
+        "line_breaks": [
+          0,
+          31
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/0/1",
+      "tag": "section",
+      "id": "",
+      "classes": "panel",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        360,
+        76,
+        320,
+        129.375
+      ],
+      "scroll_size": [
+        320,
+        129
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        360,
+        76,
+        320,
+        129
+      ],
+      "client_rects": [
+        [
+          360,
+          76,
+          320,
+          129.375
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/0/1/0",
+      "tag": "span",
+      "id": "",
+      "classes": "label",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        376,
+        92,
+        288,
+        17
+      ],
+      "scroll_size": [
+        288,
+        17
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        376,
+        92,
+        288,
+        17
+      ],
+      "client_rects": [
+        [
+          376,
+          92,
+          288,
+          17
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          92
+        ],
+        "heights": [
+          17
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/0/1/1",
+      "tag": "div",
+      "id": "",
+      "classes": "sample nowrap",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        376,
+        119,
+        288,
+        62.1875
+      ],
+      "scroll_size": [
+        479,
+        47
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        376,
+        119,
+        288,
+        47
+      ],
+      "client_rects": [
+        [
+          376,
+          119,
+          288,
+          62.1875
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          479,
+          47
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          130
+        ],
+        "heights": [
+          24
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/0/2",
+      "tag": "section",
+      "id": "",
+      "classes": "panel",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        24,
+        221.375,
+        320,
+        152.5625
+      ],
+      "scroll_size": [
+        320,
+        153
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        24,
+        221.375,
+        320,
+        153
+      ],
+      "client_rects": [
+        [
+          24,
+          221.375,
+          320,
+          152.5625
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/0/2/0",
+      "tag": "span",
+      "id": "",
+      "classes": "label",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        237.375,
+        288,
+        17
+      ],
+      "scroll_size": [
+        288,
+        17
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        237.375,
+        288,
+        17
+      ],
+      "client_rects": [
+        [
+          40,
+          237.375,
+          288,
+          17
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          237.375
+        ],
+        "heights": [
+          17
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/0/2/1",
+      "tag": "div",
+      "id": "",
+      "classes": "sample",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        264.375,
+        288,
+        70.375
+      ],
+      "scroll_size": [
+        288,
+        70
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        264.375,
+        288,
+        70
+      ],
+      "client_rects": [
+        [
+          40,
+          264.375,
+          288,
+          70.375
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 2,
+        "line_count": 2,
+        "tops": [
+          275.375,
+          298.5625
+        ],
+        "heights": [
+          24,
+          24
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0,
+          16
+        ],
+        "advances": [],
+        "line_breaks": [
+          0,
+          16
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/0/3",
+      "tag": "section",
+      "id": "",
+      "classes": "panel",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        360,
+        221.375,
+        320,
+        152.5625
+      ],
+      "scroll_size": [
+        320,
+        153
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        360,
+        221.375,
+        320,
+        153
+      ],
+      "client_rects": [
+        [
+          360,
+          221.375,
+          320,
+          152.5625
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/0/3/0",
+      "tag": "span",
+      "id": "",
+      "classes": "label",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        376,
+        237.375,
+        288,
+        17
+      ],
+      "scroll_size": [
+        288,
+        17
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        376,
+        237.375,
+        288,
+        17
+      ],
+      "client_rects": [
+        [
+          376,
+          237.375,
+          288,
+          17
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          237.375
+        ],
+        "heights": [
+          17
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/0/3/1",
+      "tag": "div",
+      "id": "",
+      "classes": "sample",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        376,
+        264.375,
+        288,
+        93.5625
+      ],
+      "scroll_size": [
+        288,
+        94
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        376,
+        264.375,
+        288,
+        94
+      ],
+      "client_rects": [
+        [
+          376,
+          264.375,
+          288,
+          93.5625
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 3,
+        "line_count": 3,
+        "tops": [
+          275.375,
+          298.5625,
+          321.75
+        ],
+        "heights": [
+          24,
+          24,
+          24
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0,
+          14,
+          49
+        ],
+        "advances": [],
+        "line_breaks": [
+          0,
+          14,
+          49
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/1",
+      "tag": "div",
+      "id": "",
+      "classes": "grid",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        24,
+        389.9375,
+        737,
+        206.78125
+      ],
+      "scroll_size": [
+        737,
+        207
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        24,
+        389.9375,
+        737,
+        207
+      ],
+      "client_rects": [
+        [
+          24,
+          389.9375,
+          737,
+          206.78125
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/1/0",
+      "tag": "section",
+      "id": "",
+      "classes": "panel wide",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        24,
+        389.9375,
+        480,
+        95.390625
+      ],
+      "scroll_size": [
+        480,
+        95
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        24,
+        389.9375,
+        480,
+        95
+      ],
+      "client_rects": [
+        [
+          24,
+          389.9375,
+          480,
+          95.390625
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/1/0/0",
+      "tag": "span",
+      "id": "",
+      "classes": "label",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        405.9375,
+        448,
+        17
+      ],
+      "scroll_size": [
+        448,
+        17
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        405.9375,
+        448,
+        17
+      ],
+      "client_rects": [
+        [
+          40,
+          405.9375,
+          448,
+          17
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          405.9375
+        ],
+        "heights": [
+          17
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/1/0/1",
+      "tag": "div",
+      "id": "",
+      "classes": "line",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        432.9375,
+        448,
+        36.390625
+      ],
+      "scroll_size": [
+        448,
+        38
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        432.9375,
+        448,
+        36
+      ],
+      "client_rects": [
+        [
+          40,
+          432.9375,
+          448,
+          36.390625
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          448,
+          38
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          430.9375
+        ],
+        "heights": [
+          40
+        ],
+        "first_line_offset": -2,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/1/1",
+      "tag": "section",
+      "id": "",
+      "classes": "panel wide yahei",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        24,
+        501.328125,
+        480,
+        95.390625
+      ],
+      "scroll_size": [
+        480,
+        95
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        24,
+        501.328125,
+        480,
+        95
+      ],
+      "client_rects": [
+        [
+          24,
+          501.328125,
+          480,
+          95.390625
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/1/1/0",
+      "tag": "span",
+      "id": "",
+      "classes": "label",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        517.328125,
+        448,
+        17
+      ],
+      "scroll_size": [
+        448,
+        17
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        517.328125,
+        448,
+        17
+      ],
+      "client_rects": [
+        [
+          40,
+          517.328125,
+          448,
+          17
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          517.328125
+        ],
+        "heights": [
+          17
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/1/1/1",
+      "tag": "div",
+      "id": "",
+      "classes": "line",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        544.328125,
+        448,
+        36.390625
+      ],
+      "scroll_size": [
+        448,
+        36
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        544.328125,
+        448,
+        36
+      ],
+      "client_rects": [
+        [
+          40,
+          544.328125,
+          448,
+          36.390625
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          543.328125
+        ],
+        "heights": [
+          37
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/2",
+      "tag": "div",
+      "id": "",
+      "classes": "grid",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        24,
+        612.71875,
+        737,
+        203
+      ],
+      "scroll_size": [
+        737,
+        203
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        24,
+        612.71875,
+        737,
+        203
+      ],
+      "client_rects": [
+        [
+          24,
+          612.71875,
+          737,
+          203
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/2/0",
+      "tag": "section",
+      "id": "",
+      "classes": "panel",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        24,
+        612.71875,
+        320,
+        203
+      ],
+      "scroll_size": [
+        320,
+        203
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        24,
+        612.71875,
+        320,
+        203
+      ],
+      "client_rects": [
+        [
+          24,
+          612.71875,
+          320,
+          203
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/2/0/0",
+      "tag": "span",
+      "id": "",
+      "classes": "label",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        628.71875,
+        288,
+        17
+      ],
+      "scroll_size": [
+        288,
+        17
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        628.71875,
+        288,
+        17
+      ],
+      "client_rects": [
+        [
+          40,
+          628.71875,
+          288,
+          17
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          628.71875
+        ],
+        "heights": [
+          17
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/2/0/1",
+      "tag": "div",
+      "id": "",
+      "classes": "pair",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        655.71875,
+        288,
+        144
+      ],
+      "scroll_size": [
+        300,
+        144
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        40,
+        655.71875,
+        288,
+        144
+      ],
+      "client_rects": [
+        [
+          40,
+          655.71875,
+          288,
+          144
+        ]
+      ],
+      "scroll_rects": [
+        [
+          0,
+          0,
+          300,
+          144
+        ]
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/2/0/1/0",
+      "tag": "div",
+      "id": "",
+      "classes": "swatch stroke",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        40,
+        655.71875,
+        144,
+        144
+      ],
+      "scroll_size": [
+        132,
+        132
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        46,
+        661.71875,
+        132,
+        132
+      ],
+      "client_rects": [
+        [
+          40,
+          655.71875,
+          144,
+          144
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/2/0/1/1",
+      "tag": "div",
+      "id": "",
+      "classes": "swatch stroke square",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        196,
+        655.71875,
+        144,
+        144
+      ],
+      "scroll_size": [
+        132,
+        132
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        202,
+        661.71875,
+        132,
+        132
+      ],
+      "client_rects": [
+        [
+          196,
+          655.71875,
+          144,
+          144
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/2/1",
+      "tag": "section",
+      "id": "",
+      "classes": "panel",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        360,
+        612.71875,
+        320,
+        203
+      ],
+      "scroll_size": [
+        320,
+        203
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        360,
+        612.71875,
+        320,
+        203
+      ],
+      "client_rects": [
+        [
+          360,
+          612.71875,
+          320,
+          203
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/2/1/0",
+      "tag": "span",
+      "id": "",
+      "classes": "label",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        376,
+        628.71875,
+        288,
+        17
+      ],
+      "scroll_size": [
+        288,
+        17
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        376,
+        628.71875,
+        288,
+        17
+      ],
+      "client_rects": [
+        [
+          376,
+          628.71875,
+          288,
+          17
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          628.71875
+        ],
+        "heights": [
+          17
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/0/1/2/1/1",
+      "tag": "div",
+      "id": "",
+      "classes": "pair",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        376,
+        655.71875,
+        288,
+        132
+      ],
+      "scroll_size": [
+        288,
+        132
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        376,
+        655.71875,
+        288,
+        132
+      ],
+      "client_rects": [
+        [
+          376,
+          655.71875,
+          288,
+          132
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/2/1/1/0",
+      "tag": "div",
+      "id": "",
+      "classes": "swatch clip",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        376,
+        655.71875,
+        132,
+        132
+      ],
+      "scroll_size": [
+        132,
+        132
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        376,
+        655.71875,
+        132,
+        132
+      ],
+      "client_rects": [
+        [
+          376,
+          655.71875,
+          132,
+          132
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/2/1/1/0/0",
+      "tag": "div",
+      "id": "",
+      "classes": "corner",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        376,
+        655.71875,
+        72,
+        72
+      ],
+      "scroll_size": [
+        72,
+        72
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        376,
+        655.71875,
+        72,
+        72
+      ],
+      "client_rects": [
+        [
+          376,
+          655.71875,
+          72,
+          72
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": true,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/2/1/1/1",
+      "tag": "div",
+      "id": "",
+      "classes": "swatch clip open",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        520,
+        655.71875,
+        132,
+        132
+      ],
+      "scroll_size": [
+        132,
+        132
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        520,
+        655.71875,
+        132,
+        132
+      ],
+      "client_rects": [
+        [
+          520,
+          655.71875,
+          132,
+          132
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/0/1/2/1/1/1/0",
+      "tag": "div",
+      "id": "",
+      "classes": "corner",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        520,
+        655.71875,
+        72,
+        72
+      ],
+      "scroll_size": [
+        72,
+        72
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        520,
+        655.71875,
+        72,
+        72
+      ],
+      "client_rects": [
+        [
+          520,
+          655.71875,
+          72,
+          72
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": true,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1",
+      "tag": "div",
+      "id": "mask",
+      "classes": "mask",
+      "has_box": true,
+      "transformed": true,
+      "border_box": [
+        0,
+        660,
+        800,
+        600
+      ],
+      "scroll_size": [
+        800,
+        600
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        660,
+        800,
+        600
+      ],
+      "client_rects": [
+        [
+          0,
+          660,
+          800,
+          600
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": true,
+      "containing_block": null,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1/0",
+      "tag": "div",
+      "id": "",
+      "classes": "sheet",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        165,
+        867.3125,
+        470,
+        185.375
+      ],
+      "scroll_size": [
+        468,
+        183
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        166,
+        868.3125,
+        468,
+        183
+      ],
+      "client_rects": [
+        [
+          165,
+          867.3125,
+          470,
+          185.375
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    },
+    {
+      "path": "0/1/1/0/0",
+      "tag": "span",
+      "id": "",
+      "classes": "sheet-title",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        190,
+        892.3125,
+        420,
+        32
+      ],
+      "scroll_size": [
+        420,
+        32
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        190,
+        892.3125,
+        420,
+        32
+      ],
+      "client_rects": [
+        [
+          190,
+          892.3125,
+          420,
+          32
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          892.3125
+        ],
+        "heights": [
+          32
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/1/0/1",
+      "tag": "span",
+      "id": "",
+      "classes": "sheet-body",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        190,
+        932.3125,
+        420,
+        46.375
+      ],
+      "scroll_size": [
+        420,
+        46
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        190,
+        932.3125,
+        420,
+        46
+      ],
+      "client_rects": [
+        [
+          190,
+          932.3125,
+          420,
+          46.375
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 2,
+        "line_count": 2,
+        "tops": [
+          931.3125,
+          954.5
+        ],
+        "heights": [
+          24,
+          24
+        ],
+        "first_line_offset": -1,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0,
+          58
+        ],
+        "advances": [],
+        "line_breaks": [
+          0,
+          58
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/1/0/2",
+      "tag": "button",
+      "id": "",
+      "classes": "action",
+      "has_box": true,
+      "transformed": false,
+      "border_box": [
+        190,
+        994.6875,
+        64.09375,
+        33
+      ],
+      "scroll_size": [
+        62,
+        31
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "client_box": [
+        191,
+        995.6875,
+        62,
+        31
+      ],
+      "client_rects": [
+        [
+          190,
+          994.6875,
+          64.09375,
+          33
+        ]
+      ],
+      "scroll_rects": [],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383",
+      "lines": {
+        "count": 1,
+        "line_count": 1,
+        "tops": [
+          1003.6875
+        ],
+        "heights": [
+          15
+        ],
+        "first_line_offset": 0,
+        "baselines": [],
+        "baseline_defined": true,
+        "breaks": [
+          0
+        ],
+        "advances": [],
+        "line_breaks": [
+          0
+        ],
+        "cluster_advances": []
+      }
+    },
+    {
+      "path": "0/1/2",
+      "tag": "script",
+      "id": "",
+      "classes": "",
+      "has_box": false,
+      "transformed": false,
+      "border_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_box": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "client_rects": [],
+      "scroll_rects": [],
+      "scroll_size": [
+        0,
+        0
+      ],
+      "scroll_offset": [
+        0,
+        0
+      ],
+      "fragmented": false,
+      "out_of_flow": false,
+      "style": {},
+      "style_digest": "14650fb0739d0383"
+    }
+  ],
+  "extras": null
+}

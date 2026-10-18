@@ -1,0 +1,17 @@
+{
+  "name": "form-control-empty",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "空文本控件的内行盒：没有 value、也没有 placeholder 时，输入框仍要有一行 line-height 的内容高（textarea 是 rows 行）；placeholder 属性一定显示，不需要作者写 ::placeholder。",
+  "matrix": ["replaced.size", "paint.form-control"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

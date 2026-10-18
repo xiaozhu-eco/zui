@@ -1,0 +1,17 @@
+{
+  "name": "inline-text",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "flow.inline 的第一条 golden：断行、行盒、text-indent/letter-spacing/vertical-align。",
+  "matrix": ["flow.inline"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "masked",
+  "text": { "breaks": true, "advances": true }
+}

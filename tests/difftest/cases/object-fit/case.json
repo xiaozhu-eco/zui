@@ -1,0 +1,18 @@
+{
+  "name": "object-fit",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2: object-fit fill/contain/cover/none/scale-down + object-position for replaced img. L2 geometry of content boxes; L4 checks fitted bitmap placement.",
+  "matrix": ["replaced.size"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 2,
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,12 @@
+html, body { margin: 0; padding: 0; background-color: #101418; }
+#hex8, #hsl {
+  box-sizing: border-box;
+  width: 80px;
+  height: 40px;
+  margin: 8px;
+  transition: background-color 200ms linear;
+}
+#hex8 { background-color: #00000000; }
+#hex8.on { background-color: #ff0000ff; }
+#hsl { background-color: hsl(0, 0%, 0%); }
+#hsl.on { background-color: hsl(0, 100%, 50%); }

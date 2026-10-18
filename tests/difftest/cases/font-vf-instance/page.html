@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="page.css"></head>
+<body>
+  <div class="w100 row" id="g100_Z">Z</div>
+  <div class="w100 row" id="g100_U">U</div>
+  <div class="w100 row" id="g100_I">I</div>
+  <div class="w100 row" id="g100_T">T</div>
+  <div class="w100 row" id="g100_e">e</div>
+  <div class="w100 row" id="g100_x">x</div>
+  <div class="w100 row" id="g100_0">0</div>
+  <div class="w100 row" id="g100_1">1</div>
+  <div class="w100 row" id="g100_sp">a b</div>
+  <div class="w400 row" id="g400_Z">Z</div>
+  <div class="w400 row" id="g400_U">U</div>
+  <div class="w400 row" id="g400_I">I</div>
+  <div class="w400 row" id="g400_T">T</div>
+  <div class="w400 row" id="g400_e">e</div>
+  <div class="w400 row" id="g400_x">x</div>
+  <div class="w400 row" id="g400_0">0</div>
+  <div class="w400 row" id="g400_1">1</div>
+  <div class="w400 row" id="g400_sp">a b</div>
+  <div class="w700 row" id="g700_Z">Z</div>
+  <div class="w700 row" id="g700_U">U</div>
+  <div class="w700 row" id="g700_T">T</div>
+  <div class="w700 row" id="g700_sp">a b</div>
+  <div class="w400 row" id="g400_arial" >ZUI Text 0123</div>
+  <div class="w400 row" id="g400_kern">AVAVAVAVAVAVA</div>
+  <div class="w100 row" id="g100_av">AVAVAVAVAVAVA</div>
+  <div class="w700 row" id="g700_av">AVAVAVAVAVAVA</div>
+  <div class="w400 row" id="g400_av3">AVA</div>
+  <div class="w100 row" id="g100_A">A</div>
+  <div class="w100 row" id="g100_V">V</div>
+  <div class="w100 row" id="g100_av2">AV</div>
+  <div class="w400 row" id="g400_A">A</div>
+  <div class="w400 row" id="g400_V">V</div>
+  <div class="w400 row" id="g400_av2">AV</div>
+  <div class="w700 row" id="g700_A">A</div>
+  <div class="w700 row" id="g700_V">V</div>
+  <div class="w700 row" id="g700_av2">AV</div>
+  <div class="w400 row" id="g400_to">To Ta Te Yo Wa</div>
+  <div class="w400 row" id="g400_text">ZUI Text 0123</div>
+  <div class="w100 row" id="g100_text">ZUI Text 0123</div>
+  <div class="w700 row" id="g700_text">ZUI Text 0123</div>
+  <div class="w400 row" id="g400_cjk">布局引擎固有尺寸</div>
+  <div class="w400 row s15" id="s15_A">A</div>
+  <div class="w400 row s15" id="s15_V">V</div>
+  <div class="w400 row s15" id="s15_av">AVAVAVAVAVAVA</div>
+  <div class="w400 row s15" id="s15_text">hello world from a long sentence</div>
+  <div class="w400 row s15" id="s15_sans">hello world from a long sentence</div>
+  <div class="w400 row s15" id="s15_sans_av">AVAVAVAVAVAVA</div>
+  <div class="w400 row" id="s16_text">hello world from a long sentence</div>
+  <!-- the example/flow nesting: a flex row holding a max-content case that holds the sentence -->
+  <div class="w400 row" id="lang_zh_av" lang="zh-CN">AVAVAVAVAVAVA</div>
+  <div class="w400 row" id="lang_zh_text" lang="zh-CN">hello world from a long sentence</div>
+  <div class="w400 row" id="lang_ja_av" lang="ja">AVAVAVAVAVAVA</div>
+  <div class="w400 row" id="lang_ko_av" lang="ko">AVAVAVAVAVAVA</div>
+  <div class="w400 row" id="lang_en_av" lang="en">AVAVAVAVAVAVA</div>
+  <div class="w400 row" id="kerning_none_av" lang="en" style="font-kerning: none">AVAVAVAVAVAVA</div>
+  <div class="w400 row" id="kerning_none_text" lang="en" style="font-kerning: none">ZUI Text 0123</div>
+  <div class="rowflex" id="nest_row">
+    <div class="case" id="nest_case">
+      <div class="k" id="nest_k">width: max-content</div>
+      <div class="expect" id="nest_expect">expect: max-width 320px</div>
+      <div class="sentence maxline" id="nest_sentence">hello world from a long sentence</div>
+    </div>
+  </div>
+</body>
+</html>

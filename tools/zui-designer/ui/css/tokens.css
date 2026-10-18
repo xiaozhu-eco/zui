@@ -1,0 +1,90 @@
+/* Shared type and color. The exported page repeats the values it needs. */
+
+:root {
+    --paper: #fbf6ec;
+    --raised: #fffdf8;
+    --chrome: #f7f3ea;
+    --sidebar: #f3eee4;
+    --desk: #ddd4c6;
+    --ink: #2b261f;
+    --ink-soft: #514a40;
+    --muted: #8a7f72;
+    --accent: #2c6b4e;
+    --tint: rgba(44, 107, 78, 0.12);
+    --line: rgba(72, 54, 32, 0.14);
+    --line-strong: rgba(72, 54, 32, 0.28);
+    --danger: #8c3a32;
+    --shadow: 0 16px 40px rgba(43, 38, 31, 0.16);
+    --shadow-sm: 0 1px 2px rgba(43, 38, 31, 0.08);
+    --sans: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", "Segoe UI", system-ui, sans-serif;
+    --mono: "Cascadia Code", "Sarasa Mono SC", Consolas, "Courier New", monospace;
+    color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--paper);
+    overflow: hidden;
+}
+
+button,
+input,
+textarea,
+label {
+    font: inherit;
+    color: inherit;
+    margin: 0;
+}
+
+button {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.hid {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+::selection {
+    background: rgba(44, 107, 78, 0.22);
+}
+
+[hidden] {
+    display: none !important;
+}

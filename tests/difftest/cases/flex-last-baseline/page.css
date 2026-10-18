@@ -1,0 +1,22 @@
+/* A3: align-items / align-self last baseline — pack to the line end so last baselines share
+   one edge (CSS Box Alignment §9). Fixed row height makes last differ from first baseline. */
+
+html, body { margin: 0; padding: 0; }
+
+#row, #self {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  height: 100px;
+  margin-bottom: 8px;
+  background: #f4f4f4;
+}
+
+#row { align-items: last baseline; }
+
+#self { align-items: flex-start; }
+#c, #d { align-self: last baseline; }
+
+.ghost { display: block; visibility: hidden; width: 100%; }
+#a, #c { font-size: 30px; height: 60px; width: 100px; background: #cccccc; flex: 0 0 auto; }
+#b, #d { font-size: 12px; height: 40px; width: 100px; background: #bbbbbb; flex: 0 0 auto; }

@@ -1,0 +1,64 @@
+:root {
+    --ink: #112233;
+    --line: #445566;
+}
+
+:root:has(#theme_ink:checked) {
+    --ink: #abcdef;
+}
+
+#wide {
+    color: var(--ink);
+}
+
+@media (min-width: 800px) {
+    #wide {
+        display: grid;
+    }
+}
+
+@media (max-width: 500px) {
+    #narrow {
+        display: flex;
+    }
+}
+
+@media (min-width: 820px) and (max-width: 1120px) {
+    #narrow {
+        color: #010101;
+    }
+}
+
+@media (hover: hover) {
+    #hov {
+        color: #ff0000;
+    }
+}
+
+#pad {
+    padding: env(safe-area-inset-top) 16px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+#app {
+    height: 100dvh;
+}
+
+#reader {
+    display: grid;
+    height: 200px;
+}
+
+.sheet {
+    display: contents;
+}
+
+#host {
+    width: 200px;
+}
+
+#minbox {
+    width: min(40px, 100%);
+    height: min(78vh, 680px);
+    margin-top: calc(56px + env(safe-area-inset-top));
+}

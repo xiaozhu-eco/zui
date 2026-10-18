@@ -1,0 +1,18 @@
+/* Named lines and `span <name>` (CSS Grid section 8.3). The three 100px columns carry the line
+   names left / mid / right; before this the parser dropped the `[name]` groups and `span right`
+   fell back to auto placement, which put the boxes in the wrong cells without any error. */
+
+html, body { margin: 0; padding: 0; }
+
+#g {
+  display: grid;
+  width: 300px;
+  height: 40px;
+  grid-template-columns: [left] 100px [mid] 100px [right] 100px;
+  grid-template-rows: 20px 20px;
+  background: #f4f4f4;
+}
+
+#a { grid-column: mid / right; background: #cccccc; }
+#b { grid-column: left / mid; background: #bbbbbb; }
+#c { grid-column: left / span right; background: #aaaaaa; }

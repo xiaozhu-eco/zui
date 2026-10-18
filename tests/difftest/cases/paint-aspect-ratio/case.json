@@ -1,0 +1,38 @@
+{
+    "name": "paint-aspect-ratio",
+    "page": "page.html",
+    "viewport": [
+        800,
+        600
+    ],
+    "_comment": "宽高比清单用例：宽度定高（3/4、1/1、16/9 三个盒子的高度必须由比例推出）、高度定宽（left 给定、right auto 的收缩盒由 90px 高推出 160px 宽）。三个宽度驱动的盒子在 flex 行里，跨轴尺寸就是比例推出来的高度，几何对照能直接指出比例有没有生效。",
+    "matrix": [
+        "paint.aspect-ratio"
+    ],
+    "required": false,
+    "steps": [
+        {
+            "op": "load"
+        },
+        {
+            "op": "resize",
+            "w": 800,
+            "h": 600
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        }
+    ],
+    "expect": "golden/",
+    "pixels": "strict",
+    "text": {
+        "breaks": false,
+        "advances": false
+    },
+    "style_props": [
+        "aspect-ratio"
+    ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "selection",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "::selection 的画面：两端选中的都是 #e 上同一段半开区间（引擎 doc.selection / 浏览器 DOM Range）。颜色写在祖先 p::selection 上，所以这条同时比「作者色 + 高亮继承」——em 自己没有任何 ::selection 规则。不写 UA 默认色：默认色随浏览器（Chromium Highlight=#0078D7，Edge 是另一档），钉不住就不是引擎的问题。覆盖矩阵 css.selection。",
+  "matrix": ["css.selection"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    {
+      "op": "eval",
+      "actions": [
+        { "do": "select_text", "target": "#p", "start": 4, "end": 15 }
+      ]
+    },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "text-aa",
+  "text": { "breaks": false, "advances": false }
+}

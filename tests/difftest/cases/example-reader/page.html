@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e6dfd0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="小竹阅读">
+  <title>小竹阅读</title>
+  <link rel="icon" href="../../../../example/applications/reader/icon.svg">
+  <link rel="manifest" href="../../../../example/applications/reader/manifest.webmanifest">
+  <link rel="stylesheet" href="../../../../example/applications/reader/reader.css">
+</head>
+
+<body onkeydown="on_accel">
+  <div class="app">
+    <section id="shelf" class="shelf is-booting">
+      <header class="topbar">
+        <div class="brand">
+          <span class="mark" aria-hidden="true">竹</span>
+          <span class="brand-name">小竹阅读</span>
+        </div>
+        <label class="finder">
+          <span class="hid">搜索书架</span>
+          <input id="shelf_query" type="search" placeholder="搜索书名或作者" autocomplete="off" enterkeyhint="search" onkeydown="on_type_key">
+        </label>
+        <button type="button" id="sort_btn" class="text-btn sort-btn" onclick="on_sort" aria-pressed="true">最近</button>
+        <div class="menu-wrap">
+          <input id="shelf_menu" class="hid" type="checkbox">
+          <label class="plus" for="shelf_menu" aria-label="书架菜单"><span class="plus-icon"
+              aria-hidden="true"></span></label>
+          <label class="menu-scrim" for="shelf_menu" aria-hidden="true"></label>
+          <div id="menu" class="menu" role="menu">
+            <button type="button" role="menuitem" onclick="on_import">导入书籍</button>
+            <button type="button" id="clear_btn" class="danger" role="menuitem" onclick="on_clear">清空书架</button>
+          </div>
+        </div>
+      </header>
+      <div class="shelf-body">
+        <button type="button" id="resume" class="resume" onclick="on_resume" hidden>
+          <span class="resume-kicker">继续阅读</span>
+          <span class="resume-main">
+            <span id="resume_title" class="resume-title"></span>
+            <span id="resume_where" class="resume-where"></span>
+          </span>
+        </button>
+        <div class="empty">
+          <p id="empty_title" class="empty-title">书架还空着</p>
+          <p id="empty_hint" class="empty-hint">点右上角加号，导入一本 txt 小说。也可以把文件拖进来。</p>
+        </div>
+        <div id="books" class="books">
+          <template>
+            <div id="book{{index}}" class="card-wrap" data-index="{{index}}">
+              <button type="button" id="open{{index}}" class="card tone-{{tone}}" onclick="on_open">
+                <span class="cover">
+                  <span class="cover-title">{{title}}</span>
+                  <span class="cover-author">{{author}}</span>
+                </span>
+                <span class="card-meta">{{meta}}</span>
+                <span class="card-track"><span class="card-fill {{fill}}"></span></span>
+                <span class="card-where">{{where}}</span>
+              </button>
+              <button type="button" id="remove{{index}}" class="card-remove" onclick="on_remove">移出</button>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section id="reader" class="reader">
+      <input id="settings_open" class="hid" type="checkbox">
+      <label class="scrim" for="settings_open" aria-hidden="true"></label>
+      <div class="sheet">
+        <header id="toolbar" class="toolbar toc-hidden">
+          <button type="button" id="toc_toggle" class="text-btn toc-toggle toc-hidden" onclick="on_toc" aria-expanded="true">目录</button>
+          <button type="button" class="text-btn back-btn" onclick="on_back">书架</button>
+          <h1 id="book_title" class="book-title"></h1>
+          <button type="button" class="text-btn settings-btn" onclick="on_settings" aria-expanded="false">Aa</button>
+        </header>
+        <aside id="toc_panel" class="toc toc-hidden" aria-label="阅读侧栏">
+          <div class="toc-head">
+            <span>目录</span>
+            <button type="button" class="text-btn toc-collapse" onclick="on_toc">收起</button>
+          </div>
+          <input id="side_toc" class="hid" type="radio" name="side" checked>
+          <input id="side_find" class="hid" type="radio" name="side">
+          <input id="side_marks" class="hid" type="radio" name="side">
+          <div class="side-tabs" role="tablist">
+            <label class="chip" for="side_toc">目录</label>
+            <label class="chip" for="side_find">搜索</label>
+            <label class="chip" for="side_marks">书签</label>
+          </div>
+          <label class="toc-finder">
+            <span class="hid">筛选章节</span>
+            <input id="toc_query" type="search" placeholder="筛选章节" autocomplete="off" enterkeyhint="search" onkeydown="on_type_key">
+          </label>
+          <div id="chapters" class="chapters">
+            <template>
+              <button type="button" id="ch{{index}}" class="ch" data-index="{{index}}"
+                onclick="on_chapter">{{title}}</button>
+            </template>
+          </div>
+          <div id="find_panel" class="side-panel">
+            <form id="find_form" class="find-form" role="search">
+              <input id="find_query" type="search" placeholder="查找正文" autocomplete="off" enterkeyhint="search" onkeydown="on_type_key">
+              <button type="submit" class="text-btn find-go">查找</button>
+            </form>
+            <p id="find_count" class="find-count">输入词语，查找这一本的正文。</p>
+            <div id="find_hits" class="find-hits"></div>
+          </div>
+          <div id="marks_panel" class="side-panel">
+            <button type="button" id="bookmark_btn" class="text-btn mark-btn" onclick="on_bookmark"
+              aria-pressed="false">添加书签</button>
+            <p id="marks_empty" class="panel-empty">还没有书签。读到想记的地方，点上面的按钮。</p>
+            <div id="marks" class="marks"></div>
+          </div>
+        </aside>
+        <div class="settings">
+          <div class="grabber" aria-hidden="true"></div>
+          <div class="settings-head">
+            <span>阅读设置</span>
+            <label class="text-btn settings-close" for="settings_open">完成</label>
+          </div>
+          <div class="setting">
+            <span class="setting-label">字号</span>
+            <div class="seg" role="radiogroup" aria-label="字号">
+              <input id="size_s" class="hid" type="radio" name="size">
+              <label class="chip" for="size_s">小</label>
+              <input id="size_m" class="hid" type="radio" name="size" checked>
+              <label class="chip" for="size_m">中</label>
+              <input id="size_l" class="hid" type="radio" name="size">
+              <label class="chip" for="size_l">大</label>
+            </div>
+          </div>
+          <div class="setting">
+            <span class="setting-label">行距</span>
+            <div class="seg" role="radiogroup" aria-label="行距">
+              <input id="lead_s" class="hid" type="radio" name="lead">
+              <label class="chip" for="lead_s">紧</label>
+              <input id="lead_m" class="hid" type="radio" name="lead" checked>
+              <label class="chip" for="lead_m">适中</label>
+              <input id="lead_l" class="hid" type="radio" name="lead">
+              <label class="chip" for="lead_l">松</label>
+            </div>
+          </div>
+          <div class="setting">
+            <span class="setting-label">字体</span>
+            <div class="seg" role="radiogroup" aria-label="字体">
+              <input id="font_serif" class="hid" type="radio" name="font" checked>
+              <label class="chip" for="font_serif">宋体</label>
+              <input id="font_sans" class="hid" type="radio" name="font">
+              <label class="chip" for="font_sans">黑体</label>
+            </div>
+          </div>
+          <div class="setting">
+            <span class="setting-label">主题</span>
+            <div class="seg" role="radiogroup" aria-label="主题">
+              <input id="theme_paper" class="hid" type="radio" name="theme" checked>
+              <label class="chip" for="theme_paper">纸</label>
+              <input id="theme_eye" class="hid" type="radio" name="theme">
+              <label class="chip" for="theme_eye">护眼</label>
+              <input id="theme_dusk" class="hid" type="radio" name="theme">
+              <label class="chip" for="theme_dusk">暮</label>
+              <input id="theme_ink" class="hid" type="radio" name="theme">
+              <label class="chip" for="theme_ink">夜</label>
+            </div>
+          </div>
+          <div class="setting setting-mode">
+            <span class="setting-label">翻页</span>
+            <div class="seg" role="radiogroup" aria-label="阅读方式">
+              <input id="mode_scroll" class="hid" type="radio" name="mode" checked>
+              <label class="chip" for="mode_scroll">滚动</label>
+              <input id="mode_page" class="hid" type="radio" name="mode">
+              <label class="chip" for="mode_page">翻页</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p id="read_hint" class="read-hint">轻点屏幕中间，打开阅读设置</p>
+      <div id="tray_scrim" class="tray-scrim toc-hidden" onclick="on_tray_scrim" aria-hidden="true"></div>
+      <div id="flow_wrap" class="flow-wrap" onclick="on_reading_tap">
+        <div id="flow" class="flow">
+        <p id="opening" class="chapter-end" hidden></p>
+        <div id="chapter_page" class="chapter-page" hidden>
+          <article id="chapter_a" class="chapter">
+            <h2 id="chapter_title" class="chapter-title"></h2>
+            <div id="paras">
+              <template>
+                <p class="para">{{text}}</p>
+              </template>
+            </div>
+          </article>
+          <article id="chapter_b" class="chapter is-follow" hidden>
+            <h2 id="chapter_title_b" class="chapter-title"></h2>
+            <div id="paras_b">
+              <template>
+                <p class="para">{{text}}</p>
+              </template>
+            </div>
+          </article>
+          <button type="button" id="chapter_next" class="chapter-next" onclick="on_next"></button>
+        </div>
+      </div>
+      </div>
+      <button type="button" class="page-edge page-prev" onclick="on_prev" aria-label="上一页"></button>
+      <button type="button" class="page-edge page-next" onclick="on_next" aria-label="下一页"></button>
+      <div id="status" class="status">
+        <span id="status_chapter" class="status-chapter"></span>
+        <span id="status_progress" class="status-progress"></span>
+      </div>
+      <div class="status-track" aria-hidden="true"><span id="status_fill" class="status-fill"></span></div>
+    </section>
+  </div>
+
+  <input id="open_file" class="hid" type="file" accept=".txt,.text,text/plain" multiple>
+  <div id="toast" class="toast" role="status"></div>
+
+  <noscript>
+    <p class="empty-title">请允许脚本后刷新。</p>
+  </noscript>
+
+
+  
+  
+
+  
+</body>
+
+</html>

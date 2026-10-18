@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background-color: #101418; }
+
+.row {
+  display: block;
+  width: max-content;
+  height: 20px;
+  margin: 12px;
+  background-color: #7cb7ff;
+}
+
+#tight {
+  /* Layout width must include letter-spacing; a solid bar makes paint AA irrelevant. */
+  font-family: "Zui Test";
+  font-size: 16px;
+  letter-spacing: 0;
+  color: transparent;
+}
+
+#spaced {
+  font-family: "Zui Test";
+  font-size: 16px;
+  letter-spacing: 8px;
+  color: transparent;
+}
+
+#bold {
+  font-family: "Zui Test";
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: transparent;
+}

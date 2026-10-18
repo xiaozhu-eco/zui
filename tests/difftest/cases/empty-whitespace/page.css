@@ -1,0 +1,19 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.box {
+  box-sizing: border-box;
+  width: 40px;
+  height: 24px;
+  margin: 8px;
+  background-color: #3a4450;
+}
+
+/* Whitespace-only text must make the element non-empty (Selectors 3 / Chrome). */
+.box:empty {
+  width: 120px;
+  background-color: #7cb7ff;
+}

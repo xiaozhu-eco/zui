@@ -1,0 +1,17 @@
+{
+  "name": "paint-bg-url",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3：单层 background-image:url() 位图。覆盖 stretch(100% 100%)、repeat 平铺、no-repeat+position、cover、contain；同尺寸纯色控制盒。圆角裁剪由自检 BackgroundImageUrl 覆盖（L4 抗锯齿沿边差不进本像素用例）。",
+  "matrix": ["css.background", "paint.bg-url"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

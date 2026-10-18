@@ -1,0 +1,16 @@
+{
+  "name": "paint-decoration",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3：text-decoration。underline / line-through / overline；wavy / dashed；3px 粗细与颜色。装饰不得改变行高与行位（L2）。无 capture：装饰线几何由自检覆盖，字形 AA 另议。",
+  "matrix": ["paint.decoration"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

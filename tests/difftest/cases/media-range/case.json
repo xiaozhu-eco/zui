@@ -1,0 +1,17 @@
+{
+  "name": "media-range",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Media Queries 4 range context on an 800x600 viewport. (width >= 700px) and (400px <= width <= 900px) apply. (width > 900px) and (width < 400px) do not. min-width still works and is not this case.",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

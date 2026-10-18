@@ -1,0 +1,17 @@
+{
+  "name": "grid-item-flex-stretch",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "网格子项的 align-self: stretch 走块轴：默认 align-items: stretch 时，自动行撑满定高容器，子项也要撑满行——即使子项自己是个 flex 容器。",
+  "matrix": ["flow.grid", "flow.flex"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

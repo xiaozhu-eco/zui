@@ -1,0 +1,18 @@
+{
+  "name": "paint-rounded-border",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Rounded dashed and dotted borders follow the centerline. A solid stroke fills the gaps: #dashed and #tight gaps are longer than the 8px edge run, and #dotted's 24px dots make a solid ring a component over 400px². #outline is a rounded dashed outline. pixel_tolerance 2 absorbs dash-end and dot antialiasing, the same allowance as paint-border-styles.",
+  "matrix": ["paint.border-style"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 2,
+  "text": { "breaks": false, "advances": false }
+}

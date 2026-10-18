@@ -1,0 +1,17 @@
+{
+  "name": "flex-child-overflow",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "flex 容器继承子项的滚动溢出（LAYOUT.md 第 4 节）：item 的内容超出自己的边框盒时，容器的 scrollHeight / scrollWidth 要跟着长大；item 自己会裁剪（overflow: hidden）时传播到此为止。断言在 trace 的 scroll_size 上，用例不含文字。",
+  "matrix": ["flow.flex", "scroll.overflow"],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

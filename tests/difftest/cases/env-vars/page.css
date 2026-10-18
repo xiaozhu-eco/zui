@@ -1,0 +1,29 @@
+/* B1: env() beyond safe-area — titlebar-area → 0; unknown + fallback; known ignores fallback. */
+
+html, body { margin: 0; padding: 0; background: #10141c; }
+
+div {
+  height: 12px;
+  margin: 8px 0;
+  background: #7cb7ff;
+}
+
+/* Desktop safe-area is 0 → width 40 */
+#safe {
+  width: calc(40px + env(safe-area-inset-left));
+}
+
+/* titlebar-area-* → 0 on non-overlay desktop; fallback keeps Edge valid when UA omits the name */
+#titlebar {
+  width: calc(40px + env(titlebar-area-width, 0px) + env(titlebar-area-height, 0px));
+}
+
+/* Unknown name uses fallback 80px */
+#fallback {
+  width: env(not-a-real-env, 80px);
+}
+
+/* Known name wins over fallback (safe-area 0, not 99) */
+#known-ignores-fallback {
+  width: calc(40px + env(safe-area-inset-top, 99px));
+}

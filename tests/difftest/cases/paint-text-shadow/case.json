@@ -1,0 +1,16 @@
+{
+  "name": "paint-text-shadow",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3：text-shadow。硬边 / blur / 逗号多层不改变布局盒（L2）。无 capture：字形 AA 与 Blink 对不齐，绘制层序与 blur 由自检 TextShadowLayers 覆盖（同 letter-spacing-paint 口径）。",
+  "matrix": ["paint.text-shadow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

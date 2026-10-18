@@ -1,0 +1,36 @@
+/* `flex: 1` expands to `1 1 0%` (CSS Flexbox section 7.1). The basis being a percentage matters
+   for an auto-height column flex container: its main size is indefinite, so the percentage
+   defers to the item's content size (section 7.2.3) and the container grows to fit its items.
+   Serializing the omitted basis as `0` (a zero length) instead pinned every item to zero, and
+   only the automatic minimum size kept a plain block from collapsing - an item with
+   `overflow: auto` (minimum 0) or an explicit `min-height` came out at that minimum instead of
+   its content height.
+
+   #k1: `flex: 1`, plain block - the automatic min-content minimum masked the bug before.
+   #k2: `flex: 1; overflow: auto` - automatic minimum is 0, so the bug showed as a 0-tall box.
+   #k3: `flex: 1; min-height: 48px` - the box stopped at 48 instead of its 138px content.
+   #k4: `flex: 1 1 auto` - a content basis, the correct answer by another route.
+   #k5: the same `flex: 1` inside a definite-height column, so the definite path still flexes
+       (the item fills the 120px container). */
+
+html, body { margin: 0; padding: 0; }
+
+.col {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-bottom: 10px;
+  background: #eeeeee;
+}
+
+.col.fixed { height: 120px; }
+
+.k1 { flex: 1; }
+.k2 { flex: 1; overflow: auto; }
+.k3 { flex: 1; min-height: 48px; }
+.k4 { flex: 1 1 auto; }
+
+.card {
+  height: 46px;
+  background: #cceeff;
+}

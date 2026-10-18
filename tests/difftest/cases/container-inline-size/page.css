@@ -1,0 +1,61 @@
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+#cq {
+  container-type: size;
+  width: 320px;
+  height: 220px;
+  margin: 12px 0 0 20px;
+  background: #d5dbe3;
+}
+
+.box {
+  width: 40px;
+  height: 28px;
+  margin: 8px 0 0 8px;
+  background: #c4554a;
+}
+
+@container (min-inline-size: 300px) {
+  #ge {
+    width: 180px;
+    background: #2e6eee;
+  }
+}
+
+@container (inline-size > 400px) {
+  #gt {
+    width: 180px;
+    background: #2e6eee;
+  }
+}
+
+@container (200px <= inline-size <= 400px) {
+  #span {
+    width: 180px;
+    background: #3d9a6a;
+  }
+}
+
+@container (max-block-size: 240px) {
+  #block {
+    width: 180px;
+    background: #3d9a6a;
+  }
+}
+
+@container (block-size > 400px) {
+  #tall {
+    width: 180px;
+    background: #2e6eee;
+  }
+}
+
+@media (inline-size >= 100px) {
+  #media {
+    width: 180px;
+    background: #2e6eee;
+  }
+}

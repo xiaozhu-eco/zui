@@ -1,0 +1,16 @@
+{
+  "name": "flex-hypothetical",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2 FlexHypothetical ask: overflow:hidden item skips MinContent; measure records FlexHypothetical at clamped main size (basis 40 → min 100). Used width grows within max 180. Geometry + selfcheck LayoutFlex.FlexHypotheticalAsk.",
+  "matrix": ["layout.flex"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

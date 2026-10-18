@@ -1,0 +1,10 @@
+zui_add_interface_sources(zui_src_text
+  grapheme_break.cpp
+  gpos_kern.cpp
+  font_chain.cpp
+  font_enum.cpp
+  font_registry.cpp
+  font_outline.cpp
+  dwrite_raster.cpp
+  hb_shape.cpp
+)

@@ -1,0 +1,18 @@
+{
+  "name": "paint-conic-gradient",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3: conic-gradient (from / at / hard segments) and repeating-radial / repeating-conic. pixel_tolerance 1 matches paint-gradient.",
+  "matrix": ["paint.gradient"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": false }
+}

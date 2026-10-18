@@ -1,0 +1,62 @@
+Name:     liblexbor
+Version:  %{lib_version}
+Release:  1%{?dist}
+Epoch:    1
+Summary:  Lexbor is development of an open source HTML Renderer library.
+License:  Apache-2.0
+URL:      https://github.com/lexbor/lexbor
+Source0:  %{name}-%{version}.tar.gz
+
+BuildRequires: cmake >= 3.0
+BuildRequires: make
+BuildRequires: gcc
+
+%description
+Modules:
+%%MODULES_NAMES%%
+
+%package devel
+Requires: %{name} = %{epoch}:%{version}-%{release}
+Summary:  Static library and headers for the liblexbor.
+Provides: %{name}-devel
+
+%description devel
+Modules:
+%%MODULES_NAMES%%
+
+%prep
+%setup -qn %{name}-%{version}
+
+%build
+export CFLAGS='%{optflags}'
+%cmake -DCMAKE_BUILD_TYPE=RELEASE \
+       -DLEXBOR_BUILD_STATIC=ON -DLEXBOR_BUILD_SHARED=ON -DLEXBOR_BUILD_SEPARATELY=ON
+cmake --build "%{__cmake_builddir}" %{?_smp_mflags}
+
+%install
+DESTDIR=%{buildroot} cmake --install "%{__cmake_builddir}"
+
+%ldconfig_scriptlets
+
+%files
+%doc README.md
+%license LICENSE NOTICE
+%{_libdir}/%{name}.*
+%exclude %{_libdir}/*.a
+%exclude %{_libdir}/%{name}.%{lib_ext}
+
+%files devel
+%doc README.md
+%license LICENSE NOTICE
+%{_libdir}/%{name}.%{lib_ext}
+%{_libdir}/%{name}_static.a
+%{_includedir}/*
+%{_libdir}/cmake/lexbor/
+%{_libdir}/pkgconfig/lexbor.pc
+
+# Modules
+%%MODULES_SPECS%%
+# End of modules
+
+%changelog
+%%CHANGELOG%%

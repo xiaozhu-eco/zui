@@ -1,0 +1,61 @@
+/* 小竹默认深色主题。同一组角色，底换成墨，强调仍是竹绿。
+   App::set_theme("bamboo-dark") 加载文档旁边的 bamboo-dark.css。 */
+
+html.theme-bamboo-dark {
+  color-scheme: dark;
+  --desk: #12151a;
+  --paper: #181c22;
+  --raised: #20252d;
+  --sidebar: #14181e;
+  --ink: #e8e2d6;
+  --ink-soft: #ccc5b6;
+  --muted: #8e98a6;
+  --accent: #8fbfa4;
+  --accent-ink: #14211b;
+  --tint: rgba(143, 191, 164, 0.14);
+  --line: rgba(232, 226, 214, 0.1);
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
+  --danger: #f0b2a8;
+  --scrollbar: rgba(143, 191, 164, 0.35);
+  --chrome: rgba(24, 28, 34, 0.96);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+html.theme-bamboo-dark body {
+  background: var(--desk);
+  color: var(--ink);
+}
+
+html.theme-bamboo-dark button,
+html.theme-bamboo-dark input,
+html.theme-bamboo-dark textarea,
+html.theme-bamboo-dark select {
+  font: inherit;
+  color: var(--ink);
+  background: var(--raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+html.theme-bamboo-dark button {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: transparent;
+  padding: 6px 14px;
+}
+
+html.theme-bamboo-dark input,
+html.theme-bamboo-dark textarea,
+html.theme-bamboo-dark select {
+  padding: 6px 8px;
+}
+
+html.theme-bamboo-dark :focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+html.theme-bamboo-dark a {
+  color: var(--accent);
+}

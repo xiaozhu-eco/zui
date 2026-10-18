@@ -1,0 +1,17 @@
+input,
+textarea {
+    display: block;
+    width: 200px;
+    margin: 8px;
+    padding: 4px 8px;
+    font-family: "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+}
+
+input {
+    height: 36px;
+}
+
+textarea {
+    height: 72px;
+}

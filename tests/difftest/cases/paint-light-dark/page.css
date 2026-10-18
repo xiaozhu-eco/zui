@@ -1,0 +1,52 @@
+html, body {
+  margin: 0;
+  background: #101418;
+}
+
+div {
+  position: absolute;
+  width: 120px;
+  height: 80px;
+}
+
+#light {
+  left: 32px;
+  top: 32px;
+  color-scheme: light;
+  background-color: light-dark( #3d6ad4 , #c4554a );
+}
+
+#dark {
+  left: 176px;
+  top: 32px;
+  color-scheme: dark;
+  background-color: light-dark(#3d6ad4, #c4554a);
+}
+
+#fn {
+  left: 320px;
+  top: 32px;
+  color-scheme: dark;
+  background-color: light-dark(rgb(61, 106, 212), rgb(196, 85, 74));
+}
+
+#mix {
+  left: 464px;
+  top: 32px;
+  color-scheme: light;
+  background-color: light-dark(color-mix(in srgb, #3d6ad4 100%, #ffffff), #c4554a);
+}
+
+#short {
+  left: 32px;
+  top: 136px;
+  color-scheme: dark;
+  background: light-dark(#e8c36a, #7d5cff);
+}
+
+#only {
+  left: 176px;
+  top: 136px;
+  color-scheme: only dark;
+  background-color: light-dark(#3d6ad4, #c4554a);
+}

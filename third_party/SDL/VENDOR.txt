@@ -1,0 +1,8 @@
+name: SDL3
+version: 3.4.16
+source: https://github.com/libsdl-org/SDL
+tag: release-3.4.16
+tarball: https://libsdl.org/release/SDL3-3.4.16.tar.gz
+note: library sources kept intact (src/, include/, cmake/, wayland-protocols/,
+      android-project Java). Removed docs, examples, tests, IDE projects,
+      and upstream build scripts. Built from this tree on every platform.

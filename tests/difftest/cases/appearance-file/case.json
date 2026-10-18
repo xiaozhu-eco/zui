@@ -1,0 +1,16 @@
+{
+  "name": "appearance-file",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "P1：input[type=file] appearance:none 抑制原生按钮/文件名，与同色 ref 对齐（L2）。原生外观由自检 FormAppearanceFile 覆盖。Chrome 对 file 的 none 仍可能留痕迹，不做 L4。",
+  "matrix": ["paint.form-control"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

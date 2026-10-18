@@ -1,0 +1,12 @@
+html, body { margin: 0; background: #eef1f5; }
+.sw { margin: 16px 0 16px 48px; }
+#oklch { width: 200px; height: 80px;
+  background-image: linear-gradient(to right in oklch, #e23a3a, #2e6eee); }
+#longer { width: 200px; height: 64px;
+  background-image: linear-gradient(to right in hsl longer hue, #e23a3a, #2e6eee); }
+#plain { width: 200px; height: 48px;
+  background-image: linear-gradient(to right, #e23a3a, #2e6eee); }
+#wheel { width: 140px; height: 140px;
+  background-image: conic-gradient(in hsl longer hue, #e23a3a, #2e6eee); }
+#disk { width: 120px; height: 120px;
+  background-image: radial-gradient(circle 50px in oklch, #e23a3a, #2e6eee); }

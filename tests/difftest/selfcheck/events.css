@@ -1,0 +1,66 @@
+/* Fixture for the event-dispatch self-checks (EVENT.md section 4). Fixed px only, so nothing
+   here depends on font metrics. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+}
+
+#card, #plain {
+  width: 320px;
+  height: 80px;
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #eeeeee;
+}
+
+/* The button sits in the card's content box, far from the card's own padding, so a press can
+   land on either box on purpose. */
+#pick {
+  display: block;
+  margin-left: 200px;
+  width: 80px;
+  height: 40px;
+}
+
+#texted {
+  width: 320px;
+  height: 30px;
+}
+
+.field {
+  width: 200px;
+  height: 40px;
+}
+
+.zone-wrap {
+  /* Wide enough that the two 140px inline-blocks stay on one line: HTML puts one collapsible space
+     between them, and 10+140+10 + space + 10+140+10 no longer fits in exactly 320. */
+  width: 340px;
+  height: 100px;
+  padding: 0;
+  margin-bottom: 10px;
+  background-color: #dddddd;
+}
+
+.zone {
+  display: inline-block;
+  width: 140px;
+  height: 80px;
+  margin: 10px;
+  background-color: #cccccc;
+}
+
+#dbl {
+  display: block;
+  width: 80px;
+  height: 40px;
+  margin-bottom: 10px;
+  background-color: #bbbbbb;
+}
+
+#keys {
+  /* Non-focusable stand-in so Tab order on events.html stays pick→…→line wrap. */
+  height: 24px;
+}

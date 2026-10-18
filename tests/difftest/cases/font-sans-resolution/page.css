@@ -1,0 +1,20 @@
+html, body { margin: 0; padding: 0; }
+
+.row {
+  display: block;
+  width: max-content;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.small { font-size: 12px; }
+
+.notosc { font-family: "Noto Sans SC"; }
+.noto   { font-family: "Noto Sans"; }
+.arial  { font-family: Arial; }
+.segoe  { font-family: "Segoe UI"; }
+.yahei  { font-family: "Microsoft YaHei"; }
+
+.w100 { font-weight: 100; }
+.w500 { font-weight: 500; }
+.w700 { font-weight: 700; }

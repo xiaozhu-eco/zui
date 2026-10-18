@@ -1,0 +1,35 @@
+{
+    "name": "paint-radius",
+    "page": "page.html",
+    "viewport": [
+        800,
+        600
+    ],
+    "_comment": "圆角清单：单值、四角、方盒 50%、带边框、slash 椭圆、非方 50%。透明边 + background-clip:padding-box 把软 AA 内收离 border-box 边，L4 edge_run 绿（弦上仍有亚阈值 AA 残差，不进判决）。",
+    "matrix": [
+        "paint.radius"
+    ],
+    "required": true,
+    "steps": [
+        {
+            "op": "load"
+        },
+        {
+            "op": "resize",
+            "w": 800,
+            "h": 600
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        }
+    ],
+    "expect": "golden/",
+    "pixels": "strict",
+    "text": {
+        "breaks": false,
+        "advances": false
+    }
+}

@@ -1,0 +1,59 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 800px;
+  height: 600px;
+  background: #10141c;
+}
+
+#rot {
+  position: absolute;
+  left: 100px;
+  top: 80px;
+  width: 80px;
+  height: 50px;
+  background-color: #ff8a65;
+  transform: rotate(45deg);
+  transform-origin: center center;
+}
+
+#parent {
+  position: absolute;
+  left: 300px;
+  top: 80px;
+  width: 100px;
+  height: 70px;
+  background-color: #9575cd;
+  transform: rotate(-30deg);
+  transform-origin: left top;
+}
+
+#child {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  width: 50px;
+  height: 35px;
+  background-color: #ffd54f;
+}
+
+#clip {
+  position: absolute;
+  left: 120px;
+  top: 250px;
+  width: 90px;
+  height: 60px;
+  background-color: #4fc3f7;
+  overflow: hidden;
+  transform: rotate(40deg);
+  transform-origin: center center;
+}
+
+#protrude {
+  position: absolute;
+  left: -25px;
+  top: -20px;
+  width: 140px;
+  height: 100px;
+  background-color: #ef5350;
+}

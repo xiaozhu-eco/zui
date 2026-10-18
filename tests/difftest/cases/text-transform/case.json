@@ -1,0 +1,17 @@
+{
+  "name": "text-transform",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3：`text-transform`（CSS Text 3 §2.1）。五行文本：uppercase / lowercase / capitalize / 不动 / 字面大写对照。行盒是 inline-block，宽度即变换后文本的前进量，所以几何列同时验证「字形换了」和「换的是同一套字形的前进量」；像素列验证画的确实是变换后的字形。uppercase 一行用 ASCII + Latin-1 + 希腊，`litup` 是它的字面大写对照；`capitalize` 用 `3d`（数字打头不该大写后面的字母）与 `x-ray`（连字符分词）。lowercase/不动两行只用 ASCII：Latin-1/希腊/西里尔的小写字形 advance 比 Chrome 少 1/64 px，那是字体前进量的旧账，与本刀无关，另记在缺口清单里。",
+  "matrix": ["text.transform"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "text-aa",
+  "text": { "breaks": false, "advances": false }
+}

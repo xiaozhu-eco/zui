@@ -1,0 +1,19 @@
+/* 小竹样本用的一组颜色。预览页会把这些色块画出来。 */
+
+:root {
+    --paper: #fbf6ec;
+    --ink: #2b261f;
+    --accent: #2c6b4e;
+    --sea: #3d6f86;
+    --sand: #e6dfd0;
+}
+
+body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+a {
+    color: var(--accent);
+}

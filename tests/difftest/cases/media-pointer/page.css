@@ -1,0 +1,30 @@
+/* B1 MQ: pointer / hover / prefers-color-scheme. Capture browser: coarse, hover none, light. */
+
+html, body { margin: 0; padding: 0; background: #10141c; }
+
+div {
+  height: 12px;
+  margin: 8px 0;
+  background: #7cb7ff;
+  width: 40px;
+}
+
+@media (pointer: fine) {
+  #fine { width: 120px; }
+}
+
+@media (hover: hover) {
+  #hover { width: 120px; }
+}
+
+@media (any-hover: hover) {
+  #any-hover { width: 120px; }
+}
+
+@media (prefers-color-scheme: light) {
+  #scheme { width: 120px; }
+}
+
+@media (pointer: coarse) {
+  #coarse-miss { width: 120px; }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="page.css"></head>
+<body>
+  <!-- Middle column collapsed: table shrinks; B disappears; C abuts A. -->
+  <table id="cols">
+    <colgroup>
+      <col id="c0" class="w80">
+      <col id="c1" class="w80 gone">
+      <col id="c2" class="w80">
+    </colgroup>
+    <tr>
+      <td id="a"></td>
+      <td id="b"></td>
+      <td id="c"></td>
+    </tr>
+  </table>
+  <!-- colgroup collapse collapses every column it owns. -->
+  <table id="group">
+    <colgroup id="g0">
+      <col class="w60">
+    </colgroup>
+    <colgroup id="g1" class="gone">
+      <col class="w60">
+      <col class="w60">
+    </colgroup>
+    <colgroup id="g2">
+      <col class="w60">
+    </colgroup>
+    <tr>
+      <td id="ga"></td>
+      <td id="gb"></td>
+      <td id="gc"></td>
+      <td id="gd"></td>
+    </tr>
+  </table>
+  <!-- border-spacing only between remaining visible columns. -->
+  <table id="spaced">
+    <colgroup>
+      <col class="w40">
+      <col class="w40 gone">
+      <col class="w40">
+    </colgroup>
+    <tr>
+      <td id="sa"></td>
+      <td id="sb"></td>
+      <td id="sc"></td>
+    </tr>
+  </table>
+</body>
+</html>

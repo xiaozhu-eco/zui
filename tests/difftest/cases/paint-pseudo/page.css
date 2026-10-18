@@ -1,0 +1,56 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+}
+
+.sw {
+    position: relative;
+    width: 120px;
+    height: 90px;
+    background-color: #2f6d50;
+}
+
+/* ::before as a decorative bar: content, absolute box, stretched to the block box.
+   No gradient here on purpose, so a failure is attributable to the pseudo box. */
+#spine::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background-color: rgba(255, 255, 255, 0.22);
+}
+
+/* ::after generating text, positioned at the top right corner. */
+#badge::after {
+    content: "NEW";
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    color: #ffe6a8;
+    font-size: 12px;
+}
+
+/* ::before as an inline text prefix: it must join the line box before the box's own text. */
+.plain::before {
+    content: "> ";
+    color: #7cb7ff;
+}
+
+.plain {
+    color: #e8edf5;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 6px 8px;
+    height: auto;
+}

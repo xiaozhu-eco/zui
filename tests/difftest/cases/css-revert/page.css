@@ -1,0 +1,66 @@
+html, body {
+  margin: 0;
+  background: #101418;
+}
+
+div, mark {
+  position: absolute;
+  display: block;
+  width: 100px;
+  height: 60px;
+}
+
+#mk { left: 24px; top: 24px; background-color: #113355; background-color: revert; }
+#lay { left: 140px; top: 24px; }
+#ch { left: 256px; top: 24px; }
+#ori { left: 372px; top: 24px; }
+#imp { left: 488px; top: 24px; }
+#il { left: 604px; top: 24px; }
+#at { left: 24px; top: 110px; }
+#sm { left: 140px; top: 110px; }
+#beat { left: 256px; top: 110px; }
+#all { left: 372px; top: 110px; }
+#v { left: 488px; top: 110px; }
+
+@layer base, under, a, b;
+
+@layer base {
+  #lay { background-color: #2255cc; }
+  #ori { background-color: #2255cc; }
+}
+#lay { background-color: revert-layer; }
+#ori { background-color: revert; }
+
+@layer a {
+  #ch { background-color: #2255cc; }
+  #il { background-color: revert-layer !important; }
+}
+@layer b {
+  #ch { background-color: revert-layer; }
+  #il { background-color: #cc3344 !important; }
+}
+
+#at { background-color: #8855cc; }
+#sm { background-color: #2255cc; background-color: revert-layer; }
+#imp { background-color: #cc3344; background-color: revert !important; }
+#beat { background-color: revert; background-color: #33aa55 !important; }
+
+#all {
+  background-color: #ff2288;
+  border: 10px solid #ff2288;
+}
+#all {
+  all: revert;
+  position: absolute;
+  display: block;
+  left: 372px;
+  top: 110px;
+  width: 100px;
+  height: 60px;
+}
+
+#v { --c: #112233; }
+@layer under {
+  #v { background-color: var(--c); }
+}
+#v { background-color: revert-layer; }

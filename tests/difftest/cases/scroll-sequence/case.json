@@ -1,0 +1,22 @@
+{
+  "name": "scroll-sequence",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "阶段 1 的滚动序列：离散注入偏移，每步 trace + capture。最后一步故意请求超出可滚动范围的偏移，用来做第 4 节的钳制断言——两端读回的生效值必须一致，否则后续 diff 全部级联失真。",
+  "matrix": ["scroll.overflow", "flow.normal"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "scroll", "target": "#scroll", "x": 0, "y": 100 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "scroll", "target": "#scroll", "x": 0, "y": 999 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "remote-stylesheet",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1：http(s) 远程 <link rel=stylesheet> 经 WinHTTP 拉取并进程内缓存；本地 http_fixture 提供 remote.css。#probe 被远程表改成 120×40；#ctrl 仅本地表 40×20。",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "http_fixture": {
+    "port": 18765,
+    "root": "."
+  },
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

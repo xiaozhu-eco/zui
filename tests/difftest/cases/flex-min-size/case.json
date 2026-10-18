@@ -1,0 +1,16 @@
+{
+  "name": "flex-min-size",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Absolute flex containers honor min-width and min-height. The reader shelf menu is min-width 168px and the status bar is min-height 30px.",
+  "matrix": ["flow.flex"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

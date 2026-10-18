@@ -1,0 +1,31 @@
+/* An orthogonal child inside a horizontal parent (LAYOUT section 3: the child's own axes are
+   the orthogonal flow). #vp is vertical-rl, so its physical width is its block size (160 =
+   140 + padding) and its physical height its inline size (140 = 120 + padding).
+
+   The parent's block axis is the physical vertical one, so it must advance by the child's
+   inline extent (140) and not by the child's block extent (160). The parent's height is
+   auto, which makes the mistake visible as a 20px difference. */
+
+html, body { margin: 0; padding: 0; }
+
+#host {
+  width: 400px;
+}
+
+#vp {
+  writing-mode: vertical-rl;
+  width: 140px;
+  height: 120px;
+  padding: 10px;
+  background: #f4f4f4;
+}
+
+.child {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background: #cccccc;
+}
+
+#c2 { background: #dddddd; }

@@ -1,0 +1,17 @@
+{
+  "name": "grid-last-baseline",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B2/A4: grid align-items/align-self last baseline packs to share last baselines in a 100px row; justify-items:last baseline → end on the inline axis (Chrome).",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

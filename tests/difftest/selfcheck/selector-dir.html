@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="selector-dir.css">
+</head>
+<body>
+  <div id="keep" class="probe">keep</div>
+  <div id="up" class="probe" dir="LTR">up</div>
+  <div id="neutral" class="probe" dir="auto">123</div>
+  <div id="al" class="probe" dir="auto">&#x0627;</div>
+  <div id="lrm" class="probe" dir="auto">&#x200E;&#x05EA;</div>
+  <div id="rlm" class="probe" dir="auto">&#x200F;</div>
+  <div id="digits" class="probe" dir="auto">1&#x05EA;</div>
+  <div id="styled" class="probe">styled</div>
+  <div id="skip" class="probe" dir="auto"><script>&#x05EA;</script><span id="skip-rest" class="probe">a</span></div>
+  <div id="iso" class="probe" dir="auto"><bdi id="iso-bdi" class="probe">&#x05EA;</bdi><span id="iso-rest" class="probe">a</span></div>
+  <div id="auto" class="probe" dir="auto"><span id="inner" class="probe">a</span><span id="peer" class="probe">b</span></div>
+  <div id="host-rtl" class="probe" dir="rtl">
+    <span id="child" class="probe">x</span>
+    <span id="bad" class="probe" dir="foo">bad</span>
+    <bdi id="bdi-empty" class="probe"></bdi>
+    <bdi id="bdi-he" class="probe">&#x05EA;</bdi>
+    <input id="tel" class="probe" type="tel" value="&#x05EA;">
+    <input id="text-inherit" class="probe" type="text">
+    <input id="tel-auto" class="probe" type="tel" dir="auto" value="&#x05EA;">
+    <input id="radio-auto" class="probe" type="radio" dir="auto" value="&#x05EA;">
+    <input id="empty-input" class="probe" type="text" dir="auto" value="">
+  </div>
+</body>
+</html>

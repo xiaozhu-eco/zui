@@ -1,0 +1,17 @@
+{
+  "name": "paint-bg-repeat",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "background-repeat space and round on url() bitmaps. #space leaves 8px gaps. #round rescales a two-tone tile from 100px to 80px. #one fits one copy and honors right. #both spaces both axes and ignores right bottom.",
+  "matrix": ["css.background", "paint.bg-url"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

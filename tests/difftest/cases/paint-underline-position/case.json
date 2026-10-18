@@ -1,0 +1,18 @@
+{
+  "name": "paint-underline-position",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "text-underline-position: under drops a 4px bar below the line box, past the text mask. Glyph colour matches the page. The auto bar uses the same offset so only the under-edge shift differs.",
+  "matrix": ["paint.decoration"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "pixel_tolerance": 1,
+  "text": { "breaks": false, "advances": false }
+}

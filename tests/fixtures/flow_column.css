@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+.wrap {
+    overflow: auto;
+    height: 100%;
+    background: #eeeeee;
+}
+
+.flow {
+    width: min(41rem, 100%);
+    margin: 0 auto;
+    padding: calc(40px + env(safe-area-inset-top)) max(28px, env(safe-area-inset-right)) calc(72px + env(safe-area-inset-bottom)) max(28px, env(safe-area-inset-left));
+    font-family: serif;
+    font-size: 19px;
+    line-height: 1.88;
+}
+
+.flow.large {
+    width: min(50rem, 100%);
+    font-size: 23px;
+}
+
+.flow.plain {
+    padding: 40px 28px 72px 28px;
+}

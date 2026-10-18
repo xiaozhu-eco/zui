@@ -1,0 +1,16 @@
+{
+  "name": "inline-vertical-align",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "vertical-align 的 middle / sub / super：Chrome 的偏移量还没定（见 README 12.4），这条用例就是量它用的，先不设 required。",
+  "matrix": ["flow.inline"],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "masked",
+  "text": { "breaks": false, "advances": false }
+}

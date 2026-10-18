@@ -1,0 +1,59 @@
+/* @supports selector() gates a rule. A supported selector widens the bar to 160
+   and paints green. An unknown pseudo or a syntax error stays 48 and red. */
+
+html, body { margin: 0; padding: 0; background: #101418; }
+
+div {
+  height: 24px;
+  margin: 8px 16px;
+  background: #c4554a;
+  width: 48px;
+}
+
+@supports selector(div) {
+  #type { width: 160px; background: #3d9a6a; }
+}
+
+@supports selector(div > span) {
+  #child { width: 160px; background: #3d9a6a; }
+}
+
+@supports selector(:has(img)) {
+  #has { width: 160px; background: #3d9a6a; }
+}
+
+@supports selector(::before) {
+  #pseudo { width: 160px; background: #3d9a6a; }
+}
+
+@supports selector(:hover) {
+  #hover { width: 160px; background: #3d9a6a; }
+}
+
+@supports selector(:focus-visible) {
+  #focus { width: 160px; background: #3d9a6a; }
+}
+
+@supports selector(:not-a-real) {
+  #bad { width: 160px; background: #3d9a6a; }
+}
+
+@supports not selector(:not-a-real) {
+  #notbad { width: 160px; background: #3d9a6a; }
+}
+
+@supports selector(.a) and (display: flex) {
+  #andok { width: 160px; background: #3d9a6a; }
+}
+
+@supports selector(>) {
+  #syntax { width: 160px; background: #3d9a6a; }
+}
+
+@supports (selector(#id)) {
+  #paren { width: 160px; background: #3d9a6a; }
+}
+
+@supports selector(::not-a-real) {
+  #badel { width: 160px; background: #3d9a6a; }
+}

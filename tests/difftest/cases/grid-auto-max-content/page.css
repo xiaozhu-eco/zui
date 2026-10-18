@@ -1,0 +1,37 @@
+/* Section 11.6 Maximize Tracks: the free space grows the non-fr tracks toward their growth limits,
+   and only as far as the space allows. The old code assigned `base = limit` regardless, so a
+   container narrower than its tracks pulled every auto / max-content column out to its maximum.
+
+   #g1 has room for both limits (200px container, two minmax(40px, 120px) tracks): each grows by the
+   60px needed to reach 100px.
+
+   #g2 has only 20px of free space for 80px of room (100px container): the tracks share it in
+   proportion to what they can take and stop at 50px each, not at their 120px limits.
+
+   #g3 is the doc's `max-content` shape in the same 100px container. The text is long enough that
+   the max-content contribution is well past its 40px floor and short enough that its min-content
+   contribution stays under it, so the two tracks again stop at 50px. */
+
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { margin: 0; padding: 0; background: #fff; font-family: "Zui Test", sans-serif; font-size: 16px; }
+
+#g1, #g2, #g3 {
+  display: grid;
+  /* Tall enough that the g3 text does not overflow its row: the line boxes' ink is a separate
+     scrollable channel (see P1-5), and this case is about the column widths. */
+  grid-template-rows: 80px;
+  background: #f4f4f4;
+}
+
+#g1 { width: 200px; grid-template-columns: minmax(40px, 120px) minmax(40px, 120px); }
+#g2 { width: 100px; margin-top: 10px; grid-template-columns: minmax(40px, 120px) minmax(40px, 120px); }
+#g3 { width: 100px; margin-top: 10px; grid-template-columns: minmax(40px, max-content) minmax(40px, max-content); }
+
+#a, #c, #e { background: #cce4ff; }
+#b, #d, #f { background: #ffd0d0; }

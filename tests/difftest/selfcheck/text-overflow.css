@@ -1,0 +1,11 @@
+html, body { margin: 0; padding: 8px; background: #eef1f5; }
+#clip, #ellip {
+  width: 80px;
+  margin-bottom: 8px;
+  padding: 4px;
+  font: 400 16px sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #dce3ec;
+}
+#ellip { text-overflow: ellipsis; }

@@ -1,0 +1,11 @@
+html, body { margin: 0; padding: 0; background: #fff; }
+#outer { width: 360px; height: 240px; overflow: auto; background: #f4f4f4; }
+#inner {
+  width: 200px;
+  height: 80px;
+  overflow: auto;
+  background: #ddd;
+  overscroll-behavior: contain;
+}
+#fill { height: 80px; }
+#rest { height: 700px; }

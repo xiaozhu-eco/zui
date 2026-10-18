@@ -1,0 +1,16 @@
+{
+  "name": "inline-metrics",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "行盒口径：行内盒上报的是字体内容区（不是 line-height 盒），位置由行基线定；覆盖 vertical-align 的 top/bottom/middle/sub/super 与 line-height: normal。",
+  "matrix": ["flow.inline"],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "masked",
+  "text": { "breaks": false, "advances": false }
+}

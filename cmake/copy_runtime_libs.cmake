@@ -1,0 +1,12 @@
+# Invoked at build time: copy semicolon/pipe-separated DLL list into DEST.
+if(NOT DEST)
+  message(FATAL_ERROR "DEST not set")
+endif()
+if(LIBS)
+  string(REPLACE "|" ";" _libs "${LIBS}")
+  foreach(_lib IN LISTS _libs)
+    if(EXISTS "${_lib}")
+      file(COPY "${_lib}" DESTINATION "${DEST}")
+    endif()
+  endforeach()
+endif()

@@ -1,0 +1,45 @@
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+/* 400px named size container. The shorthand is what stylesheets write. */
+#outer {
+  container: cards / size;
+  width: 400px;
+  height: 120px;
+  margin: 16px 0 0 20px;
+  background: #d7dee8;
+}
+
+/* 120px unnamed size container, nearer to the boxes than #outer. */
+#inner {
+  container: none / size;
+  width: 120px;
+  height: 96px;
+  margin: 8px 0 0 8px;
+  background: #c5ced8;
+}
+
+#named, #near {
+  width: 24px;
+  height: 32px;
+  margin: 8px 0 0 8px;
+  background: #8d97a3;
+}
+
+/* The nearer box is 120px, so this matches. The 400px outer fails max-width. */
+@container (max-width: 200px) {
+  #near {
+    width: 72px;
+    background: #3d9a6a;
+  }
+}
+
+/* Must skip #inner, which has no name, and read #outer at 400px. */
+@container cards (min-width: 300px) {
+  #named {
+    width: 96px;
+    background: #c4554a;
+  }
+}

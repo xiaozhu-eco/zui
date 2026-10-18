@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="theme-night">
+<head>
+  <title>ZUI Studio — Inspect</title>
+  <link rel="stylesheet" href="studio.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <span class="brand">ZUI Inspect</span>
+      <span class="muted">dialog · checkbox · scroll · line-height</span>
+    </header>
+    <div class="workspace">
+      <nav class="sidebar">
+        <input type="radio" name="page" id="nav_inspect" class="page-radio" checked onchange="on_page">
+        <label class="nav" for="nav_inspect">Inspect</label>
+        <input type="radio" name="page" id="nav_log" class="page-radio" onchange="on_page">
+        <label class="nav" for="nav_log">Log</label>
+      </nav>
+      <main class="content">
+        <h1 id="heading">Inspect</h1>
+        <p id="lead" class="lead">Centered copy at line-height 1.6. The next line should wrap and stay centered in this pane.</p>
+        <div class="split">
+          <div id="log" class="panel log">
+            <template>
+              <div class="log-item">{{text}}</div>
+            </template>
+          </div>
+          <div class="panel form-panel">
+            <label class="check">
+              <input id="notify" type="checkbox" checked>
+              <span class="off-label">Notify off</span>
+              <span class="on-label">Notify on</span>
+            </label>
+            <label class="check">
+              <input id="backup" type="checkbox">
+              <span class="off-label">Backup off</span>
+              <span class="on-label">Backup on</span>
+            </label>
+            <button id="open" class="primary" onclick="on_open">Open dialog</button>
+            <div class="theme-row">
+              <input type="radio" name="theme" id="theme_night" class="page-radio" checked onchange="on_theme">
+              <label class="nav" for="theme_night">Night</label>
+              <input type="radio" name="theme" id="theme_dawn" class="page-radio" onchange="on_theme">
+              <label class="nav" for="theme_dawn">Dawn</label>
+            </div>
+          </div>
+        </div>
+        <div class="panel table-panel">
+          <div class="table-toolbar">
+            <span class="muted" id="grid_caption">Sample grid</span>
+            <button id="reshuffle" class="ghost" onclick="on_reshuffle">Shuffle</button>
+          </div>
+          <div class="data-grid" id="grid_scroll">
+            <div id="grid_cols" class="data-head">
+              <template><div class="data-th">{{text}}</div></template>
+            </div>
+            <div id="grid_body" class="data-body">
+              <template>
+                <div class="data-tr">
+                  <template><div class="data-td">{{text}}</div></template>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+        <p id="status" class="status">Open the dialog or toggle a checkbox.</p>
+      </main>
+    </div>
+  </div>
+  <script>
+    var log_rows = [
+      "00  Nested overflow:auto inside the split pane.",
+      "01  Wheel and the thumb should move only this list.",
+      "02  The page shell stays put while this pane scrolls.",
+      "03  Checkbox state is a class-free data field on the node.",
+      "04  Open dialog loads export.html as a fragment.",
+      "05  Mask flex-centers the rounded card.",
+      "06  Label clicks toggle the checkbox they wrap.",
+      "07  Nav uses radio :checked, not add_class.",
+      "08  Keep adding lines so the log is taller than 220px.",
+      "09  Line nine of the nested scroller.",
+      "10  Line ten of the nested scroller.",
+      "11  Line eleven of the nested scroller.",
+      "12  Line twelve of the nested scroller.",
+      "13  Line thirteen of the nested scroller.",
+      "14  Line fourteen of the nested scroller.",
+      "15  Last line — scroll to reach me."
+    ];
+    function fill_log() {
+      var host = document.getElementById("log");
+      var tpl = host.querySelector("template");
+      log_rows.forEach(function (text) {
+        host.insertAdjacentHTML("beforeend", tpl.innerHTML.replace(/\{\{text\}\}/g, text));
+      });
+    }
+    fill_log();
+    function fill_grid(cols, rows) {
+      var head = document.getElementById("grid_cols");
+      var body = document.getElementById("grid_body");
+      var thTpl = head.querySelector("template");
+      var trTpl = body.querySelector("template");
+      var tdTpl = trTpl.content.querySelector("template");
+      Array.prototype.slice.call(head.querySelectorAll(".data-th")).forEach(function (n) { n.remove(); });
+      Array.prototype.slice.call(body.querySelectorAll(".data-tr")).forEach(function (n) { n.remove(); });
+      for (var c = 0; c < cols; ++c) {
+        head.insertAdjacentHTML("beforeend", thTpl.innerHTML.replace(/\{\{text\}\}/g, "C" + (c + 1)));
+      }
+      for (var r = 0; r < rows; ++r) {
+        var tr = document.createElement("div");
+        tr.className = "data-tr";
+        for (var k = 0; k < cols; ++k) {
+          tr.insertAdjacentHTML("beforeend", tdTpl.innerHTML.replace(/\{\{text\}\}/g, String(10 * (r + 1) + k)));
+        }
+        body.appendChild(tr);
+      }
+      document.getElementById("grid_caption").textContent = cols + " x " + rows + " grid";
+    }
+    fill_grid(50 + Math.floor(Math.random() * 51), 50 + Math.floor(Math.random() * 51));
+    function on_reshuffle() {
+      fill_grid(50 + Math.floor(Math.random() * 51), 50 + Math.floor(Math.random() * 51));
+      document.getElementById("status").textContent = "Shuffled " + document.getElementById("grid_caption").textContent + ".";
+    }
+    function on_theme(e) {
+      var name = e.target.id === "theme_dawn" ? "dawn" : "night";
+      document.documentElement.className = "theme-" + name;
+      var link = document.getElementById("theme-pack");
+      if (link) {
+        link.remove();
+      }
+      if (name === "dawn") {
+        var css = document.createElement("link");
+        css.id = "theme-pack";
+        css.rel = "stylesheet";
+        css.href = "dawn.css";
+        document.head.appendChild(css);
+      }
+      document.getElementById("status").textContent = "Theme " + name + ".";
+    }
+    function on_page(e) {
+      var id = e.target.id;
+      if (id === "nav_inspect") {
+        document.getElementById("heading").textContent = "Inspect";
+        document.getElementById("status").textContent = "Inspect pane.";
+      } else {
+        document.getElementById("heading").textContent = "Log";
+        document.getElementById("status").textContent = "Scroll the nested log list.";
+      }
+    }
+    function on_open() {
+      if (document.getElementById("export")) {
+        return;
+      }
+      fetch("export.html").then(function (r) { return r.text(); }).then(function (html) {
+        document.body.insertAdjacentHTML("beforeend", html);
+        document.getElementById("status").textContent = "Dialog open.";
+      }).catch(function () {
+        document.getElementById("status").textContent = "Could not fetch export.html (try a local server).";
+      });
+    }
+    function on_close() {
+      var el = document.getElementById("export");
+      if (el) {
+        el.remove();
+      }
+      document.getElementById("status").textContent = "Dialog closed.";
+    }
+    function on_confirm() {
+      var notify = document.getElementById("notify").checked;
+      on_close();
+      document.getElementById("status").textContent = notify ? "Exported (notify on)." : "Exported.";
+    }
+    document.addEventListener("click", function (e) {
+      var el = e.target.closest("[onclick]");
+      if (!el) {
+        return;
+      }
+      var fn = window[el.getAttribute("onclick")];
+      if (typeof fn === "function") {
+        fn(e);
+      }
+    });
+    document.addEventListener("change", function (e) {
+      var el = e.target.closest("[onchange]");
+      if (!el) {
+        return;
+      }
+      var fn = window[el.getAttribute("onchange")];
+      if (typeof fn === "function") {
+        fn(e);
+      }
+    });
+  </script>
+</body>
+</html>

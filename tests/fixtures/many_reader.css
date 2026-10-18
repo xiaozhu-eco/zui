@@ -1,0 +1,28 @@
+.ch {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 9px 10px 9px 12px;
+    border: 0;
+    background: transparent;
+    font-family: serif;
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: left;
+}
+
+:root:has(#theme_eye:checked) {
+    color: #111111;
+}
+
+:root:has(#theme_dusk:checked) {
+    color: #222222;
+}
+
+:root:has(#theme_ink:checked) {
+    color: #333333;
+}
+
+:root:has(#font_sans:checked) .ch {
+    font-family: serif;
+}

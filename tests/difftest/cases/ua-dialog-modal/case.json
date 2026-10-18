@@ -1,0 +1,18 @@
+{
+  "name": "ua-dialog-modal",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1 UA :modal + ::backdrop. Declarative dialog[open] sets Node::modal; dialog:modal gets position:fixed; dialog::backdrop paints a viewport dim under the dialog. Author ::backdrop rgba(0,0,0,0.4) wins over UA 0.1. Engine-only pin (Chrome headless showModal differs from declarative open).",
+  "matrix": ["css.cascade", "paint.stacking"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false },
+  "style_props": ["display", "position", "overflow"]
+}

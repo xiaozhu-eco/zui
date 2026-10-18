@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; font: 16px "Microsoft YaHei UI", sans-serif; }
+  #p { width: 580px; margin: 0; }
+  /* Zero-chrome highlight, same idea as zmd `.mdw-sel`. */
+  #sel { background: #cfe3ff; }
+  #p code {
+    padding: 2px 5px;
+    font-family: Consolas, monospace;
+    font-size: 0.84em;
+    background: #f4f4f6;
+  }
+</style>
+</head>
+<body>
+  <!-- A short unselected prefix plus a long highlight. The whole sentence fits
+       on one line; treating #sel as one unbreakable piece used to drop the
+       prefix onto its own line (two line boxes, ~55px). -->
+  <p id="p">所见即<span id="sel">所得：左边悬停滑出文件树，右边悬停滑出目录，<code id="chip">Ctrl+K</code> 打开命令面板。</span></p>
+</body>
+</html>

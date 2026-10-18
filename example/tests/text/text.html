@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ZUI Text</title>
+    <link rel="stylesheet" href="text.css">
+</head>
+<body>
+    <div class="shell">
+        <header class="topbar">
+            <span class="brand">ZUI Text</span>
+            <span class="muted">fallback · wrap · nowrap</span>
+        </header>
+        <main class="content">
+            <div class="grid">
+                <section class="panel">
+                    <span class="label">Latin · wrap at spaces</span>
+                    <div class="sample">The quick brown fox jumps over the lazy dog near the station.</div>
+                </section>
+                <section class="panel">
+                    <span class="label">Latin · nowrap</span>
+                    <div class="sample nowrap">The quick brown fox jumps over the lazy dog near the station.</div>
+                </section>
+                <section class="panel">
+                    <span class="label">CJK · wrap per character</span>
+                    <div class="sample">中文按字折行，定宽容器里每个汉字都可以换到下一行。</div>
+                </section>
+                <section class="panel">
+                    <span class="label">Long word stays intact</span>
+                    <div class="sample">Pack the box. Supercalifragilisticexpialidocious does not split.</div>
+                </section>
+            </div>
+            <section class="panel wide">
+                <span class="label">sans-serif · Segoe UI, YaHei for missing glyphs</span>
+                <div class="line">Build 构建 at dawn 黎明</div>
+            </section>
+            <section class="panel wide yahei">
+                <span class="label">font-family: Microsoft YaHei</span>
+                <div class="line">Build 构建 at dawn 黎明</div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,2 @@
+html, body { margin: 0; padding: 8px; }
+#pic::before { content: url("../cases/content-url/green4.png"); }

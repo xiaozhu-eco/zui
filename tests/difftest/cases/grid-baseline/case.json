@@ -1,0 +1,17 @@
+{
+  "name": "grid-baseline",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "align-items: baseline：同一行的项共享基线，各自按自己的首基线偏移。",
+  "matrix": ["flow.grid"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

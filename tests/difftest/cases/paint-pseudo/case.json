@@ -1,0 +1,37 @@
+{
+    "name": "paint-pseudo",
+    "page": "page.html",
+    "viewport": [
+        800,
+        600
+    ],
+    "_comment": "伪元素清单用例：::before 的空 content 装饰条（生成盒 + 绝对定位 + 四边拉伸）、::after 的文本 content（定位到右上角）、以及 ::before 作为行内文本前缀参与行盒。三个盒子只用纯色背景，失败能直接归到伪元素上；用例含文字，像素对照按 text-aa 走。docs/PIPELINE.md 目前把伪元素列在 P0 之外，修的时候要一起改文档。",
+    "matrix": [
+        "paint.pseudo",
+        "position.out-of-flow",
+        "flow.inline"
+    ],
+    "required": false,
+    "steps": [
+        {
+            "op": "load"
+        },
+        {
+            "op": "resize",
+            "w": 800,
+            "h": 600
+        },
+        {
+            "op": "trace"
+        },
+        {
+            "op": "capture"
+        }
+    ],
+    "expect": "golden/",
+    "pixels": "text-aa",
+    "text": {
+        "breaks": false,
+        "advances": false
+    }
+}

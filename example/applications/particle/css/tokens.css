@@ -1,0 +1,48 @@
+:root {
+  --bg: #d7ebe1;
+  --panel: #ffffff;
+  --ink: #101814;
+  --muted: #5d7368;
+  --line: rgba(16, 24, 20, 0.1);
+  --accent: #0c9a60;
+  --dot: #f2c14e;
+  --log: #101814;
+  --sans: "Microsoft YaHei", "Segoe UI", sans-serif;
+  --mono: "Cascadia Code", Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  font-size: 14px;
+}
+
+button, input, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: 1px solid var(--line);
+  background: #2c323c;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+button.is-on {
+  background: var(--accent);
+  color: #1b140c;
+  border-color: var(--accent);
+}
+
+h1, h2, p { margin: 0; }
+
+[hidden] { display: none !important; }

@@ -1,0 +1,94 @@
+/* CSS 2.1 section 17.5.2.2: the auto table layout's column widths. Chrome's answer for every
+   shape below is pinned by `golden/` (recorded with the difftest browser); the engine has to
+   reach the same used widths, which is what `docs/LAYOUT.md` and the table module's column
+   algorithm are measured against.
+
+   The cells hold inline-blocks instead of text on purpose: their contribution to a column's
+   min-content and max-content is a number both ends agree on, so this case pins the *column
+   algorithm* and never a font's advances. `font-size: 0` makes the space between two blocks a
+   break opportunity with no advance at all. */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.wp {
+    width: 400px;
+}
+
+.table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    font-size: 0;
+}
+
+.row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+    padding: 0;
+    vertical-align: top;
+}
+
+.box {
+    display: inline-block;
+    width: 30px;
+    height: 4px;
+    background: #335566;
+}
+
+/* Every column declares nothing: the columns take their max-content and share the rest in
+   proportion to it. */
+
+/* A declared length is kept and the undeclared columns share what is left. */
+#fixed .row > .cell:nth-child(1) {
+    width: 100px;
+}
+
+/* A declared percentage takes its share of the grid's track area. */
+#percent .row > .cell:nth-child(2) {
+    width: 40%;
+}
+
+/* Percentages that add up to more than 100% come off the last column that declares one. */
+#percent-over .row > .cell:nth-child(1) {
+    width: 80%;
+}
+
+#percent-over .row > .cell:nth-child(2) {
+    width: 50%;
+}
+
+/* A table narrower than the columns' max-content keeps each column between its min-content and
+   its max-content. */
+#band {
+    width: 100px;
+}
+
+/* Narrower than the columns' declared widths: the columns give up their room above min-content. */
+#shrink {
+    width: 100px;
+}
+
+#shrink .row > .cell:nth-child(1) {
+    width: 300px;
+}
+
+#shrink .row > .cell:nth-child(2) {
+    width: 300px;
+}
+
+/* `max-width` on a cell clamps what the column asks for, not the cell's own used width. */
+#clamped .row > .cell:nth-child(1) {
+    max-width: 20px;
+}
+
+/* No column asks for anything: the space is split evenly. */
+#empty {
+    width: 100%;
+}

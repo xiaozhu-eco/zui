@@ -1,0 +1,17 @@
+{
+  "name": "nth-child",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1 伪类子集：:nth-child / :nth-last-child / :nth-of-type / :nth-last-of-type / :only-of-type 与 `of S` 子句。每条规则把命中的项加宽一倍，几何对照就能读出 An+B 的解析、元素兄弟计数（文本节点不参与）与 of-type 的同类型计数跑在哪一套项上。",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

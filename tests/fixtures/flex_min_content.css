@@ -1,0 +1,76 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 120px;
+}
+
+.item {
+    width: auto;
+    min-width: auto;
+    flex: 1 1 auto;
+    overflow: visible;
+    font-size: 16px;
+}
+
+.clip {
+    overflow: hidden;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 40px;
+    width: auto;
+}
+
+.col-item {
+    height: auto;
+    width: auto;
+    min-height: auto;
+    flex: 1 1 auto;
+    overflow: visible;
+    font-size: 16px;
+}
+
+.probe {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 50px;
+    align-items: flex-start;
+}
+
+.inner {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    min-width: auto;
+    flex: 0 1 auto;
+    overflow: visible;
+    gap: 10px;
+}
+
+.inner.nowrap {
+    flex-wrap: nowrap;
+}
+
+.inner.wrap {
+    flex-wrap: wrap;
+}
+
+.fixed {
+    flex: 0 0 auto;
+    height: 10px;
+    overflow: hidden;
+    font-size: 1px;
+}
+
+.fixed.a {
+    width: 100px;
+}
+
+.fixed.b {
+    width: 80px;
+}

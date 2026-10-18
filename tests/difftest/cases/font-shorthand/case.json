@@ -1,0 +1,16 @@
+{
+  "name": "font-shorthand",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B1：font 简写重置未写长手（gtest/selfcheck 核 cascade）；本用例钉几何 #box=40×20（2em×1em at 20px）。Chrome getComputedStyle 对 weight/stretch/line-height 的序列化与引擎 computed 图不同，故不比 L1 字体长手。",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

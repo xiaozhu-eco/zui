@@ -1,0 +1,346 @@
+{
+  "name": "example-chat",
+  "page": "page.html",
+  "source": "../../../../example/applications/chat/index.html",
+  "viewport": [
+    1100,
+    720
+  ],
+  "scripts": false,
+  "_comment": "小竹聊天去掉页面脚本后的静态壳。会话条目与两种气泡、顶部「新建」的 hover/按下、消息流滚轮、Tab/Escape，最后撤掉 #creator 的 hidden。",
+  "matrix": [],
+  "required": true,
+  "steps": [
+    {
+      "op": "load"
+    },
+    {
+      "op": "resize",
+      "w": 1100,
+      "h": 720
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "set_text",
+          "target": "#thread-name",
+          "text": "设计组"
+        },
+        {
+          "do": "insert",
+          "target": "#conv-list",
+          "tag": "button",
+          "text": "设计组 09:12",
+          "class": "conv on"
+        },
+        {
+          "do": "insert",
+          "target": "#conv-list",
+          "tag": "button",
+          "text": "后端 昨天",
+          "class": "conv"
+        },
+        {
+          "do": "insert",
+          "target": "#conv-list",
+          "tag": "button",
+          "text": "产品 周一",
+          "class": "conv"
+        },
+        {
+          "do": "insert",
+          "target": "#conv-list",
+          "tag": "button",
+          "text": "运维 上周",
+          "class": "conv"
+        },
+        {
+          "do": "insert",
+          "target": "#conv-list",
+          "tag": "button",
+          "text": "茶水间 上周",
+          "class": "conv"
+        },
+        {
+          "do": "insert",
+          "target": "#conv-list",
+          "tag": "button",
+          "text": "读书会 上月",
+          "class": "conv"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "侧栏的滚动条现在是按内容撑开的。",
+          "class": "msg"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "收到，我看一下断行。",
+          "class": "msg mine"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "长句在 299px 宽的时候会提前折行，Chrome 也是这样。",
+          "class": "msg"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "好，那就不动它。",
+          "class": "msg mine"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "换行测试：这是一条足够长的消息，用来把消息流撑出滚动区域，两端应该给出同样的滚动高度。",
+          "class": "msg"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "再补一条，凑够溢出。",
+          "class": "msg mine"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "还有一条。",
+          "class": "msg"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "最后一条。",
+          "class": "msg mine"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "补一轮，让消息流真的溢出，看看滚动条出现后气泡宽度会不会跟着收窄。",
+          "class": "msg"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "同一句话在两端应该折在同一处，字距和间距都不该差。",
+          "class": "msg mine"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "好。",
+          "class": "msg"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "还有，输入条的高度是跟 textarea 的行数走的。",
+          "class": "msg mine"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "嗯，这条之后应该就到滚动区底部了。",
+          "class": "msg"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "收工。",
+          "class": "msg mine"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "再补两条，确保溢出量足够大。",
+          "class": "msg"
+        },
+        {
+          "do": "insert",
+          "target": "#log",
+          "tag": "button",
+          "text": "好了。",
+          "class": "msg mine"
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "dispatch",
+      "events": [
+        {
+          "type": "mouseMoved",
+          "x": 1045,
+          "y": 27
+        },
+        {
+          "type": "mousePressed",
+          "x": 1045,
+          "y": 27,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseReleased",
+          "x": 1045,
+          "y": 27,
+          "button": "left",
+          "count": 1
+        },
+        {
+          "type": "mouseWheel",
+          "x": 700,
+          "y": 400,
+          "deltaX": 0,
+          "deltaY": 160
+        },
+        {
+          "type": "keyDown",
+          "key": "Tab"
+        },
+        {
+          "type": "keyUp",
+          "key": "Tab"
+        },
+        {
+          "type": "keyDown",
+          "key": "Escape"
+        },
+        {
+          "type": "keyUp",
+          "key": "Escape"
+        }
+      ],
+      "hits": [
+        {
+          "x": 1045,
+          "y": 27
+        },
+        {
+          "x": 700,
+          "y": 400
+        }
+      ]
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    },
+    {
+      "op": "eval",
+      "actions": [
+        {
+          "do": "remove_attr",
+          "target": "#creator",
+          "name": "hidden"
+        }
+      ]
+    },
+    {
+      "op": "freeze",
+      "t": 400
+    },
+    {
+      "op": "trace"
+    },
+    {
+      "op": "capture"
+    }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "style_props": [
+    "display",
+    "position",
+    "box-sizing",
+    "width",
+    "height",
+    "min-width",
+    "min-height",
+    "max-width",
+    "max-height",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+    "border-top-width",
+    "border-right-width",
+    "border-bottom-width",
+    "border-left-width",
+    "overflow-x",
+    "overflow-y",
+    "visibility",
+    "z-index",
+    "flex-direction",
+    "flex-wrap",
+    "flex-grow",
+    "flex-shrink",
+    "flex-basis",
+    "justify-content",
+    "align-items",
+    "align-content",
+    "align-self",
+    "order",
+    "row-gap",
+    "column-gap",
+    "font-family",
+    "font-size",
+    "font-weight",
+    "font-style",
+    "line-height",
+    "letter-spacing",
+    "word-spacing",
+    "text-align",
+    "text-indent",
+    "text-overflow",
+    "white-space",
+    "word-break",
+    "overflow-wrap",
+    "vertical-align"
+  ],
+  "text": {
+    "breaks": true,
+    "advances": false
+  }
+}

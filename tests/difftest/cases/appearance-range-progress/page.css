@@ -1,0 +1,42 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+}
+
+#range-none,
+#ref-range {
+  width: 120px;
+  height: 20px;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #7cb7ff;
+  border: 0;
+}
+
+#range-none {
+  appearance: none;
+  padding: 0;
+}
+
+#prog-none,
+#ref-prog {
+  width: 120px;
+  height: 16px;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #7cb7ff;
+  border: 0;
+}
+
+#prog-none {
+  appearance: none;
+  padding: 0;
+}

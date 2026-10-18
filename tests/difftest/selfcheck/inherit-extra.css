@@ -1,0 +1,7 @@
+#root {
+  border-collapse: collapse;
+  orphans: 3;
+  widows: 4;
+  caret-color: #112233;
+  quotes: "«" "»";
+}

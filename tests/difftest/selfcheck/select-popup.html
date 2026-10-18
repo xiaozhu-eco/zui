@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="select-popup.css">
+</head>
+<body>
+  <select id="group" oninput="on_group" onchange="on_group">
+    <option value="work">同事</option>
+    <option value="family" selected>家人</option>
+    <option value="friend">朋友</option>
+  </select>
+  <div id="outside">outside</div>
+  <!-- Shorter than the open menu, so the last option is outside this overflow box. -->
+  <div id="clip">
+    <select id="clipped">
+      <option value="a">甲</option>
+      <option value="b">乙</option>
+      <option value="c">丙</option>
+    </select>
+  </div>
+</body>
+</html>

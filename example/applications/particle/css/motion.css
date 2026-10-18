@@ -1,0 +1,23 @@
+/* Hover on the bench controls. The particle dots do not move in CSS. */
+
+@media (prefers-reduced-motion: no-preference) {
+  button,
+  .effect,
+  .theme-toggle {
+    transition:
+      transform 160ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 160ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 160ms ease;
+  }
+
+  button:hover,
+  .effect:hover,
+  .theme-toggle:hover {
+    transform: translateY(-2px);
+  }
+
+  button:active,
+  .effect:active {
+    transform: translateY(0) scale(0.97);
+  }
+}

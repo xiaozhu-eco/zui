@@ -1,0 +1,18 @@
+{
+  "name": "overflow-clip",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Phase1: overflow:clip clips overflowing children and is not a scroll container.",
+  "matrix": ["flow.overflow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "style_props": ["overflow-x", "overflow-y"],
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,74 @@
+@font-face {
+    font-family: "Zui Test";
+    src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+/* Pin the embedded face so both ends share one file (TESTPLAN §6). Form-control
+   preferred width depends on avg/max char metrics; a platform `sans-serif` made the
+   golden track Edge's generic mapping instead of the engine's Arial. */
+input,
+button,
+textarea {
+    display: block;
+    font-family: "Zui Test", sans-serif;
+    font-size: 16px;
+    margin: 0 0 10px;
+}
+
+/* height + padding + border under content-box: the border box is 230 x 38.
+   Under border-box this box would be 200 x 36 — the reader's `.find-form input`
+   shape once the UA matches Chrome's content-box default on text inputs. */
+#txt-fixed {
+    width: 200px;
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid #3a4657;
+    border-radius: 999px;
+    background-color: #161c27;
+    color: #e8edf5;
+}
+
+/* No declared box: the UA default box of a one-line text input (size=20). */
+#txt-ua {
+    color: #e8edf5;
+    background-color: #161c27;
+}
+
+/* Button with only padding: height comes from the line box plus padding plus the UA border. */
+#btn-pad {
+    padding: 8px 10px;
+    border: 0;
+    background-color: #2c6b4e;
+    color: #e8edf5;
+}
+
+/* Button with a declared border box. */
+#btn-fixed {
+    width: 160px;
+    height: 36px;
+    padding: 8px 10px;
+    border: 1px solid #3a4657;
+    background-color: #2c6b4e;
+    color: #e8edf5;
+}
+
+#chk {
+    width: 16px;
+    height: 16px;
+}
+
+#area {
+    width: 200px;
+    height: 64px;
+    padding: 6px 8px;
+    border: 1px solid #3a4657;
+    background-color: #161c27;
+    color: #e8edf5;
+}

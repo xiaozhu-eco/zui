@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; }
+  .row { display: flex; width: 200px; height: 40px; }
+  .fillrow { display: flex; width: 240px; height: 40px; }
+  .dead { pointer-events: none; width: 160px; height: 24px; }
+  #live { pointer-events: auto; }
+  a, button { display: block; }
+</style>
+</head>
+<body>
+  <div class="row"><input id="zero" style="flex: 0 1 0"></div>
+  <div class="fillrow"><input id="fill" style="flex: 1 1 0"></div>
+  <input type="radio" name="color" id="green" value="green" checked>
+  <input type="radio" name="color" id="clay" value="clay">
+  <input type="radio" name="color" id="bare">
+  <input type="radio" name="color" id="empty" value="">
+  <input type="checkbox" id="box" checked>
+  <a id="ext" href="mailto:a@b.c">mail</a>
+  <a id="stay" href="https://example.com" onclick="on_stay">stay</a>
+  <a id="frag" href="#top">frag</a>
+  <div class="dead" id="dead"><span id="kid">hidden hit</span> <span id="live">live hit</span></div>
+  <button id="plain" type="button">ok</button>
+</body>
+</html>

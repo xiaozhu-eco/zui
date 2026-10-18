@@ -1,0 +1,6 @@
+[package]
+name = "zui-sys"
+version = "0.1.0"
+edition = "2021"
+description = "Raw FFI for the zui C ABI. The header bindings/c/include/zui_capi.h is the source of truth."
+publish = false

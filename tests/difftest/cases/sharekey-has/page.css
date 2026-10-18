@@ -1,0 +1,27 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.card {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  margin: 8px;
+  background-color: #3a4450;
+}
+
+/* Subject-compound relative :has(): siblings with the same tag/class must not share
+   computed style when only the descendant presence differs. */
+.card:has(.badge) {
+  width: 120px;
+  background-color: #7cb7ff;
+}
+
+.badge {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: #e85d4c;
+}

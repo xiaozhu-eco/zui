@@ -1,0 +1,18 @@
+{
+  "name": "paint-shadow-layers",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3：box-shadow 多层外阴影 + inset（硬环/软模糊）+ 外内混合。pixel_tolerance 2 同 paint-shadow。",
+  "matrix": ["paint.shadow"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false },
+  "pixel_tolerance": 2
+}

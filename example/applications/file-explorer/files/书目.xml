@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<catalog name="小竹书目">
+  <book id="lantern">
+    <title>灯塔</title>
+    <author>岸边</author>
+    <year>2026</year>
+    <tags>
+      <tag>海</tag>
+      <tag>夜</tag>
+    </tags>
+  </book>
+  <book id="ferry">
+    <title>渡口</title>
+    <author>岸边</author>
+    <year>2026</year>
+    <tags>
+      <tag>河</tag>
+      <tag>黄昏</tag>
+    </tags>
+  </book>
+  <book id="salt">
+    <title>盐霜</title>
+    <author>岸边</author>
+    <year>2026</year>
+    <tags>
+      <tag>岛</tag>
+    </tags>
+  </book>
+</catalog>

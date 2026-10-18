@@ -1,0 +1,17 @@
+{
+  "name": "outline",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "B3：outline 的绘制（CSS UI 4 §2）。六个盒子逐一覆盖 1px 环、currentColor 与 medium=3px、负偏移（环落到 border box 内）、正偏移（环与盒之间留背景缝）、跟随 border-radius 的环、thin/thick 关键字。几何对照同时证明 outline 不参与布局。",
+  "matrix": ["paint.outline"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

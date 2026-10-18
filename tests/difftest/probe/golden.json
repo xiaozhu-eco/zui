@@ -1,0 +1,10 @@
+{
+  "schema": "zui.difftest.probe-golden/1",
+  "advance_px": {
+    "browser": 131.609375
+  },
+  "scrollbar_thickness_px": {
+    "browser": 15
+  },
+  "browser_version": "Edg/154.0.4258.53"
+}

@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Zui Test";
+  src: url("../../fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  background: #eef1f5;
+}
+
+p {
+  margin: 0;
+  font-family: "Zui Test", sans-serif;
+  font-size: 96px;
+  line-height: 8px;
+  color: #eef1f5;
+  text-decoration-line: underline;
+  text-decoration-color: #c4554a;
+  text-decoration-thickness: 48px;
+  text-underline-offset: 8px;
+}
+
+#auto {
+  margin: 40px 0 0 48px;
+}
+
+#none {
+  margin: 180px 0 0 48px;
+  text-decoration-skip-ink: none;
+}
+
+#round {
+  margin: 180px 0 0 48px;
+}

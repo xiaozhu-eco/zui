@@ -1,0 +1,39 @@
+/* A4: Grid justify-items:baseline (inline axis). Horizontal writing mode: Chrome falls first
+   baseline back to start within each area; same-column items still start-aligned on inline. */
+
+html, body { margin: 0; padding: 0; }
+
+.ghost { display: block; visibility: hidden; width: 100%; }
+
+#h {
+  display: grid;
+  box-sizing: border-box;
+  width: 240px;
+  height: 120px;
+  grid-template-columns: 120px 120px;
+  grid-template-rows: 60px 60px;
+  justify-items: baseline;
+  align-items: start;
+  margin: 8px;
+  background: #f4f4f4;
+}
+#ha { font-size: 30px; width: 80px; height: 40px; background: #cccccc; }
+#hb { font-size: 12px; width: 50px; height: 24px; background: #bbbbbb; }
+#hc { font-size: 20px; width: 70px; height: 32px; background: #aaaaaa; }
+#hd { font-size: 10px; width: 40px; height: 20px; background: #999999; }
+
+/* Two items forced into one column: still justify baseline → start on the inline axis. */
+#col {
+  display: grid;
+  box-sizing: border-box;
+  width: 120px;
+  height: 120px;
+  grid-template-columns: 120px;
+  grid-template-rows: 60px 60px;
+  justify-items: baseline;
+  align-items: start;
+  margin: 8px;
+  background: #e8eef4;
+}
+#ca { grid-column: 1; font-size: 30px; width: 80px; height: 40px; background: #7cb7ff; }
+#cb { grid-column: 1; font-size: 12px; width: 50px; height: 24px; background: #3d8f6e; }

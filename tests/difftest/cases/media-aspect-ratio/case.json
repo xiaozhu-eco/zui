@@ -1,0 +1,17 @@
+{
+  "name": "media-aspect-ratio",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "800x600 is 4/3. (min-aspect-ratio: 1/1) and (aspect-ratio: 4/3) and (1/1 <= aspect-ratio <= 16/9) apply. (max-aspect-ratio: 1/1) and (aspect-ratio >= 16/9) do not.",
+  "matrix": ["css.cascade"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

@@ -1,0 +1,69 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+}
+
+.sw {
+  width: 120px;
+  height: 80px;
+}
+
+#gray {
+  background-color: #e23b3b;
+  filter: grayscale(1);
+}
+
+#gray40 {
+  background-color: #2f9e44;
+  filter: grayscale(40%);
+}
+
+#sepia {
+  background-color: #e8a317;
+  filter: sepia(1);
+}
+
+#sat {
+  background-color: #1aa6a6;
+  filter: saturate(2.5);
+}
+
+#hue {
+  background-color: #e23b3b;
+  filter: hue-rotate(90deg);
+}
+
+#inv {
+  background-color: #3b6fe2;
+  filter: invert(1);
+}
+
+#con {
+  background-color: #7a3eb1;
+  filter: contrast(2);
+}
+
+#chain {
+  background-color: #e23b3b;
+  filter: contrast(1.5) sepia(0.7);
+}
+
+#nest {
+  background-color: #222833;
+  filter: invert(1);
+}
+
+.dot {
+  width: 48px;
+  height: 48px;
+  margin: 16px;
+  background-color: #e23b3b;
+}

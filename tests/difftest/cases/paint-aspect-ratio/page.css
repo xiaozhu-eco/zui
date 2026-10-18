@@ -1,0 +1,43 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101418;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+}
+
+/* Width given, height derived from the ratio. */
+#w-3-4 {
+    width: 90px;
+    aspect-ratio: 3 / 4;
+    background-color: #2f6fbd;
+}
+
+#w-1-1 {
+    width: 80px;
+    aspect-ratio: 1;
+    background-color: #e0a050;
+}
+
+#w-16-9 {
+    width: 144px;
+    aspect-ratio: 16 / 9;
+    background-color: #3d8f6e;
+}
+
+/* Height given, width derived from the ratio. A shrink-to-fit box (left set, right auto)
+   is the case where height drives width; a stretch-fit block would ignore the ratio. */
+#h-driven {
+    position: absolute;
+    left: 12px;
+    top: 200px;
+    height: 90px;
+    aspect-ratio: 16 / 9;
+    background-color: #8c4030;
+}

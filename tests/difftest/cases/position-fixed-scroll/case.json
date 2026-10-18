@@ -1,0 +1,19 @@
+{
+  "name": "position-fixed-scroll",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Phase1: after document scroll, #fixed world y stays put while #flow moves (geometry). Capture only the initial frame to avoid root gutter-skin noise.",
+  "matrix": ["flow.positioning", "flow.scroll"],
+  "required": true,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" },
+    { "op": "scroll", "target": "window", "x": 0, "y": 200 },
+    { "op": "trace" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

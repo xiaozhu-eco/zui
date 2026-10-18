@@ -1,0 +1,62 @@
+html, body {
+  margin: 0;
+  background-color: #e7e1d6;
+}
+
+#sharp {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  width: 100px;
+  height: 70px;
+  background-color: #e23d3d;
+}
+
+#blur {
+  position: absolute;
+  left: 220px;
+  top: 40px;
+  width: 140px;
+  height: 90px;
+  background-color: #e23d3d;
+  filter: blur(6px);
+}
+
+#drop {
+  position: absolute;
+  left: 40px;
+  top: 220px;
+  width: 140px;
+  height: 90px;
+  background-color: #2f6fe0;
+  filter: drop-shadow(12px 14px 8px rgba(20, 24, 36, 0.75));
+}
+
+#hard {
+  position: absolute;
+  left: 280px;
+  top: 220px;
+  width: 120px;
+  height: 80px;
+  background-color: #3c9a4a;
+  filter: drop-shadow(18px 0 0 #1c1c1c);
+}
+
+#stack {
+  position: absolute;
+  left: 500px;
+  top: 220px;
+  width: 160px;
+  height: 120px;
+  background-color: #f0c040;
+  filter: blur(4px);
+}
+
+#kid {
+  position: absolute;
+  left: 50px;
+  top: 36px;
+  width: 70px;
+  height: 50px;
+  background-color: #102040;
+}

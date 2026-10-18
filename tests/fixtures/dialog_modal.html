@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; }
+  button { display: block; width: 80px; height: 30px; margin: 0; padding: 0; }
+  #out { position: absolute; left: 10px; top: 10px; }
+  #open { position: absolute; left: 10px; top: 50px; }
+  #blocked { position: absolute; left: 10px; top: 90px; }
+  #dlg { top: 220px; left: 220px; width: 180px; height: 140px; margin: 0; }
+</style>
+</head>
+<body>
+  <button id="out" type="button" onclick="on_out">Out</button>
+  <button id="open" type="button" command="show-modal" commandfor="dlg">Open</button>
+  <button id="blocked" type="button" command="show-modal" commandfor="dlg" onclick="on_block">Block</button>
+  <dialog id="dlg">
+    <button id="in1" type="button">One</button>
+    <button id="in2" type="button">Two</button>
+    <button id="close" type="button" command="close" commandfor="dlg">Close</button>
+  </dialog>
+</body>
+</html>

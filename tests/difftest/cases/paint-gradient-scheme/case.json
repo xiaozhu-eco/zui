@@ -1,0 +1,18 @@
+{
+  "name": "paint-gradient-scheme",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "Gradient stops resolve light-dark() from the element's color-scheme and currentcolor from its color. No text: the comparison is the flat ends of a 90deg gradient, not glyph AA. color-scheme: light dark is not used, because the preferred scheme is the host and this case pins light or dark on the element.",
+  "matrix": ["css.color"],
+  "required": true,
+  "pixel_tolerance": 2,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}

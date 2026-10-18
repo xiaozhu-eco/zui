@@ -1,0 +1,17 @@
+{
+  "name": "writing-mode-orthogonal",
+  "page": "page.html",
+  "viewport": [800, 600],
+  "_comment": "正交流：纵向子级对水平父级的贡献要按子级的 inline 尺寸推进父级的块轴（LAYOUT 第 3 节）。",
+  "matrix": ["text.complex-script"],
+  "required": false,
+  "steps": [
+    { "op": "load" },
+    { "op": "resize", "w": 800, "h": 600 },
+    { "op": "trace" },
+    { "op": "capture" }
+  ],
+  "expect": "golden/",
+  "pixels": "strict",
+  "text": { "breaks": false, "advances": false }
+}
