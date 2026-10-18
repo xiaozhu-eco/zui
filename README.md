@@ -73,3 +73,16 @@ conventions. Application walkthroughs live next to the programs; start at
 | [docs/EVENT.md](./docs/EVENT.md) | Events, bind, models |
 | [docs/PERF.md](./docs/PERF.md) | Cost invariants and tracing |
 | [docs/TESTING.md](./docs/TESTING.md) | Chrome comparison and test seams |
+
+## License
+
+zui is licensed under either of
+
+* Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE))
+* MIT license ([LICENSE-MIT](LICENSE-MIT))
+
+at your option.
+
+Copyright (c) 2026 小竹.
+
+Code under `third_party/` keeps the license shipped with that library.
