@@ -1,9 +1,75 @@
 # zui
 
-Native UI from HTML and CSS.
+Native UI from HTML and CSS. The pictures are native windows from this tree.
 
 Structure is HTML5. Layout and skin are CSS. C++ binds handlers and writes data.
 The same page, rendered by zui, matches Chrome. There is no Chromium and no JavaScript.
+Application code includes one header: `<zui/app.h>`.
+
+## Software it already runs
+
+Each heading is a program under [example/applications](./example/README.md). The name
+in code is the CMake target. Run commands live in that program's README.
+
+### [Reader](./example/applications/reader/README.md) `zui_reader`
+
+小竹阅读. A shelf, the open page, and the chapter list. `.txt`, `.epub`, and `.pdf`.
+
+<img src="docs/screenshots/reader-shelf.png" alt="小竹阅读 shelf in cover view" width="32%">
+<img src="docs/screenshots/reader-reading.png" alt="小竹阅读 open chapter" width="32%">
+<img src="docs/screenshots/reader-toc.png" alt="小竹阅读 chapter list over the page" width="32%">
+
+### [zmd](./example/applications/zmd/README.md) `zui_zmd`
+
+小竹 Markdown. Preview of a document: headings, a list, a table, and the status bar.
+
+<img src="docs/screenshots/zmd.png" alt="小竹 Markdown preview of a welcome document" width="70%">
+
+### [Album](./example/applications/album/README.md) `zui_album`
+
+小竹相册. Albums on the left, a photo grid, and an opened photo.
+
+<img src="docs/screenshots/album-home.png" alt="小竹相册 grid with albums" width="49%">
+<img src="docs/screenshots/album-pic.png" alt="小竹相册 opened photo" width="49%">
+
+### [Calendar](./example/applications/calendar/README.md) `zui_calendar`
+
+小竹月历. A month with the day's events, and the form that creates one.
+
+<img src="docs/screenshots/calendar-home.png" alt="小竹月历 month and day agenda" width="49%">
+<img src="docs/screenshots/calendar-new.png" alt="小竹月历 new-event form" width="49%">
+
+### [Kanban](./example/applications/kanban/README.md) `zui_kanban`
+
+小竹看板. Columns of cards. Add a card at the bottom of a column.
+
+<img src="docs/screenshots/kanban.png" alt="小竹看板 with four columns" width="70%">
+
+### [Chat](./example/applications/chat/README.md) `zui_chat`
+
+小竹会话. Local threads and a transcript. No server.
+
+<img src="docs/screenshots/chat.png" alt="小竹会话 thread list and messages" width="70%">
+
+### [Contacts](./example/applications/contacts/README.md) `zui_contacts`
+
+小竹通讯录. A filterable list, one person's card, and the edit form.
+
+<img src="docs/screenshots/contacts-home.png" alt="小竹通讯录 list and detail" width="49%">
+<img src="docs/screenshots/contacts-edit.png" alt="小竹通讯录 edit form" width="49%">
+
+### No screenshot yet
+
+| Program | What it does |
+| --- | --- |
+| [Writer](./example/applications/writer/README.md) `zui_writer` | Local notes. Document tree, outline, markdown markers in a textarea, and a reading view. |
+| [zdb](./example/applications/zdb/README.md) `zui_zdb` | SQLite browser: open a file, browse tables, run SQL, export a copy. The example links SQLite. zui has no database API. |
+| [Share](./example/applications/share/README.md) `zui_share` | Two machines on one network discover each other, send files, and resume. |
+| [Particle](./example/applications/particle/README.md) `zui_particle` | A field of HTML dots on a timer, with parameters beside it. Shader files are text. zui does not run GLSL. |
+
+[File explorer](./example/applications/file-explorer/README.md) is a browser page only. It has no native build.
+
+## Smallest program
 
 ```html
 <button id="save" class="primary" onclick="on_save">Save</button>
@@ -21,8 +87,6 @@ int main(int argc, char** argv) {
     return app.run();
 }
 ```
-
-Application code includes one header: `<zui/app.h>`.
 
 ## Build
 
