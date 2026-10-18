@@ -762,14 +762,27 @@ bool App::pump_frame() {
     // Upload stays in the engine window. `present` is only the swapchain acquire/wait
     // (`gpu.present` inside `IRenderer::present`). `submit` opens `gpu.submit` itself, so that
     // slice is a direct child of `frame` and is not folded into present.
-    renderer->begin_frame();
-    renderer->submit(list);
-    const auto present_started = std::chrono::steady_clock::now();
-    {
-        zui::trace::Zone zone("present", zui::trace::Category::App);
-        renderer->present();
+    // An empty list would clear the target to white and swap that. Keep the last presented
+    // picture instead (the idle path resubmits its list, so a quiet frame still presents).
+    if (!list.items().empty()) {
+        renderer->begin_frame();
+        renderer->submit(list);
+        const auto present_started = std::chrono::steady_clock::now();
+        bool presented = false;
+        {
+            zui::trace::Zone zone("present", zui::trace::Category::App);
+            presented = renderer->present();
+        }
+        // Map only after present() has queued an image. Showing first and presenting
+        // second leaves the new window on a cleared swapchain for a frame.
+        if (presented) {
+            m_impl->stage.present = ms_since(present_started);
+            if (m_impl->reveal_after_present || window->needs_reveal()) {
+                window->show();
+                m_impl->reveal_after_present = false;
+            }
+        }
     }
-    m_impl->stage.present = ms_since(present_started);
     const double frame_ms = ms_since(frame_started);
     m_impl->emit_stage_counters(frame_ms);
     m_impl->report_frame(frame_ms, fw, fh);

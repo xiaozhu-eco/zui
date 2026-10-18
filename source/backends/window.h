@@ -22,6 +22,10 @@ struct WindowDesc {
     /// Create the window without showing it. The probe uses one as a GL context host and
     /// draws into an offscreen target. Product windows leave this false.
     bool hidden = false;
+    /// Create hidden, still at the display's pixel density, and let the frame loop call
+    /// `show()` after the first non-empty present. The OS then never composites a cleared
+    /// client area. Probes leave this false and stay hidden.
+    bool show_after_present = false;
 };
 
 /// Which device produced a pointer contact. Devices are **not** exclusive: a desktop can hold a
@@ -164,6 +168,18 @@ public:
     /// Resize client area in logical CSS px. Backends convert with content_scale if needed.
     /// This is the only window-geometry setter. Chrome calls below are state, not a second size API.
     virtual void set_window_size(int /*w*/, int /*h*/) {}
+    /// Map a window created with `show_after_present`. Default no-op (stubs, probes).
+    virtual void show() {}
+    /// Unmap a window that was shown before a present could finish. Default no-op.
+    virtual void hide() {}
+    /// True once the OS window is mapped. A `show_after_present` window stays false
+    /// until `show()`. Other windows report true.
+    virtual bool is_shown() const { return true; }
+    /// The frame loop should call `show()` only after `present()` has queued a picture.
+    virtual bool needs_reveal() const { return false; }
+    /// CSS-pixel pointer for tests. The real window poll uses it instead of the OS cursor
+    /// while @p active is set, so a headless pump can still hover through the real renderer.
+    virtual void set_pointer_for_test(float /*x*/, float /*y*/, bool /*active*/) {}
     /// Runtime window icon (RGBA8888). Default rejects. Not a second close path:
     /// closing stays `take_close_request`.
     virtual bool set_icon(const WindowIcon& icon) {
@@ -259,7 +275,23 @@ public:
     virtual bool vulkan_instance_extensions(uint32_t* count, const char* const** names) const = 0;
     virtual bool create_vulkan_surface(void* instance, void** surface) = 0;
 
+    /// Test seam. Invoked at the start of `show()`, before the OS window is mapped.
+    /// Production frames leave this unset. The hook sees `present_ok_count` before the map.
+    void set_before_show_for_test(void (*fn)(void*), void* user) {
+        before_show_fn_ = fn;
+        before_show_user_ = user;
+    }
+
+protected:
+    void note_before_show() {
+        if (before_show_fn_ != nullptr) {
+            before_show_fn_(before_show_user_);
+        }
+    }
+
 private:
+    void (*before_show_fn_)(void*) = nullptr;
+    void* before_show_user_ = nullptr;
     /// What `gamepads()` returns for a backend with no gamepad channel.
     GamepadFrame empty_gamepads_{};
 };

@@ -182,6 +182,14 @@ std::string Access::computed(const App& app, std::string_view id, std::string_vi
     return value != nullptr ? *value : std::string{};
 }
 
+bool Access::hovered(const App& app, std::string_view id) {
+    if (id.empty()) {
+        return false;
+    }
+    const html::Node* node = html::find(app.m_impl->document, id);
+    return node != nullptr && node->hovered;
+}
+
 std::vector<NodeCensus> Access::census(const App& app) {
     std::vector<NodeCensus> out;
     html::Node* root = app.m_impl->document.root.get();

@@ -71,6 +71,8 @@ struct ZUI_EXPORT Access {
     /// Computed value of `key` on `id` after the last flush (`font-size`, `color`, …).
     /// Empty when the element or the property is missing. Reads never flush.
     static std::string computed(const App& app, std::string_view id, std::string_view key);
+    /// True when `id` is on the current `:hover` chain. Reads never flush.
+    static bool hovered(const App& app, std::string_view id);
     /// Tag/id chain (`img button#zmd-link div#mdc-a …`) of the node under (@p x, @p y),
     /// innermost first, from the same hit test a press runs. Empty when nothing is hit. Reads
     /// never flush. A paint transform (`transform` under a running transition) moves the answer

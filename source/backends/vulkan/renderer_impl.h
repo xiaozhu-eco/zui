@@ -109,6 +109,8 @@ public:
             sc_.destroy(vk_);
             sc_.create(vk_, *window_);
             recreate_ = false;
+            // New images are UNDEFINED. A leftover PRESENT_SRC flag would drop the copy.
+            forget_swapchain_layouts();
         }
         scale_ = 1.f;
         if (window_ != nullptr) {
@@ -867,13 +869,64 @@ public:
         end_main();
     }
 
-    void present() override {
+    bool present() override {
         zui::trace::Zone zone("gpu.present", zui::trace::Category::Gpu);
+        picture_ready_ = false;
+        present_copy_ready_ = false;
+        swap_readback_pending_ = false;
+        swap_readback_recorded_ = false;
+        last_rgba_.clear();
+        last_pw_ = 0;
+        last_ph_ = 0;
+        window_present_attempted_ = true;
+        if (window_ == nullptr || vk_.device_ == VK_NULL_HANDLE || sc_.swapchain_ == VK_NULL_HANDLE) {
+            return false;
+        }
+        int fw = 0;
+        int fh = 0;
+        window_->framebuffer_size(fw, fh);
+        if (fw < 2 || fh < 2) {
+            return false;
+        }
+        VkSurfaceCapabilitiesKHR caps{};
+        if (vkGetPhysicalDeviceSurfaceCapabilitiesKHR(vk_.gpu_, vk_.surface_, &caps) != VK_SUCCESS) {
+            return false;
+        }
+        const bool surface_unready = caps.currentExtent.width == 0 || caps.currentExtent.height == 0;
+        int draw_w = fw;
+        int draw_h = fh;
+        if (!surface_unready && caps.currentExtent.width != 0xFFFFFFFFu) {
+            draw_w = static_cast<int>(caps.currentExtent.width);
+            draw_h = static_cast<int>(caps.currentExtent.height);
+        }
+        if (draw_w < 2 || draw_h < 2) {
+            return false;
+        }
+        // A hidden window often reports extent 0. The swapchain was created from the
+        // framebuffer size, so acquire still queues an image. show() runs only after this
+        // present returns true. Do not map the window in order to learn the extent.
+        if (sc_.extent_.width != static_cast<uint32_t>(draw_w) ||
+            sc_.extent_.height != static_cast<uint32_t>(draw_h)) {
+            vkDeviceWaitIdle(vk_.device_);
+            destroy_offscreen();
+            sc_.destroy(vk_);
+            if (!sc_.create(vk_, *window_)) {
+                forget_swapchain_layouts();
+                recreate_ = true;
+                return false;
+            }
+            recreate_ = false;
+            forget_swapchain_layouts();
+        }
+#if ZUI_PROBE_FRAME
+        if (prepare_offscreen(draw_w, draw_h) && capture_offscreen()) {
+            picture_ready_ = true;
+        }
+#endif
         uint32_t img = 0;
-        // A hidden test window can fail to release a swapchain image. `ZUI_PRESENT_TIMEOUT_MS`
-        // bounds the wait so that submit's upload accounting still returns. Production stays
-        // on the indefinite wait.
-        std::uint64_t acquire_timeout = UINT64_MAX;
+        // An unmapped window must not block forever on an image it cannot show.
+        // `ZUI_PRESENT_TIMEOUT_MS` still bounds a hidden test window. A mapped window waits.
+        std::uint64_t acquire_timeout = window_->is_shown() ? UINT64_MAX : 50ull * 1000000ull;
         if (const char* ms_text = std::getenv("ZUI_PRESENT_TIMEOUT_MS")) {
             char* end = nullptr;
             const long ms = std::strtol(ms_text, &end, 10);
@@ -885,19 +938,29 @@ public:
                                              fr_.image_available_, VK_NULL_HANDLE, &img);
         if (acq == VK_ERROR_OUT_OF_DATE_KHR) {
             recreate_ = true;
-            return;
+            return false;
         }
-        if (acq == VK_TIMEOUT || acq == VK_NOT_READY) {
-            return;
+        if (acq == VK_TIMEOUT || acq == VK_NOT_READY || acq < 0) {
+            return false;
         }
-        vkWaitForFences(vk_.device_, 1, &fr_.fence_, VK_TRUE, UINT64_MAX);
-        vkResetFences(vk_.device_, 1, &fr_.fence_);
-        vkResetCommandBuffer(fr_.cmd_, 0);
-        VkCommandBufferBeginInfo bi{};
-        bi.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
-        vkBeginCommandBuffer(fr_.cmd_, &bi);
-        record_color_pass(fr_.cmd_, sc_.framebuffers_[img], sc_.images_[img], sc_.extent_, scale_);
-        vkEndCommandBuffer(fr_.cmd_);
+        const bool copied = picture_ready_ && sc_.transfer_dst_ && copy_offscreen_to_swapchain(img);
+        if (!copied) {
+            swap_readback_recorded_ = false;
+            vkWaitForFences(vk_.device_, 1, &fr_.fence_, VK_TRUE, UINT64_MAX);
+            vkResetFences(vk_.device_, 1, &fr_.fence_);
+            vkResetCommandBuffer(fr_.cmd_, 0);
+            VkCommandBufferBeginInfo bi{};
+            bi.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+            vkBeginCommandBuffer(fr_.cmd_, &bi);
+            record_color_pass(fr_.cmd_, sc_.framebuffers_[img], sc_.images_[img], sc_.extent_,
+                              scale_);
+            // The pass ends in PRESENT. Read that image back; a clear with no copy must not
+            // be reported as the offscreen picture.
+            swap_readback_recorded_ = append_swapchain_readback(
+                fr_.cmd_, sc_.images_[img], VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
+            vkEndCommandBuffer(fr_.cmd_);
+            picture_ready_ = true;
+        }
         VkPipelineStageFlags wait = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
         VkSubmitInfo si{};
         si.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
@@ -908,7 +971,9 @@ public:
         si.pCommandBuffers = &fr_.cmd_;
         si.signalSemaphoreCount = 1;
         si.pSignalSemaphores = &fr_.render_done_;
-        vkQueueSubmit(vk_.graphics_queue_, 1, &si, fr_.fence_);
+        if (vkQueueSubmit(vk_.graphics_queue_, 1, &si, fr_.fence_) != VK_SUCCESS) {
+            return false;
+        }
         VkPresentInfoKHR pi{};
         pi.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
         pi.waitSemaphoreCount = 1;
@@ -920,6 +985,191 @@ public:
         if (pr == VK_ERROR_OUT_OF_DATE_KHR || pr == VK_SUBOPTIMAL_KHR) {
             recreate_ = true;
         }
+        if (pr != VK_SUCCESS && pr != VK_SUBOPTIMAL_KHR) {
+            swap_readback_recorded_ = false;
+            return false;
+        }
+        note_swapchain_presented(img);
+        swap_readback_pending_ = swap_readback_recorded_;
+        ++present_ok_count_;
+        return true;
+    }
+    int present_ok_count() const override { return present_ok_count_; }
+    bool has_completed_picture() const override { return picture_ready_; }
+
+    /// Draw the submitted list into the offscreen target and leave it in TRANSFER_SRC.
+    /// The CPU picture is the swapchain image after the copy, not this target.
+    bool capture_offscreen() {
+#if !ZUI_PROBE_FRAME
+        return false;
+#else
+        if (off_fb_ == VK_NULL_HANDLE || off_image_ == VK_NULL_HANDLE || off_stage_map_ == nullptr ||
+            off_w_ < 2 || off_h_ < 2) {
+            return false;
+        }
+        vkWaitForFences(vk_.device_, 1, &fr_.fence_, VK_TRUE, UINT64_MAX);
+        vkResetFences(vk_.device_, 1, &fr_.fence_);
+        vkResetCommandBuffer(fr_.cmd_, 0);
+        VkCommandBufferBeginInfo bi{};
+        bi.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+        if (vkBeginCommandBuffer(fr_.cmd_, &bi) != VK_SUCCESS) {
+            return false;
+        }
+        const VkExtent2D extent{static_cast<uint32_t>(off_w_), static_cast<uint32_t>(off_h_)};
+        record_color_pass(fr_.cmd_, off_fb_, off_image_, extent, scale_);
+        VkImageMemoryBarrier bar{};
+        bar.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+        bar.srcAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+        bar.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+        bar.oldLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+        bar.newLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
+        bar.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+        bar.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+        bar.image = off_image_;
+        bar.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+        bar.subresourceRange.levelCount = 1;
+        bar.subresourceRange.layerCount = 1;
+        vkCmdPipelineBarrier(fr_.cmd_, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
+                             VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 0, nullptr, 0, nullptr, 1, &bar);
+        if (vkEndCommandBuffer(fr_.cmd_) != VK_SUCCESS) {
+            return false;
+        }
+        VkSubmitInfo si{};
+        si.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+        si.commandBufferCount = 1;
+        si.pCommandBuffers = &fr_.cmd_;
+        if (vkQueueSubmit(vk_.graphics_queue_, 1, &si, fr_.fence_) != VK_SUCCESS) {
+            return false;
+        }
+        vkWaitForFences(vk_.device_, 1, &fr_.fence_, VK_TRUE, UINT64_MAX);
+        return true;
+#endif
+    }
+
+    void forget_swapchain_layouts() {
+        swap_layout_.assign(sc_.images_.size(), VK_IMAGE_LAYOUT_UNDEFINED);
+    }
+
+    VkImageLayout swap_image_layout(uint32_t img) const {
+        if (img >= swap_layout_.size()) {
+            return VK_IMAGE_LAYOUT_UNDEFINED;
+        }
+        return swap_layout_[img];
+    }
+
+    void note_swapchain_presented(uint32_t img) {
+        if (swap_layout_.size() != sc_.images_.size()) {
+            swap_layout_.assign(sc_.images_.size(), VK_IMAGE_LAYOUT_UNDEFINED);
+        }
+        if (img < swap_layout_.size()) {
+            swap_layout_[img] = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+        }
+    }
+
+    /// Copy `image` (currently `current`) into the host stage, then leave it PRESENT.
+    /// False when the swapchain cannot be the source of a copy. The caller must not
+    /// then pretend the offscreen target was the queued image.
+    bool append_swapchain_readback(VkCommandBuffer cmd, VkImage image, VkImageLayout current) {
+        if (!sc_.transfer_src_ || off_stage_ == VK_NULL_HANDLE || off_stage_map_ == nullptr ||
+            image == VK_NULL_HANDLE || off_w_ < 2 || off_h_ < 2 ||
+            sc_.extent_.width != static_cast<uint32_t>(off_w_) ||
+            sc_.extent_.height != static_cast<uint32_t>(off_h_)) {
+            return false;
+        }
+        const bool from_copy = current == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;
+        VkImageMemoryBarrier bar{};
+        bar.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+        bar.oldLayout = current;
+        bar.newLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
+        bar.srcAccessMask =
+            from_copy ? VK_ACCESS_TRANSFER_WRITE_BIT : VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+        bar.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+        bar.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+        bar.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+        bar.image = image;
+        bar.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+        bar.subresourceRange.levelCount = 1;
+        bar.subresourceRange.layerCount = 1;
+        vkCmdPipelineBarrier(cmd, from_copy ? VK_PIPELINE_STAGE_TRANSFER_BIT
+                                            : VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
+                             VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 0, nullptr, 0, nullptr, 1, &bar);
+        VkBufferImageCopy region{};
+        region.imageSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+        region.imageSubresource.layerCount = 1;
+        region.imageExtent = {sc_.extent_.width, sc_.extent_.height, 1};
+        vkCmdCopyImageToBuffer(cmd, image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, off_stage_, 1,
+                               &region);
+        bar.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
+        bar.newLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+        bar.srcAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+        bar.dstAccessMask = 0;
+        vkCmdPipelineBarrier(cmd, VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT,
+                             0, 0, nullptr, 0, nullptr, 1, &bar);
+        return true;
+    }
+
+    /// Overwrite the swapchain image with the offscreen picture. The attachment is not cleared
+    /// on its own and then presented: every pixel is the finished frame.
+    bool copy_offscreen_to_swapchain(uint32_t img) {
+        if (off_image_ == VK_NULL_HANDLE || img >= sc_.images_.size()) {
+            return false;
+        }
+        vkWaitForFences(vk_.device_, 1, &fr_.fence_, VK_TRUE, UINT64_MAX);
+        vkResetFences(vk_.device_, 1, &fr_.fence_);
+        vkResetCommandBuffer(fr_.cmd_, 0);
+        VkCommandBufferBeginInfo bi{};
+        bi.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+        if (vkBeginCommandBuffer(fr_.cmd_, &bi) != VK_SUCCESS) {
+            return false;
+        }
+        auto barrier = [&](VkImage image, VkImageLayout old_l, VkImageLayout new_l,
+                           VkAccessFlags src_a, VkAccessFlags dst_a) {
+            VkImageMemoryBarrier bar{};
+            bar.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+            bar.oldLayout = old_l;
+            bar.newLayout = new_l;
+            bar.srcAccessMask = src_a;
+            bar.dstAccessMask = dst_a;
+            bar.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+            bar.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+            bar.image = image;
+            bar.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+            bar.subresourceRange.levelCount = 1;
+            bar.subresourceRange.layerCount = 1;
+            vkCmdPipelineBarrier(fr_.cmd_, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,
+                                 VK_PIPELINE_STAGE_TRANSFER_BIT, 0, 0, nullptr, 0, nullptr, 1, &bar);
+        };
+        const VkImageLayout swap_old = swap_image_layout(img);
+        barrier(sc_.images_[img], swap_old, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 0,
+                VK_ACCESS_TRANSFER_WRITE_BIT);
+        VkImageCopy region{};
+        region.srcSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+        region.srcSubresource.layerCount = 1;
+        region.dstSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+        region.dstSubresource.layerCount = 1;
+        region.extent = {sc_.extent_.width, sc_.extent_.height, 1};
+        vkCmdCopyImage(fr_.cmd_, off_image_, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, sc_.images_[img],
+                       VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &region);
+        swap_readback_recorded_ = append_swapchain_readback(
+            fr_.cmd_, sc_.images_[img], VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
+        if (!swap_readback_recorded_) {
+            VkImageMemoryBarrier to_present{};
+            to_present.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
+            to_present.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;
+            to_present.newLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+            to_present.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
+            to_present.dstAccessMask = 0;
+            to_present.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+            to_present.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+            to_present.image = sc_.images_[img];
+            to_present.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+            to_present.subresourceRange.levelCount = 1;
+            to_present.subresourceRange.layerCount = 1;
+            vkCmdPipelineBarrier(fr_.cmd_, VK_PIPELINE_STAGE_TRANSFER_BIT,
+                                 VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT, 0, 0, nullptr, 0, nullptr, 1,
+                                 &to_present);
+        }
+        return vkEndCommandBuffer(fr_.cmd_) == VK_SUCCESS;
     }
 
     bool read_frame(std::vector<std::uint8_t>& rgba, int& width, int& height) override {
@@ -929,6 +1179,47 @@ public:
         height = 0;
         return false;
 #else
+        if (swap_readback_pending_) {
+            swap_readback_pending_ = false;
+            vkWaitForFences(vk_.device_, 1, &fr_.fence_, VK_TRUE, UINT64_MAX);
+            if (off_stage_map_ == nullptr || off_w_ < 2 || off_h_ < 2) {
+                rgba.clear();
+                width = 0;
+                height = 0;
+                return false;
+            }
+            const std::size_t pixels =
+                static_cast<std::size_t>(off_w_) * static_cast<std::size_t>(off_h_);
+            rgba.resize(pixels * 4);
+            const auto* src = static_cast<const std::uint8_t*>(off_stage_map_);
+            const bool bgra = sc_.format_ == VK_FORMAT_B8G8R8A8_UNORM ||
+                              sc_.format_ == VK_FORMAT_B8G8R8A8_SRGB;
+            for (std::size_t i = 0; i < pixels; ++i) {
+                const std::uint8_t b0 = src[i * 4 + 0];
+                const std::uint8_t b1 = src[i * 4 + 1];
+                const std::uint8_t b2 = src[i * 4 + 2];
+                const std::uint8_t b3 = src[i * 4 + 3];
+                rgba[i * 4 + 0] = bgra ? b2 : b0;
+                rgba[i * 4 + 1] = b1;
+                rgba[i * 4 + 2] = bgra ? b0 : b2;
+                rgba[i * 4 + 3] = b3;
+            }
+            last_rgba_ = rgba;
+            last_pw_ = off_w_;
+            last_ph_ = off_h_;
+            width = last_pw_;
+            height = last_ph_;
+            present_copy_ready_ = true;
+            return true;
+        }
+        // A window present that did not copy the swapchain image must not return the
+        // offscreen target, or a cleared swapchain stays invisible to the test.
+        if (window_present_attempted_) {
+            rgba.clear();
+            width = 0;
+            height = 0;
+            return false;
+        }
         if (vk_.device_ == VK_NULL_HANDLE || off_fb_ == VK_NULL_HANDLE || off_stage_map_ == nullptr ||
             off_w_ <= 0 || off_h_ <= 0) {
             rgba.clear();
@@ -1149,6 +1440,16 @@ private:
     VkPipelines pl_;
     float scale_ = 1.f;
     bool recreate_ = false;
+    bool picture_ready_ = false;
+    bool present_copy_ready_ = false;
+    bool swap_readback_recorded_ = false;
+    bool swap_readback_pending_ = false;
+    bool window_present_attempted_ = false;
+    std::vector<VkImageLayout> swap_layout_;
+    int present_ok_count_ = 0;
+    int last_pw_ = 0;
+    int last_ph_ = 0;
+    std::vector<std::uint8_t> last_rgba_;
     VkImage off_image_ = VK_NULL_HANDLE;
     VkDeviceMemory off_image_mem_ = VK_NULL_HANDLE;
     VkImageView off_view_ = VK_NULL_HANDLE;

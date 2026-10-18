@@ -59,6 +59,7 @@ public:
         image::svg::Runtime::instance().reset();
         svg_device_.shutdown();
         destroy_offscreen();
+        destroy_window_target();
         cmds_.destroy(ctx_);
         tex_.destroy(ctx_);
         if (progs_.glyph_) {
@@ -104,16 +105,21 @@ public:
             ctx_.gl_.BindFramebuffer(GL_FRAMEBUFFER, fbo_);
             ctx_.draw_fbo_ = fbo_;
         } else {
-            if (ctx_.gl_.BindFramebuffer != nullptr) {
-                ctx_.gl_.BindFramebuffer(GL_FRAMEBUFFER, 0);
-            }
-            ctx_.draw_fbo_ = 0;
             int w = 0, h = 0;
             ctx_.window_->framebuffer_size(w, h);
             resize(w, h);
             ctx_.scale_ = ctx_.window_->content_scale();
             if (!(ctx_.scale_ > 0.f)) {
                 ctx_.scale_ = 1.f;
+            }
+            // Draw into an offscreen target and blit it in present(). Clearing the window
+            // drawable itself flashes white: the back buffer is what DWM shows if a mouse
+            // move invalidates the window between glClear and the swap.
+            if (!ensure_window_target(ctx_.fb_w_, ctx_.fb_h_)) {
+                if (ctx_.gl_.BindFramebuffer != nullptr) {
+                    ctx_.gl_.BindFramebuffer(GL_FRAMEBUFFER, 0);
+                }
+                ctx_.draw_fbo_ = 0;
             }
         }
         ctx_.gl_.Viewport(0, 0, ctx_.fb_w_, ctx_.fb_h_);
@@ -125,9 +131,20 @@ public:
     }
     void submit(const paint::DisplayList& list) override {
         cmds_.submit(ctx_, progs_, tex_, list);
+        picture_ready_ = !list.items().empty();
     }
 
-    void present() override { cmds_.present(ctx_); }
+    bool present() override {
+        blit_window_target();
+        cmds_.present(ctx_);
+        if (ctx_.window_ == nullptr || !picture_ready_) {
+            return false;
+        }
+        ++present_ok_count_;
+        return true;
+    }
+    int present_ok_count() const override { return present_ok_count_; }
+    bool has_completed_picture() const override { return picture_ready_; }
 
     bool read_frame(std::vector<std::uint8_t>& rgba, int& width, int& height) override {
 #if !ZUI_PROBE_FRAME
@@ -201,6 +218,66 @@ public:
     }
 
 private:
+    /// Window frames draw here, not into the drawable that DWM can sample mid-clear.
+    bool ensure_window_target(int width, int height) {
+        if (width <= 0 || height <= 0 || ctx_.gl_.BlitFramebuffer == nullptr ||
+            ctx_.gl_.GenFramebuffers == nullptr || ctx_.gl_.BindFramebuffer == nullptr ||
+            ctx_.gl_.FramebufferTexture2D == nullptr) {
+            return false;
+        }
+        if (window_fbo_ == 0) {
+            ctx_.gl_.GenFramebuffers(1, &window_fbo_);
+            ctx_.gl_.GenTextures(1, &window_color_);
+        }
+        if (width != window_w_ || height != window_h_) {
+            ctx_.gl_.BindTexture(GL_TEXTURE_2D, window_color_);
+            ctx_.gl_.TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            ctx_.gl_.TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+            ctx_.gl_.TexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA,
+                                GL_UNSIGNED_BYTE, nullptr);
+            ctx_.gl_.BindFramebuffer(GL_FRAMEBUFFER, window_fbo_);
+            ctx_.gl_.FramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D,
+                                          window_color_, 0);
+            if (ctx_.gl_.CheckFramebufferStatus != nullptr &&
+                ctx_.gl_.CheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+                return false;
+            }
+            window_w_ = width;
+            window_h_ = height;
+        } else if (ctx_.gl_.BindFramebuffer != nullptr) {
+            ctx_.gl_.BindFramebuffer(GL_FRAMEBUFFER, window_fbo_);
+        }
+        ctx_.draw_fbo_ = window_fbo_;
+        return window_fbo_ != 0;
+    }
+
+    void blit_window_target() {
+        if (window_fbo_ == 0 || off_w_ > 0 || ctx_.gl_.BlitFramebuffer == nullptr ||
+            ctx_.gl_.BindFramebuffer == nullptr || window_w_ <= 0 || window_h_ <= 0) {
+            return;
+        }
+        ctx_.gl_.Disable(GL_SCISSOR_TEST);
+        ctx_.gl_.BindFramebuffer(GL_READ_FRAMEBUFFER, window_fbo_);
+        ctx_.gl_.BindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+        ctx_.gl_.BlitFramebuffer(0, 0, window_w_, window_h_, 0, 0, window_w_, window_h_,
+                                 GL_COLOR_BUFFER_BIT, GL_NEAREST);
+        ctx_.gl_.BindFramebuffer(GL_FRAMEBUFFER, 0);
+        ctx_.draw_fbo_ = 0;
+    }
+
+    void destroy_window_target() {
+        window_w_ = 0;
+        window_h_ = 0;
+        if (ctx_.gl_.DeleteFramebuffers != nullptr && window_fbo_ != 0) {
+            ctx_.gl_.DeleteFramebuffers(1, &window_fbo_);
+        }
+        window_fbo_ = 0;
+        if (window_color_ != 0 && ctx_.gl_.DeleteTextures != nullptr) {
+            ctx_.gl_.DeleteTextures(1, &window_color_);
+        }
+        window_color_ = 0;
+    }
+
     void destroy_offscreen() {
         off_w_ = 0;
         off_h_ = 0;
@@ -223,6 +300,12 @@ private:
     int off_h_ = 0;
     GLuint fbo_ = 0;
     GLuint color_ = 0;
+    int window_w_ = 0;
+    int window_h_ = 0;
+    GLuint window_fbo_ = 0;
+    GLuint window_color_ = 0;
+    bool picture_ready_ = false;
+    int present_ok_count_ = 0;
 };
 
 std::unique_ptr<IRenderer> create_gl_renderer() { return std::make_unique<GlRenderer>(false); }

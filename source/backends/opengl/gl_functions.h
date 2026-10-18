@@ -56,6 +56,8 @@ constexpr GLenum GL_TEXTURE_WRAP_T = 0x2803;
 constexpr GLenum GL_UNPACK_ALIGNMENT = 0x0CF5;
 constexpr GLenum GL_PACK_ALIGNMENT = 0x0D05;
 constexpr GLenum GL_MAX_TEXTURE_SIZE = 0x0D33;
+constexpr GLenum GL_READ_FRAMEBUFFER = 0x8CA8;
+constexpr GLenum GL_DRAW_FRAMEBUFFER = 0x8CA9;
 constexpr GLenum GL_FRAMEBUFFER = 0x8D40;
 constexpr GLenum GL_COLOR_ATTACHMENT0 = 0x8CE0;
 constexpr GLenum GL_FRAMEBUFFER_COMPLETE = 0x8CD5;
@@ -118,6 +120,8 @@ struct GL {
     void (*GenFramebuffers)(GLsizei, GLuint*) = nullptr;
     void (*DeleteFramebuffers)(GLsizei, const GLuint*) = nullptr;
     void (*BindFramebuffer)(GLenum, GLuint) = nullptr;
+    void (*BlitFramebuffer)(GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield,
+                            GLenum) = nullptr;
     void (*FramebufferTexture2D)(GLenum, GLenum, GLenum, GLuint, GLint) = nullptr;
     GLenum (*CheckFramebufferStatus)(GLenum) = nullptr;
     void (*DeleteBuffers)(GLsizei, const GLuint*) = nullptr;
@@ -182,6 +186,7 @@ struct GL {
         ZUI_GL(GenFramebuffers);
         ZUI_GL(DeleteFramebuffers);
         ZUI_GL(BindFramebuffer);
+        ZUI_GL(BlitFramebuffer);
         ZUI_GL(FramebufferTexture2D);
         ZUI_GL(CheckFramebufferStatus);
         ZUI_GL(DeleteBuffers);

@@ -170,6 +170,8 @@ public:
         backends::IRenderer* borrowed_renderer = nullptr;
         paint::Painter loop_painter;
         paint::DisplayList loop_list;
+        /// Product windows stay hidden until the first non-empty present, then `show()`.
+        bool reveal_after_present = false;
         std::unique_ptr<input::Interaction> loop_interaction;
         /// Owned for headless `prepare_interaction` (gtest / tools); mutually exclusive with
         /// `loop_interaction` as `live_interaction` while a test session is active.
@@ -234,6 +236,7 @@ public:
     backends::IRenderer*& borrowed_renderer{frame_loop.borrowed_renderer};
     paint::Painter& loop_painter{frame_loop.loop_painter};
     paint::DisplayList& loop_list{frame_loop.loop_list};
+    bool& reveal_after_present{frame_loop.reveal_after_present};
     std::unique_ptr<input::Interaction>& loop_interaction{frame_loop.loop_interaction};
     /// True when the previous pump_frame painted a modal child document.
     /// A change forces a paint so the frame does not resubmit the other document.

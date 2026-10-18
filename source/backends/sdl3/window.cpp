@@ -138,6 +138,10 @@ public:
 
     bool create(const WindowDesc& desc) override {
         destroy();
+        // The default hint erases the client once, on the first WM_ERASEBKGND, with a black
+        // brush. That is the flash before the first present. Later erases already no-op;
+        // mouse motion does not InvalidateRect. "never" skips that first fill.
+        SDL_SetHint(SDL_HINT_WINDOWS_ERASE_BACKGROUND_MODE, "0");
         if (!SDL_Init(SDL_INIT_VIDEO)) {
             ZUI_ERROR("SDL_Init: {}", SDL_GetError());
             return false;
@@ -150,11 +154,18 @@ public:
         // A visible window asks SDL for a high-density back buffer. On Win32 that flag
         // does not change window units (they stay physical pixels), so the CSS size is
         // applied separately in apply_css_window_size.
+        // A product window is created hidden (`show_after_present`) but still asks for the
+        // display density, so the first present matches the size it will be shown at. A probe
+        // (`hidden` only) stays at density 1.
+        defer_show_ = desc.show_after_present && !desc.hidden;
+        shown_ = !desc.hidden && !defer_show_;
+        const bool defer_show = defer_show_;
         high_density_ = !desc.hidden;
         SDL_WindowFlags flags = SDL_WINDOW_RESIZABLE;
-        if (desc.hidden) {
+        if (desc.hidden || defer_show) {
             flags |= SDL_WINDOW_HIDDEN;
-        } else {
+        }
+        if (high_density_) {
             flags |= SDL_WINDOW_HIGH_PIXEL_DENSITY;
         }
         int win_w = desc.width;
@@ -228,6 +239,29 @@ public:
         device_install_keyboard_observer();
 #endif
         return true;
+    }
+
+    void show() override {
+        if (window_ == nullptr) {
+            return;
+        }
+        note_before_show();
+        SDL_ShowWindow(window_);
+        shown_ = true;
+    }
+    void hide() override {
+        if (window_ == nullptr) {
+            return;
+        }
+        SDL_HideWindow(window_);
+        shown_ = false;
+    }
+    bool is_shown() const override { return shown_; }
+    bool needs_reveal() const override { return defer_show_ && !shown_; }
+    void set_pointer_for_test(float x, float y, bool active) override {
+        test_pointer_ = active;
+        test_x_ = x;
+        test_y_ = y;
     }
 
     void destroy() override {
@@ -512,9 +546,14 @@ public:
             // SDL reports window units. Those are CSS px when pixel density equals the
             // content scale (macOS points, hidden probes). Win32 Per-Monitor V2 keeps
             // density at 1 and the display scale at 1.25, so divide here. frame.cpp
-            // must not divide again.
-            mouse.x = window_to_css(mx);
-            mouse.y = window_to_css(my);
+            // must not divide again. A test pointer is already in CSS px.
+            if (test_pointer_) {
+                mouse.x = test_x_;
+                mouse.y = test_y_;
+            } else {
+                mouse.x = window_to_css(mx);
+                mouse.y = window_to_css(my);
+            }
             mouse.buttons = ((buttons & SDL_BUTTON_LMASK) != 0 ? 1 : 0) |
                             ((buttons & SDL_BUTTON_RMASK) != 0 ? 2 : 0) |
                             ((buttons & SDL_BUTTON_MMASK) != 0 ? 4 : 0);
@@ -1252,6 +1291,11 @@ private:
     SDL_Window* window_ = nullptr;
     /// True when the window was created with SDL_WINDOW_HIGH_PIXEL_DENSITY.
     bool high_density_ = false;
+    bool defer_show_ = false;
+    bool shown_ = false;
+    bool test_pointer_ = false;
+    float test_x_ = 0.f;
+    float test_y_ = 0.f;
     SDL_GLContext gl_ = nullptr;
     GfxApi api_ = GfxApi::Vulkan;
     /// Set by SDL_EVENT_QUIT / WINDOW_CLOSE_REQUESTED, consumed by take_close_request().

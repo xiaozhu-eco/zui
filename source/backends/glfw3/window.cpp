@@ -113,7 +113,10 @@ public:
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         }
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-        glfwWindowHint(GLFW_VISIBLE, desc.hidden ? GLFW_FALSE : GLFW_TRUE);
+        defer_show_ = desc.show_after_present && !desc.hidden;
+        shown_ = !desc.hidden && !defer_show_;
+        const bool defer_show = defer_show_;
+        glfwWindowHint(GLFW_VISIBLE, (desc.hidden || defer_show) ? GLFW_FALSE : GLFW_TRUE);
         window_ = glfwCreateWindow(desc.width, desc.height, desc.title.c_str(), nullptr, nullptr);
         glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);
         if (window_ == nullptr) {
@@ -122,7 +125,7 @@ public:
         }
         if (desc.api != GfxApi::Vulkan) {
             glfwMakeContextCurrent(window_);
-            glfwSwapInterval(desc.hidden ? 0 : 1);
+            glfwSwapInterval(desc.hidden && !defer_show ? 0 : 1);
         }
         glfwSetWindowUserPointer(window_, this);
         glfwSetWindowFocusCallback(window_, [](GLFWwindow* w, int focused) {
@@ -290,6 +293,29 @@ public:
         return true;
     }
 
+    void show() override {
+        if (window_ == nullptr) {
+            return;
+        }
+        note_before_show();
+        glfwShowWindow(window_);
+        shown_ = true;
+    }
+    void hide() override {
+        if (window_ == nullptr) {
+            return;
+        }
+        glfwHideWindow(window_);
+        shown_ = false;
+    }
+    bool is_shown() const override { return shown_; }
+    bool needs_reveal() const override { return defer_show_ && !shown_; }
+    void set_pointer_for_test(float x, float y, bool active) override {
+        test_pointer_ = active;
+        test_x_ = x;
+        test_y_ = y;
+    }
+
     void destroy() override {
         if (cursor_handle_ != nullptr && cursor_handle_ != hand_open_ &&
             cursor_handle_ != hand_closed_) {
@@ -320,8 +346,9 @@ public:
         double mx = 0, my = 0;
         glfwGetCursorPos(window_, &mx, &my);
         // GLFW cursor is window/logical CSS px; layout and hit-test share that space.
-        const float x = static_cast<float>(mx);
-        const float y = static_cast<float>(my);
+        // A test pointer is already in that space.
+        const float x = test_pointer_ ? test_x_ : static_cast<float>(mx);
+        const float y = test_pointer_ ? test_y_ : static_cast<float>(my);
         bool pressed = false;
         bool released = false;
         int changed = 0;
@@ -917,6 +944,11 @@ private:
     HostOrientation orientation_ = HostOrientation::Unknown;
     bool orientation_changed_ = false;
     bool minimized_ = false;
+    bool defer_show_ = false;
+    bool shown_ = false;
+    bool test_pointer_ = false;
+    float test_x_ = 0.f;
+    float test_y_ = 0.f;
     bool maximized_ = false;
     bool fullscreen_ = false;
     bool topmost_ = false;

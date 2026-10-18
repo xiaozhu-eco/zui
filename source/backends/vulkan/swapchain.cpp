@@ -26,8 +26,13 @@ bool VkSwapchain::create(VkDeviceContext& vk, IWindow& window) {
         if (extent_.width == UINT32_MAX || extent_.width == 0 || extent_.height == 0) {
             int w = 0, h = 0;
             window.framebuffer_size(w, h);
-            extent_.width = std::max(1u, static_cast<uint32_t>(w));
-            extent_.height = std::max(1u, static_cast<uint32_t>(h));
+            // A 1x1 stand-in is a cleared image. A hidden surface with no drawable must fail
+            // creation so present() can refuse it instead of showing that clear.
+            if (w < 2 || h < 2) {
+                return false;
+            }
+            extent_.width = static_cast<uint32_t>(w);
+            extent_.height = static_cast<uint32_t>(h);
         }
         uint32_t img_count = caps.minImageCount + 1;
         if (caps.maxImageCount > 0 && img_count > caps.maxImageCount) {
@@ -45,6 +50,10 @@ bool VkSwapchain::create(VkDeviceContext& vk, IWindow& window) {
         transfer_src_ = (caps.supportedUsageFlags & VK_IMAGE_USAGE_TRANSFER_SRC_BIT) != 0;
         if (transfer_src_) {
             sci.imageUsage |= VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
+        }
+        transfer_dst_ = (caps.supportedUsageFlags & VK_IMAGE_USAGE_TRANSFER_DST_BIT) != 0;
+        if (transfer_dst_) {
+            sci.imageUsage |= VK_IMAGE_USAGE_TRANSFER_DST_BIT;
         }
         uint32_t fams[] = {vk.graphics_family_, vk.present_family_};
         if (vk.graphics_family_ != vk.present_family_) {

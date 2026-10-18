@@ -24,7 +24,10 @@ public:
         submit_sizes.push_back(list.items().size());
         last_items = list.items();
     }
-    void present() override { ++present_count; }
+    bool present() override {
+        ++present_count;
+        return true;
+    }
     const char* name() const override { return "record"; }
 };
 

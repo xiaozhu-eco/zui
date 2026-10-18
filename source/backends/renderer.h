@@ -23,7 +23,15 @@ public:
     virtual void resize(int width, int height) = 0;
     virtual void begin_frame() = 0;
     virtual void submit(const paint::DisplayList& list) = 0;
-    virtual void present() = 0;
+    /// Queue the submitted picture on the display. False when acquire times out, the
+    /// swapchain is out of date, or the queue present fails. A false return must not
+    /// be treated as a frame the user can see, and must not be followed by show().
+    virtual bool present() = 0;
+    /// Successful `present()` calls since this renderer was created.
+    virtual int present_ok_count() const { return 0; }
+    /// True after this frame's commands drew a complete picture, even if `present()`
+    /// could not queue it (the surface is not ready to show yet).
+    virtual bool has_completed_picture() const { return false; }
     /// RGBA, top-left origin, of the framebuffer just submitted. Not an application API.
     /// The default is false. A backend implements it only where `ZUI_PROBE_FRAME` is 1.
     virtual bool read_frame(std::vector<std::uint8_t>& rgba, int& width, int& height) {

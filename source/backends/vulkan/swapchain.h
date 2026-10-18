@@ -28,6 +28,9 @@ public:
     VkRenderPass render_pass_ = VK_NULL_HANDLE;
     /// True when swapchain images were created with TRANSFER_SRC so a backdrop copy can read them.
     bool transfer_src_ = false;
+    /// True when swapchain images can be the destination of a full-frame copy. Present then
+    /// writes the finished picture over the image instead of leaving a cleared attachment.
+    bool transfer_dst_ = false;
 };
 
 }  // namespace backends

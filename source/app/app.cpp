@@ -183,6 +183,11 @@ int App::run() {
     desc.width = m_impl->pending_window_w > 0 ? m_impl->pending_window_w : 1100;
     desc.height = m_impl->pending_window_h > 0 ? m_impl->pending_window_h : 720;
     desc.api = backends::gfx_api_from_renderer(rkind);
+    // The client area stays unmapped until pump_frame has presented a real page. A visible
+    // window created here is cleared by the OS (and by the renderer's white clear) before
+    // that present, which is the flash on open.
+    desc.show_after_present = true;
+    m_impl->reveal_after_present = true;
     if (m_impl->loop_renderer->name() && std::string(m_impl->loop_renderer->name()) == "gl") {
         desc.api = backends::GfxApi::OpenGL;
     } else if (m_impl->loop_renderer->name() &&

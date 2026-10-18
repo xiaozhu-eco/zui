@@ -29,6 +29,7 @@ set(ZUI_APP_INTERACT_SOURCES
   perf_stage0_test.cpp
   caret_paint_test.cpp
   example_tests_render_test.cpp
+  hover_flicker_test.cpp
   event_kinds_test.cpp
   interaction_census_test.cpp
   browser_walk_test.cpp
